@@ -1,0 +1,12 @@
+name: ci
+on: [ push, pull_request ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: conda-incubator/setup-miniconda@v3
+      with: { activate-environment: kec-biomaterials-scaffolds, environment-file: environment.yml, auto-activate-base: false }
+    - run: python -V
+    - run: pip install pytest
+    - run: pytest -q

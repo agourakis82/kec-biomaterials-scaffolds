@@ -1,0 +1,4 @@
+project: "KEC_BIOMAT (MSc)"
+runtime: { python: "3.11", environment: "conda" }
+data: { sources: [ "public μCT datasets" ], pii: false }
+governance: { license: "MIT", citation: "CITATION.cff" }

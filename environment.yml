@@ -1,0 +1,20 @@
+name: kec-biomaterials-scaffolds
+channels: [ conda-forge, defaults ]
+dependencies:
+- python=3.11
+- numpy
+- scipy
+- pandas
+- scikit-image
+- scikit-learn
+- networkx
+- matplotlib
+- jupyterlab
+- ipywidgets
+- tqdm
+- pip
+- pip:
+  - porespy
+  - openpnm
+  - GraphRicciCurvature
+  - python-louvain
