@@ -1,0 +1,9 @@
+# data
+data/raw/
+data/interim/
+*.tiff *.tif *.mhd *.nii *.zip
+
+# python
+__pycache__/
+.venv/
+.ipynb_checkpoints/

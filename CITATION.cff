@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "KEC Metrics for Porous Biomaterial Scaffolds"
+authors:
+- family-names: Agourakis
+  given-names: Demetrios Chiuratto
+  orcid: "https://orcid.org/0000-0002-8596-5097"
+- family-names: Chiuratto Agourakis
+  given-names: Dionisio
+keywords: [ biomaterials, scaffolds, micro-CT, entropy, Ricci curvature, small-world, percolation ]
+license: MIT
