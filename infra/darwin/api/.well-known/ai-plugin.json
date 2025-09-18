@@ -15,6 +15,6 @@
     "is_user_authenticated": true
   },
   "logo_url": "${RUN_URL}/static/logo.png",
-  "contact_email": "ops@PREENCHER_DOMINIO",
+  "contact_email": "demetrios@agourakis.med.br",
   "legal_info_url": "${RUN_URL}/terms"
 }

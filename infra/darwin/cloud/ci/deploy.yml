@@ -18,7 +18,7 @@ jobs:
         name: "Auth GCP via OIDC"
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: PREENCHER_WIP
+          workload_identity_provider: projects/pcs-helio/locations/global/workloadIdentityPools/github-oidc-pool/providers/github-oidc-provider
           service_account: darwin-runner@pcs-helio.iam.gserviceaccount.com
 
       - name: "Set up gcloud"
