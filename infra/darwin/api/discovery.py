@@ -7,7 +7,7 @@ from typing import Any, Dict, Iterable, List
 
 import requests
 
-from . import rag
+import rag
 
 try:  # Optional dependency for richer RSS parsing
     import feedparser

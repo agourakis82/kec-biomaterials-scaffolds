@@ -6,7 +6,7 @@ import textwrap
 import uuid
 from typing import Any, Dict, Iterable, List
 
-from . import deps, providers_gcp
+import deps, providers_gcp
 
 GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
 GCP_REGION = os.getenv("GCP_REGION", "us-central1")
