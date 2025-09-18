@@ -1,0 +1,47 @@
+name: Deploy Darwin API to Cloud Run
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'infra/api/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          workload_identity_provider: ${{ secrets.GCP_WIP }}
+
+      - name: Configure Docker for gcloud
+        run: |
+          gcloud auth configure-docker
+
+      - name: Build and push Docker image
+        run: |
+          IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/darwin-kec-biomat
+          gcloud builds submit --tag "$IMAGE" infra/api
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy darwin-kec-biomat \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/darwin-kec-biomat \
+            --region "${{ secrets.GCP_REGION }}" \
+            --platform managed \
+            --allow-unauthenticated=false \
+            --set-env-vars "NAMESPACE=KEC_BIOMAT_V1,API_KEY=${{ secrets.API_KEY }}"
+
+      - name: Show service URL
+        run: |
+          gcloud run services describe darwin-kec-biomat --region "${{ secrets.GCP_REGION }}" --format='value(status.url)'

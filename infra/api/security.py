@@ -12,7 +12,7 @@ from typing import Dict
 from fastapi import HTTPException, Request
 from fastapi.security import APIKeyHeader
 
-from services.settings import get_settings
+from .config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -63,7 +63,7 @@ class RateLimiter:
     """In-memory rate limiter using token buckets."""
 
     def __init__(self):
-        self.settings = get_settings()
+        self.settings = settings
         self.buckets: Dict[str, TokenBucket] = {}
         self.cleanup_interval = 3600  # 1 hour
         self.last_cleanup = time.time()
@@ -108,9 +108,9 @@ class RateLimiter:
 
         if bucket_key not in self.buckets:
             # Create new bucket with per-minute rate (converted to per-second)
-            refill_rate = self.settings.RATE_LIMIT_PER_MIN / 60.0
+            refill_rate = self.settings.RATE_LIMIT_REQUESTS_PER_MINUTE / 60.0
             self.buckets[bucket_key] = TokenBucket(
-                capacity=self.settings.RATE_LIMIT_BURST, refill_rate=refill_rate
+                capacity=self.settings.RATE_LIMIT_BURST_CAPACITY, refill_rate=refill_rate
             )
 
         bucket = self.buckets[bucket_key]
@@ -146,7 +146,7 @@ async def require_api_key(api_key: str = api_key_header) -> str:
     Raises:
         HTTPException: If API key is invalid
     """
-    settings = get_settings()
+    # settings already imported
 
     if not settings.API_KEY_REQUIRED:
         return "development"
@@ -193,7 +193,7 @@ async def rate_limit(request: Request) -> None:
             detail="Rate limit exceeded",
             headers={
                 "Retry-After": "60",
-                "X-RateLimit-Limit": str(get_settings().RATE_LIMIT_PER_MIN),
+                "X-RateLimit-Limit": str(settings.RATE_LIMIT_REQUESTS_PER_MINUTE),
                 "X-RateLimit-Remaining": str(int(bucket_status.get("tokens", 0))),
                 "X-RateLimit-Reset": str(int(time.time() + 60)),
             },

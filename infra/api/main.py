@@ -7,22 +7,25 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from .auth import APIKeyMiddleware
-from .cache import cache_manager
-from .config import settings
-from .documentation import get_documentation_manager, setup_documentation_routes
-from .errors import (
+from auth import APIKeyMiddleware
+from cache import cache_manager
+from config import settings
+from documentation import get_documentation_manager, setup_documentation_routes
+from errors import (
     APIError,
     api_error_handler,
     general_exception_handler,
     validation_error_handler,
 )
-from .logging import RequestLoggingMiddleware, get_logger
-from .monitoring import initialize_monitoring, shutdown_monitoring
-from .processing import start_processing, stop_processing
-from .rate_limit import RateLimitMiddleware
-from .routers import admin, core, data, monitoring, notebooks, rag, rag_plus
-from .routers.processing import router as processing_router
+from custom_logging import RequestLoggingMiddleware, get_logger
+from monitoring import initialize_monitoring, shutdown_monitoring
+from processing import start_processing, stop_processing
+from rate_limit import RateLimitMiddleware
+from routers import admin, core, data, monitoring, notebooks, rag, rag_plus, memory  # Expose memory router
+from routers.processing import router as processing_router
+
+import os
+from fastapi import Request, Depends
 
 logger = get_logger("main")
 
@@ -171,6 +174,8 @@ def create_app() -> FastAPI:
     app.include_router(notebooks.router)
     app.include_router(monitoring.router, prefix="/monitoring")  # Monitoring endpoints
     app.include_router(processing_router)  # Processing endpoints
+    app.include_router(memory.router, prefix="", tags=["Memory"])  # Mount memory router at root
+    app.include_router(memory.router, prefix="", tags=["Memory"])  # Mount memory router at root
 
     # Setup documentation routes
     setup_documentation_routes(app)
@@ -183,6 +188,30 @@ def create_app() -> FastAPI:
     if settings.static_path.exists():
         app.mount("/static", StaticFiles(directory=settings.static_path), name="static")
         logger.info("Static files mounted", extra={"path": str(settings.static_path)})
+
+    # POST /rag/index alias for /rag-plus/documents
+    @app.post("/rag/index")
+    async def rag_index_alias(request: Request):
+        """
+        Alias for /rag-plus/documents. Forwards request to the same handler.
+        Preserves Authorization header.
+        """
+        from routers import rag_plus  # Avoid circular import
+        # Get the service instance
+        service = await rag_plus.get_rag_plus_service()
+        body = await request.json()
+        # Call the add_document function directly
+        response = await rag_plus.add_document(
+            request=rag_plus.DocumentAdd(**body),
+            service=service
+        )
+        return response
+
+    # GET /healthz endpoint
+    @app.get("/healthz")
+    async def healthz():
+        namespace = os.environ.get("NAMESPACE", "KEC_BIOMAT_V1")
+        return {"status": "ok", "namespace": namespace}
 
     logger.info("FastAPI application created", extra={"title": settings.api_title})
     return app
