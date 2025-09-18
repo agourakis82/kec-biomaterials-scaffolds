@@ -8,7 +8,7 @@ IMG="gcr.io/${PROJECT_ID}/${SERVICE}:v$(date +%Y%m%d%H%M%S)"
 SA_EMAIL="${GCP_SA_NAME:-darwin-runner}@${PROJECT_ID}.iam.gserviceaccount.com"
 
 # Build & push
-gcloud builds submit --tag "$IMG" .
+gcloud builds submit --tag "$IMG" api/
 
 # Deploy API
 gcloud run deploy "$SERVICE" \
