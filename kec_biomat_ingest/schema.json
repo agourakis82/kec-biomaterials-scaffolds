@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KEC_BIOMAT RAG Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "created_at", "updated_at"],
+  "properties": {
+    "id": { "type": "string" },
+    "doi": { "type": ["string", "null"] },
+    "url": { "type": ["string", "null"] },
+    "title": { "type": ["string", "null"] },
+    "abstract": { "type": ["string", "null"] },
+    "year": { "type": ["integer", "null"] },
+    "journal": { "type": ["string", "null"] },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "given": { "type": ["string", "null"] },
+          "family": { "type": ["string", "null"] },
+          "name": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "impact": { "type": ["string", "null"] },
+    "relevance": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+    "publisher": { "type": ["string", "null"] },
+    "issn": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cited_by": { "type": ["integer", "null"] },
+    "references_count": { "type": ["integer", "null"] },
+    "source": { "type": "object", "additionalProperties": true },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}
