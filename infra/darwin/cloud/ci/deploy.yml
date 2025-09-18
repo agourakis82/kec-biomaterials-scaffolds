@@ -1,0 +1,32 @@
+name: Deploy DARWIN (Cloud Run)
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: auth
+        name: "Auth GCP via OIDC"
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: PREENCHER_WIP
+          service_account: PREENCHER_SA@PREENCHER_PROJETO.iam.gserviceaccount.com
+
+      - name: "Set up gcloud"
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: "Build & Deploy"
+        run: |
+          export GCP_PROJECT_ID=PREENCHER_PROJETO
+          export GCP_REGION=us-central1
+          export GCP_SA_NAME=darwin-runner
+          bash infra/darwin/cloud/gcp/deploy.sh
