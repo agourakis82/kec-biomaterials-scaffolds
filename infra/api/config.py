@@ -55,6 +55,25 @@ class Settings(BaseSettings):
         default="text-embedding-3-large", description="OpenAI embedding model"
     )
 
+    # Vertex/Google Cloud (RAG/Vector Search)
+    PROJECT_ID: str = Field(default="", description="GCP Project ID")
+    LOCATION: str = Field(default="us-central1", description="GCP location/region")
+    VECTOR_INDEX_ID: str = Field(default="", description="Vertex Vector Search index ID")
+    VECTOR_ENDPOINT_ID: str = Field(default="", description="Vertex Vector Search endpoint ID")
+    RAG_CORPUS_ID: str = Field(default="", description="Vertex RAG Engine corpus ID")
+    VERTEX_EMB_MODEL: str = Field(
+        default="text-embedding-004", description="Vertex text embedding model id"
+    )
+
+    # Context cache (Vertex implicit caching awareness)
+    CONTEXT_CACHE_ENABLED: bool = Field(default=True, description="Enable context caching awareness")
+
+    # OpenAPI/Actions integration
+    BASE_URL: str = Field(default="", description="Public base URL (Cloud Run)")
+    OPENAI_VERIFICATION_TOKEN: str = Field(default="", description="ChatGPT Actions verification token")
+    RATE_LIMIT_REQUESTS: int = Field(default=60, description="Requests per minute for OpenAPI doc hints")
+    RATE_LIMIT_TOKENS: int = Field(default=50000, description="Tokens per request (doc hint only)")
+
     # Chroma Configuration
     CHROMA_PATH: str = Field(
         default="./ragpp/index/lit2025", description="Path to Chroma database"

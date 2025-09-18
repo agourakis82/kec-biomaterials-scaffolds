@@ -19,7 +19,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from .config import settings
-from .logging import get_logger, log_security_event
+from .custom_logging import get_logger, log_security_event
 
 logger = get_logger("errors")
 

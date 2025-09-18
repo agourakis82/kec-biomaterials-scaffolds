@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel, Field
 
-from api.security import rate_limit, require_api_key
+from ..security import rate_limit, require_api_key
 from services.score_contracts import (
     ContractInput,
     ContractOutput,

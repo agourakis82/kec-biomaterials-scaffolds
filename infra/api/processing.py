@@ -14,7 +14,7 @@ from datetime import datetime, timedelta, timezone
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional
 
-from .logging import get_logger
+from .custom_logging import get_logger
 
 logger = get_logger("processing")
 

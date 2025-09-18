@@ -22,7 +22,7 @@ from typing import Any, Callable, Deque, Dict, List, Optional
 
 import psutil
 
-from .logging import get_logger
+from .custom_logging import get_logger
 
 logger = get_logger("monitoring")
 
@@ -753,4 +753,4 @@ async def get_alerts_summary() -> Dict[str, Any]:
             "last_24h": len(recent_history),
             "resolved_last_24h": len([a for a in recent_history if a.resolved])
         }
-    }    }
+    }
