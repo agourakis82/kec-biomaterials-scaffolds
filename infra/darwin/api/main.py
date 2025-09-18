@@ -7,8 +7,7 @@ Exposes RAG+ endpoints with GCP Vertex AI and BigQuery integration
 import os
 import logging
 from typing import Dict, Any, List
-from fastapi import FastAPI, HTTPException, Depends, Request
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi import FastAPI, HTTPException, Depends, Request, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -36,18 +35,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Security
-security = HTTPBearer()
-
-def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    """Verify API key from X-API-KEY header or Bearer token"""
+def verify_api_key(x_api_key: str = Header(None, alias="X-API-KEY")):
+    """Verify API key from X-API-KEY header"""
     expected_key = os.getenv("DARWIN_API_KEY")
     if not expected_key:
         raise HTTPException(status_code=500, detail="API key not configured")
     
-    if credentials.credentials != expected_key:
+    if not x_api_key or x_api_key != expected_key:
         raise HTTPException(status_code=401, detail="Invalid API key")
-    return credentials.credentials
+    return x_api_key
 
 # Request/Response models
 class RAGSearchRequest(BaseModel):
@@ -171,4 +167,4 @@ async def general_exception_handler(request: Request, exc: Exception):
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8080))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
