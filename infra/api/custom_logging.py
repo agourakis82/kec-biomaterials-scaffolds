@@ -22,7 +22,7 @@ from typing import Any, Callable, Dict, Optional, Union
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from .config import settings
+from config import settings
 
 
 class StructuredFormatter(logging.Formatter):
