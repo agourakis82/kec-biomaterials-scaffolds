@@ -1,0 +1,13 @@
+# Darwin API core dependencies
+fastapi>=0.104,<0.112
+uvicorn[standard]>=0.24,<0.30
+httpx>=0.25,<0.28
+requests>=2.31,<3.0
+numpy>=1.26,<2.0
+feedparser>=6.0,<7.0
+PyYAML>=6.0,<7.0
+
+# Google Cloud (Mode B)
+google-cloud-aiplatform==1.67.1
+google-cloud-bigquery==3.25.0
+google-cloud-secret-manager==2.21.1
