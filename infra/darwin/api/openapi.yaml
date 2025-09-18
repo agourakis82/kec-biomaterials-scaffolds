@@ -5,7 +5,7 @@ info:
   description: |
     DARWIN Mode B Cloud API exposing retrieval-augmented endpoints for biomaterials research.
 servers:
-- url: https://darwin-rag-k33uefpruq-uc.a.run.app
+- url: https://darwin-rag-862291807500.us-central1.run.app
   description: Cloud Run deployment
 paths:
   /rag-plus/search:

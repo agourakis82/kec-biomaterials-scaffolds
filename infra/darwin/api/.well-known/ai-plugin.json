@@ -11,10 +11,10 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://darwin-rag-k33uefpruq-uc.a.run.app/openapi.json",
+    "url": "https://darwin-rag-862291807500.us-central1.run.app/openapi.json",
     "is_user_authenticated": true
   },
-  "logo_url": "https://darwin-rag-k33uefpruq-uc.a.run.app/static/logo.png",
+  "logo_url": "https://darwin-rag-862291807500.us-central1.run.app/static/logo.png",
   "contact_email": "demetrios@agourakis.med.br",
-  "legal_info_url": "https://darwin-rag-k33uefpruq-uc.a.run.app/terms"
+  "legal_info_url": "https://darwin-rag-862291807500.us-central1.run.app/terms"
 }
