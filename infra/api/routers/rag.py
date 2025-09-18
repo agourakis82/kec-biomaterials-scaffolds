@@ -10,7 +10,7 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
 from pydantic import BaseModel, Field
 
-from ..security import rate_limit, require_api_key
+from security import rate_limit, require_api_key
 from services.rag_vertex import get_rag
 from services.settings import get_settings
 

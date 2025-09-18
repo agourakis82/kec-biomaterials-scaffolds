@@ -15,7 +15,7 @@ from typing import Any, Callable, Dict, List, Optional, Set, Union
 
 from fastapi import WebSocket, WebSocketDisconnect
 
-from ..auth import User, get_auth_manager
+from auth import User, get_auth_manager
 
 logger = logging.getLogger(__name__)
 

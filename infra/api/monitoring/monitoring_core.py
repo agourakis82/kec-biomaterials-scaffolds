@@ -4,5 +4,5 @@ Copiado de api/monitoring.py para evitar conflito pacote/módulo e prover
 exports compatíveis via api.monitoring.__init__.
 """
 
-from ..custom_logging import get_logger  # placeholder to be adjusted after add
+from custom_logging import get_logger  # placeholder to be adjusted after add
 

@@ -5,7 +5,7 @@ Sistema completo de autenticação com JWT, OAuth2, API keys,
 gestão de usuários, roles e permissões.
 """
 
-from ..config import settings
+from config import settings
 
 # Expose API key middleware and helpers from the sibling module api/auth.py
 from .apikey import (

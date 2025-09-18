@@ -10,9 +10,9 @@ from typing import Any, Dict, List, Optional
 
 import strawberry
 
-from ..auth.user_manager import Role as AuthRole
-from ..auth.user_manager import User as AuthUser
-from ..auth.user_manager import UserStatus
+from auth.user_manager import Role as AuthRole
+from auth.user_manager import User as AuthUser
+from auth.user_manager import UserStatus
 
 
 @strawberry.enum

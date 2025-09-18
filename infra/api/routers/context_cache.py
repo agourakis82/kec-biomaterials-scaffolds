@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
-from ..security import rate_limit, require_api_key
+from security import rate_limit, require_api_key
 from services.context_cache import (
     analyze_prompt_caching,
     get_context_cache,

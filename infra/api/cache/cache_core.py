@@ -22,8 +22,8 @@ except ImportError:
 
 from pydantic import BaseModel, Field
 
-from ..config import settings
-from ..logging import get_logger
+from config import settings
+from custom_logging import get_logger
 
 logger = get_logger("cache")
 
