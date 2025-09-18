@@ -1,0 +1,949 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2025,
+          9,
+          9
+        ]
+      ],
+      "date-time": "2025-09-09T20:37:48Z",
+      "timestamp": 1757450268534,
+      "version": "3.41.0"
+    },
+    "reference-count": 67,
+    "publisher": "Springer Science and Business Media LLC",
+    "issue": "1",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2016,
+              2,
+              25
+            ]
+          ],
+          "date-time": "2016-02-25T00:00:00Z",
+          "timestamp": 1456358400000
+        },
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "URL": "https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "start": {
+          "date-parts": [
+            [
+              2016,
+              2,
+              25
+            ]
+          ],
+          "date-time": "2016-02-25T00:00:00Z",
+          "timestamp": 1456358400000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "https://creativecommons.org/licenses/by/4.0"
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "link.springer.com"
+      ],
+      "crossmark-restriction": false
+    },
+    "short-container-title": [
+      "Sci Rep"
+    ],
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Quantitative descriptions of network structure can provide fundamental insights into the function of interconnected complex systems. Small-world structure, diagnosed by high local clustering yet short average path length between any two nodes, promotes information flow in coupled systems, a key function that can differ across conditions or between groups. However, current techniques to quantify small-worldness are density dependent and neglect important features such as the strength of network connections, limiting their application in real-world systems. Here, we address both limitations with a novel metric called the Small-World Propensity (SWP). In its binary instantiation, the SWP provides an unbiased assessment of small-world structure in networks of varying densities. We extend this concept to the case of weighted brain networks by developing (i) a standardized procedure for generating weighted small-world networks, (ii) a weighted extension of the SWP, and (iii) a method for mapping observed brain network data onto the theoretical model. In applying these techniques to compare real-world brain networks, we uncover the surprising fact that the canonical biological small-world network, the<jats:italic>C. elegans</jats:italic>neuronal network, has strikingly low SWP. These metrics, models, and maps form a coherent toolbox for the assessment and comparison of architectural properties in brain networks.</jats:p>",
+    "DOI": "10.1038/srep22057",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2016,
+          2,
+          25
+        ]
+      ],
+      "date-time": "2016-02-25T10:43:41Z",
+      "timestamp": 1456397021000
+    },
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 249,
+    "title": [
+      "Small-World Propensity and Weighted Brain Networks"
+    ],
+    "prefix": "10.1038",
+    "volume": "6",
+    "author": [
+      {
+        "given": "Sarah Feldt",
+        "family": "Muldoon",
+        "sequence": "first",
+        "affiliation": []
+      },
+      {
+        "given": "Eric W.",
+        "family": "Bridgeford",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Danielle S.",
+        "family": "Bassett",
+        "sequence": "additional",
+        "affiliation": []
+      }
+    ],
+    "member": "297",
+    "published-online": {
+      "date-parts": [
+        [
+          2016,
+          2,
+          25
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "BFsrep22057_CR1",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Newman, M. E. J. Networks: An Introduction (Oxford University Press, 2010).",
+        "DOI": "10.1093/acprof:oso/9780199206650.003.0001"
+      },
+      {
+        "key": "BFsrep22057_CR2",
+        "doi-asserted-by": "publisher",
+        "first-page": "345",
+        "DOI": "10.1016/j.tree.2005.04.004",
+        "volume": "20",
+        "author": "SR Proulx",
+        "year": "2005",
+        "unstructured": "Proulx, S. R., Promislow, D. E. & Phillips, P. C. Network thinking in ecology and evolution. Trends Ecol Evol 20, 345–353 (2005).",
+        "journal-title": "Trends Ecol Evol"
+      },
+      {
+        "key": "BFsrep22057_CR3",
+        "doi-asserted-by": "publisher",
+        "first-page": "8414",
+        "DOI": "10.1038/ncomms9414",
+        "volume": "6",
+        "author": "S Gu",
+        "year": "2015",
+        "unstructured": "Gu, S. et al. Controllability of structural brain networks. Nature Communications 6, 8414 (2015).",
+        "journal-title": "Nature Communications"
+      },
+      {
+        "key": "BFsrep22057_CR4",
+        "doi-asserted-by": "publisher",
+        "first-page": "329",
+        "DOI": "10.1080/00018732.2011.572452",
+        "volume": "60",
+        "author": "LdF Costa",
+        "year": "2011",
+        "unstructured": "Costa, L. d. F. et al. Analyzing and modeling real-world phenomena with complex networks: a survey of applications. Advances in Physics 60, 329–412 (2011).",
+        "journal-title": "Advances in Physics"
+      },
+      {
+        "key": "BFsrep22057_CR5",
+        "doi-asserted-by": "publisher",
+        "first-page": "014101",
+        "DOI": "10.1103/PhysRevLett.91.014101",
+        "volume": "91",
+        "author": "T Nishikawa",
+        "year": "2003",
+        "unstructured": "Nishikawa, T., Motter, A. E., Lai, Y. C. & Hoppensteadt, F. C. Heterogeneity in oscillator networks: are smaller worlds easier to synchronize? Physical review letters 91, 014101 (2003).",
+        "journal-title": "Physical review letters"
+      },
+      {
+        "key": "BFsrep22057_CR6",
+        "doi-asserted-by": "publisher",
+        "first-page": "787",
+        "DOI": "10.1109/TCSI.2004.823672",
+        "volume": "51",
+        "author": "JH Lu",
+        "year": "2004",
+        "unstructured": "Lu, J. H., Yu, X. H., Chen, G. R. & Cheng, D. Z. Characterizing the synchronizability of small-world dynamical networks. IEEE Transactions on Circuits and Systems I-Regular Papers 51, 787–796 (2004).",
+        "journal-title": "IEEE Transactions on Circuits and Systems I-Regular Papers"
+      },
+      {
+        "key": "BFsrep22057_CR7",
+        "doi-asserted-by": "publisher",
+        "first-page": "198101",
+        "DOI": "10.1103/PhysRevLett.92.198101",
+        "volume": "92",
+        "author": "A Roxin",
+        "year": "2004",
+        "unstructured": "Roxin, A., Riecke, H. & Solla, S. A. Self-sustained activity in a small-world network of excitable neurons. Physical review letters 92, 198101 (2004).",
+        "journal-title": "Physical review letters"
+      },
+      {
+        "key": "BFsrep22057_CR8",
+        "doi-asserted-by": "publisher",
+        "first-page": "148701",
+        "DOI": "10.1103/PhysRevLett.112.148701",
+        "volume": "112",
+        "author": "CLN Oliveira",
+        "year": "2014",
+        "unstructured": "Oliveira, C. L. N., Morais, P. A., Moreira, A. A. & Andrade, J. S. Enhanced Flow in Small-World Networks. Physical review letters 112, 148701 (2014).",
+        "journal-title": "Physical review letters"
+      },
+      {
+        "key": "BFsrep22057_CR9",
+        "doi-asserted-by": "publisher",
+        "first-page": "440",
+        "DOI": "10.1038/30918",
+        "volume": "393",
+        "author": "DJ Watts",
+        "year": "1998",
+        "unstructured": "Watts, D. J. & Strogatz, S. H. Collective dynamics of ‘small-world’ networks. Nature 393, 440–442 (1998).",
+        "journal-title": "Nature"
+      },
+      {
+        "key": "BFsrep22057_CR10",
+        "doi-asserted-by": "publisher",
+        "first-page": "031909",
+        "DOI": "10.1103/PhysRevE.72.031909",
+        "volume": "72",
+        "author": "B Percha",
+        "year": "2005",
+        "unstructured": "Percha, B., Dzakpasu, R., Zochowski, M. & Parent, J. Transition from local to global phase synchrony in small world neural network and its possible implications for epilepsy. Physical Review E 72, 031909 (2005).",
+        "journal-title": "Physical Review E"
+      },
+      {
+        "key": "BFsrep22057_CR11",
+        "doi-asserted-by": "publisher",
+        "first-page": "8075",
+        "DOI": "10.1523/JNEUROSCI.1509-04.2004",
+        "volume": "24",
+        "author": "TI Netoff",
+        "year": "2004",
+        "unstructured": "Netoff, T. I., Clewley, R., Arno, S., Keck, T. & White, J. A. Epilepsy in small-world networks. The Journal of neuroscience : the official journal of the Society for Neuroscience 24, 8075–8083 (2004).",
+        "journal-title": "The Journal of neuroscience : the official journal of the Society for Neuroscience"
+      },
+      {
+        "key": "BFsrep22057_CR12",
+        "doi-asserted-by": "publisher",
+        "first-page": "341",
+        "DOI": "10.1016/S0375-9601(99)00757-4",
+        "volume": "263",
+        "author": "MEJ Newman",
+        "year": "1999",
+        "unstructured": "Newman, M. E. J. & Watts, D. J. Renormalization group analysis of the small-world network model. Physics Letters A 263, 341–346 (1999).",
+        "journal-title": "Physics Letters A"
+      },
+      {
+        "key": "BFsrep22057_CR13",
+        "doi-asserted-by": "crossref",
+        "first-page": "7332",
+        "DOI": "10.1103/PhysRevE.60.7332",
+        "volume": "60",
+        "author": "ME Newman",
+        "year": "1999",
+        "unstructured": "Newman, M. E. & Watts, D. J. Scaling and percolation in the small-world network model. Physical review. E, Statistical physics, plasmas, fluids, and related interdisciplinary topics 60, 7332–7342 (1999).",
+        "journal-title": "Physical review. E, Statistical physics, plasmas, fluids, and related interdisciplinary topics"
+      },
+      {
+        "key": "BFsrep22057_CR14",
+        "doi-asserted-by": "publisher",
+        "first-page": "819",
+        "DOI": "10.1023/A:1026485807148",
+        "volume": "101",
+        "author": "MEJ Newman",
+        "year": "2000",
+        "unstructured": "Newman, M. E. J. Models of the Small World. Journal of Statistical Physics 101, 819–841 (2000).",
+        "journal-title": "Journal of Statistical Physics"
+      },
+      {
+        "key": "BFsrep22057_CR15",
+        "doi-asserted-by": "publisher",
+        "first-page": "e0002051",
+        "DOI": "10.1371/journal.pone.0002051",
+        "volume": "3",
+        "author": "MD Humphries",
+        "year": "2008",
+        "unstructured": "Humphries, M. D. & Gurney, K. Network ‘Small-World-Ness’: A Quantitative Method for Determining Canonical Network Equivalence. PloS one 3, e0002051 (2008).",
+        "journal-title": "PloS one"
+      },
+      {
+        "key": "BFsrep22057_CR16",
+        "doi-asserted-by": "publisher",
+        "first-page": "503",
+        "DOI": "10.1098/rspb.2005.3354",
+        "volume": "273",
+        "author": "MD Humphries",
+        "year": "2006",
+        "unstructured": "Humphries, M. D., Gurney, K. & Prescott, T. J. The brainstem reticular formation is a small-world, not scale-free, network. Proceedings. Biological sciences/The Royal Society 273, 503–511 (2006).",
+        "journal-title": "Proceedings. Biological sciences/The Royal Society"
+      },
+      {
+        "key": "BFsrep22057_CR17",
+        "doi-asserted-by": "publisher",
+        "first-page": "367",
+        "DOI": "10.1089/brain.2011.0038",
+        "volume": "1",
+        "author": "QK Telesford",
+        "year": "2011",
+        "unstructured": "Telesford, Q. K., Joyce, K. E., Hayasaka, S., Burdette, J. H. & Laurienti, P. J. The Ubiquity of Small-World Networks. Brain Connectivity 1, 367–375 (2011).",
+        "journal-title": "Brain Connectivity"
+      },
+      {
+        "key": "BFsrep22057_CR18",
+        "doi-asserted-by": "publisher",
+        "first-page": "36",
+        "DOI": "10.1093/cercor/bhr372",
+        "volume": "23",
+        "author": "Y Shi",
+        "year": "2013",
+        "unstructured": "Shi, Y. et al. Diffusion tensor imaging-based characterization of brain neurodevelopment in primates. Cerebral Cortex 23, 36–48 (2013).",
+        "journal-title": "Cerebral Cortex"
+      },
+      {
+        "key": "BFsrep22057_CR19",
+        "doi-asserted-by": "publisher",
+        "first-page": "345",
+        "DOI": "10.1177/1073858408316002",
+        "volume": "14",
+        "author": "S Tsujimoto",
+        "year": "2008",
+        "unstructured": "Tsujimoto, S. The Prefrontal Cortex: Functional Neural Development During Early Childhood. The Neuroscientist 14, 345–358 (2008).",
+        "journal-title": "The Neuroscientist"
+      },
+      {
+        "key": "BFsrep22057_CR20",
+        "doi-asserted-by": "publisher",
+        "first-page": "046004",
+        "DOI": "10.1088/1478-3975/7/4/046004",
+        "volume": "7",
+        "author": "S Feldt",
+        "year": "2010",
+        "unstructured": "Feldt, S. et al. Functional clustering in hippocampal cultures: relating network structure and dynamics. Physical biology 7, 046004 (2010).",
+        "journal-title": "Physical biology"
+      },
+      {
+        "key": "BFsrep22057_CR21",
+        "doi-asserted-by": "publisher",
+        "first-page": "1683",
+        "DOI": "10.1176/ajp.154.12.1683",
+        "volume": "154",
+        "author": "RE Hoffman",
+        "year": "1997",
+        "unstructured": "Hoffman, R. E. & McGlashan, T. H. Synaptic elimination, neurodevelopment, and the mechanism of hallucinated “voices” in schizophrenia. The American journal of psychiatry 154, 1683–1689 (1997).",
+        "journal-title": "The American journal of psychiatry"
+      },
+      {
+        "key": "BFsrep22057_CR22",
+        "doi-asserted-by": "publisher",
+        "first-page": "15915",
+        "DOI": "10.1523/JNEUROSCI.2874-10.2010",
+        "volume": "30",
+        "author": "MP van den Heuvel",
+        "year": "2010",
+        "unstructured": "van den Heuvel, M. P., Mandl, R. C. W., Stam, C. J., Kahn, R. S. & Hulshoff Pol, H. E. Aberrant frontal and temporal complex network structure in schizophrenia: a graph theoretical analysis. Journal of Neuroscience 30, 15915–15926 (2010).",
+        "journal-title": "Journal of Neuroscience"
+      },
+      {
+        "key": "BFsrep22057_CR23",
+        "doi-asserted-by": "publisher",
+        "first-page": "16876",
+        "DOI": "10.1523/JNEUROSCI.4136-10.2010",
+        "volume": "30",
+        "author": "C-Y Lo",
+        "year": "2010",
+        "unstructured": "Lo, C.-Y. et al. Diffusion tensor tractography reveals abnormal topological organization in structural cortical networks in Alzheimer’s disease. Journal of Neuroscience 30, 16876–16885 (2010).",
+        "journal-title": "Journal of Neuroscience"
+      },
+      {
+        "key": "BFsrep22057_CR24",
+        "doi-asserted-by": "publisher",
+        "first-page": "225",
+        "DOI": "10.1016/j.tins.2011.02.007",
+        "volume": "34",
+        "author": "S Feldt",
+        "year": "2011",
+        "unstructured": "Feldt, S., Bonifazi, P. & Cossart, R. Dissecting functional connectivity of neuronal microcircuits: experimental and theoretical insights. Trends in neurosciences 34, 225–236 (2011).",
+        "journal-title": "Trends in neurosciences"
+      },
+      {
+        "key": "BFsrep22057_CR25",
+        "doi-asserted-by": "publisher",
+        "first-page": "1471",
+        "DOI": "10.1162/jocn_a_00810",
+        "volume": "27",
+        "author": "JD Medaglia",
+        "year": "2015",
+        "unstructured": "Medaglia, J. D., Lynall, M.-E. & Bassett, D. S. Cognitive network neuroscience. Journal of cognitive neuroscience 27, 1471–1491 (2015).",
+        "journal-title": "Journal of cognitive neuroscience"
+      },
+      {
+        "key": "BFsrep22057_CR26",
+        "doi-asserted-by": "publisher",
+        "first-page": "2196",
+        "DOI": "10.1016/j.neuroimage.2011.10.002",
+        "volume": "59",
+        "author": "DS Bassett",
+        "year": "2012",
+        "unstructured": "Bassett, D. S., Nelson, B. G., Mueller, B. A., Camchong, J. & Lim, K. O. Altered resting state complexity in schizophrenia. NeuroImage 59, 2196–2207 (2012).",
+        "journal-title": "NeuroImage"
+      },
+      {
+        "key": "BFsrep22057_CR27",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1004608",
+        "DOI": "10.1371/journal.pcbi.1004608",
+        "volume": "11",
+        "author": "AN Khambhati",
+        "year": "2015",
+        "unstructured": "Khambhati, A. N. et al. Dynamic network drivers of seizure generation, propagation and termination in human neocortical epilepsy. PLoS Comput Biol 11, e1004608 (2015).",
+        "journal-title": "PLoS Comput Biol"
+      },
+      {
+        "key": "BFsrep22057_CR28",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Lohse, C., Bassett, D. S., Lim, K. O. & Carlson, J. M. PLOS Computational Biology: Resolving Anatomical and Functional Structure in Human Brain Organization: Identifying Mesoscale Organization in Weighted Network Representations. PLoS Computational Biology (2014).",
+        "DOI": "10.1371/journal.pcbi.1003712"
+      },
+      {
+        "key": "BFsrep22057_CR29",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Sizemore, A., Giusti, C. & Bassett, D. Classification of weighted networks through mesoscale homological features. arXiv.org (2015).",
+        "DOI": "10.1093/comnet/cnw013"
+      },
+      {
+        "key": "BFsrep22057_CR30",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1016/j.physrep.2010.11.002",
+        "volume": "499",
+        "author": "M Barthélemy",
+        "year": "2011",
+        "unstructured": "Barthélemy, M. Spatial networks. Physics Reports 499, 1–101 (2011).",
+        "journal-title": "Physics Reports"
+      },
+      {
+        "key": "BFsrep22057_CR31",
+        "doi-asserted-by": "publisher",
+        "first-page": "e95",
+        "DOI": "10.1371/journal.pcbi.0020095",
+        "volume": "2",
+        "author": "M Kaiser",
+        "year": "2006",
+        "unstructured": "Kaiser, M. & Hilgetag, C. C. Nonoptimal component placement, but short processing paths, due to long-distance projections in neural systems. PLoS Comput Biol 2, e95 (2006).",
+        "journal-title": "PLoS Comput Biol"
+      },
+      {
+        "key": "BFsrep22057_CR32",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Artzy-Randrup, Y., Fleishman, S. J., Ben-Tal, N. & Stone, L. Comment on “Network motifs: simple building blocks of complex networks” and “Superfamilies of evolved and designed networks”. Science 305, 1107-author reply 1107 (2004).",
+        "DOI": "10.1126/science.1099334"
+      },
+      {
+        "key": "BFsrep22057_CR33",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1000748",
+        "DOI": "10.1371/journal.pcbi.1000748",
+        "volume": "6",
+        "author": "DS Bassett",
+        "year": "2010",
+        "unstructured": "Bassett, D. S. et al. Efficient physical embedding of topologically complex information processing networks in brains and computer circuits. PLoS Computational Biology 6, e1000748 (2010).",
+        "journal-title": "PLoS Computational Biology"
+      },
+      {
+        "key": "BFsrep22057_CR34",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1003491",
+        "DOI": "10.1371/journal.pcbi.1003491",
+        "volume": "10",
+        "author": "F Klimm",
+        "year": "2014",
+        "unstructured": "Klimm, F., Bassett, D. S., Carlson, J. M. & Mucha, P. J. Resolving structural variability in network models and the brain. PLoS Comput Biol 10, e1003491 (2014).",
+        "journal-title": "PLoS Comput Biol"
+      },
+      {
+        "key": "BFsrep22057_CR35",
+        "doi-asserted-by": "publisher",
+        "first-page": "512",
+        "DOI": "10.1177/1073858406293182",
+        "volume": "12",
+        "author": "DS Bassett",
+        "year": "2006",
+        "unstructured": "Bassett, D. S. & Bullmore, E. Small-world brain networks. The Neuroscientist 12, 512–523 (2006).",
+        "journal-title": "The Neuroscientist"
+      },
+      {
+        "key": "BFsrep22057_CR36",
+        "doi-asserted-by": "publisher",
+        "first-page": "1067",
+        "DOI": "10.1016/j.clinph.2012.01.011",
+        "volume": "123",
+        "author": "CJ Stam",
+        "year": "2012",
+        "unstructured": "Stam, C. J. & van Straaten, E. C. W. Clinical Neurophysiology. Clinical Neurophysiology 123, 1067–1087 (2012).",
+        "journal-title": "Clinical Neurophysiology"
+      },
+      {
+        "key": "BFsrep22057_CR37",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Hilgetag, C. C. & Goulas, A. Is the brain really a small-world network? Brain Struct Funct Epub ahead of print (2015).",
+        "DOI": "10.1007/s00429-015-1035-6"
+      },
+      {
+        "key": "BFsrep22057_CR38",
+        "doi-asserted-by": "publisher",
+        "first-page": "11583",
+        "DOI": "10.1073/pnas.1220826110",
+        "volume": "110",
+        "author": "NA Crossley",
+        "year": "2013",
+        "unstructured": "Crossley, N. A. et al. Cognitive relevance of the community structure of the human brain functional coactivation network. Proceedings of the National Academy of Sciences of the United States of America 110, 11583–11588 (2013).",
+        "journal-title": "Proceedings of the National Academy of Sciences of the United States of America"
+      },
+      {
+        "key": "BFsrep22057_CR39",
+        "doi-asserted-by": "publisher",
+        "first-page": "277",
+        "DOI": "10.1093/cercor/9.3.277",
+        "volume": "9",
+        "author": "JW Scannell",
+        "year": "1999",
+        "unstructured": "Scannell, J. W., Burns, G. A., Hilgetag, C. C., O’Neil, M. A. & Young, M. P. The connectional organization of the cortico-thalamic system of the cat. Cerebral cortex (New York, N.Y. : 1991) 9, 277–299 (1999).",
+        "journal-title": "Cerebral cortex (New York, N.Y. : 1991)"
+      },
+      {
+        "key": "BFsrep22057_CR40",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1001066",
+        "DOI": "10.1371/journal.pcbi.1001066",
+        "volume": "7",
+        "author": "LR Varshney",
+        "year": "2011",
+        "unstructured": "Varshney, L. R., Chen, B. L., Paniagua, E., Hall, D. H. & Chklovskii, D. B. Structural properties of the Caenorhabditis elegans neuronal network. PLoS Computational Biology 7, e1001066 (2011).",
+        "journal-title": "PLoS Computational Biology"
+      },
+      {
+        "key": "BFsrep22057_CR41",
+        "doi-asserted-by": "publisher",
+        "first-page": "13",
+        "DOI": "10.1098/rspb.1993.0040",
+        "volume": "252",
+        "author": "MP Young",
+        "year": "1993",
+        "unstructured": "Young, M. P. The organization of neural systems in the primate cerebral cortex. Proceedings. Biological sciences/The Royal Society 252, 13–18 (1993).",
+        "journal-title": "Proceedings. Biological sciences/The Royal Society"
+      },
+      {
+        "key": "BFsrep22057_CR42",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1003104",
+        "DOI": "10.1371/journal.pcbi.1003104",
+        "volume": "9",
+        "author": "AG Zippo",
+        "year": "2013",
+        "unstructured": "Zippo, A. G. et al. Neuronal Functional Connection Graphs among Multiple Areas of the Rat Somatosensory System during Spontaneous and Evoked Activities. PLoS Computational Biology 9, e1003104–19 (2013).",
+        "journal-title": "PLoS Computational Biology"
+      },
+      {
+        "key": "BFsrep22057_CR43",
+        "first-page": "1",
+        "volume": "9",
+        "author": "J Aćimović",
+        "year": "2015",
+        "unstructured": "Aćimović, J., Mäki-Marttunen, T. & Linne, M.-L. The effects of neuron morphology on graph theoretic measures of network connectivity: the analysis of a two-level statistical model. Frontiers in neuroanatomy 9, 1–28 (2015).",
+        "journal-title": "Frontiers in neuroanatomy"
+      },
+      {
+        "key": "BFsrep22057_CR44",
+        "doi-asserted-by": "publisher",
+        "first-page": "454",
+        "DOI": "10.1089/brain.2013.0217",
+        "volume": "4",
+        "author": "WS Pritchard",
+        "year": "2014",
+        "unstructured": "Pritchard, W. S., Laurienti, P. J., Burdette, J. H. & Hayasaka, S. Functional Brain Networks Formed Using Cross-Sample Entropy Are Scale Free. Brain Connectivity 4, 454–464 (2014).",
+        "journal-title": "Brain Connectivity"
+      },
+      {
+        "key": "BFsrep22057_CR45",
+        "doi-asserted-by": "publisher",
+        "first-page": "708",
+        "DOI": "10.1016/j.physa.2006.10.015",
+        "volume": "376",
+        "author": "W Li",
+        "year": "2007",
+        "unstructured": "Li, W., Lin, Y. & Liu, Y. The structure of weighted small-world networks. Physica A: Statistical Mechanics and its Applications 376, 708–718 (2007).",
+        "journal-title": "Physica A: Statistical Mechanics and its Applications"
+      },
+      {
+        "key": "BFsrep22057_CR46",
+        "doi-asserted-by": "publisher",
+        "first-page": "133",
+        "DOI": "10.1016/j.jneumeth.2012.10.004",
+        "volume": "212",
+        "author": "M Bolaños",
+        "year": "2013",
+        "unstructured": "Bolaños, M., Bernat, E. M., He, B. & Aviyente, S. Journal of Neuroscience Methods. J Neurosci Methods 212, 133–142 (2013).",
+        "journal-title": "J Neurosci Methods"
+      },
+      {
+        "key": "BFsrep22057_CR47",
+        "doi-asserted-by": "publisher",
+        "first-page": "3316",
+        "DOI": "10.1016/j.physa.2010.04.003",
+        "volume": "389",
+        "author": "Y Zhang",
+        "year": "2010",
+        "unstructured": "Zhang, Y., Zhang, Z., Zhou, S. & Guan, J. Deterministic weighted scale-free small-world networks. Physica A 389, 3316–3324 (2010).",
+        "journal-title": "Physica A"
+      },
+      {
+        "key": "BFsrep22057_CR48",
+        "doi-asserted-by": "publisher",
+        "first-page": "013142",
+        "DOI": "10.1063/1.4790830",
+        "volume": "23",
+        "author": "DS Bassett",
+        "year": "2013",
+        "unstructured": "Bassett, D. S. et al. Robust detection of dynamic community structure in networks. Chaos 23, 013142 (2013).",
+        "journal-title": "Chaos"
+      },
+      {
+        "key": "BFsrep22057_CR49",
+        "doi-asserted-by": "publisher",
+        "first-page": "824",
+        "DOI": "10.1126/science.298.5594.824",
+        "volume": "298",
+        "author": "R Milo",
+        "year": "2002",
+        "unstructured": "Milo, R. et al. Network Motifs: Simple Building Blocks of Complex Networks. Science 298, 824–827 (2002).",
+        "journal-title": "Science"
+      },
+      {
+        "key": "BFsrep22057_CR50",
+        "doi-asserted-by": "publisher",
+        "first-page": "1107",
+        "DOI": "10.1126/science.1100519",
+        "volume": "305",
+        "author": "R Milo",
+        "year": "2004",
+        "unstructured": "Milo, R., Itzkovitz, S., Kashtan, N., Levitt, R. & Alon, U. Response to Comment on “Network Motifs: Simple Building Blocks of Complex Networks” and “Superfamilies of Evolved and Designed Networks”. Science 305, 1107 (2004).",
+        "journal-title": "Science"
+      },
+      {
+        "key": "BFsrep22057_CR51",
+        "doi-asserted-by": "publisher",
+        "first-page": "4913",
+        "DOI": "10.1016/j.physa.2010.07.008",
+        "volume": "389",
+        "author": "M Levy",
+        "year": "2010",
+        "unstructured": "Levy, M. Scale-free human migration and the geography of social networks. Physica A: Statistical Mechanics and its Applications 389, 4913–4917 (2010).",
+        "journal-title": "Physica A: Statistical Mechanics and its Applications"
+      },
+      {
+        "key": "BFsrep22057_CR52",
+        "doi-asserted-by": "publisher",
+        "first-page": "2731",
+        "DOI": "10.1039/C4SM01821D",
+        "volume": "11",
+        "author": "DS Bassett",
+        "year": "2015",
+        "unstructured": "Bassett, D. S., Owens, E. T., Porter, M. A., Manning, M. L. & Daniels, K. E. Extraction of force-chain network architecture in granular materials using community detection. Soft Matter 11, 2731–2744 (2015).",
+        "journal-title": "Soft Matter"
+      },
+      {
+        "key": "BFsrep22057_CR53",
+        "doi-asserted-by": "publisher",
+        "first-page": "167",
+        "DOI": "10.1137/120881683",
+        "volume": "74",
+        "author": "MP Rombach",
+        "year": "2014",
+        "unstructured": "Rombach, M. P., Porter, M. A., Fowler, J. H. & Mucha, P. J. Core-periphery structure in networks. SIAM Journal on Applied Mathematics 74, 167–190 (2014).",
+        "journal-title": "SIAM Journal on Applied Mathematics"
+      },
+      {
+        "key": "BFsrep22057_CR54",
+        "doi-asserted-by": "publisher",
+        "first-page": "814",
+        "DOI": "10.1038/nature03607",
+        "volume": "435",
+        "author": "G Palla",
+        "year": "2005",
+        "unstructured": "Palla, G., Derenyi, I., Farkas, I. & Vicsek, T. Uncovering the overlapping community structure of complex networks in nature and society. Nature 435, 814–818 (2005).",
+        "journal-title": "Nature"
+      },
+      {
+        "key": "BFsrep22057_CR55",
+        "doi-asserted-by": "publisher",
+        "first-page": "1007",
+        "DOI": "10.1038/nature04701",
+        "volume": "440",
+        "author": "E Schneidman",
+        "year": "2006",
+        "unstructured": "Schneidman, E., Berry, M. J., Segev, R. & Bialek, W. Weak pairwise correlations imply strongly correlated network states in a neural population. Nature 440, 1007–1012 (2006).",
+        "journal-title": "Nature"
+      },
+      {
+        "key": "BFsrep22057_CR56",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Santarnecchi, E., Galli, G., Polizzotto, N. R., Rossi, A. & Rossi, S. Efficiency of weak brain connections support general cognitive functioning. Human brain mapping (2014).",
+        "DOI": "10.1002/hbm.22495"
+      },
+      {
+        "key": "BFsrep22057_CR57",
+        "doi-asserted-by": "publisher",
+        "first-page": "8988",
+        "DOI": "10.1523/JNEUROSCI.0536-12.2012",
+        "volume": "32",
+        "author": "MW Cole",
+        "year": "2012",
+        "unstructured": "Cole, M. W., Yarkoni, T., Repovs, G., Anticevic, A. & Braver, T. S. Global Connectivity of Prefrontal Cortex Predicts Cognitive Control and Intelligence. Journal of Neuroscience 32, 8988–8999 (2012).",
+        "journal-title": "Journal of Neuroscience"
+      },
+      {
+        "key": "BFsrep22057_CR58",
+        "doi-asserted-by": "publisher",
+        "first-page": "065103",
+        "DOI": "10.1103/PhysRevE.71.065103",
+        "volume": "71",
+        "author": "J-P Onnela",
+        "year": "2005",
+        "unstructured": "Onnela, J.-P., Saramäki, J., Kertész, J. & Kaski, K. Intensity and coherence of motifs in weighted complex networks. Physical Review E 71, 065103 (2005).",
+        "journal-title": "Physical Review E"
+      },
+      {
+        "key": "BFsrep22057_CR59",
+        "doi-asserted-by": "publisher",
+        "first-page": "3747",
+        "DOI": "10.1073/pnas.0400087101",
+        "volume": "101",
+        "author": "A Barrat",
+        "year": "2004",
+        "unstructured": "Barrat, A., Barthelemy, M., Pastor-Satorras, R. & Vespignani, A. The architecture of complex weighted networks. Proceedings of the National Academy of Sciences 101, 3747–3752 (2004).",
+        "journal-title": "Proceedings of the National Academy of Sciences"
+      },
+      {
+        "key": "BFsrep22057_CR60",
+        "doi-asserted-by": "crossref",
+        "unstructured": "Zhang, B. & Horvath, S. A General Framework for Weighted Gene Co-Expression Network Analysis. Statistical Applications in Genetics and Molecular Biology 4 (2005).",
+        "DOI": "10.2202/1544-6115.1128"
+      },
+      {
+        "key": "BFsrep22057_CR61",
+        "doi-asserted-by": "publisher",
+        "first-page": "027105",
+        "DOI": "10.1103/PhysRevE.75.027105",
+        "volume": "75",
+        "author": "J Saramäki",
+        "year": "2007",
+        "unstructured": "Saramäki, J., Kivelä, M., Onnela, J.-P., Kaski, K. & Kertész, J. Generalizations of the clustering coefficient to weighted complex networks. Physical Review E 75, 027105 (2007).",
+        "journal-title": "Physical Review E"
+      },
+      {
+        "key": "BFsrep22057_CR62",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1155/2008/375452",
+        "volume": "2008",
+        "author": "IE Antoniou",
+        "year": "2008",
+        "unstructured": "Antoniou, I. E. & Tsompa, E. T. Statistical Analysis of Weighted Networks. Discrete Dynamics in Nature and Society 2008, 1–16 (2008).",
+        "journal-title": "Discrete Dynamics in Nature and Society"
+      },
+      {
+        "key": "BFsrep22057_CR63",
+        "doi-asserted-by": "publisher",
+        "first-page": "245",
+        "DOI": "10.1016/j.socnet.2010.03.006",
+        "volume": "32",
+        "author": "T Opsahl",
+        "year": "2010",
+        "unstructured": "Opsahl, T., Agneessens, F. & Skvoretz, J. Node centrality in weighted networks: Generalizing degree and shortest paths. Social Networks 32, 245–251 (2010).",
+        "journal-title": "Social Networks"
+      },
+      {
+        "key": "BFsrep22057_CR64",
+        "doi-asserted-by": "publisher",
+        "first-page": "016132",
+        "DOI": "10.1103/PhysRevE.64.016132",
+        "volume": "64",
+        "author": "MEJ Newman",
+        "year": "2001",
+        "unstructured": "Newman, M. E. J. Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality. Physical Review E 64, 016132 (2001).",
+        "journal-title": "Physical Review E"
+      },
+      {
+        "key": "BFsrep22057_CR65",
+        "doi-asserted-by": "publisher",
+        "first-page": "1059",
+        "DOI": "10.1016/j.neuroimage.2009.10.003",
+        "volume": "52",
+        "author": "M Rubinov",
+        "year": "2010",
+        "unstructured": "Rubinov, M. & Sporns, O. Complex network measures of brain connectivity: Uses and interpretations. NeuroImage 52, 1059–1069 (2010).",
+        "journal-title": "NeuroImage"
+      },
+      {
+        "key": "BFsrep22057_CR66",
+        "first-page": "93",
+        "volume": "469",
+        "author": "A Arenas",
+        "year": "2008",
+        "unstructured": "Arenas, A., Diaz-Guilera, A., Kurths, J., Moreno, Y. & Zhou, C. S. Synchronization in complex networks. Physics Reports-Review Section of Physics Letters 469, 93–153 (2008).",
+        "journal-title": "Physics Reports-Review Section of Physics Letters"
+      },
+      {
+        "key": "BFsrep22057_CR67",
+        "doi-asserted-by": "publisher",
+        "first-page": "55",
+        "DOI": "10.1016/j.biosystems.2006.02.008",
+        "volume": "85",
+        "author": "O Sporns",
+        "year": "2006",
+        "unstructured": "Sporns, O. Small-world connectivity, motif composition, and complexity of fractal neuronal connections. Bio Systems 85, 55–64 (2006).",
+        "journal-title": "Bio Systems"
+      }
+    ],
+    "container-title": [
+      "Scientific Reports"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://www.nature.com/articles/srep22057.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/srep22057",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/srep22057.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2025,
+          6,
+          1
+        ]
+      ],
+      "date-time": "2025-06-01T14:20:43Z",
+      "timestamp": 1748787643000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/srep22057"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          2,
+          25
+        ]
+      ]
+    },
+    "references-count": 67,
+    "journal-issue": {
+      "issue": "1",
+      "published-online": {
+        "date-parts": [
+          [
+            2016,
+            2,
+            29
+          ]
+        ]
+      }
+    },
+    "alternative-id": [
+      "BFsrep22057"
+    ],
+    "URL": "https://doi.org/10.1038/srep22057",
+    "relation": {},
+    "ISSN": [
+      "2045-2322"
+    ],
+    "issn-type": [
+      {
+        "type": "electronic",
+        "value": "2045-2322"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          2016,
+          2,
+          25
+        ]
+      ]
+    },
+    "assertion": [
+      {
+        "value": "23 June 2015",
+        "order": 1,
+        "name": "received",
+        "label": "Received",
+        "group": {
+          "name": "ArticleHistory",
+          "label": "Article History"
+        }
+      },
+      {
+        "value": "3 February 2016",
+        "order": 2,
+        "name": "accepted",
+        "label": "Accepted",
+        "group": {
+          "name": "ArticleHistory",
+          "label": "Article History"
+        }
+      },
+      {
+        "value": "25 February 2016",
+        "order": 3,
+        "name": "first_online",
+        "label": "First Online",
+        "group": {
+          "name": "ArticleHistory",
+          "label": "Article History"
+        }
+      },
+      {
+        "value": "The authors declare no competing financial interests.",
+        "order": 1,
+        "name": "Ethics",
+        "group": {
+          "name": "EthicsHeading",
+          "label": "Competing interests"
+        }
+      }
+    ],
+    "article-number": "22057"
+  }
+}

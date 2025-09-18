@@ -15,6 +15,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
+# Remove conflicting logging.py file that causes circular imports
+RUN rm -f /app/logging.py || true
+
 # Set PYTHONPATH to include the root directory
 ENV PYTHONPATH=/app
 

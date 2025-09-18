@@ -106,7 +106,7 @@ class Settings(BaseSettings):
         default="API for PCS-HELIO Model Context Protocol operations"
     )
     api_version: str = Field(default="1.0.0")
-    repo_url: str = Field(default="https://github.com/agourakis82/pcs-meta-repo")
+    repo_url: str = Field(default="https://github.com/agourakis82/kec-biomaterials-scaffolds")
     cors_enabled: bool = Field(default=False)
     cors_origins: list[str] = Field(default_factory=list)
     openai_model: str = Field(default="gpt-4", description="OpenAI model to use")

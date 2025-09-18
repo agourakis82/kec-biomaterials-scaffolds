@@ -1,0 +1,1255 @@
+{
+  "id": "https://openalex.org/W3013212701",
+  "doi": "https://doi.org/10.1098/rsif.2020.0102",
+  "title": "Evaluation of scaffold microstructure and comparison of cell seeding methods using micro-computed tomography-based tools",
+  "display_name": "Evaluation of scaffold microstructure and comparison of cell seeding methods using micro-computed tomography-based tools",
+  "publication_year": 2020,
+  "publication_date": "2020-03-31",
+  "ids": {
+    "openalex": "https://openalex.org/W3013212701",
+    "doi": "https://doi.org/10.1098/rsif.2020.0102",
+    "mag": "3013212701",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/32228403",
+    "pmcid": "https://www.ncbi.nlm.nih.gov/pmc/articles/7211473"
+  },
+  "language": "en",
+  "primary_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1098/rsif.2020.0102",
+    "pdf_url": "https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2020.0102",
+    "source": {
+      "id": "https://openalex.org/S129150467",
+      "display_name": "Journal of The Royal Society Interface",
+      "issn_l": "1742-5662",
+      "issn": [
+        "1742-5662",
+        "1742-5689"
+      ],
+      "is_oa": false,
+      "is_in_doaj": false,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310319787",
+      "host_organization_name": "Royal Society",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310319787"
+      ],
+      "host_organization_lineage_names": [
+        "Royal Society"
+      ],
+      "type": "journal"
+    },
+    "license": null,
+    "license_id": null,
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "type": "article",
+  "type_crossref": "journal-article",
+  "indexed_in": [
+    "crossref",
+    "pubmed"
+  ],
+  "open_access": {
+    "is_oa": true,
+    "oa_status": "bronze",
+    "oa_url": "https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2020.0102",
+    "any_repository_has_fulltext": true
+  },
+  "authorships": [
+    {
+      "author_position": "first",
+      "author": {
+        "id": "https://openalex.org/A5052695430",
+        "display_name": "Aleksi Palmroth",
+        "orcid": "https://orcid.org/0000-0002-8574-6922"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": true,
+      "raw_author_name": "Aleksi Palmroth",
+      "raw_affiliation_strings": [
+        "Biomaterials and Tissue Engineering Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Korkeakoulunkatu 3, 33720 Tampere, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Biomaterials and Tissue Engineering Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Korkeakoulunkatu 3, 33720 Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5037430232",
+        "display_name": "Sanna Pitkänen",
+        "orcid": "https://orcid.org/0000-0001-7663-4622"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        },
+        {
+          "id": "https://openalex.org/I4210126318",
+          "display_name": "Tampere University Hospital",
+          "ror": "https://ror.org/02hvt5f17",
+          "country_code": "FI",
+          "type": "healthcare",
+          "lineage": [
+            "https://openalex.org/I4210126318"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Sanna Pitkänen",
+      "raw_affiliation_strings": [
+        "Adult Stem Cell Group, Tampere University, Tampere, Finland",
+        "Research, Development and Innovation Centre, Tampere University Hospital, Tampere, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Research, Development and Innovation Centre, Tampere University Hospital, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849",
+            "https://openalex.org/I4210126318"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Adult Stem Cell Group, Tampere University, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5048828702",
+        "display_name": "Markus Hannula",
+        "orcid": "https://orcid.org/0000-0002-4485-8004"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Markus Hannula",
+      "raw_affiliation_strings": [
+        "Computational Biophysics and Imaging Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Tampere, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Computational Biophysics and Imaging Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5070040941",
+        "display_name": "Kaarlo Paakinaho",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I4210110770",
+          "display_name": "Invalidisäätiö",
+          "ror": "https://ror.org/020vv3w23",
+          "country_code": "FI",
+          "type": "nonprofit",
+          "lineage": [
+            "https://openalex.org/I4210110770"
+          ]
+        },
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Kaarlo Paakinaho",
+      "raw_affiliation_strings": [
+        "Adult Stem Cell Group, Tampere University, Tampere, Finland",
+        "Orton Orthopaedic Hospital, Helsinki, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Orton Orthopaedic Hospital, Helsinki, Finland",
+          "institution_ids": [
+            "https://openalex.org/I4210110770"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Adult Stem Cell Group, Tampere University, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5050747402",
+        "display_name": "Jari Hyttinen",
+        "orcid": "https://orcid.org/0000-0003-1850-3055"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Jari Hyttinen",
+      "raw_affiliation_strings": [
+        "Computational Biophysics and Imaging Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Tampere, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Computational Biophysics and Imaging Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5056903166",
+        "display_name": "Susanna Miettinen",
+        "orcid": "https://orcid.org/0000-0002-0647-9556"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        },
+        {
+          "id": "https://openalex.org/I4210126318",
+          "display_name": "Tampere University Hospital",
+          "ror": "https://ror.org/02hvt5f17",
+          "country_code": "FI",
+          "type": "healthcare",
+          "lineage": [
+            "https://openalex.org/I4210126318"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Susanna Miettinen",
+      "raw_affiliation_strings": [
+        "Adult Stem Cell Group, Tampere University, Tampere, Finland",
+        "Research, Development and Innovation Centre, Tampere University Hospital, Tampere, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Adult Stem Cell Group, Tampere University, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Research, Development and Innovation Centre, Tampere University Hospital, Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849",
+            "https://openalex.org/I4210126318"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "last",
+      "author": {
+        "id": "https://openalex.org/A5014623140",
+        "display_name": "Minna Kellomäki",
+        "orcid": "https://orcid.org/0000-0003-4321-1820"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I166825849",
+          "display_name": "Tampere University",
+          "ror": "https://ror.org/033003e23",
+          "country_code": "FI",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ],
+      "countries": [
+        "FI"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Minna Kellomäki",
+      "raw_affiliation_strings": [
+        "Biomaterials and Tissue Engineering Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Korkeakoulunkatu 3, 33720 Tampere, Finland"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Biomaterials and Tissue Engineering Group, BioMediTech, Faculty of Medicine and Health Technology, Tampere University, Korkeakoulunkatu 3, 33720 Tampere, Finland",
+          "institution_ids": [
+            "https://openalex.org/I166825849"
+          ]
+        }
+      ]
+    }
+  ],
+  "institution_assertions": [],
+  "countries_distinct_count": 1,
+  "institutions_distinct_count": 3,
+  "corresponding_author_ids": [
+    "https://openalex.org/A5052695430"
+  ],
+  "corresponding_institution_ids": [
+    "https://openalex.org/I166825849"
+  ],
+  "apc_list": null,
+  "apc_paid": null,
+  "fwci": 1.273,
+  "has_fulltext": false,
+  "cited_by_count": 25,
+  "citation_normalized_percentile": {
+    "value": 0.733935,
+    "is_in_top_1_percent": false,
+    "is_in_top_10_percent": false
+  },
+  "cited_by_percentile_year": {
+    "min": 92,
+    "max": 93
+  },
+  "biblio": {
+    "volume": "17",
+    "issue": "165",
+    "first_page": "20200102",
+    "last_page": "20200102"
+  },
+  "is_retracted": false,
+  "is_paratext": false,
+  "primary_topic": {
+    "id": "https://openalex.org/T10059",
+    "display_name": "Bone Tissue Engineering Materials",
+    "score": 0.9996,
+    "subfield": {
+      "id": "https://openalex.org/subfields/2204",
+      "display_name": "Biomedical Engineering"
+    },
+    "field": {
+      "id": "https://openalex.org/fields/22",
+      "display_name": "Engineering"
+    },
+    "domain": {
+      "id": "https://openalex.org/domains/3",
+      "display_name": "Physical Sciences"
+    }
+  },
+  "topics": [
+    {
+      "id": "https://openalex.org/T10059",
+      "display_name": "Bone Tissue Engineering Materials",
+      "score": 0.9996,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2204",
+        "display_name": "Biomedical Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T11190",
+      "display_name": "3D Printing in Biomedical Research",
+      "score": 0.9995,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2204",
+        "display_name": "Biomedical Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10783",
+      "display_name": "Additive Manufacturing and 3D Printing Technologies",
+      "score": 0.9937,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2203",
+        "display_name": "Automotive Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    }
+  ],
+  "keywords": [],
+  "concepts": [
+    {
+      "id": "https://openalex.org/C36248471",
+      "wikidata": "https://www.wikidata.org/wiki/Q7445669",
+      "display_name": "Seeding",
+      "level": 2,
+      "score": 0.78485173
+    },
+    {
+      "id": "https://openalex.org/C87976508",
+      "wikidata": "https://www.wikidata.org/wiki/Q1498213",
+      "display_name": "Microstructure",
+      "level": 2,
+      "score": 0.6740582
+    },
+    {
+      "id": "https://openalex.org/C544519230",
+      "wikidata": "https://www.wikidata.org/wiki/Q32566",
+      "display_name": "Computed tomography",
+      "level": 2,
+      "score": 0.6296463
+    },
+    {
+      "id": "https://openalex.org/C89429830",
+      "wikidata": "https://www.wikidata.org/wiki/Q735710",
+      "display_name": "Scaffold",
+      "level": 2,
+      "score": 0.5483027
+    },
+    {
+      "id": "https://openalex.org/C136229726",
+      "wikidata": "https://www.wikidata.org/wiki/Q327092",
+      "display_name": "Biomedical engineering",
+      "level": 1,
+      "score": 0.5102773
+    },
+    {
+      "id": "https://openalex.org/C192562407",
+      "wikidata": "https://www.wikidata.org/wiki/Q228736",
+      "display_name": "Materials science",
+      "level": 0,
+      "score": 0.49219027
+    },
+    {
+      "id": "https://openalex.org/C186060115",
+      "wikidata": "https://www.wikidata.org/wiki/Q30336093",
+      "display_name": "Biological system",
+      "level": 1,
+      "score": 0.44850034
+    },
+    {
+      "id": "https://openalex.org/C159985019",
+      "wikidata": "https://www.wikidata.org/wiki/Q181790",
+      "display_name": "Composite material",
+      "level": 1,
+      "score": 0.19543117
+    },
+    {
+      "id": "https://openalex.org/C71924100",
+      "wikidata": "https://www.wikidata.org/wiki/Q11190",
+      "display_name": "Medicine",
+      "level": 0,
+      "score": 0.1585117
+    },
+    {
+      "id": "https://openalex.org/C86803240",
+      "wikidata": "https://www.wikidata.org/wiki/Q420",
+      "display_name": "Biology",
+      "level": 0,
+      "score": 0.15136671
+    },
+    {
+      "id": "https://openalex.org/C126838900",
+      "wikidata": "https://www.wikidata.org/wiki/Q77604",
+      "display_name": "Radiology",
+      "level": 1,
+      "score": 0.14220059
+    },
+    {
+      "id": "https://openalex.org/C127413603",
+      "wikidata": "https://www.wikidata.org/wiki/Q11023",
+      "display_name": "Engineering",
+      "level": 0,
+      "score": 0.12601924
+    },
+    {
+      "id": "https://openalex.org/C146978453",
+      "wikidata": "https://www.wikidata.org/wiki/Q3798668",
+      "display_name": "Aerospace engineering",
+      "level": 1,
+      "score": 0.124414295
+    }
+  ],
+  "mesh": [
+    {
+      "descriptor_ui": "D018929",
+      "descriptor_name": "Cell Culture Techniques",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D006801",
+      "descriptor_name": "Humans",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D011091",
+      "descriptor_name": "Polyesters",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D016062",
+      "descriptor_name": "Porosity",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D023822",
+      "descriptor_name": "Tissue Engineering",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D054457",
+      "descriptor_name": "Tissue Scaffolds",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D055114",
+      "descriptor_name": "X-Ray Microtomography",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    }
+  ],
+  "locations_count": 3,
+  "locations": [
+    {
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1098/rsif.2020.0102",
+      "pdf_url": "https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2020.0102",
+      "source": {
+        "id": "https://openalex.org/S129150467",
+        "display_name": "Journal of The Royal Society Interface",
+        "issn_l": "1742-5662",
+        "issn": [
+          "1742-5662",
+          "1742-5689"
+        ],
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": true,
+        "is_core": true,
+        "host_organization": "https://openalex.org/P4310319787",
+        "host_organization_name": "Royal Society",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310319787"
+        ],
+        "host_organization_lineage_names": [
+          "Royal Society"
+        ],
+        "type": "journal"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7211473",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S2764455111",
+        "display_name": "PubMed Central",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": true,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/32228403",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    }
+  ],
+  "best_oa_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1098/rsif.2020.0102",
+    "pdf_url": "https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2020.0102",
+    "source": {
+      "id": "https://openalex.org/S129150467",
+      "display_name": "Journal of The Royal Society Interface",
+      "issn_l": "1742-5662",
+      "issn": [
+        "1742-5662",
+        "1742-5689"
+      ],
+      "is_oa": false,
+      "is_in_doaj": false,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310319787",
+      "host_organization_name": "Royal Society",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310319787"
+      ],
+      "host_organization_lineage_names": [
+        "Royal Society"
+      ],
+      "type": "journal"
+    },
+    "license": null,
+    "license_id": null,
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "sustainable_development_goals": [],
+  "grants": [
+    {
+      "funder": "https://openalex.org/F4320321855",
+      "funder_display_name": "Tekes",
+      "award_id": null
+    }
+  ],
+  "datasets": [],
+  "versions": [],
+  "referenced_works_count": 45,
+  "referenced_works": [
+    "https://openalex.org/W1603914517",
+    "https://openalex.org/W1915138609",
+    "https://openalex.org/W1963654190",
+    "https://openalex.org/W1968657542",
+    "https://openalex.org/W1977253244",
+    "https://openalex.org/W1984041190",
+    "https://openalex.org/W1999363713",
+    "https://openalex.org/W2006208339",
+    "https://openalex.org/W2010926366",
+    "https://openalex.org/W2011909003",
+    "https://openalex.org/W2014829000",
+    "https://openalex.org/W2023389333",
+    "https://openalex.org/W2036939733",
+    "https://openalex.org/W2048172758",
+    "https://openalex.org/W2054209788",
+    "https://openalex.org/W2064663731",
+    "https://openalex.org/W2077237231",
+    "https://openalex.org/W2083236922",
+    "https://openalex.org/W2086859574",
+    "https://openalex.org/W2089368480",
+    "https://openalex.org/W2090736123",
+    "https://openalex.org/W2103394000",
+    "https://openalex.org/W2111553051",
+    "https://openalex.org/W2129213007",
+    "https://openalex.org/W2129216118",
+    "https://openalex.org/W2132673181",
+    "https://openalex.org/W2138946300",
+    "https://openalex.org/W2140083800",
+    "https://openalex.org/W2161668291",
+    "https://openalex.org/W2167279371",
+    "https://openalex.org/W2170515999",
+    "https://openalex.org/W2174595913",
+    "https://openalex.org/W2262345939",
+    "https://openalex.org/W2278529616",
+    "https://openalex.org/W2394756735",
+    "https://openalex.org/W2468873691",
+    "https://openalex.org/W2589667724",
+    "https://openalex.org/W2613652562",
+    "https://openalex.org/W2793654822",
+    "https://openalex.org/W2808295841",
+    "https://openalex.org/W2866967243",
+    "https://openalex.org/W2897084149",
+    "https://openalex.org/W2936366553",
+    "https://openalex.org/W2979475318",
+    "https://openalex.org/W639623387"
+  ],
+  "related_works": [
+    "https://openalex.org/W2908776801",
+    "https://openalex.org/W2515349569",
+    "https://openalex.org/W2390371481",
+    "https://openalex.org/W2389665570",
+    "https://openalex.org/W2373196487",
+    "https://openalex.org/W2366106936",
+    "https://openalex.org/W2352942191",
+    "https://openalex.org/W2332619769",
+    "https://openalex.org/W2315981300",
+    "https://openalex.org/W1987103269"
+  ],
+  "abstract_inverted_index": {
+    "Micro-computed": [
+      0
+    ],
+    "tomography": [
+      1
+    ],
+    "(micro-CT)": [
+      2
+    ],
+    "provides": [
+      3,
+      166
+    ],
+    "a": [
+      4,
+      18,
+      145
+    ],
+    "means": [
+      5
+    ],
+    "to": [
+      6,
+      85
+    ],
+    "analyse": [
+      7
+    ],
+    "and": [
+      8,
+      30,
+      42,
+      56,
+      82,
+      116,
+      177
+    ],
+    "model": [
+      9
+    ],
+    "three-dimensional": [
+      10
+    ],
+    "(3D)": [
+      11
+    ],
+    "tissue": [
+      12
+    ],
+    "engineering": [
+      13
+    ],
+    "scaffolds.": [
+      14,
+      91
+    ],
+    "This": [
+      15
+    ],
+    "study": [
+      16,
+      165
+    ],
+    "proposes": [
+      17
+    ],
+    "set": [
+      19,
+      169
+    ],
+    "of": [
+      20,
+      28,
+      45,
+      123,
+      170,
+      175,
+      181
+    ],
+    "micro-CT-based": [
+      21
+    ],
+    "tools": [
+      22,
+      171
+    ],
+    "firstly": [
+      23
+    ],
+    "for": [
+      24,
+      32,
+      172,
+      178
+    ],
+    "evaluating": [
+      25
+    ],
+    "the": [
+      26,
+      80,
+      90,
+      94,
+      105,
+      124,
+      132,
+      141,
+      157,
+      173,
+      179
+    ],
+    "microstructure": [
+      27
+    ],
+    "scaffolds": [
+      29,
+      59,
+      81,
+      106,
+      158,
+      176
+    ],
+    "secondly": [
+      31
+    ],
+    "comparing": [
+      33
+    ],
+    "different": [
+      34,
+      109
+    ],
+    "cell": [
+      35,
+      110,
+      154,
+      183
+    ],
+    "seeding": [
+      36,
+      111,
+      143
+    ],
+    "methods.": [
+      37,
+      112
+    ],
+    "The": [
+      38,
+      66,
+      121,
+      163
+    ],
+    "pore": [
+      39,
+      43
+    ],
+    "size,": [
+      40
+    ],
+    "porosity": [
+      41
+    ],
+    "interconnectivity": [
+      44
+    ],
+    "supercritical": [
+      46
+    ],
+    "CO": [
+      47
+    ],
+    "2": [
+      48
+    ],
+    "processed": [
+      49
+    ],
+    "poly(": [
+      50
+    ],
+    "l": [
+      51
+    ],
+    "-lactide-co-": [
+      52
+    ],
+    "ɛ": [
+      53
+    ],
+    "-caprolactone)": [
+      54
+    ],
+    "(PLCL)": [
+      55
+    ],
+    "PLCL/β-tricalcium": [
+      57
+    ],
+    "phosphate": [
+      58
+    ],
+    "were": [
+      60,
+      68,
+      77,
+      102,
+      119
+    ],
+    "analysed": [
+      61,
+      127
+    ],
+    "using": [
+      62,
+      107,
+      128
+    ],
+    "computational": [
+      63
+    ],
+    "micro-CT": [
+      64,
+      83,
+      129
+    ],
+    "models.": [
+      65
+    ],
+    "models": [
+      67
+    ],
+    "supplemented": [
+      69
+    ],
+    "with": [
+      70,
+      134,
+      160
+    ],
+    "an": [
+      71,
+      152,
+      167
+    ],
+    "experimental": [
+      72
+    ],
+    "method,": [
+      73
+    ],
+    "where": [
+      74
+    ],
+    "iron-labelled": [
+      75
+    ],
+    "microspheres": [
+      76
+    ],
+    "seeded": [
+      78,
+      103
+    ],
+    "into": [
+      79,
+      89,
+      104
+    ],
+    "imaged": [
+      84
+    ],
+    "assess": [
+      86
+    ],
+    "their": [
+      87
+    ],
+    "infiltration": [
+      88,
+      155
+    ],
+    "After": [
+      92
+    ],
+    "examining": [
+      93
+    ],
+    "scaffold": [
+      95
+    ],
+    "architecture,": [
+      96
+    ],
+    "human": [
+      97
+    ],
+    "adipose-derived": [
+      98
+    ],
+    "stem": [
+      99
+    ],
+    "cells": [
+      100,
+      125
+    ],
+    "(hASCs)": [
+      101
+    ],
+    "five": [
+      108
+    ],
+    "Cell": [
+      113
+    ],
+    "viability,": [
+      114
+    ],
+    "number": [
+      115
+    ],
+    "3D": [
+      117,
+      182
+    ],
+    "distribution": [
+      118,
+      122
+    ],
+    "evaluated.": [
+      120
+    ],
+    "was": [
+      126
+    ],
+    "by": [
+      130
+    ],
+    "labelling": [
+      131
+    ],
+    "hASCs": [
+      133
+    ],
+    "ultrasmall": [
+      135
+    ],
+    "paramagnetic": [
+      136
+    ],
+    "iron": [
+      137
+    ],
+    "oxide": [
+      138
+    ],
+    "nanoparticles.": [
+      139
+    ],
+    "Among": [
+      140
+    ],
+    "tested": [
+      142
+    ],
+    "methods,": [
+      144
+    ],
+    "forced": [
+      146
+    ],
+    "fluid": [
+      147
+    ],
+    "flow-based": [
+      148
+    ],
+    "technique": [
+      149
+    ],
+    "resulted": [
+      150
+    ],
+    "in": [
+      151
+    ],
+    "enhanced": [
+      153
+    ],
+    "throughout": [
+      156
+    ],
+    "compared": [
+      159
+    ],
+    "static": [
+      161
+    ],
+    "seeding.": [
+      162
+    ],
+    "current": [
+      164
+    ],
+    "excellent": [
+      168
+    ],
+    "development": [
+      174
+    ],
+    "design": [
+      180
+    ],
+    "culture": [
+      184
+    ],
+    "experiments.": [
+      185
+    ]
+  },
+  "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W3013212701",
+  "counts_by_year": [
+    {
+      "year": 2025,
+      "cited_by_count": 3
+    },
+    {
+      "year": 2024,
+      "cited_by_count": 6
+    },
+    {
+      "year": 2023,
+      "cited_by_count": 5
+    },
+    {
+      "year": 2022,
+      "cited_by_count": 6
+    },
+    {
+      "year": 2021,
+      "cited_by_count": 5
+    }
+  ],
+  "updated_date": "2025-09-17T23:41:37.226723",
+  "created_date": "2020-04-03"
+}

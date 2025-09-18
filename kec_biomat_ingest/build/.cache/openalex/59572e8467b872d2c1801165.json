@@ -1,0 +1,1356 @@
+{
+  "id": "https://openalex.org/W3205414155",
+  "doi": "https://doi.org/10.1038/s41598-021-00024-z",
+  "title": "Multiple channels with interconnected pores in a bioceramic scaffold promote bone tissue formation",
+  "display_name": "Multiple channels with interconnected pores in a bioceramic scaffold promote bone tissue formation",
+  "publication_year": 2021,
+  "publication_date": "2021-10-14",
+  "ids": {
+    "openalex": "https://openalex.org/W3205414155",
+    "doi": "https://doi.org/10.1038/s41598-021-00024-z",
+    "mag": "3205414155",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/34650074",
+    "pmcid": "https://www.ncbi.nlm.nih.gov/pmc/articles/8516977"
+  },
+  "language": "en",
+  "primary_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1038/s41598-021-00024-z",
+    "pdf_url": "https://www.nature.com/articles/s41598-021-00024-z.pdf",
+    "source": {
+      "id": "https://openalex.org/S196734849",
+      "display_name": "Scientific Reports",
+      "issn_l": "2045-2322",
+      "issn": [
+        "2045-2322"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310319908",
+      "host_organization_name": "Nature Portfolio",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310319908",
+        "https://openalex.org/P4310319965"
+      ],
+      "host_organization_lineage_names": [
+        "Nature Portfolio",
+        "Springer Nature"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "type": "article",
+  "type_crossref": "journal-article",
+  "indexed_in": [
+    "crossref",
+    "doaj",
+    "pubmed"
+  ],
+  "open_access": {
+    "is_oa": true,
+    "oa_status": "gold",
+    "oa_url": "https://www.nature.com/articles/s41598-021-00024-z.pdf",
+    "any_repository_has_fulltext": true
+  },
+  "authorships": [
+    {
+      "author_position": "first",
+      "author": {
+        "id": "https://openalex.org/A5065763400",
+        "display_name": "Xuesong Wang",
+        "orcid": "https://orcid.org/0000-0001-5892-2743"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I63772739",
+          "display_name": "Florida Atlantic University",
+          "ror": "https://ror.org/05p8w6387",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Xuesong Wang",
+      "raw_affiliation_strings": [
+        "Department of Ocean and Mechanical Engineering, College of Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, 33431, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Ocean and Mechanical Engineering, College of Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5089956781",
+        "display_name": "Ziyan Nie",
+        "orcid": "https://orcid.org/0000-0001-9040-644X"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I63772739",
+          "display_name": "Florida Atlantic University",
+          "ror": "https://ror.org/05p8w6387",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Ziyan Nie",
+      "raw_affiliation_strings": [
+        "Department of Ocean and Mechanical Engineering, College of Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, 33431, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Ocean and Mechanical Engineering, College of Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5101434416",
+        "display_name": "Jia Chang",
+        "orcid": "https://orcid.org/0000-0003-0592-5750"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I33213144",
+          "display_name": "University of Florida",
+          "ror": "https://ror.org/02y3ad647",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I33213144"
+          ]
+        },
+        {
+          "id": "https://openalex.org/I94062374",
+          "display_name": "Florida College",
+          "ror": "https://ror.org/010bgev76",
+          "country_code": "US",
+          "type": "education",
+          "lineage": [
+            "https://openalex.org/I94062374"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Jia Chang",
+      "raw_affiliation_strings": [
+        "Department of Periodontology, University of Florida College of Dentistry, Gainesville, FL, 32610, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Periodontology, University of Florida College of Dentistry, Gainesville, FL, 32610, USA",
+          "institution_ids": [
+            "https://openalex.org/I33213144",
+            "https://openalex.org/I94062374"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5039806235",
+        "display_name": "Michael L. Lu",
+        "orcid": "https://orcid.org/0000-0002-4659-943X"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I63772739",
+          "display_name": "Florida Atlantic University",
+          "ror": "https://ror.org/05p8w6387",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Michael L. Lu",
+      "raw_affiliation_strings": [
+        "Department of Biological Science, Faculty of Integrative Biology Program, College of Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+        "Department of Biomedical Science, College of Medicine, Florida Atlantic University, Boca Raton, FL, 33431, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Biological Science, Faculty of Integrative Biology Program, College of Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Department of Biomedical Science, College of Medicine, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "last",
+      "author": {
+        "id": "https://openalex.org/A5030831103",
+        "display_name": "Yunqing Kang",
+        "orcid": "https://orcid.org/0000-0002-9721-1837"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I63772739",
+          "display_name": "Florida Atlantic University",
+          "ror": "https://ror.org/05p8w6387",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Yunqing Kang",
+      "raw_affiliation_strings": [
+        "Department of Biological Science, Faculty of Integrative Biology Program, College of Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+        "Department of Biomedical Science, College of Medicine, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+        "Department of Ocean and Mechanical Engineering, College of Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, 33431, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Ocean and Mechanical Engineering, College of Engineering and Computer Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Department of Biological Science, Faculty of Integrative Biology Program, College of Science, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Department of Biomedical Science, College of Medicine, Florida Atlantic University, Boca Raton, FL, 33431, USA",
+          "institution_ids": [
+            "https://openalex.org/I63772739"
+          ]
+        }
+      ]
+    }
+  ],
+  "institution_assertions": [],
+  "countries_distinct_count": 1,
+  "institutions_distinct_count": 3,
+  "corresponding_author_ids": [],
+  "corresponding_institution_ids": [],
+  "apc_list": {
+    "value": 1890,
+    "currency": "EUR",
+    "value_usd": 2190
+  },
+  "apc_paid": {
+    "value": 1890,
+    "currency": "EUR",
+    "value_usd": 2190
+  },
+  "fwci": 1.353,
+  "has_fulltext": true,
+  "fulltext_origin": "pdf",
+  "cited_by_count": 22,
+  "citation_normalized_percentile": {
+    "value": 0.999974,
+    "is_in_top_1_percent": true,
+    "is_in_top_10_percent": true
+  },
+  "cited_by_percentile_year": {
+    "min": 92,
+    "max": 93
+  },
+  "biblio": {
+    "volume": "11",
+    "issue": "1",
+    "first_page": null,
+    "last_page": null
+  },
+  "is_retracted": false,
+  "is_paratext": false,
+  "primary_topic": {
+    "id": "https://openalex.org/T10059",
+    "display_name": "Bone Tissue Engineering Materials",
+    "score": 0.9999,
+    "subfield": {
+      "id": "https://openalex.org/subfields/2204",
+      "display_name": "Biomedical Engineering"
+    },
+    "field": {
+      "id": "https://openalex.org/fields/22",
+      "display_name": "Engineering"
+    },
+    "domain": {
+      "id": "https://openalex.org/domains/3",
+      "display_name": "Physical Sciences"
+    }
+  },
+  "topics": [
+    {
+      "id": "https://openalex.org/T10059",
+      "display_name": "Bone Tissue Engineering Materials",
+      "score": 0.9999,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2204",
+        "display_name": "Biomedical Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T12110",
+      "display_name": "Bone and Dental Protein Studies",
+      "score": 0.9987,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2745",
+        "display_name": "Rheumatology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T11219",
+      "display_name": "Bone Metabolism and Diseases",
+      "score": 0.9965,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1312",
+        "display_name": "Molecular Biology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/13",
+        "display_name": "Biochemistry, Genetics and Molecular Biology"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/1",
+        "display_name": "Life Sciences"
+      }
+    }
+  ],
+  "keywords": [
+    {
+      "id": "https://openalex.org/keywords/bone-sialoprotein",
+      "display_name": "Bone sialoprotein",
+      "score": 0.6474182
+    },
+    {
+      "id": "https://openalex.org/keywords/osteopontin",
+      "display_name": "Osteopontin",
+      "score": 0.5322155
+    },
+    {
+      "id": "https://openalex.org/keywords/bioceramic",
+      "display_name": "Bioceramic",
+      "score": 0.49421743
+    }
+  ],
+  "concepts": [
+    {
+      "id": "https://openalex.org/C131075544",
+      "wikidata": "https://www.wikidata.org/wiki/Q415863",
+      "display_name": "Osteocalcin",
+      "level": 4,
+      "score": 0.69189334
+    },
+    {
+      "id": "https://openalex.org/C95444343",
+      "wikidata": "https://www.wikidata.org/wiki/Q7141",
+      "display_name": "Cell biology",
+      "level": 1,
+      "score": 0.6800278
+    },
+    {
+      "id": "https://openalex.org/C89429830",
+      "wikidata": "https://www.wikidata.org/wiki/Q735710",
+      "display_name": "Scaffold",
+      "level": 2,
+      "score": 0.66759115
+    },
+    {
+      "id": "https://openalex.org/C2776432469",
+      "wikidata": "https://www.wikidata.org/wiki/Q14907671",
+      "display_name": "Bone sialoprotein",
+      "level": 5,
+      "score": 0.6474182
+    },
+    {
+      "id": "https://openalex.org/C198826908",
+      "wikidata": "https://www.wikidata.org/wiki/Q1922379",
+      "display_name": "Mesenchymal stem cell",
+      "level": 2,
+      "score": 0.5858418
+    },
+    {
+      "id": "https://openalex.org/C185592680",
+      "wikidata": "https://www.wikidata.org/wiki/Q2329",
+      "display_name": "Chemistry",
+      "level": 0,
+      "score": 0.5404848
+    },
+    {
+      "id": "https://openalex.org/C2780804394",
+      "wikidata": "https://www.wikidata.org/wiki/Q411994",
+      "display_name": "Osteopontin",
+      "level": 2,
+      "score": 0.5322155
+    },
+    {
+      "id": "https://openalex.org/C2781201070",
+      "wikidata": "https://www.wikidata.org/wiki/Q2790033",
+      "display_name": "Bioceramic",
+      "level": 2,
+      "score": 0.49421743
+    },
+    {
+      "id": "https://openalex.org/C136229726",
+      "wikidata": "https://www.wikidata.org/wiki/Q327092",
+      "display_name": "Biomedical engineering",
+      "level": 1,
+      "score": 0.48298088
+    },
+    {
+      "id": "https://openalex.org/C160160445",
+      "wikidata": "https://www.wikidata.org/wiki/Q24769688",
+      "display_name": "Alkaline phosphatase",
+      "level": 3,
+      "score": 0.44324338
+    },
+    {
+      "id": "https://openalex.org/C192562407",
+      "wikidata": "https://www.wikidata.org/wiki/Q228736",
+      "display_name": "Materials science",
+      "level": 0,
+      "score": 0.32947326
+    },
+    {
+      "id": "https://openalex.org/C171250308",
+      "wikidata": "https://www.wikidata.org/wiki/Q11468",
+      "display_name": "Nanotechnology",
+      "level": 1,
+      "score": 0.18621904
+    },
+    {
+      "id": "https://openalex.org/C86803240",
+      "wikidata": "https://www.wikidata.org/wiki/Q420",
+      "display_name": "Biology",
+      "level": 0,
+      "score": 0.16865453
+    },
+    {
+      "id": "https://openalex.org/C203014093",
+      "wikidata": "https://www.wikidata.org/wiki/Q101929",
+      "display_name": "Immunology",
+      "level": 1,
+      "score": 0.14940527
+    },
+    {
+      "id": "https://openalex.org/C55493867",
+      "wikidata": "https://www.wikidata.org/wiki/Q7094",
+      "display_name": "Biochemistry",
+      "level": 1,
+      "score": 0.11342299
+    },
+    {
+      "id": "https://openalex.org/C71924100",
+      "wikidata": "https://www.wikidata.org/wiki/Q11190",
+      "display_name": "Medicine",
+      "level": 0,
+      "score": 0.084584564
+    },
+    {
+      "id": "https://openalex.org/C181199279",
+      "wikidata": "https://www.wikidata.org/wiki/Q8047",
+      "display_name": "Enzyme",
+      "level": 2,
+      "score": 0.0
+    }
+  ],
+  "mesh": [
+    {
+      "descriptor_ui": "D018786",
+      "descriptor_name": "Bone Substitutes",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D002516",
+      "descriptor_name": "Ceramics",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D048091",
+      "descriptor_name": "Guided Tissue Regeneration",
+      "qualifier_ui": "Q000379",
+      "qualifier_name": "methods",
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D010012",
+      "descriptor_name": "Osteogenesis",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D054457",
+      "descriptor_name": "Tissue Scaffolds",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D002130",
+      "descriptor_name": "Calcium Phosphates",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D002454",
+      "descriptor_name": "Cell Differentiation",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D048091",
+      "descriptor_name": "Guided Tissue Regeneration",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D006801",
+      "descriptor_name": "Humans",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D008334",
+      "descriptor_name": "Mandible",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D059630",
+      "descriptor_name": "Mesenchymal Stem Cells",
+      "qualifier_ui": "Q000378",
+      "qualifier_name": "metabolism",
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D059630",
+      "descriptor_name": "Mesenchymal Stem Cells",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    }
+  ],
+  "locations_count": 4,
+  "locations": [
+    {
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1038/s41598-021-00024-z",
+      "pdf_url": "https://www.nature.com/articles/s41598-021-00024-z.pdf",
+      "source": {
+        "id": "https://openalex.org/S196734849",
+        "display_name": "Scientific Reports",
+        "issn_l": "2045-2322",
+        "issn": [
+          "2045-2322"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_indexed_in_scopus": true,
+        "is_core": true,
+        "host_organization": "https://openalex.org/P4310319908",
+        "host_organization_name": "Nature Portfolio",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310319908",
+          "https://openalex.org/P4310319965"
+        ],
+        "host_organization_lineage_names": [
+          "Nature Portfolio",
+          "Springer Nature"
+        ],
+        "type": "journal"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": false,
+      "landing_page_url": "https://doaj.org/article/fe00dcd8a9ee43b3820483876646ab46",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306401280",
+        "display_name": "DOAJ (DOAJ: Directory of Open Access Journals)",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": true,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": null,
+        "host_organization_name": null,
+        "host_organization_lineage": [],
+        "host_organization_lineage_names": [],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    },
+    {
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8516977",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S2764455111",
+        "display_name": "PubMed Central",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": true,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/34650074",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    }
+  ],
+  "best_oa_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1038/s41598-021-00024-z",
+    "pdf_url": "https://www.nature.com/articles/s41598-021-00024-z.pdf",
+    "source": {
+      "id": "https://openalex.org/S196734849",
+      "display_name": "Scientific Reports",
+      "issn_l": "2045-2322",
+      "issn": [
+        "2045-2322"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310319908",
+      "host_organization_name": "Nature Portfolio",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310319908",
+        "https://openalex.org/P4310319965"
+      ],
+      "host_organization_lineage_names": [
+        "Nature Portfolio",
+        "Springer Nature"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "sustainable_development_goals": [
+    {
+      "score": 0.74,
+      "display_name": "Zero hunger",
+      "id": "https://metadata.un.org/sdg/2"
+    }
+  ],
+  "grants": [
+    {
+      "funder": "https://openalex.org/F4320337365",
+      "funder_display_name": "National Institute of Dental and Craniofacial Research",
+      "award_id": "R03DE028406"
+    }
+  ],
+  "datasets": [],
+  "versions": [],
+  "referenced_works_count": 49,
+  "referenced_works": [
+    "https://openalex.org/W1691553965",
+    "https://openalex.org/W1905479957",
+    "https://openalex.org/W1930088548",
+    "https://openalex.org/W1964184380",
+    "https://openalex.org/W1976117064",
+    "https://openalex.org/W1980773309",
+    "https://openalex.org/W1983834900",
+    "https://openalex.org/W1988115051",
+    "https://openalex.org/W1997812904",
+    "https://openalex.org/W2005463566",
+    "https://openalex.org/W2006431507",
+    "https://openalex.org/W2011605085",
+    "https://openalex.org/W2015329862",
+    "https://openalex.org/W2019372642",
+    "https://openalex.org/W2026406517",
+    "https://openalex.org/W2054361639",
+    "https://openalex.org/W2054431237",
+    "https://openalex.org/W2064341334",
+    "https://openalex.org/W2075425296",
+    "https://openalex.org/W2078187732",
+    "https://openalex.org/W2084765224",
+    "https://openalex.org/W2086026048",
+    "https://openalex.org/W2086511139",
+    "https://openalex.org/W2086831062",
+    "https://openalex.org/W2106836962",
+    "https://openalex.org/W2107277218",
+    "https://openalex.org/W2111195311",
+    "https://openalex.org/W2136739897",
+    "https://openalex.org/W2139536396",
+    "https://openalex.org/W2139561611",
+    "https://openalex.org/W2220847897",
+    "https://openalex.org/W2330308886",
+    "https://openalex.org/W2399181962",
+    "https://openalex.org/W2403948829",
+    "https://openalex.org/W2472440902",
+    "https://openalex.org/W2480410045",
+    "https://openalex.org/W2549080353",
+    "https://openalex.org/W2556861557",
+    "https://openalex.org/W2618923583",
+    "https://openalex.org/W2621441407",
+    "https://openalex.org/W2621815896",
+    "https://openalex.org/W2623981860",
+    "https://openalex.org/W2757075755",
+    "https://openalex.org/W2766443673",
+    "https://openalex.org/W2807971858",
+    "https://openalex.org/W2913131205",
+    "https://openalex.org/W2914788525",
+    "https://openalex.org/W2941025505",
+    "https://openalex.org/W4211200865"
+  ],
+  "related_works": [
+    "https://openalex.org/W410591782",
+    "https://openalex.org/W2394313870",
+    "https://openalex.org/W2086831062",
+    "https://openalex.org/W2085851976",
+    "https://openalex.org/W2062996809",
+    "https://openalex.org/W2055203655",
+    "https://openalex.org/W2049109419",
+    "https://openalex.org/W2032776490",
+    "https://openalex.org/W2029876132",
+    "https://openalex.org/W1999463383"
+  ],
+  "abstract_inverted_index": {
+    "Abstract": [
+      0
+    ],
+    "Insufficient": [
+      1
+    ],
+    "nutrition": [
+      2
+    ],
+    "exchange": [
+      3
+    ],
+    "and": [
+      4,
+      39,
+      77,
+      91,
+      118,
+      124,
+      155,
+      161,
+      170
+    ],
+    "limited": [
+      5
+    ],
+    "transportation": [
+      6
+    ],
+    "of": [
+      7,
+      79,
+      104,
+      108,
+      188
+    ],
+    "blood": [
+      8
+    ],
+    "supply": [
+      9
+    ],
+    "in": [
+      10,
+      47,
+      129,
+      174,
+      192
+    ],
+    "a": [
+      11,
+      37,
+      48,
+      198
+    ],
+    "porous": [
+      12,
+      22,
+      56,
+      194
+    ],
+    "only": [
+      13
+    ],
+    "scaffold": [
+      14,
+      23,
+      60,
+      196
+    ],
+    "often": [
+      15
+    ],
+    "hinder": [
+      16
+    ],
+    "bone": [
+      17,
+      45,
+      50,
+      81,
+      131,
+      137,
+      153,
+      204
+    ],
+    "formation,": [
+      18
+    ],
+    "even": [
+      19
+    ],
+    "though": [
+      20
+    ],
+    "the": [
+      21,
+      93,
+      102,
+      109,
+      182,
+      186,
+      193
+    ],
+    "is": [
+      24,
+      197
+    ],
+    "loaded": [
+      25
+    ],
+    "with": [
+      26,
+      61
+    ],
+    "cells": [
+      27
+    ],
+    "or": [
+      28
+    ],
+    "growth": [
+      29,
+      40
+    ],
+    "factors.": [
+      30
+    ],
+    "To": [
+      31
+    ],
+    "overcome": [
+      32
+    ],
+    "these": [
+      33
+    ],
+    "issues,": [
+      34
+    ],
+    "we": [
+      35
+    ],
+    "developed": [
+      36
+    ],
+    "cell-": [
+      38
+    ],
+    "factor-free": [
+      41
+    ],
+    "approach": [
+      42,
+      201
+    ],
+    "to": [
+      43,
+      143,
+      178,
+      202
+    ],
+    "induce": [
+      44
+    ],
+    "formation": [
+      46,
+      138
+    ],
+    "critical-size": [
+      49
+    ],
+    "defect": [
+      51,
+      132
+    ],
+    "by": [
+      52
+    ],
+    "using": [
+      53
+    ],
+    "an": [
+      54
+    ],
+    "interconnected": [
+      55,
+      189
+    ],
+    "beta-tricalcium": [
+      57
+    ],
+    "phosphate": [
+      58
+    ],
+    "(β-TCP)": [
+      59
+    ],
+    "multiple": [
+      62,
+      71,
+      190
+    ],
+    "channels.": [
+      63
+    ],
+    "In": [
+      64
+    ],
+    "vitro": [
+      65
+    ],
+    "cell": [
+      66,
+      75
+    ],
+    "experimental": [
+      67
+    ],
+    "results": [
+      68,
+      134
+    ],
+    "showed": [
+      69
+    ],
+    "that": [
+      70,
+      185
+    ],
+    "channels": [
+      72,
+      98,
+      147,
+      191
+    ],
+    "significantly": [
+      73
+    ],
+    "promoted": [
+      74
+    ],
+    "attachment": [
+      76
+    ],
+    "proliferation": [
+      78
+    ],
+    "human": [
+      80
+    ],
+    "marrow": [
+      82
+    ],
+    "mesenchymal": [
+      83
+    ],
+    "stem": [
+      84
+    ],
+    "cells,": [
+      85,
+      110
+    ],
+    "stimulated": [
+      86,
+      101
+    ],
+    "their": [
+      87
+    ],
+    "alkaline": [
+      88
+    ],
+    "phosphatase": [
+      89
+    ],
+    "activity,": [
+      90
+    ],
+    "up-regulated": [
+      92
+    ],
+    "osteogenic": [
+      94
+    ],
+    "gene": [
+      95
+    ],
+    "expression.": [
+      96,
+      158
+    ],
+    "Multiple": [
+      97,
+      146
+    ],
+    "also": [
+      99
+    ],
+    "considerably": [
+      100
+    ],
+    "expression": [
+      103
+    ],
+    "various": [
+      105
+    ],
+    "mechanosensing": [
+      106
+    ],
+    "markers": [
+      107
+    ],
+    "such": [
+      111
+    ],
+    "as": [
+      112
+    ],
+    "focal": [
+      113
+    ],
+    "adhesion": [
+      114
+    ],
+    "kinase,": [
+      115
+    ],
+    "filamentous": [
+      116
+    ],
+    "actin,": [
+      117
+    ],
+    "Yes-associated": [
+      119
+    ],
+    "protein-1": [
+      120
+    ],
+    "at": [
+      121
+    ],
+    "both": [
+      122
+    ],
+    "static": [
+      123
+    ],
+    "dynamic": [
+      125
+    ],
+    "culturing": [
+      126
+    ],
+    "conditions.": [
+      127
+    ],
+    "The": [
+      128
+    ],
+    "vivo": [
+      130
+    ],
+    "implantation": [
+      133
+    ],
+    "demonstrated": [
+      135
+    ],
+    "more": [
+      136,
+      167
+    ],
+    "inside": [
+      139
+    ],
+    "multiple-channeled": [
+      140,
+      175
+    ],
+    "scaffolds": [
+      141
+    ],
+    "compared": [
+      142,
+      177
+    ],
+    "non-channeled": [
+      144,
+      179
+    ],
+    "scaffolds.": [
+      145,
+      180
+    ],
+    "prominently": [
+      148
+    ],
+    "accelerated": [
+      149
+    ],
+    "collagen": [
+      150
+    ],
+    "type": [
+      151
+    ],
+    "I,": [
+      152
+    ],
+    "sialoprotein": [
+      154
+    ],
+    "osteocalcin": [
+      156
+    ],
+    "protein": [
+      157
+    ],
+    "Fluorochrome": [
+      159
+    ],
+    "images": [
+      160
+    ],
+    "angiogenic": [
+      162
+    ],
+    "marker": [
+      163
+    ],
+    "CD31": [
+      164
+    ],
+    "staining": [
+      165
+    ],
+    "exhibited": [
+      166
+    ],
+    "mineral": [
+      168
+    ],
+    "deposition": [
+      169
+    ],
+    "longer": [
+      171
+    ],
+    "vasculature": [
+      172
+    ],
+    "structures": [
+      173
+    ],
+    "scaffolds,": [
+      176
+    ],
+    "All": [
+      181
+    ],
+    "findings": [
+      183
+    ],
+    "suggested": [
+      184
+    ],
+    "creation": [
+      187
+    ],
+    "β-TCP": [
+      195
+    ],
+    "very": [
+      199
+    ],
+    "promising": [
+      200
+    ],
+    "promote": [
+      203
+    ],
+    "tissue": [
+      205
+    ],
+    "regeneration.": [
+      206
+    ]
+  },
+  "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W3205414155",
+  "counts_by_year": [
+    {
+      "year": 2025,
+      "cited_by_count": 5
+    },
+    {
+      "year": 2024,
+      "cited_by_count": 5
+    },
+    {
+      "year": 2023,
+      "cited_by_count": 6
+    },
+    {
+      "year": 2022,
+      "cited_by_count": 4
+    },
+    {
+      "year": 2021,
+      "cited_by_count": 2
+    }
+  ],
+  "updated_date": "2025-09-14T03:27:41.917347",
+  "created_date": "2021-10-25"
+}

@@ -1,0 +1,1414 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2025,
+          9,
+          18
+        ]
+      ],
+      "date-time": "2025-09-18T06:59:31Z",
+      "timestamp": 1758178771909,
+      "version": "3.37.3"
+    },
+    "reference-count": 108,
+    "publisher": "Elsevier BV",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2020,
+              3,
+              1
+            ]
+          ],
+          "date-time": "2020-03-01T00:00:00Z",
+          "timestamp": 1583020800000
+        },
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+      }
+    ],
+    "funder": [
+      {
+        "DOI": "10.13039/501100007292",
+        "name": "National Natural Science Foundation of China",
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "id": "10.13039/501100007292",
+            "id-type": "DOI",
+            "asserted-by": "publisher"
+          }
+        ]
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "elsevier.com",
+        "sciencedirect.com"
+      ],
+      "crossmark-restriction": true
+    },
+    "short-container-title": [
+      "Acta Biomaterialia"
+    ],
+    "published-print": {
+      "date-parts": [
+        [
+          2020,
+          3
+        ]
+      ]
+    },
+    "DOI": "10.1016/j.actbio.2020.01.036",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2020,
+          1,
+          28
+        ]
+      ],
+      "date-time": "2020-01-28T01:09:05Z",
+      "timestamp": 1580173745000
+    },
+    "page": "1-14",
+    "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 193,
+    "special_numbering": "C",
+    "title": [
+      "Cell membrane-camouflaged nanoparticles as drug carriers for cancer therapy"
+    ],
+    "prefix": "10.1016",
+    "volume": "105",
+    "author": [
+      {
+        "given": "Cheng-Hui",
+        "family": "Xu",
+        "sequence": "first",
+        "affiliation": []
+      },
+      {
+        "given": "Peng-Ju",
+        "family": "Ye",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Yang-Chun",
+        "family": "Zhou",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Dong-Xiu",
+        "family": "He",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-5139-9387",
+        "authenticated-orcid": false,
+        "given": "Hua",
+        "family": "Wei",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-2076-6228",
+        "authenticated-orcid": false,
+        "given": "Cui-Yun",
+        "family": "Yu",
+        "sequence": "additional",
+        "affiliation": []
+      }
+    ],
+    "member": "78",
+    "reference": [
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0001",
+        "first-page": "277",
+        "article-title": "Cancer statistics, 2018",
+        "volume": "60",
+        "author": "Siegel",
+        "year": "2018",
+        "journal-title": "CA: Cancer J. Clin."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0002",
+        "doi-asserted-by": "crossref",
+        "first-page": "200",
+        "DOI": "10.1016/S1470-2045(14)71199-4",
+        "article-title": "Adjuvant chemotherapy after preoperative (chemo)radiotherapy and surgery for patients with rectal cancer: a systematic review and meta-analysis of individual patient data",
+        "volume": "16",
+        "author": "Breugom",
+        "year": "2015",
+        "journal-title": "Lancet Oncol."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0003",
+        "doi-asserted-by": "crossref",
+        "first-page": "1290",
+        "DOI": "10.2174/1567201813666160713121122",
+        "article-title": "Nanoparticles for cancer targeting: current and future directions",
+        "volume": "13",
+        "author": "Swain",
+        "year": "2016",
+        "journal-title": "Curr. Drug Deliv."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0004",
+        "doi-asserted-by": "crossref",
+        "first-page": "20",
+        "DOI": "10.1038/nrc.2016.108",
+        "article-title": "Cancer nanomedicine: progress, challenges and opportunities",
+        "volume": "17",
+        "author": "Shi",
+        "year": "2016",
+        "journal-title": "Nat. Rev. Cancer"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0005",
+        "doi-asserted-by": "crossref",
+        "first-page": "179",
+        "DOI": "10.3109/1061186X.2015.1051049",
+        "article-title": "Nanocarriers for cancer-targeted drug delivery",
+        "volume": "24",
+        "author": "Kumari",
+        "year": "2015",
+        "journal-title": "J. Drug Target"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0006",
+        "doi-asserted-by": "crossref",
+        "first-page": "3830",
+        "DOI": "10.1039/C6CS00592F",
+        "article-title": "Nanoparticle design strategies for enhanced anticancer therapy by exploiting the tumour microenvironment",
+        "volume": "46",
+        "author": "Dai",
+        "year": "2017",
+        "journal-title": "Chem. Soc. Rev."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0007",
+        "doi-asserted-by": "crossref",
+        "first-page": "941",
+        "DOI": "10.1038/nbt.3330",
+        "article-title": "Principles of nanoparticle design for overcoming biological barriers to drug delivery",
+        "volume": "33",
+        "author": "Blanco",
+        "year": "2015",
+        "journal-title": "Nat. Biotechnol."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0008",
+        "doi-asserted-by": "crossref",
+        "first-page": "3757",
+        "DOI": "10.1002/adma.201200224",
+        "article-title": "Biomimetic delivery with micro- and nanoparticles",
+        "volume": "24",
+        "author": "Balmert",
+        "year": "2012",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0009",
+        "doi-asserted-by": "crossref",
+        "first-page": "904",
+        "DOI": "10.3892/mco.2014.356",
+        "article-title": "Passive targeting of nanoparticles to cancer: a comprehensive review of the literature",
+        "volume": "2",
+        "author": "Bazak",
+        "year": "2014",
+        "journal-title": "Mol. Clin. Oncol."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0010",
+        "doi-asserted-by": "crossref",
+        "first-page": "201",
+        "DOI": "10.1080/17425247.2016.1213238",
+        "article-title": "Surface functionalization of polymeric nanoparticles for tumor drug delivery: approaches and challenges",
+        "volume": "14",
+        "author": "Abd Ellah",
+        "year": "2016",
+        "journal-title": "Expert Opin. Drug Deliv."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0011",
+        "doi-asserted-by": "crossref",
+        "first-page": "282",
+        "DOI": "10.1208/s12248-012-9339-4",
+        "article-title": "Challenges in development of nanoparticle-based therapeutics",
+        "volume": "14",
+        "author": "Desai",
+        "year": "2012",
+        "journal-title": "AAPS J."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0012",
+        "doi-asserted-by": "crossref",
+        "first-page": "65",
+        "DOI": "10.1039/C3NR05444F",
+        "article-title": "Polymeric nanotherapeutics: clinical development and advances in stealth functionalization strategies",
+        "volume": "6",
+        "author": "Hu",
+        "year": "2013",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0013",
+        "doi-asserted-by": "crossref",
+        "first-page": "3",
+        "DOI": "10.7150/thno.3463",
+        "article-title": "Targeting strategies for multifunctional nanoparticles in cancer imaging and therapy",
+        "volume": "2",
+        "author": "Yu",
+        "year": "2012",
+        "journal-title": "Theranostics"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0014",
+        "first-page": "5701",
+        "article-title": "Biomimetics: forecasting the future of science, engineering, and medicine",
+        "volume": "10",
+        "author": "Hwang",
+        "year": "2015",
+        "journal-title": "Int. J. Nanomed."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0015",
+        "doi-asserted-by": "crossref",
+        "first-page": "36",
+        "DOI": "10.1016/j.addr.2012.09.037",
+        "article-title": "Liposomal drug delivery systems: from concept to clinical applications",
+        "volume": "65",
+        "author": "Allen",
+        "year": "2012",
+        "journal-title": "Adv. Drug Deliv. Rev."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0016",
+        "doi-asserted-by": "crossref",
+        "first-page": "1359",
+        "DOI": "10.2147/IJN.S189935",
+        "article-title": "Slp-coated liposomes for drug delivery and biomedical applications: potential and challenges",
+        "volume": "14",
+        "author": "Luo",
+        "year": "2019",
+        "journal-title": "Int. J. Nanomed."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0017",
+        "doi-asserted-by": "crossref",
+        "first-page": "521",
+        "DOI": "10.1038/nrd3499",
+        "article-title": "Bio-inspired, bioengineered and biomimetic drug delivery carriers",
+        "volume": "10",
+        "author": "Yoo",
+        "year": "2011",
+        "journal-title": "Nat. Rev. Drug Discov."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0018",
+        "doi-asserted-by": "crossref",
+        "first-page": "537",
+        "DOI": "10.1002/adhm.201200138",
+        "article-title": "Erythrocyte-inspired delivery systems",
+        "volume": "1",
+        "author": "Hu",
+        "year": "2012",
+        "journal-title": "Adv. Healthc. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0019",
+        "doi-asserted-by": "crossref",
+        "first-page": "83",
+        "DOI": "10.1080/10717544.2016.1230903",
+        "article-title": "A novel strategy to achieve effective drug delivery: exploit cells as carrier combined with nanoparticles",
+        "volume": "24",
+        "author": "Pang",
+        "year": "2017",
+        "journal-title": "Drug Deliv."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0020",
+        "doi-asserted-by": "crossref",
+        "first-page": "14",
+        "DOI": "10.1016/j.apsb.2017.11.009",
+        "article-title": "Cell membrane-based nanoparticles: a new biomimetic platform for tumor diagnosis and treatment",
+        "volume": "8",
+        "author": "Li",
+        "year": "2018",
+        "journal-title": "Acta Pharm. Sin. B"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0021",
+        "doi-asserted-by": "crossref",
+        "first-page": "863",
+        "DOI": "10.7150/thno.11852",
+        "article-title": "Cell or cell membrane-based drug delivery systems",
+        "volume": "5",
+        "author": "Tan",
+        "year": "2015",
+        "journal-title": "Theranostics"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0022",
+        "doi-asserted-by": "crossref",
+        "first-page": "10980",
+        "DOI": "10.1073/pnas.1106634108",
+        "article-title": "Erythrocyte membrane-camouflaged polymeric nanoparticles as a biomimetic delivery platform",
+        "volume": "108",
+        "author": "Hu",
+        "year": "2011",
+        "journal-title": "Proc. Natl. Acad. Sci. USA"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0023",
+        "doi-asserted-by": "crossref",
+        "first-page": "983",
+        "DOI": "10.3390/polym10090983",
+        "article-title": "Cell membrane-camouflaged nanoparticles: a promising biomimetic strategy for cancer theragnostics",
+        "volume": "10",
+        "author": "Vijayan",
+        "year": "2018",
+        "journal-title": "Polymers"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0024",
+        "doi-asserted-by": "crossref",
+        "first-page": "600",
+        "DOI": "10.1016/j.jconrel.2015.07.019",
+        "article-title": "Cell membrane-camouflaged nanoparticles for drug delivery",
+        "volume": "220",
+        "author": "Luk",
+        "year": "2015",
+        "journal-title": "J. Control Release"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0025",
+        "doi-asserted-by": "crossref",
+        "first-page": "23",
+        "DOI": "10.1021/acs.bioconjchem.6b00569",
+        "article-title": "Biointerfacing and applications of cell membrane-coated nanoparticles",
+        "volume": "28",
+        "author": "Kroll",
+        "year": "2017",
+        "journal-title": "Bioconjug. Chem."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0026",
+        "doi-asserted-by": "crossref",
+        "first-page": "523",
+        "DOI": "10.7150/thno.17259",
+        "article-title": "Enhanced blood suspensibility and laser-activated tumor-specific drug release of theranostic mesoporous silica nanoparticles by functionalizing with erythrocyte membranes",
+        "volume": "7",
+        "author": "Su",
+        "year": "2017",
+        "journal-title": "Theranostics"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0027",
+        "doi-asserted-by": "crossref",
+        "first-page": "2575",
+        "DOI": "10.7150/thno.20118",
+        "article-title": "Preparation and application of cell membrane-camouflaged nanoparticles for cancer therapy",
+        "volume": "7",
+        "author": "Zhai",
+        "year": "2017",
+        "journal-title": "Theranostics"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0028",
+        "doi-asserted-by": "crossref",
+        "first-page": "7495",
+        "DOI": "10.1002/adfm.201603381",
+        "article-title": "Bioinspired nanoparticles with NIR-controlled drug release for synergetic chemophotothermal therapy of metastatic breast cancer",
+        "volume": "26",
+        "author": "Su",
+        "year": "2016",
+        "journal-title": "Adv. Funct. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0029",
+        "doi-asserted-by": "crossref",
+        "first-page": "6981",
+        "DOI": "10.1039/C5NR07588B",
+        "article-title": "Monocyte cell membrane-derived nanoghosts for targeted cancer therapy",
+        "volume": "8",
+        "author": "Krishnamurthy",
+        "year": "2016",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0030",
+        "doi-asserted-by": "crossref",
+        "first-page": "2849",
+        "DOI": "10.1021/acsnano.8b03788",
+        "article-title": "Cancer cell membrane camouflaged nanoparticles to realize starvation therapy together with checkpoint blockades for enhancing cancer therapy",
+        "volume": "13",
+        "author": "Xie",
+        "year": "2019",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0031",
+        "doi-asserted-by": "crossref",
+        "first-page": "5061",
+        "DOI": "10.2147/IJN.S202910",
+        "article-title": "Chlorins e6 loaded silica nanoparticles coated with gastric cancer cell membrane for tumor specific photodynamic therapy of gastric cancer",
+        "volume": "14",
+        "author": "Yang",
+        "year": "2019",
+        "journal-title": "Int. J. Nanomed."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0032",
+        "first-page": "2797",
+        "article-title": "Development of nanosponges from erythrocyte ghosts for removal of streptolysin-O from mammalian blood",
+        "volume": "11",
+        "author": "Chhabria",
+        "year": "2016",
+        "journal-title": "Nanomedicine"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0033",
+        "doi-asserted-by": "crossref",
+        "first-page": "1147",
+        "DOI": "10.1039/C2CS35265F",
+        "article-title": "Design, functionalization strategies and biomedical applications of targeted biodegradable/biocompatible polymer-based nanocarriers for drug delivery",
+        "volume": "42",
+        "author": "Nicolas",
+        "year": "2013",
+        "journal-title": "Chem. Soc. Rev."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0034",
+        "doi-asserted-by": "crossref",
+        "first-page": "807",
+        "DOI": "10.3390/cancers11060807",
+        "article-title": "The delivery strategy of paclitaxel nanostructured lipid carrier coated with platelet membrane",
+        "volume": "11",
+        "author": "Bang",
+        "year": "2019",
+        "journal-title": "Cancers"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0035",
+        "doi-asserted-by": "crossref",
+        "first-page": "4056",
+        "DOI": "10.1002/smll.201600624",
+        "article-title": "Stem cell membrane-coated nanogels for highly efficient in vivo tumor targeted drug delivery",
+        "volume": "12",
+        "author": "Gao",
+        "year": "2016",
+        "journal-title": "Small"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0036",
+        "doi-asserted-by": "crossref",
+        "first-page": "61",
+        "DOI": "10.1038/nnano.2012.212",
+        "article-title": "Synthetic nanoparticles functionalized with biomimetic leukocyte membranes possess cell-like functions",
+        "volume": "8",
+        "author": "Parodi",
+        "year": "2013",
+        "journal-title": "Nat. Nanotechnol."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0037",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1002/adfm.201604300",
+        "article-title": "Cancer cell membrane-coated gold nanocages with hyperthermia-triggered drug release and homotypic target inhibit growth and metastasis of breast cancer",
+        "volume": "27",
+        "author": "Sun",
+        "year": "2017",
+        "journal-title": "Adv. Funct. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0038",
+        "doi-asserted-by": "crossref",
+        "first-page": "3496",
+        "DOI": "10.1021/acsnano.7b00133",
+        "article-title": "Microfluidic electroporation-facilitated synthesis of erythrocyte membrane-coated magnetic nanoparticles for enhanced imaging-guided cancer therapy",
+        "volume": "11",
+        "author": "Rao",
+        "year": "2017",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0039",
+        "doi-asserted-by": "crossref",
+        "first-page": "5241",
+        "DOI": "10.1021/acsnano.7b08355",
+        "article-title": "Erythrocyte-cancer hybrid membrane camouflaged hollow copper sulfide nanoparticles for prolonged circulation life and homotypic-targeting photothermal/chemotherapy of melanoma",
+        "volume": "12",
+        "author": "Wang",
+        "year": "2018",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0040",
+        "doi-asserted-by": "crossref",
+        "first-page": "34252",
+        "DOI": "10.1021/acsami.6b12865",
+        "article-title": "Stem-cell-membrane camouflaging on near-infrared photoactivated upconversion nanoarchitectures for in vivo remote-controlled photodynamic therapy",
+        "volume": "8",
+        "author": "Gao",
+        "year": "2016",
+        "journal-title": "ACS Appl. Mater Interfaces"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0041",
+        "doi-asserted-by": "crossref",
+        "first-page": "2677",
+        "DOI": "10.2217/nnm-2017-0225",
+        "article-title": "Cell membrane coated nanoparticles: next-generation therapeutics",
+        "volume": "12",
+        "author": "Narain",
+        "year": "2017",
+        "journal-title": "Nanomedicine"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0042",
+        "doi-asserted-by": "crossref",
+        "first-page": "507",
+        "DOI": "10.1016/j.sbi.2009.06.003",
+        "article-title": "Sialic acids as regulators of molecular and cellular interactions",
+        "volume": "19",
+        "author": "Schauer",
+        "year": "2009",
+        "journal-title": "Curr. Opin. Struct. Biol."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0043",
+        "doi-asserted-by": "crossref",
+        "first-page": "2730",
+        "DOI": "10.1039/C3NR06371B",
+        "article-title": "Interfacial interactions between natural RBC membranes and synthetic polymeric nanoparticles",
+        "volume": "6",
+        "author": "Luk",
+        "year": "2014",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0044",
+        "doi-asserted-by": "crossref",
+        "first-page": "2245",
+        "DOI": "10.1039/b805754k",
+        "article-title": "Lipid layers on polyelectrolyte multilayer supports",
+        "volume": "4",
+        "author": "Fischlechner",
+        "year": "2008",
+        "journal-title": "Soft Matter"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0045",
+        "doi-asserted-by": "crossref",
+        "first-page": "2664",
+        "DOI": "10.1039/c3nr00015j",
+        "article-title": "'Marker-of-self' functionalization of nanoscale particles through a top-down cellular membrane coating approach",
+        "volume": "5",
+        "author": "Hu",
+        "year": "2013",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0046",
+        "doi-asserted-by": "crossref",
+        "first-page": "327",
+        "DOI": "10.1016/j.ejpb.2004.02.016",
+        "article-title": "Polysaccharide-decorated nanoparticles",
+        "volume": "58",
+        "author": "Lemarchand",
+        "year": "2004",
+        "journal-title": "Eur. J. Pharm. Biopharm."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0047",
+        "doi-asserted-by": "crossref",
+        "first-page": "13940",
+        "DOI": "10.1021/ja029267j",
+        "article-title": "Completely \"green\" synthesis and stabilization of metal nanoparticles",
+        "volume": "125",
+        "author": "Raveendran",
+        "year": "2003",
+        "journal-title": "J. Am. Chem. Soc."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0048",
+        "doi-asserted-by": "crossref",
+        "first-page": "986",
+        "DOI": "10.1002/anie.201709457",
+        "article-title": "Platelet-facilitated photothermal therapy of head and neck squamous cell carcinoma",
+        "volume": "57",
+        "author": "Rao",
+        "year": "2018",
+        "journal-title": "Angew. Chem. Int. Ed. Engl."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0049",
+        "doi-asserted-by": "crossref",
+        "first-page": "2743",
+        "DOI": "10.1002/adhm.201500398",
+        "article-title": "Supported lipid bilayers for the generation of dynamic cell-material interfaces",
+        "volume": "4",
+        "author": "van Weerd",
+        "year": "2015",
+        "journal-title": "Adv. Healthc. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0050",
+        "doi-asserted-by": "crossref",
+        "first-page": "8",
+        "DOI": "10.1021/acs.nanolett.8b02638",
+        "article-title": "Nanoparticle ligand exchange and its effects at the nanoparticle-cell membrane interface",
+        "volume": "19",
+        "author": "Wang",
+        "year": "2019",
+        "journal-title": "Nano Lett."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0051",
+        "doi-asserted-by": "crossref",
+        "first-page": "4431",
+        "DOI": "10.2147/IJN.S200284",
+        "article-title": "Cell membrane camouflaged nanoparticles: a new biomimetic platform for cancer photothermal therapy",
+        "volume": "14",
+        "author": "Wu",
+        "year": "2019",
+        "journal-title": "Int. J. Nanomed."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0052",
+        "doi-asserted-by": "crossref",
+        "first-page": "8",
+        "DOI": "10.1186/s40169-019-0224-y",
+        "article-title": "Cell membrane protein functionalization of nanoparticles as a new tumor-targeting strategy",
+        "volume": "8",
+        "author": "Pasto",
+        "year": "2019",
+        "journal-title": "Clin. Transl. Med."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0053",
+        "doi-asserted-by": "crossref",
+        "first-page": "13224",
+        "DOI": "10.1073/pnas.1101398108",
+        "article-title": "Functional CD47/signal regulatory protein alpha (SIRP(alpha)) interaction is required for optimal human T- and natural killer- (NK) cell homeostasis in vivo",
+        "volume": "108",
+        "author": "Legrand",
+        "year": "2011",
+        "journal-title": "Proc. Natl. Acad. Sci. USA"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0054",
+        "doi-asserted-by": "crossref",
+        "first-page": "385",
+        "DOI": "10.1517/14712598.2012.661710",
+        "article-title": "Nanoparticles disguised as red blood cells to evade the immune system",
+        "volume": "12",
+        "author": "Fang",
+        "year": "2012",
+        "journal-title": "Expert Opin. Biol. Ther."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0055",
+        "doi-asserted-by": "crossref",
+        "first-page": "1271",
+        "DOI": "10.2217/nnm.12.153",
+        "article-title": "Erythrocyte membrane-cloaked polymeric nanoparticles for controlled drug loading and release",
+        "volume": "8",
+        "author": "Aryal",
+        "year": "2013",
+        "journal-title": "Nanomedicine"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0056",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1002/advs.201801678",
+        "article-title": "Biomorphic engineering of multifunctional polylactide stomatocytes toward therapeutic nano-red blood cells",
+        "volume": "6",
+        "author": "Shao",
+        "year": "2019",
+        "journal-title": "Adv. Sci."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0057",
+        "doi-asserted-by": "crossref",
+        "first-page": "10414",
+        "DOI": "10.1021/nn503779d",
+        "article-title": "Erythrocyte membrane is an alternative coating to polyethylene glycol for prolonging the circulation lifetime of gold nanocages for photothermal therapy",
+        "volume": "8",
+        "author": "Piao",
+        "year": "2014",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0058",
+        "doi-asserted-by": "crossref",
+        "first-page": "136",
+        "DOI": "10.1016/j.addr.2010.04.009",
+        "article-title": "The EPR effect: unique features of tumor blood vessels for drug delivery, factors involved, and limitations and augmentation of the effect",
+        "volume": "63",
+        "author": "Fang",
+        "year": "2011",
+        "journal-title": "Adv. Drug Deliv. Rev."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0059",
+        "doi-asserted-by": "crossref",
+        "first-page": "504",
+        "DOI": "10.1007/s40843-016-5163-4",
+        "article-title": "Cell membrane-coated nanoparticles for tumor-targeted drug delivery",
+        "volume": "60",
+        "author": "Chai",
+        "year": "2017",
+        "journal-title": "Sci. China Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0060",
+        "doi-asserted-by": "crossref",
+        "first-page": "8884",
+        "DOI": "10.1039/c3nr03064d",
+        "article-title": "Lipid-insertion enables targeting functionalization of erythrocyte membrane-cloaked nanoparticles",
+        "volume": "5",
+        "author": "Fang",
+        "year": "2013",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0061",
+        "doi-asserted-by": "crossref",
+        "first-page": "5591",
+        "DOI": "10.1021/acsnano.9b00661",
+        "article-title": "Ligand-modified cell membrane enables the targeted delivery of drug nanocrystals to glioma",
+        "volume": "13",
+        "author": "Chai",
+        "year": "2019",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0062",
+        "doi-asserted-by": "crossref",
+        "first-page": "4877",
+        "DOI": "10.1021/acsnano.8b01772",
+        "article-title": "Erythrocyte membrane modified janus polymeric motors for thrombus therapy",
+        "volume": "12",
+        "author": "Shao",
+        "year": "2018",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0063",
+        "doi-asserted-by": "crossref",
+        "first-page": "124",
+        "DOI": "10.1016/j.biomaterials.2018.01.018",
+        "article-title": "Natural killer cell membrane infused biomimetic liposomes for targeted tumor therapy",
+        "volume": "160",
+        "author": "Pitchaimani",
+        "year": "2018",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0064",
+        "doi-asserted-by": "crossref",
+        "first-page": "3548",
+        "DOI": "10.1039/C5NR08407E",
+        "article-title": "Polymeric capsule-cushioned leukocyte cell membrane vesicles as a biomimetic delivery platform",
+        "volume": "8",
+        "author": "Gao",
+        "year": "2016",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0065",
+        "doi-asserted-by": "crossref",
+        "first-page": "436",
+        "DOI": "10.1038/nature07205",
+        "article-title": "Cancer-related inflammation",
+        "volume": "454",
+        "author": "Mantovani",
+        "year": "2008",
+        "journal-title": "Nature"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0066",
+        "doi-asserted-by": "crossref",
+        "first-page": "2520",
+        "DOI": "10.1158/0008-5472.CAN-14-3095",
+        "article-title": "Grapefruit-derived nanovectors use an activated leukocyte trafficking pathway to deliver therapeutic agents to inflammatory tumor sites",
+        "volume": "75",
+        "author": "Wang",
+        "year": "2015",
+        "journal-title": "Cancer Res."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0067",
+        "doi-asserted-by": "crossref",
+        "first-page": "39",
+        "DOI": "10.1016/j.cell.2010.03.014",
+        "article-title": "Macrophage diversity enhances tumor progression and metastasis",
+        "volume": "141",
+        "author": "Qian",
+        "year": "2010",
+        "journal-title": "Cell"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0068",
+        "doi-asserted-by": "crossref",
+        "first-page": "695",
+        "DOI": "10.2217/nnm.14.13",
+        "article-title": "Macrophages associated with tumors as potential targets and therapeutic intermediates",
+        "volume": "9",
+        "author": "Vinogradov",
+        "year": "2014",
+        "journal-title": "Nanomedicine"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0069",
+        "doi-asserted-by": "crossref",
+        "first-page": "1645",
+        "DOI": "10.1002/adhm.201500129",
+        "article-title": "Macrophage cell membrane camouflaged mesoporous silica nanocapsules for in vivo cancer therapy",
+        "volume": "4",
+        "author": "Xuan",
+        "year": "2015",
+        "journal-title": "Adv. Healthc. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0070",
+        "doi-asserted-by": "crossref",
+        "first-page": "9610",
+        "DOI": "10.1021/acsami.6b00853",
+        "article-title": "Macrophage cell membrane camouflaged Au nanoshells for in vivo prolonged circulation life and enhanced cancer photothermal therapy",
+        "volume": "8",
+        "author": "Xuan",
+        "year": "2016",
+        "journal-title": "ACS Appl. Mater. Interfaces"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0071",
+        "doi-asserted-by": "crossref",
+        "first-page": "2129",
+        "DOI": "10.2147/IJN.S126016",
+        "article-title": "Human cytotoxic T-lymphocyte membrane-camouflaged nanoparticles combined with low-dose irradiation: a new approach to enhance drug targeting in gastric cancer",
+        "volume": "12",
+        "author": "Zhang",
+        "year": "2017",
+        "journal-title": "Int. J. Nanomed."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0072",
+        "doi-asserted-by": "crossref",
+        "first-page": "11",
+        "DOI": "10.1016/j.jconrel.2015.01.039",
+        "article-title": "Macrophage mediated biomimetic delivery system for the treatment of lung metastasis of breast cancer",
+        "volume": "204",
+        "author": "Fu",
+        "year": "2015",
+        "journal-title": "J. Control Release"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0073",
+        "doi-asserted-by": "crossref",
+        "first-page": "7738",
+        "DOI": "10.1021/acsnano.6b03148",
+        "article-title": "Liposomes coated with isolated macrophage membrane can target lung metastasis of breast cancer",
+        "volume": "10",
+        "author": "Cao",
+        "year": "2016",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0074",
+        "doi-asserted-by": "crossref",
+        "first-page": "1397",
+        "DOI": "10.1021/acsnano.6b06477",
+        "article-title": "Nanoparticles coated with neutrophil membranes can effectively treat cancer metastasis",
+        "volume": "11",
+        "author": "Kang",
+        "year": "2017",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0075",
+        "doi-asserted-by": "crossref",
+        "first-page": "2099",
+        "DOI": "10.2217/nnm-2018-0017",
+        "article-title": "The potential of biomimetic nanoparticles for tumor-targeted drug delivery",
+        "volume": "13",
+        "author": "Li",
+        "year": "2018",
+        "journal-title": "Nanomedicine"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0076",
+        "doi-asserted-by": "crossref",
+        "first-page": "3450",
+        "DOI": "10.1039/C9BM00599D",
+        "article-title": "Platelet-membrane-camouflaged bismuth sulfide nanorods for synergistic radio-photothermal therapy against cancer",
+        "volume": "7",
+        "author": "Chen",
+        "year": "2019",
+        "journal-title": "Biomater. Sci."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0077",
+        "doi-asserted-by": "crossref",
+        "first-page": "123",
+        "DOI": "10.1038/nrc3004",
+        "article-title": "Contribution of platelets to tumour metastasis",
+        "volume": "11",
+        "author": "Gay",
+        "year": "2011",
+        "journal-title": "Nat. Rev. Cancer"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0078",
+        "doi-asserted-by": "crossref",
+        "first-page": "52",
+        "DOI": "10.1016/j.biomaterials.2015.10.046",
+        "article-title": "Targeted drug delivery to circulating tumor cells via platelet membrane-functionalized particles",
+        "volume": "76",
+        "author": "Li",
+        "year": "2016",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0079",
+        "doi-asserted-by": "crossref",
+        "first-page": "76",
+        "DOI": "10.1097/CCO.0b013e32835b6371",
+        "article-title": "TGF-β signaling and epithelial-mesenchymal transition in cancer progression",
+        "volume": "25",
+        "author": "Katsuno",
+        "year": "2013",
+        "journal-title": "Curr. Opin. Oncol."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0080",
+        "doi-asserted-by": "crossref",
+        "first-page": "231",
+        "DOI": "10.1007/s10555-014-9498-0",
+        "article-title": "Platelets and cancer: a casual or causal relationship: revisited",
+        "volume": "33",
+        "author": "Menter",
+        "year": "2014",
+        "journal-title": "Cancer Metastasis Rev."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0081",
+        "doi-asserted-by": "crossref",
+        "first-page": "118",
+        "DOI": "10.1038/nature15373",
+        "article-title": "Nanoparticle biointerfacing by platelet membrane cloaking",
+        "volume": "526",
+        "author": "Hu",
+        "year": "2015",
+        "journal-title": "Nature"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0082",
+        "doi-asserted-by": "crossref",
+        "first-page": "7043",
+        "DOI": "10.1002/adma.201503323",
+        "article-title": "Anticancer platelet-mimicking nanovehicles",
+        "volume": "27",
+        "author": "Hu",
+        "year": "2015",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0083",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1002/adfm.201604774",
+        "article-title": "Antitumor platelet-mimicking magnetic nanoparticles",
+        "volume": "27",
+        "author": "Rao",
+        "year": "2017",
+        "journal-title": "Adv. Funct. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0084",
+        "doi-asserted-by": "crossref",
+        "first-page": "1253",
+        "DOI": "10.1158/0008-5472.CAN-17-1547",
+        "article-title": "Therapy-educated mesenchymal stem cells enrich for tumor-initiating cells",
+        "volume": "78",
+        "author": "Timaner",
+        "year": "2018",
+        "journal-title": "Cancer Res."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0085",
+        "article-title": "Recent advances in cell membrane-camouflaged nanoparticles for cancer phototherapy",
+        "volume": "15",
+        "author": "Zhen",
+        "year": "2019",
+        "journal-title": "Small"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0086",
+        "doi-asserted-by": "crossref",
+        "first-page": "35",
+        "DOI": "10.1038/nrd.2016.193",
+        "article-title": "Tumour-associated mesenchymal stem/stromal cells: emerging therapeutic targets",
+        "volume": "16",
+        "author": "Shi",
+        "year": "2017",
+        "journal-title": "Nat. Rev. Drug Discov."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0087",
+        "doi-asserted-by": "crossref",
+        "first-page": "1",
+        "DOI": "10.1186/s13287-015-0271-2",
+        "article-title": "Biodistribution, migration and homing of systemically applied mesenchymal stem/stromal cells",
+        "volume": "7",
+        "author": "Leibacher",
+        "year": "2016",
+        "journal-title": "Stem Cell Res. Ther."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0088",
+        "doi-asserted-by": "crossref",
+        "first-page": "22963",
+        "DOI": "10.1021/acsami.8b05363",
+        "article-title": "Surface functionalization of polymeric nanoparticles with umbilical cord-derived mesenchymal stem cell membrane for tumor-targeted therapy",
+        "volume": "10",
+        "author": "Yang",
+        "year": "2018",
+        "journal-title": "ACS Appl. Mater. Interfaces"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0089",
+        "doi-asserted-by": "crossref",
+        "first-page": "3248",
+        "DOI": "10.1021/nl401376w",
+        "article-title": "Reconstructed stem cell nanoghosts: a natural tumor targeting platform",
+        "volume": "13",
+        "author": "Toledano Furman",
+        "year": "2013",
+        "journal-title": "Nano Lett."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0090",
+        "doi-asserted-by": "crossref",
+        "first-page": "98222",
+        "DOI": "10.1039/C5RA17447C",
+        "article-title": "Biomimetic stem cell membrane-camouflaged iron oxide nanoparticles for theranostic applications",
+        "volume": "5",
+        "author": "Lai",
+        "year": "2015",
+        "journal-title": "RSC Adv."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0091",
+        "doi-asserted-by": "crossref",
+        "first-page": "3460",
+        "DOI": "10.1002/adma.201506086",
+        "article-title": "Cancer cell membrane-coated upconversion nanoprobes for highly specific tumor imaging",
+        "volume": "28",
+        "author": "Rao",
+        "year": "2016",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0092",
+        "doi-asserted-by": "crossref",
+        "first-page": "2181",
+        "DOI": "10.1021/nl500618u",
+        "article-title": "Cancer cell membrane-coated nanoparticles for anticancer vaccination and drug delivery",
+        "volume": "14",
+        "author": "Fang",
+        "year": "2014",
+        "journal-title": "Nano Lett."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0093",
+        "doi-asserted-by": "crossref",
+        "first-page": "5895",
+        "DOI": "10.1021/acs.nanolett.6b02786",
+        "article-title": "Preferential cancer cell self-recognition and tumor self-targeting by coating nanoparticles with homotypic cancer cell membranes",
+        "volume": "16",
+        "author": "Zhu",
+        "year": "2016",
+        "journal-title": "Nano Lett."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0094",
+        "doi-asserted-by": "crossref",
+        "first-page": "9581",
+        "DOI": "10.1002/adma.201602173",
+        "article-title": "Cancer-cell-biomimetic nanoparticles for targeted therapy of homotypic tumors",
+        "volume": "28",
+        "author": "Sun",
+        "year": "2016",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0095",
+        "doi-asserted-by": "crossref",
+        "first-page": "477",
+        "DOI": "10.1016/j.colsurfb.2018.12.038",
+        "article-title": "Cancer cell membrane-cloaked mesoporous silica nanoparticles with a pH-sensitive gatekeeper for cancer treatment",
+        "volume": "175",
+        "author": "Liu",
+        "year": "2019",
+        "journal-title": "Colloids Surf. B: Biointerfaces"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0096",
+        "doi-asserted-by": "crossref",
+        "first-page": "10049",
+        "DOI": "10.1021/acsnano.6b04695",
+        "article-title": "Cancer cell membrane-biomimetic nanoparticles for homologous-targeting dual-modal imaging and photothermal therapy",
+        "volume": "10",
+        "author": "Chen",
+        "year": "2016",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0097",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1002/adfm.201703197",
+        "article-title": "Cancer cell membrane‐biomimetic oxygen nanocarrier for breaking hypoxia‐induced chemoresistance",
+        "volume": "27",
+        "author": "Tian",
+        "year": "2017",
+        "journal-title": "Adv. Funct. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0098",
+        "doi-asserted-by": "crossref",
+        "first-page": "599",
+        "DOI": "10.1093/jnci/djs033",
+        "article-title": "Therapeutic cancer vaccines: current status and moving forward",
+        "volume": "104",
+        "author": "Schlom",
+        "year": "2012",
+        "journal-title": "J. Natl. Cancer Inst."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0099",
+        "doi-asserted-by": "crossref",
+        "first-page": "3335",
+        "DOI": "10.1172/JCI83871",
+        "article-title": "Cancer immunotherapy: harnessing the immune system to battle cancer",
+        "volume": "125",
+        "author": "Yang",
+        "year": "2015",
+        "journal-title": "J. Clin. Investig."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0100",
+        "doi-asserted-by": "crossref",
+        "first-page": "1018",
+        "DOI": "10.1002/adma.201703969",
+        "article-title": "Nanoparticulate delivery of cancer cell membrane elicits multiantigenic antitumor immunity",
+        "volume": "29",
+        "author": "Kroll",
+        "year": "2017",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0101",
+        "doi-asserted-by": "crossref",
+        "first-page": "230",
+        "DOI": "10.7150/jca.1.230",
+        "article-title": "Cellular cancer vaccines: an update on the development of vaccines generated from cell surface antigens",
+        "volume": "1",
+        "author": "Lokhov",
+        "year": "2010",
+        "journal-title": "J. Cancer"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0102",
+        "doi-asserted-by": "crossref",
+        "first-page": "5121",
+        "DOI": "10.1021/acsnano.7b09041",
+        "article-title": "Cancer cell membrane-coated adjuvant nanoparticles with mannose modification for effective anticancer vaccination",
+        "volume": "12",
+        "author": "Yang",
+        "year": "2018",
+        "journal-title": "ACS Nano"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0103",
+        "doi-asserted-by": "crossref",
+        "first-page": "9850",
+        "DOI": "10.1021/acsami.9b00294",
+        "article-title": "Surface-layer proteins enhanced immunotherapy based on cell membrane coated nanoparticles for the effective inhibition of tumor growth and metastasis",
+        "volume": "11",
+        "author": "Wu",
+        "year": "2019",
+        "journal-title": "ACS Appl. Mater. Interfaces"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0104",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1002/adma.201606209",
+        "article-title": "Erythrocyte-platelet hybrid membrane coating for enhanced nanoparticle functionalization",
+        "volume": "29",
+        "author": "Dehaini",
+        "year": "2017",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0105",
+        "doi-asserted-by": "crossref",
+        "first-page": "292",
+        "DOI": "10.1016/j.biomaterials.2018.11.021",
+        "article-title": "Erythrocyte-cancer hybrid membrane-camouflaged melanin nanoparticles for enhancing photothermal therapy efficacy in tumors",
+        "volume": "192",
+        "author": "Jiang",
+        "year": "2019",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0106",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1002/adfm.201807733",
+        "article-title": "Cancer stem cell‐platelet hybrid membrane‐coated magnetic nanoparticles for enhanced photothermal therapy of head and neck squamous cell carcinoma",
+        "volume": "29",
+        "author": "Bu",
+        "year": "2019",
+        "journal-title": "Adv. Funct. Mater."
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0107",
+        "doi-asserted-by": "crossref",
+        "first-page": "619",
+        "DOI": "10.3109/1061186X.2015.1052074",
+        "article-title": "Coating nanoparticles with cell membranes for targeted drug delivery",
+        "volume": "23",
+        "author": "Gao",
+        "year": "2015",
+        "journal-title": "J. Drug Target"
+      },
+      {
+        "key": "10.1016/j.actbio.2020.01.036_bib0108",
+        "doi-asserted-by": "crossref",
+        "first-page": "69",
+        "DOI": "10.1016/j.biomaterials.2017.02.041",
+        "article-title": "Cell membrane-derived nanomaterials for biomedical applications",
+        "volume": "128",
+        "author": "Fang",
+        "year": "2017",
+        "journal-title": "Biomaterials"
+      }
+    ],
+    "container-title": [
+      "Acta Biomaterialia"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://api.elsevier.com/content/article/PII:S1742706120300519?httpAccept=text/xml",
+        "content-type": "text/xml",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://api.elsevier.com/content/article/PII:S1742706120300519?httpAccept=text/plain",
+        "content-type": "text/plain",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2023,
+          9,
+          25
+        ]
+      ],
+      "date-time": "2023-09-25T19:47:56Z",
+      "timestamp": 1695671276000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1742706120300519"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          3
+        ]
+      ]
+    },
+    "references-count": 108,
+    "alternative-id": [
+      "S1742706120300519"
+    ],
+    "URL": "https://doi.org/10.1016/j.actbio.2020.01.036",
+    "relation": {},
+    "ISSN": [
+      "1742-7061"
+    ],
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1742-7061"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          2020,
+          3
+        ]
+      ]
+    },
+    "assertion": [
+      {
+        "value": "Elsevier",
+        "name": "publisher",
+        "label": "This article is maintained by"
+      },
+      {
+        "value": "Cell membrane-camouflaged nanoparticles as drug carriers for cancer therapy",
+        "name": "articletitle",
+        "label": "Article Title"
+      },
+      {
+        "value": "Acta Biomaterialia",
+        "name": "journaltitle",
+        "label": "Journal Title"
+      },
+      {
+        "value": "https://doi.org/10.1016/j.actbio.2020.01.036",
+        "name": "articlelink",
+        "label": "CrossRef DOI link to publisher maintained version"
+      },
+      {
+        "value": "article",
+        "name": "content_type",
+        "label": "Content Type"
+      },
+      {
+        "value": "© 2020 Acta Materialia Inc. Published by Elsevier Ltd. All rights reserved.",
+        "name": "copyright",
+        "label": "Copyright"
+      }
+    ]
+  }
+}

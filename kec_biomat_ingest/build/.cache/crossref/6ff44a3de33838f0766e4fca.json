@@ -1,0 +1,1621 @@
+{
+  "status": "ok",
+  "message-type": "work",
+  "message-version": "1.0.0",
+  "message": {
+    "indexed": {
+      "date-parts": [
+        [
+          2025,
+          9,
+          18
+        ]
+      ],
+      "date-time": "2025-09-18T05:46:39Z",
+      "timestamp": 1758174399368,
+      "version": "3.41.2"
+    },
+    "reference-count": 130,
+    "publisher": "Frontiers Media SA",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              2024,
+              11,
+              12
+            ]
+          ],
+          "date-time": "2024-11-12T00:00:00Z",
+          "timestamp": 1731369600000
+        },
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "URL": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "funder": [
+      {
+        "DOI": "10.13039/501100004561",
+        "name": "Ministry of Education and Science of the Republic of Kazakhstan",
+        "doi-asserted-by": "publisher",
+        "award": [
+          "AP14869460 AP13067719"
+        ],
+        "id": [
+          {
+            "id": "10.13039/501100004561",
+            "id-type": "DOI",
+            "asserted-by": "publisher"
+          }
+        ]
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "frontiersin.org"
+      ],
+      "crossmark-restriction": true
+    },
+    "short-container-title": [
+      "Front. Bioeng. Biotechnol."
+    ],
+    "abstract": "<jats:p>Scaffold porosity is a critical factor in replicating the complex <jats:italic>in vivo</jats:italic> microenvironment, directly influencing cellular interactions, migration, nutrient transfer, vascularization, and the formation of functional tissues. For optimal tissue formation, scaffold design must account for various parameters, including material composition, morphology, mechanical properties, and cellular compatibility. This review highlights the importance of interconnected porosity and pore size, emphasizing their impact on cellular behavior and tissue formation across several tissue engineering domains, such as skin, bone, cardiovascular, and lung tissues. Specific pore size ranges enhance scaffold functionality for different tissues: small pores (∼1–2 µm) aid epidermal cell attachment in skin regeneration, moderate pores (∼2–12 µm) support dermal migration, and larger pores (∼40–100 µm) facilitate vascular structures. For bone tissue engineering, multi-layered scaffolds with smaller pores (50–100 µm) foster cell attachment, while larger pores (200–400 µm) enhance nutrient diffusion and angiogenesis. Cardiovascular and lung tissues benefit from moderate pore sizes (∼25–60 µm) to balance cell integration and nutrient diffusion. By addressing critical design challenges and optimizing pore size distributions, this review provides insights into scaffold innovations, ultimately advancing tissue regeneration strategies.</jats:p>",
+    "DOI": "10.3389/fbioe.2024.1444986",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          12
+        ]
+      ],
+      "date-time": "2024-11-12T04:42:15Z",
+      "timestamp": 1731386535000
+    },
+    "update-policy": "https://doi.org/10.3389/crossmark-policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 81,
+    "title": [
+      "Optimizing scaffold pore size for tissue engineering: insights across various tissue types"
+    ],
+    "prefix": "10.3389",
+    "volume": "12",
+    "author": [
+      {
+        "given": "Fariza",
+        "family": "Mukasheva",
+        "sequence": "first",
+        "affiliation": []
+      },
+      {
+        "given": "Laura",
+        "family": "Adilova",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Aibek",
+        "family": "Dyussenbinov",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Bota",
+        "family": "Yernaimanova",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Madi",
+        "family": "Abilev",
+        "sequence": "additional",
+        "affiliation": []
+      },
+      {
+        "given": "Dana",
+        "family": "Akilbekova",
+        "sequence": "additional",
+        "affiliation": []
+      }
+    ],
+    "member": "1965",
+    "published-online": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          12
+        ]
+      ]
+    },
+    "reference": [
+      {
+        "key": "B1",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1016/j.jsamd.2020.01.007",
+        "article-title": "Porous scaffolds for bone regeneration",
+        "volume": "5",
+        "author": "Abbasi",
+        "year": "2020",
+        "journal-title": "J. Sci. Adv. Mater. Devices"
+      },
+      {
+        "key": "B2",
+        "doi-asserted-by": "publisher",
+        "first-page": "306",
+        "DOI": "10.3390/pharmaceutics14020306",
+        "article-title": "Conventional and recent trends of scaffolds fabrication: a superior mode for tissue engineering",
+        "volume": "14",
+        "author": "Adel",
+        "year": "2022",
+        "journal-title": "Pharmaceutics"
+      },
+      {
+        "key": "B3",
+        "doi-asserted-by": "publisher",
+        "first-page": "3991",
+        "DOI": "10.1016/j.biomaterials.2003.10.086",
+        "article-title": "Microcellular polyHIPE polymer supports osteoblast growth and bone formation in vitro",
+        "volume": "25",
+        "author": "Akay",
+        "year": "2004",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B4",
+        "doi-asserted-by": "publisher",
+        "first-page": "539",
+        "DOI": "10.1007/s10103-017-2398-0",
+        "article-title": "The effect of polarized light on the organization of collagen secreted by fibroblasts",
+        "volume": "33",
+        "author": "Akilbekova",
+        "year": "2018",
+        "journal-title": "Lasers Med. Sci."
+      },
+      {
+        "key": "B5",
+        "doi-asserted-by": "crossref",
+        "first-page": "91",
+        "DOI": "10.1016/B978-0-08-100717-4.00004-1",
+        "article-title": "Patient specific in situ 3D printing",
+        "volume-title": "3D Printing in medicine",
+        "author": "Akilbekova",
+        "year": "2017"
+      },
+      {
+        "key": "B6",
+        "doi-asserted-by": "crossref",
+        "first-page": "149",
+        "DOI": "10.1016/B978-0-323-89831-7.00003-1",
+        "article-title": "Patient-specific 3D bioprinting for in situ tissue engineering and regenerative medicine",
+        "volume-title": "3D Printing in medicine",
+        "author": "Akilbekova",
+        "year": "2023"
+      },
+      {
+        "key": "B7",
+        "doi-asserted-by": "publisher",
+        "first-page": "113",
+        "DOI": "10.3390/cryst13010113",
+        "article-title": "Effects of pore size parameters of titanium additively manufactured lattice structures on the osseointegration process in orthopedic applications: a comprehensive review",
+        "volume": "13",
+        "author": "Alkentar",
+        "year": "2022",
+        "journal-title": "Crystals"
+      },
+      {
+        "key": "B8",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1016/j.bprint.2017.04.001",
+        "article-title": "Simulation of cortico-cancellous bone structure by 3D printing of bilayer calcium phosphate-based scaffolds",
+        "volume": "6",
+        "author": "Almela",
+        "year": "2017",
+        "journal-title": "Bioprinting"
+      },
+      {
+        "key": "B9",
+        "doi-asserted-by": "publisher",
+        "first-page": "L510",
+        "DOI": "10.1152/ajplung.00175.2006",
+        "article-title": "Cell-based tissue engineering for lung regeneration",
+        "volume": "292",
+        "author": "Andrade",
+        "year": "2007",
+        "journal-title": "Am. J. Physiology-lung Cell. Mol. Physiology"
+      },
+      {
+        "key": "B10",
+        "doi-asserted-by": "publisher",
+        "first-page": "1312",
+        "DOI": "10.1089/ten.tea.2020.0172",
+        "article-title": "ElectroSpun ZNO/POly(Vinylidene Fluoride-Trifluoroethylene) scaffolds for lung tissue engineering",
+        "volume": "26",
+        "author": "Azimi",
+        "year": "2020",
+        "journal-title": "Tissue Eng. Part A"
+      },
+      {
+        "key": "B11",
+        "doi-asserted-by": "publisher",
+        "first-page": "131",
+        "DOI": "10.1016/j.msec.2016.02.056",
+        "article-title": "Electrically conductive gold nanoparticle-chitosan thermosensitive hydrogels for cardiac tissue engineering",
+        "volume": "63",
+        "author": "Baei",
+        "year": "2016",
+        "journal-title": "C, Mater. Biol. Appl."
+      },
+      {
+        "key": "B12",
+        "doi-asserted-by": "publisher",
+        "first-page": "74",
+        "DOI": "10.1177/0885328219839037",
+        "article-title": "Three-dimensional graphene foam as a conductive scaffold for cardiac tissue engineering",
+        "volume": "34",
+        "author": "Bahrami",
+        "year": "2019",
+        "journal-title": "J. Biomaterials Appl."
+      },
+      {
+        "key": "B13",
+        "doi-asserted-by": "publisher",
+        "first-page": "110",
+        "DOI": "10.1186/s12938-018-0543-z",
+        "article-title": "Note on the use of different approaches to determine the pore sizes of tissue engineering scaffolds: what do we measure?",
+        "volume": "17",
+        "author": "Bartoš",
+        "year": "2018",
+        "journal-title": "Biomed. Eng. OnLine"
+      },
+      {
+        "key": "B14",
+        "doi-asserted-by": "publisher",
+        "first-page": "1468",
+        "DOI": "10.1089/ten.tea.2017.0449",
+        "article-title": "A Three-Dimensional human Tissue-Engineered lung model to study influenza A infection",
+        "volume": "24",
+        "author": "Bhowmick",
+        "year": "2018",
+        "journal-title": "Tissue Eng. Part A"
+      },
+      {
+        "key": "B15",
+        "doi-asserted-by": "publisher",
+        "first-page": "110143",
+        "DOI": "10.1016/j.msec.2019.110143",
+        "article-title": "Poly-l-arginine modifications alter the organization and secretion of collagen in SKH1-E mice",
+        "volume": "106",
+        "author": "Boddupalli",
+        "year": "2020",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B16",
+        "doi-asserted-by": "publisher",
+        "first-page": "355",
+        "DOI": "10.1007/s10616-015-9895-4",
+        "article-title": "Scaffolds and cells for tissue regeneration: different scaffold pore sizes—different cell effects",
+        "volume": "68",
+        "author": "Bružauskaitė",
+        "year": "2015",
+        "journal-title": "Cytotechnology"
+      },
+      {
+        "key": "B17",
+        "doi-asserted-by": "publisher",
+        "first-page": "1021",
+        "DOI": "10.1080/00914037.2022.2075869",
+        "article-title": "Effect of different pore sizes of 3D printed PLA-based scaffold in bone tissue engineering",
+        "volume": "72",
+        "author": "Büyük",
+        "year": "2022",
+        "journal-title": "Int. J. Polym. Mater."
+      },
+      {
+        "key": "B18",
+        "doi-asserted-by": "publisher",
+        "first-page": "158",
+        "DOI": "10.1016/j.actbio.2022.07.017",
+        "article-title": "Manufacturing of scaffolds with interconnected internal open porosity and surface roughness",
+        "volume": "156",
+        "author": "Calore",
+        "year": "2023",
+        "journal-title": "Acta biomater."
+      },
+      {
+        "key": "B19",
+        "doi-asserted-by": "publisher",
+        "first-page": "1700311",
+        "DOI": "10.1002/adhm.201700311",
+        "article-title": "Melt electrospinning writing of poly-hydroxymethylglycolide-co -ε-Caprolactone-Based scaffolds for cardiac tissue engineering",
+        "volume": "6",
+        "author": "Castilho",
+        "year": "2017",
+        "journal-title": "Adv. Healthc. Mater."
+      },
+      {
+        "key": "B20",
+        "doi-asserted-by": "publisher",
+        "first-page": "872",
+        "DOI": "10.1016/j.msec.2016.07.041",
+        "article-title": "Scaffold microstructure effects on functional and mechanical performance: integration of theoretical and experimental approaches for bone tissue engineering applications",
+        "volume": "68",
+        "author": "Cavo",
+        "year": "2016",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B21",
+        "doi-asserted-by": "publisher",
+        "first-page": "779854",
+        "DOI": "10.3389/fbioe.2021.779854",
+        "article-title": "Analysis of mechanical properties and permeability of trabecular-like porous scaffold by additive manufacturing",
+        "volume": "9",
+        "author": "Chao",
+        "year": "2021",
+        "journal-title": "Front. Bioeng. Biotechnol."
+      },
+      {
+        "key": "B22",
+        "unstructured": "Anatomy, thorax, lungs. StatPearls NCBI bookshelf\n            ChaudhryR.\n            BordoniB.\n          2023"
+      },
+      {
+        "key": "B23",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1016/j.mser.2007.08.001",
+        "article-title": "Biomaterials in cardiac tissue engineering: ten years of research survey",
+        "volume": "59",
+        "author": "Chen",
+        "year": "2008",
+        "journal-title": "Mater. Sci. Eng. R Rep."
+      },
+      {
+        "key": "B24",
+        "doi-asserted-by": "publisher",
+        "first-page": "2584",
+        "DOI": "10.3390/polym13162584",
+        "article-title": "Development of a multi-layer skin substitute using human hair keratinic extract-based hybrid 3D printing",
+        "volume": "13",
+        "author": "Choi",
+        "year": "2021",
+        "journal-title": "Polymers"
+      },
+      {
+        "key": "B25",
+        "doi-asserted-by": "publisher",
+        "first-page": "128146",
+        "DOI": "10.1016/j.cej.2020.128146",
+        "article-title": "Proangiogenic peptide nanofiber hydrogel/3D printed scaffold for dermal regeneration",
+        "volume": "424",
+        "author": "Chu",
+        "year": "2021",
+        "journal-title": "Chem. Eng. J."
+      },
+      {
+        "key": "B26",
+        "doi-asserted-by": "publisher",
+        "first-page": "100028",
+        "DOI": "10.1016/j.mtbio.2019.100028",
+        "article-title": "Printing bone in a gel: using nanocomposite bioink to print functionalised bone scaffolds",
+        "volume": "4",
+        "author": "Cidonio",
+        "year": "2019",
+        "journal-title": "Mater. Today Bio"
+      },
+      {
+        "key": "B27",
+        "doi-asserted-by": "publisher",
+        "first-page": "957",
+        "DOI": "10.1016/j.bone.2006.11.011",
+        "article-title": "Age-dependent change in the 3D structure of cortical porosity at the human femoral midshaft",
+        "volume": "53",
+        "author": "Cooper",
+        "year": "2013",
+        "journal-title": "Bone"
+      },
+      {
+        "key": "B28",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1109/nebec.2014.6972763",
+        "article-title": "Vascular perfusion of implanted human engineered cardiac tissue",
+        "volume": "2014",
+        "author": "Coulombe",
+        "year": "2014",
+        "journal-title": "Proc. IEEE . Annu. Northeast Bioeng. Conf."
+      },
+      {
+        "key": "B29",
+        "doi-asserted-by": "crossref",
+        "DOI": "10.1515/9781400849505",
+        "volume-title": "Bones: structure and mechanics",
+        "author": "Currey",
+        "year": "2002"
+      },
+      {
+        "key": "B30",
+        "doi-asserted-by": "publisher",
+        "first-page": "110078",
+        "DOI": "10.1016/j.msec.2019.110078",
+        "article-title": "Interactions at scaffold interfaces: effect of surface chemistry, structural attributes and bioaffinity",
+        "volume": "105",
+        "author": "Dave",
+        "year": "2019",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B31",
+        "doi-asserted-by": "publisher",
+        "first-page": "8",
+        "DOI": "10.1016/j.msec.2018.03.021",
+        "article-title": "Strontium-modified chitosan/montmorillonite composites as bone tissue engineering scaffold",
+        "volume": "89",
+        "author": "Demir",
+        "year": "2018",
+        "journal-title": "Mater. Sci. and Eng. C. Mater. Biol. Appl."
+      },
+      {
+        "key": "B32",
+        "doi-asserted-by": "publisher",
+        "first-page": "045007",
+        "DOI": "10.1088/1758-5090/8/4/045007",
+        "article-title": "Toward mimicking the bone structure: design of novel hierarchical scaffolds with a tailored radial porosity gradient",
+        "volume": "8",
+        "author": "Di Luca",
+        "year": "2016",
+        "journal-title": "Biofabrication"
+      },
+      {
+        "key": "B33",
+        "doi-asserted-by": "publisher",
+        "first-page": "119757",
+        "DOI": "10.1016/j.biomaterials.2020.119757",
+        "article-title": "Human lung organoids develop into adult airway-like structures directed by physico-chemical biomaterial properties",
+        "volume": "234",
+        "author": "Dye",
+        "year": "2020",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B34",
+        "doi-asserted-by": "publisher",
+        "first-page": "045013",
+        "DOI": "10.1088/1758-5090/ac88a1",
+        "article-title": "Scaffold microarchitecture regulates angiogenesis and the regeneration of large bone defects",
+        "volume": "14",
+        "author": "Eichholz",
+        "year": "2022",
+        "journal-title": "Biofabrication"
+      },
+      {
+        "key": "B35",
+        "doi-asserted-by": "publisher",
+        "first-page": "45",
+        "DOI": "10.1038/nrrheum.2014.164",
+        "article-title": "Fracture healing: mechanisms and interventions",
+        "volume": "11",
+        "author": "Einhorn",
+        "year": "2015",
+        "journal-title": "Nat. Rev. Rheumatol."
+      },
+      {
+        "key": "B36",
+        "doi-asserted-by": "publisher",
+        "first-page": "112628",
+        "DOI": "10.1016/j.msec.2021.112628",
+        "article-title": "Fabrication of heparinized small diameter TPU/PCL Bi-layered artificial blood vessels and in vivo assessment in a rabbit carotid artery replacement model",
+        "volume": "133",
+        "author": "Fang",
+        "year": "2022",
+        "journal-title": "Biomater. Adv."
+      },
+      {
+        "key": "B37",
+        "doi-asserted-by": "publisher",
+        "first-page": "100075",
+        "DOI": "10.1016/j.bea.2023.100075",
+        "article-title": "3D bio-printing for use as bone replacement tissues: a review of biomedical application",
+        "volume": "5",
+        "author": "Farazin",
+        "year": "2023",
+        "journal-title": "Biomed. Eng. Adv."
+      },
+      {
+        "key": "B38",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1021/acsabm.2c00740",
+        "article-title": "Review on porous scaffolds generation process: a tissue engineering approach",
+        "volume": "6",
+        "author": "Flores-Jiménez",
+        "year": "2023",
+        "journal-title": "ACS Appl. Bio Mater."
+      },
+      {
+        "key": "B39",
+        "doi-asserted-by": "publisher",
+        "first-page": "109470",
+        "DOI": "10.1016/j.compositesb.2021.109470",
+        "article-title": "Bionic tracheal tissue regeneration using a ring-shaped scaffold comprised of decellularized cartilaginous matrix and silk fibroin",
+        "volume": "229",
+        "author": "Gao",
+        "year": "2022",
+        "journal-title": "Compos. Part B Eng."
+      },
+      {
+        "key": "B40",
+        "doi-asserted-by": "publisher",
+        "first-page": "660",
+        "DOI": "10.1016/j.msec.2019.03.101",
+        "article-title": "Development of a solvent-free polylactide/calcium carbonate composite for selective laser sintering of bone tissue engineering scaffolds",
+        "volume": "101",
+        "author": "Gayer",
+        "year": "2019",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B41",
+        "doi-asserted-by": "publisher",
+        "first-page": "199",
+        "DOI": "10.1016/0034-5687(80)90052-3",
+        "article-title": "Morphometric estimation of pulmonary diffusion capacity in two horse lungs",
+        "volume": "41",
+        "author": "Gehr",
+        "year": "1980",
+        "journal-title": "Respir. Physiol."
+      },
+      {
+        "key": "B42",
+        "doi-asserted-by": "publisher",
+        "first-page": "887",
+        "DOI": "10.1002/jbm.a.36289",
+        "article-title": "Characterization of printed PLA scaffolds for bone tissue engineering",
+        "volume": "106",
+        "author": "Grémare",
+        "year": "2017",
+        "journal-title": "J. Biomed. Mater Res. A"
+      },
+      {
+        "key": "B43",
+        "doi-asserted-by": "publisher",
+        "first-page": "415",
+        "DOI": "10.1007/s13770-019-00192-0",
+        "article-title": "Three-dimensional printed Mg-doped β-TCP bone tissue engineering scaffolds: effects of magnesium ion concentration on osteogenesis and angiogenesis in vitro",
+        "volume": "16",
+        "author": "Gu",
+        "year": "2019",
+        "journal-title": "Tissue Eng. Regen. Med."
+      },
+      {
+        "key": "B44",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "DOI": "10.1016/j.actbio.2018.10.016",
+        "article-title": "Pore size directs bone marrow stromal cell fate and tissue regeneration in nanofibrous macroporous scaffolds by mediating vascularization",
+        "volume": "82",
+        "author": "Gupte",
+        "year": "2018",
+        "journal-title": "Acta Biomater."
+      },
+      {
+        "key": "B45",
+        "doi-asserted-by": "publisher",
+        "first-page": "216",
+        "DOI": "10.4248/BR201303002",
+        "article-title": "Bone regeneration based on tissue engineering conceptions - a 21st century perspective",
+        "volume": "1",
+        "author": "Henkel",
+        "year": "2013",
+        "journal-title": "Bone Res."
+      },
+      {
+        "key": "B46",
+        "doi-asserted-by": "publisher",
+        "first-page": "801",
+        "DOI": "10.1183/09031936.98.11040801",
+        "article-title": "Pneumoproteinaemia: a new perspective in the assessment of lung disorders",
+        "volume": "11",
+        "author": "Hermans",
+        "year": "1998",
+        "journal-title": "Eur. Respir. J."
+      },
+      {
+        "key": "B47",
+        "doi-asserted-by": "publisher",
+        "first-page": "e2102087",
+        "DOI": "10.1002/adhm.202102087",
+        "article-title": "Medical applications of porous biomaterials: features of porosity and tissue-specific implications for biocompatibility",
+        "volume": "11",
+        "author": "Hernandez",
+        "year": "2022",
+        "journal-title": "Adv. Healthc. Mater"
+      },
+      {
+        "key": "B48",
+        "doi-asserted-by": "publisher",
+        "first-page": "3445",
+        "DOI": "10.1098/rsta.2009.0091",
+        "article-title": "Constitutive modelling of passive myocardium: a structurally based framework for material characterization",
+        "volume": "367",
+        "author": "Holzapfel",
+        "year": "2009",
+        "journal-title": "Philosophical Trans. R. Soc. A Math. Phys. Eng. Sci."
+      },
+      {
+        "key": "B49",
+        "doi-asserted-by": "publisher",
+        "first-page": "1138",
+        "DOI": "10.3390/ma3021138",
+        "article-title": "Bone substitute fabrication based on dissolution-precipitation reactions",
+        "volume": "3",
+        "author": "Ishikawa",
+        "year": "2010",
+        "journal-title": "Materials"
+      },
+      {
+        "key": "B50",
+        "doi-asserted-by": "publisher",
+        "first-page": "57",
+        "DOI": "10.1016/j.coche.2014.11.004",
+        "article-title": "Human cardiac tissue engineering: from pluripotent stem cells to heart repair",
+        "volume": "7",
+        "author": "Jackman",
+        "year": "2015",
+        "journal-title": "Curr. Opin. Chem. Eng."
+      },
+      {
+        "key": "B51",
+        "doi-asserted-by": "publisher",
+        "first-page": "431",
+        "DOI": "10.1002/jbm.b.33547",
+        "article-title": "Polymeric scaffolds in tissue engineering: a literature review",
+        "volume": "105",
+        "author": "Jafari",
+        "year": "2017",
+        "journal-title": "J. Biomed. Mater. Res. Part B Appl. biomaterials"
+      },
+      {
+        "key": "B52",
+        "doi-asserted-by": "publisher",
+        "first-page": "035013",
+        "DOI": "10.1088/1758-5090/ac6c4c",
+        "article-title": "Manufacturing of self-standing multi-layered 3D-bioprinted alginate-hyaluronate constructs by controlling the cross-linking mechanisms for tissue engineering applications",
+        "volume": "14",
+        "author": "Janarthanan",
+        "year": "2022",
+        "journal-title": "Biofabrication"
+      },
+      {
+        "key": "B53",
+        "doi-asserted-by": "publisher",
+        "first-page": "1954",
+        "DOI": "10.1016/j.jma.2021.02.001",
+        "article-title": "Exploring the interconnectivity of biomimetic hierarchical porous Mg scaffolds for bone tissue engineering: effects of pore size distribution on mechanical properties, degradation behavior and cell migration ability",
+        "volume": "9",
+        "author": "Jia",
+        "year": "2021",
+        "journal-title": "J. Magnesium Alloys"
+      },
+      {
+        "key": "B54",
+        "doi-asserted-by": "publisher",
+        "first-page": "125",
+        "DOI": "10.1016/j.physa.2004.03.046",
+        "article-title": "Three-dimensional analysis of cortical bone structure using X-ray micro-computed tomography",
+        "volume": "339",
+        "author": "Jones",
+        "year": "2004",
+        "journal-title": "Phys. A Stat. Mech. its Appl."
+      },
+      {
+        "key": "B55",
+        "doi-asserted-by": "publisher",
+        "first-page": "022002",
+        "DOI": "10.1088/1758-5090/ad1e6f",
+        "article-title": "4D printed shape-shifting biomaterials for tissue engineering and regenerative medicine applications",
+        "volume": "16",
+        "author": "Kalogeropoulou",
+        "year": "2024",
+        "journal-title": "Biofabrication"
+      },
+      {
+        "key": "B56",
+        "doi-asserted-by": "publisher",
+        "first-page": "5474",
+        "DOI": "10.1016/j.biomaterials.2005.02.002",
+        "article-title": "Porosity of 3D biomaterial scaffolds and osteogenesis",
+        "volume": "26",
+        "author": "Karageorgiou",
+        "year": "2005",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B57",
+        "doi-asserted-by": "publisher",
+        "first-page": "1764",
+        "DOI": "10.1080/09205063.2018.1498718",
+        "article-title": "A bilayer scaffold prepared from collagen and carboxymethyl cellulose for skin tissue engineering applications",
+        "volume": "29",
+        "author": "Kilic Bektas",
+        "year": "2018",
+        "journal-title": "J. biomaterials Sci."
+      },
+      {
+        "key": "B58",
+        "doi-asserted-by": "publisher",
+        "first-page": "147",
+        "DOI": "10.1007/s40883-020-00166-y",
+        "article-title": "Recent advancements and associated challenges of scaffold fabrication techniques in tissue engineering applications",
+        "volume": "7",
+        "author": "Koyyada",
+        "year": "2021",
+        "journal-title": "Regen. Eng. Transl. Med."
+      },
+      {
+        "key": "B59",
+        "doi-asserted-by": "publisher",
+        "first-page": "190",
+        "DOI": "10.1002/(sici)1097-4636(199802)39:2<190::aid-jbm4>3.0.co;2-k",
+        "article-title": "BMP-induced osteogenesis on the surface of hydroxyapatite with geometrically feasible and nonfeasible structures: topology of osteogenesis",
+        "volume": "39",
+        "author": "Kuboki",
+        "year": "1998",
+        "journal-title": "J. Biomed. Mater. Res."
+      },
+      {
+        "key": "B60",
+        "doi-asserted-by": "publisher",
+        "first-page": "2726",
+        "DOI": "10.1021/acsabm.2c00200",
+        "article-title": "Design and fabrication of a dual protein-based trilayered nanofibrous scaffold for efficient wound healing",
+        "volume": "5",
+        "author": "Kumar",
+        "year": "2022",
+        "journal-title": "ACS Appl. Bio Mater."
+      },
+      {
+        "key": "B61",
+        "doi-asserted-by": "publisher",
+        "first-page": "269",
+        "DOI": "10.1016/j.cej.2019.01.015",
+        "article-title": "3D printed PCL/SrHA scaffold for enhanced bone regeneration",
+        "volume": "362",
+        "author": "Liu",
+        "year": "2019",
+        "journal-title": "Chem. Eng. J."
+      },
+      {
+        "key": "B62",
+        "doi-asserted-by": "publisher",
+        "first-page": "167",
+        "DOI": "10.1002/cben.202200043",
+        "article-title": "Definition of pore size in 3D-printed porous implants: a review",
+        "volume": "10",
+        "author": "Liu",
+        "year": "2023",
+        "journal-title": "ChemBioEng Rev."
+      },
+      {
+        "key": "B63",
+        "doi-asserted-by": "publisher",
+        "first-page": "500",
+        "DOI": "10.1016/j.msec.2017.08.042",
+        "article-title": "Cardiomyocyte coculture on layered fibrous scaffolds assembled from micropatterned electrospun mats",
+        "volume": "81",
+        "author": "Liu",
+        "year": "2017",
+        "journal-title": "C, Mater. Biol. Appl."
+      },
+      {
+        "key": "B64",
+        "doi-asserted-by": "publisher",
+        "first-page": "e2104299",
+        "DOI": "10.1002/advs.202104299",
+        "article-title": "hESCs-derived early vascular cell spheroids for cardiac tissue vascular engineering and myocardial infarction treatment",
+        "volume": "9",
+        "author": "Liu",
+        "year": "2022",
+        "journal-title": "Adv. Sci. Weinheim, Baden-Wurttemberg, Ger."
+      },
+      {
+        "key": "B65",
+        "doi-asserted-by": "publisher",
+        "first-page": "485",
+        "DOI": "10.1089/ten.teb.2012.0437",
+        "article-title": "Three-dimensional scaffolds for tissue engineering applications: role of porosity and pore size",
+        "volume": "19",
+        "author": "Loh",
+        "year": "2013",
+        "journal-title": "Tissue Eng. Part B Rev."
+      },
+      {
+        "key": "B66",
+        "doi-asserted-by": "publisher",
+        "first-page": "119",
+        "DOI": "10.1016/j.bone.2016.02.020",
+        "article-title": "Inflammation, fracture and bone repair",
+        "volume": "86",
+        "author": "Loi",
+        "year": "2016",
+        "journal-title": "Bone"
+      },
+      {
+        "key": "B67",
+        "doi-asserted-by": "publisher",
+        "first-page": "602",
+        "DOI": "10.3390/pharmaceutics12070602",
+        "article-title": "The overview of porous, bioactive scaffolds as instructive biomaterials for tissue regeneration and their clinical translation",
+        "volume": "12",
+        "author": "Lutzweiler",
+        "year": "2020",
+        "journal-title": "Pharmaceutics"
+      },
+      {
+        "key": "B68",
+        "doi-asserted-by": "publisher",
+        "first-page": "15211",
+        "DOI": "10.1073/pnas.1006442107",
+        "article-title": "Proangiogenic scaffolds as functional templates for cardiac tissue engineering",
+        "volume": "107",
+        "author": "Madden",
+        "year": "2010",
+        "journal-title": "Proc. Natl. Acad. Sci. U. S. A."
+      },
+      {
+        "key": "B69",
+        "doi-asserted-by": "publisher",
+        "first-page": "2153",
+        "DOI": "10.1089/ten.2006.0417",
+        "article-title": "The roles of hypoxia in the in vitro engineering of tissues",
+        "volume": "13",
+        "author": "Malda",
+        "year": "2007",
+        "journal-title": "Tissue Eng."
+      },
+      {
+        "key": "B70",
+        "doi-asserted-by": "publisher",
+        "first-page": "3766",
+        "DOI": "10.1016/j.biomaterials.2014.01.026",
+        "article-title": "A porous tissue engineering scaffold selectively degraded by cell-generated reactive oxygen species",
+        "volume": "35",
+        "author": "Martin",
+        "year": "2014",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B71",
+        "doi-asserted-by": "publisher",
+        "first-page": "635",
+        "DOI": "10.1021/bm401679q",
+        "article-title": "Electrically conductive chitosan/carbon scaffolds for cardiac tissue engineering",
+        "volume": "15",
+        "author": "Martins",
+        "year": "2014",
+        "journal-title": "Biomacromolecules"
+      },
+      {
+        "key": "B72",
+        "doi-asserted-by": "publisher",
+        "first-page": "6716",
+        "DOI": "10.1038/srep06716",
+        "article-title": "Human iPS cell-engineered cardiac tissue sheets with cardiomyocytes and vascular cells for cardiac regeneration",
+        "volume": "4",
+        "author": "Masumoto",
+        "year": "2014",
+        "journal-title": "Sci. Rep."
+      },
+      {
+        "key": "B73",
+        "doi-asserted-by": "publisher",
+        "first-page": "659",
+        "DOI": "10.1038/s41569-018-0013-0",
+        "article-title": "Cell therapy trials for heart regeneration - lessons learned and future directions",
+        "volume": "15",
+        "author": "Menasché",
+        "year": "2018",
+        "journal-title": "Nat. Rev. Cardiol."
+      },
+      {
+        "key": "B74",
+        "doi-asserted-by": "publisher",
+        "first-page": "130",
+        "DOI": "10.1016/j.msec.2017.08.064",
+        "article-title": "Polyurethane foam/nano hydroxyapatite composite as a suitable scaffold for bone tissue regeneration",
+        "volume": "82",
+        "author": "Meskinfam",
+        "year": "2018",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B75",
+        "doi-asserted-by": "publisher",
+        "first-page": "617141",
+        "DOI": "10.3389/fbioe.2021.617141",
+        "article-title": "Design challenges in polymeric scaffolds for tissue engineering",
+        "volume": "9",
+        "author": "Molina",
+        "year": "2021",
+        "journal-title": "Front. Bioeng. Biotechnol."
+      },
+      {
+        "key": "B76",
+        "doi-asserted-by": "publisher",
+        "first-page": "e00341",
+        "DOI": "10.1016/j.bprint.2024.e00341",
+        "article-title": "Design and characterization of 3D printed pore gradient hydrogel scaffold for bone tissue engineering",
+        "volume": "39",
+        "author": "Mukasheva",
+        "year": "2024",
+        "journal-title": "Bioprinting"
+      },
+      {
+        "key": "B77",
+        "doi-asserted-by": "publisher",
+        "first-page": "461",
+        "DOI": "10.1016/j.biomaterials.2009.09.063",
+        "article-title": "The effect of mean pore size on cell attachment, proliferation and migration in collagen–glycosaminoglycan scaffolds for bone tissue engineering",
+        "volume": "31",
+        "author": "Murphy",
+        "year": "2010",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B78",
+        "doi-asserted-by": "publisher",
+        "first-page": "377",
+        "DOI": "10.4161/cam.4.3.11747",
+        "article-title": "Understanding the effect of mean pore size on cell activity in collagen-glycosaminoglycan scaffolds",
+        "volume": "4",
+        "author": "Murphy",
+        "year": "2010",
+        "journal-title": "Cell. Adhesion and Migr."
+      },
+      {
+        "key": "B79",
+        "doi-asserted-by": "publisher",
+        "first-page": "133",
+        "DOI": "10.1016/j.actbio.2016.05.027",
+        "article-title": "Gold nanorod-incorporated gelatin-based conductive hydrogels for engineering cardiac tissue constructs",
+        "volume": "41",
+        "author": "Navaei",
+        "year": "2016",
+        "journal-title": "Acta Biomater."
+      },
+      {
+        "key": "B80",
+        "doi-asserted-by": "publisher",
+        "first-page": "441",
+        "DOI": "10.1016/j.actbio.2021.08.036",
+        "article-title": "A viscoelastic model for human myocardium",
+        "volume": "135",
+        "author": "Nordsletten",
+        "year": "2021",
+        "journal-title": "Acta Biomater."
+      },
+      {
+        "key": "B81",
+        "doi-asserted-by": "publisher",
+        "first-page": "433",
+        "DOI": "10.1016/j.biomaterials.2004.02.052",
+        "article-title": "The effect of pore size on cell adhesion in collagen-GAG scaffolds",
+        "volume": "26",
+        "author": "O'Brien",
+        "year": "2005",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B82",
+        "doi-asserted-by": "publisher",
+        "first-page": "111",
+        "DOI": "10.1016/j.biomaterials.2016.01.065",
+        "article-title": "The development of a tissue-engineered tracheobronchial epithelial model using a bilayered collagen-hyaluronate scaffold",
+        "volume": "85",
+        "author": "O’Leary",
+        "year": "2016",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B83",
+        "doi-asserted-by": "publisher",
+        "first-page": "876",
+        "DOI": "10.1177/0885328218811040",
+        "article-title": "Osteoconductive 3D porous composite scaffold from regenerated cellulose and cuttlebone-derived hydroxyapatite",
+        "volume": "33",
+        "author": "Palaveniene",
+        "year": "2019",
+        "journal-title": "J. biomaterials Appl."
+      },
+      {
+        "key": "B84",
+        "doi-asserted-by": "publisher",
+        "first-page": "1131",
+        "DOI": "10.1080/21691401.2018.1533844",
+        "article-title": "An omentum-cultured 3D-printed artificial trachea: in vivo bioreactor",
+        "volume": "46",
+        "author": "Park",
+        "year": "",
+        "journal-title": "Artif. Cells Nanomedicine Biotechnol."
+      },
+      {
+        "key": "B85",
+        "doi-asserted-by": "publisher",
+        "first-page": "415",
+        "DOI": "10.1007/s13770-018-0136-8",
+        "article-title": "A 4-Axis technique for Three-Dimensional printing of an artificial trachea",
+        "volume": "15",
+        "author": "Park",
+        "year": "",
+        "journal-title": "Tissue Eng. Regen. Med."
+      },
+      {
+        "key": "B86",
+        "doi-asserted-by": "publisher",
+        "first-page": "922",
+        "DOI": "10.1016/j.msec.2015.12.087",
+        "article-title": "Role of pore size and morphology in musculo-skeletal tissue regeneration",
+        "volume": "61",
+        "author": "Perez",
+        "year": "2016",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B87",
+        "doi-asserted-by": "publisher",
+        "first-page": "75",
+        "DOI": "10.1016/j.yjmcc.2023.07.009",
+        "article-title": "Cardiac regeneration–Past advancements, current challenges, and future directions",
+        "volume": "182",
+        "author": "Pezhouman",
+        "year": "2023",
+        "journal-title": "J. Mol. Cell. Cardiol."
+      },
+      {
+        "key": "B88",
+        "doi-asserted-by": "publisher",
+        "first-page": "2796",
+        "DOI": "10.1021/bm060680j",
+        "article-title": "Electrospun poly(ε-caprolactone) microfiber and multilayer nanofiber/microfiber Scaffolds: characterization of scaffolds and measurement of cellular infiltration",
+        "volume": "7",
+        "author": "Pham",
+        "year": "2006",
+        "journal-title": "Biomacromolecules"
+      },
+      {
+        "key": "B89",
+        "doi-asserted-by": "publisher",
+        "first-page": "5630",
+        "DOI": "10.1016/j.actbio.2012.10.032",
+        "article-title": "A multilayered scaffold of a chitosan and gelatin hydrogel supported by a PCL core for cardiac tissue engineering",
+        "volume": "9",
+        "author": "Pok",
+        "year": "2013",
+        "journal-title": "Acta Biomater."
+      },
+      {
+        "key": "B90",
+        "doi-asserted-by": "publisher",
+        "first-page": "e00123",
+        "DOI": "10.1016/j.bprint.2020.e00123",
+        "article-title": "Optimized construction of a full thickness human skin equivalent using 3D bioprinting and a PCL/collagen dermal scaffold",
+        "volume": "21",
+        "author": "Ramasamy",
+        "year": "2021",
+        "journal-title": "Bioprinting"
+      },
+      {
+        "key": "B91",
+        "doi-asserted-by": "publisher",
+        "first-page": "434",
+        "DOI": "10.1016/j.tibtech.2008.04.009",
+        "article-title": "Vascularization in tissue engineering",
+        "volume": "26",
+        "author": "Rouwkema",
+        "year": "2008",
+        "journal-title": "Trends Biotechnol."
+      },
+      {
+        "key": "B92",
+        "doi-asserted-by": "publisher",
+        "first-page": "8425",
+        "DOI": "10.1016/j.ceramint.2015.03.044",
+        "article-title": "Mechanical properties of porous ceramic scaffolds: influence of internal dimensions",
+        "volume": "41",
+        "author": "Sabree",
+        "year": "2015",
+        "journal-title": "Ceram. Int."
+      },
+      {
+        "key": "B93",
+        "doi-asserted-by": "publisher",
+        "first-page": "63",
+        "DOI": "10.1016/j.ijbiomac.2019.03.208",
+        "article-title": "Tough, hybrid chondroitin sulfate nanofibers as a promising scaffold for skin tissue engineering",
+        "volume": "132",
+        "author": "Sadeghi",
+        "year": "2019",
+        "journal-title": "Int. J. Biol. Macromol."
+      },
+      {
+        "key": "B94",
+        "doi-asserted-by": "publisher",
+        "first-page": "280",
+        "DOI": "10.1016/j.msec.2018.04.080",
+        "article-title": "Mechanical, material, and biological study of a PCL/bioactive glass bone scaffold: importance of viscoelasticity",
+        "volume": "90",
+        "author": "Shahin-Shamsabadi",
+        "year": "2018",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B95",
+        "doi-asserted-by": "publisher",
+        "first-page": "1011800",
+        "DOI": "10.3389/fbioe.2022.1011800",
+        "article-title": "Bioengineering lungs: an overview of current methods, requirements, and challenges for constructing scaffolds",
+        "volume": "10",
+        "author": "Shakir",
+        "year": "2022",
+        "journal-title": "Front. Bioeng. Biotechnol."
+      },
+      {
+        "key": "B96",
+        "doi-asserted-by": "publisher",
+        "first-page": "e2300670",
+        "DOI": "10.1002/advs.202300670",
+        "article-title": "Dynamic stimulations with bioengineered extracellular matrix-mimicking hydrogels for mechano cell reprogramming and therapy",
+        "volume": "10",
+        "author": "Shou",
+        "year": "2023",
+        "journal-title": "Adv. Sci. Weinheim, Baden-Wurttemberg, Ger."
+      },
+      {
+        "key": "B97",
+        "doi-asserted-by": "publisher",
+        "first-page": "829",
+        "DOI": "10.1016/S0021-9290(02)00021-0",
+        "article-title": "Estimation of the poroelastic parameters of cortical bone",
+        "volume": "35",
+        "author": "Smit",
+        "year": "2002",
+        "journal-title": "J. Biomechanics"
+      },
+      {
+        "key": "B98",
+        "doi-asserted-by": "publisher",
+        "first-page": "1836",
+        "DOI": "10.3390/ma13081836",
+        "article-title": "3D-Printing of hierarchically designed and osteoconductive bone tissue engineering scaffolds",
+        "volume": "13",
+        "author": "Söhling",
+        "year": "2020",
+        "journal-title": "Mater. (Basel)"
+      },
+      {
+        "key": "B99",
+        "doi-asserted-by": "publisher",
+        "first-page": "869",
+        "DOI": "10.1080/09205063.2020.1725861",
+        "article-title": "Keratinocytes-hair follicle bulge stem cells-fibroblasts co-cultures on a tri-layer skin equivalent derived from gelatin/PEG methacrylate nanofibers",
+        "volume": "31",
+        "author": "Sumathy",
+        "year": "2020",
+        "journal-title": "J. biomaterials Sci."
+      },
+      {
+        "key": "B100",
+        "doi-asserted-by": "publisher",
+        "first-page": "126360",
+        "DOI": "10.1016/j.ijbiomac.2023.126360",
+        "article-title": "Fabrication and evaluation of a bi-layered gelatin based scaffold with arrayed micro-pits for full-thickness skin construct",
+        "volume": "251",
+        "author": "Sumathy",
+        "year": "2023",
+        "journal-title": "Int. J. Biol. Macromol."
+      },
+      {
+        "key": "B101",
+        "doi-asserted-by": "publisher",
+        "first-page": "025031",
+        "DOI": "10.1088/1758-5090/ab78ee",
+        "article-title": "The preparation of cell-containing microbubble scaffolds to mimic alveoli structure as a 3D drug-screening system for lung cancer",
+        "volume": "12",
+        "author": "Sun",
+        "year": "2020",
+        "journal-title": "Biofabrication"
+      },
+      {
+        "key": "B102",
+        "doi-asserted-by": "publisher",
+        "first-page": "1479",
+        "DOI": "10.3390/ijms22031479",
+        "article-title": "Engineering and assessing cardiac tissue complexity",
+        "volume": "22",
+        "author": "Tadevosyan",
+        "year": "2021",
+        "journal-title": "Int. J. Mol. Sci."
+      },
+      {
+        "key": "B103",
+        "doi-asserted-by": "publisher",
+        "first-page": "389",
+        "DOI": "10.1016/j.ijbiomac.2020.07.134",
+        "article-title": "Cardiac ECM/chitosan/alginate ternary scaffolds for cardiac tissue engineering application",
+        "volume": "164",
+        "author": "Tamimi",
+        "year": "2020",
+        "journal-title": "Int. J. Biol. Macromol."
+      },
+      {
+        "key": "B104",
+        "doi-asserted-by": "publisher",
+        "first-page": "213468",
+        "DOI": "10.1016/j.bioadv.2023.213468",
+        "article-title": "Asymmetric tri-layer sponge-nanofiber wound dressing containing insulin-like growth factor-1 and multi-walled carbon nanotubes for acceleration of full-thickness wound healing",
+        "volume": "151",
+        "author": "Tavakoli",
+        "year": "2023",
+        "journal-title": "Biomater. Adv."
+      },
+      {
+        "key": "B105",
+        "doi-asserted-by": "publisher",
+        "first-page": "30",
+        "DOI": "10.1038/s41536-021-00140-4",
+        "article-title": "Next generation of heart regenerative therapies: progress and promise of cardiac tissue engineering",
+        "volume": "6",
+        "author": "Tenreiro",
+        "year": "2021",
+        "journal-title": "npj Regen. Med."
+      },
+      {
+        "key": "B106",
+        "doi-asserted-by": "publisher",
+        "first-page": "967",
+        "DOI": "10.1089/ten.tea.2012.0286",
+        "article-title": "Prevascularized microtemplated fibrin scaffolds for cardiac tissue engineering applications",
+        "volume": "19",
+        "author": "Thomson",
+        "year": "2013",
+        "journal-title": "Part A"
+      },
+      {
+        "key": "B107",
+        "doi-asserted-by": "publisher",
+        "first-page": "675",
+        "DOI": "10.1002/cphy.c100081",
+        "article-title": "Structure and composition of pulmonary arteries, capillaries, and veins",
+        "volume": "2",
+        "author": "Townsley",
+        "year": "2012",
+        "journal-title": "Compr. Physiol."
+      },
+      {
+        "key": "B108",
+        "doi-asserted-by": "publisher",
+        "first-page": "153",
+        "DOI": "10.3390/gels10020153",
+        "article-title": "Reasoning on pore terminology in 3D bioprinting",
+        "volume": "10",
+        "author": "Trifonov",
+        "year": "2024",
+        "journal-title": "Gels"
+      },
+      {
+        "key": "B109",
+        "doi-asserted-by": "publisher",
+        "first-page": "1900364",
+        "DOI": "10.1002/mabi.201900364",
+        "article-title": "Evaluation of 3D printed gelatin-based scaffolds with varying pore size for MSC-based adipose tissue engineering",
+        "volume": "20",
+        "author": "Tytgat",
+        "year": "2020",
+        "journal-title": "Macromol. Biosci."
+      },
+      {
+        "key": "B110",
+        "doi-asserted-by": "publisher",
+        "first-page": "405",
+        "DOI": "10.1038/s41586-019-1802-2",
+        "article-title": "An acute immune response underlies the benefit of cardiac stem cell therapy",
+        "volume": "577",
+        "author": "Vagnozzi",
+        "year": "2020",
+        "journal-title": "Nature"
+      },
+      {
+        "key": "B111",
+        "doi-asserted-by": "publisher",
+        "first-page": "169",
+        "DOI": "10.1089/ten.teb.2009.0352",
+        "article-title": "Challenges in cardiac tissue engineering",
+        "volume": "16",
+        "author": "Vunjak-Novakovic",
+        "year": "2010",
+        "journal-title": "Tissue Eng. Part B Rev."
+      },
+      {
+        "key": "B112",
+        "doi-asserted-by": "publisher",
+        "first-page": "119825",
+        "DOI": "10.1016/j.biomaterials.2020.119825",
+        "article-title": "Biomimetic collagen biomaterial induces in situ lung regeneration by forming functional alveolar",
+        "volume": "236",
+        "author": "Wang",
+        "year": "2020",
+        "journal-title": "Biomaterials"
+      },
+      {
+        "key": "B113",
+        "doi-asserted-by": "publisher",
+        "first-page": "1966",
+        "DOI": "10.7150/thno.16866",
+        "article-title": "Implantable and biodegradable macroporous iron oxide frameworks for efficient regeneration and repair of infracted heart",
+        "volume": "7",
+        "author": "Wang",
+        "year": "2017",
+        "journal-title": "Theranostics"
+      },
+      {
+        "key": "B114",
+        "doi-asserted-by": "publisher",
+        "first-page": "54",
+        "DOI": "10.1016/0034-5687(70)90102-7",
+        "article-title": "Morphometric estimation of pulmonary diffusion capacity",
+        "volume": "11",
+        "author": "Weibel",
+        "year": "1970",
+        "journal-title": "Respir. Physiol."
+      },
+      {
+        "key": "B115",
+        "doi-asserted-by": "publisher",
+        "first-page": "375",
+        "DOI": "10.4414/smw.2009.12270",
+        "article-title": "What makes a good lung?",
+        "volume": "139",
+        "author": "Weibel",
+        "year": "2009",
+        "journal-title": "Schweiz. Med. Wochenschr."
+      },
+      {
+        "key": "B116",
+        "doi-asserted-by": "publisher",
+        "first-page": "1206",
+        "DOI": "10.1002/jbm.b.34979",
+        "article-title": "Vascularization in tissue engineering: the architecture cues of pores in scaffolds",
+        "volume": "110",
+        "author": "Xia",
+        "year": "2022",
+        "journal-title": "J. Biomed. Mater. Res. Part B Appl. Biomaterials"
+      },
+      {
+        "key": "B117",
+        "doi-asserted-by": "publisher",
+        "first-page": "e2106755",
+        "DOI": "10.1002/adma.202106755",
+        "article-title": "Biomimetic trachea engineering via a modular ring strategy based on Bone-Marrow stem cells and atelocollagen for use in extensive tracheal reconstruction",
+        "volume": "34",
+        "author": "Xu",
+        "year": "2021",
+        "journal-title": "Adv. Mater."
+      },
+      {
+        "key": "B118",
+        "doi-asserted-by": "publisher",
+        "first-page": "879",
+        "DOI": "10.3390/ph15070879",
+        "article-title": "Bone tissue engineering in the treatment of bone defects",
+        "volume": "15",
+        "author": "Xue",
+        "year": "2022",
+        "journal-title": "Pharm. (Basel)"
+      },
+      {
+        "key": "B119",
+        "doi-asserted-by": "publisher",
+        "first-page": "2623",
+        "DOI": "10.1016/j.matpr.2020.12.661",
+        "article-title": "A review on pore and porosity in tissue engineering",
+        "volume": "44",
+        "author": "Yadav",
+        "year": "2020",
+        "journal-title": "Mater. Today Proc."
+      },
+      {
+        "key": "B120",
+        "doi-asserted-by": "publisher",
+        "first-page": "58",
+        "DOI": "10.1016/j.ijbiomac.2019.02.120",
+        "article-title": "Preparation and characterisation of a novel silk fibroin/hyaluronic acid/sodium alginate scaffold for skin repair",
+        "volume": "130",
+        "author": "Yang",
+        "year": "",
+        "journal-title": "Int. J. Biol. Macromol."
+      },
+      {
+        "key": "B121",
+        "doi-asserted-by": "publisher",
+        "first-page": "321",
+        "DOI": "10.1016/j.actbio.2019.06.037",
+        "article-title": "Hybrid electrospun rapamycin-loaded small-diameter decellularized vascular grafts effectively inhibit intimal hyperplasia",
+        "volume": "97",
+        "author": "Yang",
+        "year": "",
+        "journal-title": "Acta biomater."
+      },
+      {
+        "key": "B122",
+        "doi-asserted-by": "publisher",
+        "first-page": "933",
+        "DOI": "10.1073/pnas.86.3.933",
+        "article-title": "Synthesis and characterization of a model extracellular matrix that induces partial regeneration of adult mammalian skin",
+        "volume": "86",
+        "author": "Yannas",
+        "year": "1989",
+        "journal-title": "Proc. Natl. Acad. Sci. U. S. A."
+      },
+      {
+        "key": "B123",
+        "doi-asserted-by": "publisher",
+        "first-page": "191",
+        "DOI": "10.1016/j.actbio.2021.01.029",
+        "article-title": "Biomimetic nanoengineered scaffold for enhanced full-thickness cutaneous wound healing",
+        "volume": "124",
+        "author": "Zandi",
+        "year": "2021",
+        "journal-title": "Acta biomater."
+      },
+      {
+        "key": "B124",
+        "doi-asserted-by": "publisher",
+        "first-page": "112651",
+        "DOI": "10.1016/j.msec.2022.112651",
+        "article-title": "The contribution of pore size and porosity of 3D printed porous titanium scaffolds to osteogenesis",
+        "volume": "133",
+        "author": "Zhang",
+        "year": "",
+        "journal-title": "Biomater. Adv."
+      },
+      {
+        "key": "B125",
+        "doi-asserted-by": "publisher",
+        "first-page": "1423",
+        "DOI": "10.1039/D1BM01651B",
+        "article-title": "Applications of electrospun scaffolds with enlarged pores in tissue engineering",
+        "volume": "10",
+        "author": "Zhang",
+        "year": "",
+        "journal-title": "Biomaterials Sci."
+      },
+      {
+        "key": "B126",
+        "doi-asserted-by": "publisher",
+        "first-page": "736489",
+        "DOI": "10.3389/fbioe.2021.736489",
+        "article-title": "Porous geometry guided micro-mechanical environment within scaffolds for cell mechanobiology study in bone tissue engineering",
+        "volume": "9",
+        "author": "Zhao",
+        "year": "2021",
+        "journal-title": "Front. Bioeng. Biotechnol."
+      },
+      {
+        "key": "B127",
+        "doi-asserted-by": "publisher",
+        "first-page": "193",
+        "DOI": "10.1016/j.msec.2015.10.017",
+        "article-title": "A combinatorial variation in surface chemistry and pore size of three-dimensional porous poly(ε-caprolactone) scaffolds modulates the behaviors of mesenchymal stem cells",
+        "volume": "59",
+        "author": "Zhao",
+        "year": "2016",
+        "journal-title": "Mater. Sci. Eng. C"
+      },
+      {
+        "key": "B128",
+        "doi-asserted-by": "publisher",
+        "first-page": "24437",
+        "DOI": "10.1039/D0NR06297A",
+        "article-title": "3D printing of metal–organic framework incorporated porous scaffolds to promote osteogenic differentiation and bone regeneration",
+        "volume": "12",
+        "author": "Zhong",
+        "year": "2020",
+        "journal-title": "Nanoscale"
+      },
+      {
+        "key": "B129",
+        "doi-asserted-by": "publisher",
+        "first-page": "419",
+        "DOI": "10.1016/j.cardiores.2006.03.023",
+        "article-title": "Heart muscle engineering: an update on cardiac muscle replacement therapy",
+        "volume": "71",
+        "author": "Zimmermann",
+        "year": "2006",
+        "journal-title": "Cardiovasc. Res."
+      },
+      {
+        "key": "B130",
+        "doi-asserted-by": "publisher",
+        "first-page": "23588",
+        "DOI": "10.1039/C5RA26670J",
+        "article-title": "Enhanced osteogenic differentiation and biomineralization in mouse mesenchymal stromal cells on a β-TCP robocast scaffold modified with collagen nanofibers",
+        "volume": "6",
+        "author": "Zou",
+        "year": "2016",
+        "journal-title": "RSC Adv."
+      }
+    ],
+    "container-title": [
+      "Frontiers in Bioengineering and Biotechnology"
+    ],
+    "original-title": [],
+    "link": [
+      {
+        "URL": "https://www.frontiersin.org/articles/10.3389/fbioe.2024.1444986/full",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          12
+        ]
+      ],
+      "date-time": "2024-11-12T04:42:22Z",
+      "timestamp": 1731386542000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://www.frontiersin.org/articles/10.3389/fbioe.2024.1444986/full"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          12
+        ]
+      ]
+    },
+    "references-count": 130,
+    "alternative-id": [
+      "10.3389/fbioe.2024.1444986"
+    ],
+    "URL": "https://doi.org/10.3389/fbioe.2024.1444986",
+    "relation": {},
+    "ISSN": [
+      "2296-4185"
+    ],
+    "issn-type": [
+      {
+        "type": "electronic",
+        "value": "2296-4185"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          12
+        ]
+      ]
+    },
+    "article-number": "1444986"
+  }
+}
