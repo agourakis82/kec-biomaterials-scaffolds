@@ -13,7 +13,7 @@ create_secret () {
   printf "%s" "$value" | gcloud secrets versions add "$name" --data-file=- --project "$PROJECT_ID"
 }
 
-create_secret "DARWIN_API_KEY" "PREENCHER_RANDOM_LONGO"
+create_secret "DARWIN_API_KEY" "dk_$(openssl rand -hex 16)_$(date +%s)"
 create_secret "VERTEX_MODELS_JSON" '{"chat":"text-bison","embed":"textembedding-gecko@003"}'
 # opcional
 #create_secret "OPENAI_API_KEY" "PREENCHER_OPENAI"
