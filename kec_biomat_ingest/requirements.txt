@@ -1,0 +1,8 @@
+requests
+tqdm
+bibtexparser
+python-dateutil
+chromadb
+sentence-transformers
+pandas
+pyarrow
