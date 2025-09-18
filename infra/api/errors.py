@@ -18,8 +18,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from .config import settings
-from .custom_logging import get_logger, log_security_event
+from config import settings
+from custom_logging import get_logger, log_security_event
 
 logger = get_logger("errors")
 
