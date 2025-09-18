@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_ID="${GCP_PROJECT_ID:-PREENCHER_PROJETO}"
+PROJECT_ID="${GCP_PROJECT_ID:-pcs-helio}"
 REGION="${GCP_REGION:-us-central1}"
 SERVICE="darwin-rag"
 IMG="gcr.io/${PROJECT_ID}/${SERVICE}:v$(date +%Y%m%d%H%M%S)"

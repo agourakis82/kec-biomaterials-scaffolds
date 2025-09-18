@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-PROJECT_ID="${GCP_PROJECT_ID:-PREENCHER_PROJETO}"
+PROJECT_ID="${GCP_PROJECT_ID:-pcs-helio}"
 
 # Crie secrets:
 # DARWIN_API_KEY, OPENAI_API_KEY (se necessario como fallback), CHATGPT_ACTIONS_BEARER
