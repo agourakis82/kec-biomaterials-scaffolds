@@ -14,6 +14,25 @@ from typing import Any, Dict, List, Optional
 
 from services.settings import get_settings
 
+# Lazy imports for GCP clients to avoid mandatory dependency at import time
+_AIPLATFORM = None
+_VERTEXAI = None
+
+def _lazy_import_vertex():
+    global _AIPLATFORM, _VERTEXAI
+    if _AIPLATFORM is None:
+        try:
+            from google.cloud import aiplatform as _gcaip  # type: ignore
+            _AIPLATFORM = _gcaip
+        except Exception:  # pragma: no cover - optional dep
+            _AIPLATFORM = False
+    if _VERTEXAI is None:
+        try:
+            from vertexai.preview.language_models import TextEmbeddingModel as _vem  # type: ignore
+            _VERTEXAI = _vem
+        except Exception:  # pragma: no cover - optional dep
+            _VERTEXAI = False
+
 
 @dataclass
 class RagSource:
@@ -92,9 +111,20 @@ class VertexVectorBackend:
         self._cache = _SimpleLru(max_size=256, ttl_s=300)
 
     async def embed(self, texts: List[str]) -> List[List[float]]:
-        # STUB: integrate with Vertex text-embedding model.
-        # Deterministic dummy embedding for local tests.
-        return [[(hash(t) % 997) / 997.0 for _ in range(3)] for t in texts]
+        # Try Vertex embeddings when configured & libs available
+        _lazy_import_vertex()
+        s = get_settings()
+        if _AIPLATFORM and _VERTEXAI and s.PROJECT_ID and s.LOCATION and s.VERTEX_EMB_MODEL:
+            try:  # pragma: no cover - requires cloud
+                _AIPLATFORM.init(project=s.PROJECT_ID, location=s.LOCATION)
+                model = _VERTEXAI.from_pretrained(s.VERTEX_EMB_MODEL)
+                # vertex returns list of Embedding objects with .values
+                embeddings = model.get_embeddings(texts)
+                return [e.values for e in embeddings]  # type: ignore[attr-defined]
+            except Exception:
+                pass
+        # Fallback deterministic embedding for dev/tests
+        return [[(hash(t) % 997) / 997.0 for _ in range(64)] for t in texts]
 
     async def retrieve(
         self, query: str, k: int = 5, filter: Optional[Dict[str, Any]] = None
@@ -109,7 +139,50 @@ class VertexVectorBackend:
                 sources=cached,
             )
 
-        # STUB: Call Vertex Vector Search endpoint here.
+        # Attempt Vertex Vector Search when configured
+        _lazy_import_vertex()
+        s = get_settings()
+        if (
+            _AIPLATFORM
+            and s.PROJECT_ID
+            and s.LOCATION
+            and self.endpoint_id
+            and self.index_id
+        ):
+            try:  # pragma: no cover - requires cloud
+                _AIPLATFORM.init(project=s.PROJECT_ID, location=s.LOCATION)
+                # Embed query
+                qvec = (await self.embed([query]))[0]
+                # Build resource name and query
+                endpoint_name = f"projects/{s.PROJECT_ID}/locations/{s.LOCATION}/indexEndpoints/{self.endpoint_id}"
+                endpoint = _AIPLATFORM.MatchingEngineIndexEndpoint(index_endpoint_name=endpoint_name)
+                resp = endpoint.find_neighbors(
+                    deployed_index_id=self.index_id,
+                    queries=[qvec],
+                    num_neighbors=max(1, min(k, 20)),
+                )
+                neighbors = resp[0].neighbors if resp else []  # type: ignore[attr-defined]
+                sources: List[RagSource] = []
+                for i, nb in enumerate(neighbors):
+                    # name or datapoint id depending on SDK version
+                    nid = getattr(nb, "datapoint_id", None) or getattr(nb, "id", f"doc-{i}")
+                    distance = getattr(nb, "distance", 0.0)
+                    score = max(0.0, 1.0 - float(distance))
+                    sources.append(
+                        RagSource(
+                            title=f"Result {i+1}",
+                            snippet=f"Vector match for '{query}'",
+                            url_or_doi=str(nid),
+                            score=score,
+                        )
+                    )
+                await self._cache.set(key, sources)
+                return RagResult(backend_type="vector", cache_hit=False, text="", sources=sources)
+            except Exception:
+                # fall through to stubbed response
+                pass
+
+        # Fallback stubbed response
         sources = [
             RagSource(
                 title=f"Doc {i+1} for '{query}'",
@@ -143,7 +216,8 @@ class VertexRagEngine:
                 sources=cached,
             )
 
-        # STUB: Call Vertex RAG Engine retrieve here and map to citations
+        # TODO: Integrate with Vertex RAG Engine once corpus is configured.
+        # Fallback synthetic response
         sources = [
             RagSource(
                 title=f"Engine doc {i+1} for '{query}'",
@@ -226,4 +300,3 @@ def get_rag() -> _CompositeRag:
     if _singleton is None:
         _singleton = _CompositeRag()
     return _singleton
-

@@ -21,7 +21,18 @@ from custom_logging import RequestLoggingMiddleware, get_logger
 from monitoring import initialize_monitoring, shutdown_monitoring
 from processing import start_processing, stop_processing
 from rate_limit import RateLimitMiddleware
-from routers import admin, core, data, monitoring, notebooks, rag, rag_plus, memory  # Expose memory router
+from routers import (
+    admin,
+    core,
+    data,
+    monitoring,
+    notebooks,
+    rag,
+    rag_plus,
+    memory,
+    tree_search,
+    score_contracts,
+)
 from routers.processing import router as processing_router
 
 import os
@@ -175,7 +186,8 @@ def create_app() -> FastAPI:
     app.include_router(monitoring.router, prefix="/monitoring")  # Monitoring endpoints
     app.include_router(processing_router)  # Processing endpoints
     app.include_router(memory.router, prefix="", tags=["Memory"])  # Mount memory router at root
-    app.include_router(memory.router, prefix="", tags=["Memory"])  # Mount memory router at root
+    app.include_router(tree_search.router)
+    app.include_router(score_contracts.router)
 
     # Setup documentation routes
     setup_documentation_routes(app)
@@ -183,6 +195,14 @@ def create_app() -> FastAPI:
     # Customize OpenAPI schema
     doc_manager = get_documentation_manager(app)
     app.openapi = doc_manager.get_custom_openapi
+
+    # Expose .well-known manifests for ChatGPT Actions / Gemini Extensions
+    try:
+        from openapi_config import setup_well_known_routes
+
+        setup_well_known_routes(app)
+    except Exception:
+        logger.warning(".well-known routes not configured (openapi_config missing)")
 
     # Mount static files if directory exists
     if settings.static_path.exists():
