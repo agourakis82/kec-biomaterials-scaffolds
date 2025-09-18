@@ -12,8 +12,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-from . import rag, discovery, deps
-from .providers_gcp import get_vertex_models
+import rag, discovery, deps
+from providers_gcp import get_vertex_models
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
