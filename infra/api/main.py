@@ -143,20 +143,20 @@ def create_app() -> FastAPI:
     app.add_middleware(
         RequestLoggingMiddleware,
         logger_name="http.access",
-        exempt_paths=["/health", "/ping"],
+        exempt_paths=["/healthz", "/ping"],
     )
 
     # 2. Rate limiting (before authentication to limit all requests)
     app.add_middleware(
         RateLimitMiddleware,
-        exempt_paths=["/", "/health", "/ping", "/docs", "/redoc", "/openapi.json"],
+        exempt_paths=["/", "/healthz", "/ping", "/docs", "/redoc", "/openapi.json"],
         tokens_per_request=1,
     )
 
     # 3. Authentication (innermost - only applies to protected endpoints)
     app.add_middleware(
         APIKeyMiddleware,
-        exempt_paths=["/", "/health", "/ping", "/docs", "/redoc", "/openapi.json"],
+        exempt_paths=["/", "/healthz", "/ping", "/docs", "/redoc", "/openapi.json"],
         require_auth=False,  # Let individual endpoints decide
     )
 

@@ -1,0 +1,821 @@
+{
+  "id": "https://openalex.org/W3001493837",
+  "doi": "https://doi.org/10.1016/j.actbio.2020.01.036",
+  "title": "Cell membrane-camouflaged nanoparticles as drug carriers for cancer therapy",
+  "display_name": "Cell membrane-camouflaged nanoparticles as drug carriers for cancer therapy",
+  "publication_year": 2020,
+  "publication_date": "2020-01-28",
+  "ids": {
+    "openalex": "https://openalex.org/W3001493837",
+    "doi": "https://doi.org/10.1016/j.actbio.2020.01.036",
+    "mag": "3001493837",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/32001369"
+  },
+  "language": "en",
+  "primary_location": {
+    "is_oa": false,
+    "landing_page_url": "https://doi.org/10.1016/j.actbio.2020.01.036",
+    "pdf_url": null,
+    "source": {
+      "id": "https://openalex.org/S173145877",
+      "display_name": "Acta Biomaterialia",
+      "issn_l": "1742-7061",
+      "issn": [
+        "1742-7061",
+        "1878-7568"
+      ],
+      "is_oa": false,
+      "is_in_doaj": false,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310320990",
+      "host_organization_name": "Elsevier BV",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310320990"
+      ],
+      "host_organization_lineage_names": [
+        "Elsevier BV"
+      ],
+      "type": "journal"
+    },
+    "license": null,
+    "license_id": null,
+    "version": null,
+    "is_accepted": false,
+    "is_published": false
+  },
+  "type": "review",
+  "type_crossref": "journal-article",
+  "indexed_in": [
+    "crossref",
+    "pubmed"
+  ],
+  "open_access": {
+    "is_oa": false,
+    "oa_status": "closed",
+    "oa_url": null,
+    "any_repository_has_fulltext": false
+  },
+  "authorships": [
+    {
+      "author_position": "first",
+      "author": {
+        "id": "https://openalex.org/A5056789044",
+        "display_name": "Cheng‐Hui Xu",
+        "orcid": "https://orcid.org/0000-0001-5416-1203"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I91935597",
+          "display_name": "University of South China",
+          "ror": "https://ror.org/03mqfn238",
+          "country_code": "CN",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ],
+      "countries": [
+        "CN"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Cheng-Hui Xu",
+      "raw_affiliation_strings": [
+        "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+        "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5008141825",
+        "display_name": "Peng-Ju Ye",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I91935597",
+          "display_name": "University of South China",
+          "ror": "https://ror.org/03mqfn238",
+          "country_code": "CN",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ],
+      "countries": [
+        "CN"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Peng-Ju Ye",
+      "raw_affiliation_strings": [
+        "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+        "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5032644551",
+        "display_name": "Yangchun Zhou",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I91935597",
+          "display_name": "University of South China",
+          "ror": "https://ror.org/03mqfn238",
+          "country_code": "CN",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ],
+      "countries": [
+        "CN"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Yang-Chun Zhou",
+      "raw_affiliation_strings": [
+        "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+        "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5060159906",
+        "display_name": "Dongxiu He",
+        "orcid": "https://orcid.org/0000-0002-2118-529X"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I91935597",
+          "display_name": "University of South China",
+          "ror": "https://ror.org/03mqfn238",
+          "country_code": "CN",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ],
+      "countries": [
+        "CN"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Dong-Xiu He",
+      "raw_affiliation_strings": [
+        "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+        "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5110364933",
+        "display_name": "Hua Wei",
+        "orcid": "https://orcid.org/0000-0002-5139-9387"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I91935597",
+          "display_name": "University of South China",
+          "ror": "https://ror.org/03mqfn238",
+          "country_code": "CN",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ],
+      "countries": [
+        "CN"
+      ],
+      "is_corresponding": true,
+      "raw_author_name": "Hua Wei",
+      "raw_affiliation_strings": [
+        "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+        "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "last",
+      "author": {
+        "id": "https://openalex.org/A5077980751",
+        "display_name": "Cui‐Yun Yu",
+        "orcid": "https://orcid.org/0000-0002-2076-6228"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I91935597",
+          "display_name": "University of South China",
+          "ror": "https://ror.org/03mqfn238",
+          "country_code": "CN",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ],
+      "countries": [
+        "CN"
+      ],
+      "is_corresponding": true,
+      "raw_author_name": "Cui-Yun Yu",
+      "raw_affiliation_strings": [
+        "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+        "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Hunan Province Cooperative Innovation Center for Molecular Target New Drug Study, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Institute of Pharmacy & Pharmacology, School of Pharmaceutical Science, University of South China, Hengyang 421001, China",
+          "institution_ids": [
+            "https://openalex.org/I91935597"
+          ]
+        }
+      ]
+    }
+  ],
+  "institution_assertions": [],
+  "countries_distinct_count": 1,
+  "institutions_distinct_count": 1,
+  "corresponding_author_ids": [
+    "https://openalex.org/A5110364933",
+    "https://openalex.org/A5077980751"
+  ],
+  "corresponding_institution_ids": [
+    "https://openalex.org/I91935597",
+    "https://openalex.org/I91935597"
+  ],
+  "apc_list": {
+    "value": 3210,
+    "currency": "USD",
+    "value_usd": 3210
+  },
+  "apc_paid": null,
+  "fwci": 2.519,
+  "has_fulltext": false,
+  "cited_by_count": 193,
+  "citation_normalized_percentile": {
+    "value": 0.999211,
+    "is_in_top_1_percent": true,
+    "is_in_top_10_percent": true
+  },
+  "cited_by_percentile_year": {
+    "min": 99,
+    "max": 100
+  },
+  "biblio": {
+    "volume": "105",
+    "issue": null,
+    "first_page": "1",
+    "last_page": "14"
+  },
+  "is_retracted": false,
+  "is_paratext": false,
+  "primary_topic": {
+    "id": "https://openalex.org/T10782",
+    "display_name": "Nanoplatforms for cancer theranostics",
+    "score": 1.0,
+    "subfield": {
+      "id": "https://openalex.org/subfields/2204",
+      "display_name": "Biomedical Engineering"
+    },
+    "field": {
+      "id": "https://openalex.org/fields/22",
+      "display_name": "Engineering"
+    },
+    "domain": {
+      "id": "https://openalex.org/domains/3",
+      "display_name": "Physical Sciences"
+    }
+  },
+  "topics": [
+    {
+      "id": "https://openalex.org/T10782",
+      "display_name": "Nanoplatforms for cancer theranostics",
+      "score": 1.0,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2204",
+        "display_name": "Biomedical Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10063",
+      "display_name": "Nanoparticle-Based Drug Delivery",
+      "score": 0.9989,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2502",
+        "display_name": "Biomaterials"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/25",
+        "display_name": "Materials Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10131",
+      "display_name": "Gold and Silver Nanoparticles Synthesis and Applications",
+      "score": 0.9973,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2504",
+        "display_name": "Electronic, Optical and Magnetic Materials"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/25",
+        "display_name": "Materials Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    }
+  ],
+  "keywords": [
+    {
+      "id": "https://openalex.org/keywords/nanomaterials",
+      "display_name": "Nanomaterials",
+      "score": 0.49715975
+    }
+  ],
+  "concepts": [
+    {
+      "id": "https://openalex.org/C171250308",
+      "wikidata": "https://www.wikidata.org/wiki/Q11468",
+      "display_name": "Nanotechnology",
+      "level": 1,
+      "score": 0.7414527
+    },
+    {
+      "id": "https://openalex.org/C155672457",
+      "wikidata": "https://www.wikidata.org/wiki/Q61231",
+      "display_name": "Nanoparticle",
+      "level": 2,
+      "score": 0.68812466
+    },
+    {
+      "id": "https://openalex.org/C2779820397",
+      "wikidata": "https://www.wikidata.org/wiki/Q1392806",
+      "display_name": "Drug delivery",
+      "level": 2,
+      "score": 0.62924993
+    },
+    {
+      "id": "https://openalex.org/C41625074",
+      "wikidata": "https://www.wikidata.org/wiki/Q176088",
+      "display_name": "Membrane",
+      "level": 2,
+      "score": 0.62612015
+    },
+    {
+      "id": "https://openalex.org/C192562407",
+      "wikidata": "https://www.wikidata.org/wiki/Q228736",
+      "display_name": "Materials science",
+      "level": 0,
+      "score": 0.5672136
+    },
+    {
+      "id": "https://openalex.org/C138631740",
+      "wikidata": "https://www.wikidata.org/wiki/Q967847",
+      "display_name": "Nanomaterials",
+      "level": 2,
+      "score": 0.49715975
+    },
+    {
+      "id": "https://openalex.org/C185592680",
+      "wikidata": "https://www.wikidata.org/wiki/Q2329",
+      "display_name": "Chemistry",
+      "level": 0,
+      "score": 0.20284784
+    },
+    {
+      "id": "https://openalex.org/C55493867",
+      "wikidata": "https://www.wikidata.org/wiki/Q7094",
+      "display_name": "Biochemistry",
+      "level": 1,
+      "score": 0.0
+    }
+  ],
+  "mesh": [
+    {
+      "descriptor_ui": "D002462",
+      "descriptor_name": "Cell Membrane",
+      "qualifier_ui": "Q000737",
+      "qualifier_name": "chemistry",
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D004337",
+      "descriptor_name": "Drug Carriers",
+      "qualifier_ui": "Q000737",
+      "qualifier_name": "chemistry",
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D053758",
+      "descriptor_name": "Nanoparticles",
+      "qualifier_ui": "Q000737",
+      "qualifier_name": "chemistry",
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D009369",
+      "descriptor_name": "Neoplasms",
+      "qualifier_ui": "Q000188",
+      "qualifier_name": "drug therapy",
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D000818",
+      "descriptor_name": "Animals",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D002462",
+      "descriptor_name": "Cell Membrane",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D004337",
+      "descriptor_name": "Drug Carriers",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D006801",
+      "descriptor_name": "Humans",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D059630",
+      "descriptor_name": "Mesenchymal Stem Cells",
+      "qualifier_ui": "Q000378",
+      "qualifier_name": "metabolism",
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D059630",
+      "descriptor_name": "Mesenchymal Stem Cells",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D053758",
+      "descriptor_name": "Nanoparticles",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D009369",
+      "descriptor_name": "Neoplasms",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D055672",
+      "descriptor_name": "Static Electricity",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    }
+  ],
+  "locations_count": 2,
+  "locations": [
+    {
+      "is_oa": false,
+      "landing_page_url": "https://doi.org/10.1016/j.actbio.2020.01.036",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S173145877",
+        "display_name": "Acta Biomaterialia",
+        "issn_l": "1742-7061",
+        "issn": [
+          "1742-7061",
+          "1878-7568"
+        ],
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": true,
+        "is_core": true,
+        "host_organization": "https://openalex.org/P4310320990",
+        "host_organization_name": "Elsevier BV",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310320990"
+        ],
+        "host_organization_lineage_names": [
+          "Elsevier BV"
+        ],
+        "type": "journal"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    },
+    {
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/32001369",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    }
+  ],
+  "best_oa_location": null,
+  "sustainable_development_goals": [
+    {
+      "id": "https://metadata.un.org/sdg/3",
+      "display_name": "Good health and well-being",
+      "score": 0.52
+    }
+  ],
+  "grants": [
+    {
+      "funder": "https://openalex.org/F4320324294",
+      "funder_display_name": "Aerostatic Science Foundation",
+      "award_id": null
+    }
+  ],
+  "datasets": [],
+  "versions": [],
+  "referenced_works_count": 111,
+  "referenced_works": [
+    "https://openalex.org/W1465812346",
+    "https://openalex.org/W1711619332",
+    "https://openalex.org/W1804398254",
+    "https://openalex.org/W1831452211",
+    "https://openalex.org/W1901682227",
+    "https://openalex.org/W1922412259",
+    "https://openalex.org/W1968519475",
+    "https://openalex.org/W1976041621",
+    "https://openalex.org/W1978579655",
+    "https://openalex.org/W1980052502",
+    "https://openalex.org/W1993337563",
+    "https://openalex.org/W1997995247",
+    "https://openalex.org/W2002300721",
+    "https://openalex.org/W2013706088",
+    "https://openalex.org/W2018396864",
+    "https://openalex.org/W2018988752",
+    "https://openalex.org/W2024242353",
+    "https://openalex.org/W2026571103",
+    "https://openalex.org/W2027432937",
+    "https://openalex.org/W2042249858",
+    "https://openalex.org/W2053929414",
+    "https://openalex.org/W2058648826",
+    "https://openalex.org/W2076226743",
+    "https://openalex.org/W2079629625",
+    "https://openalex.org/W2086338128",
+    "https://openalex.org/W2090064742",
+    "https://openalex.org/W2096825083",
+    "https://openalex.org/W2099571006",
+    "https://openalex.org/W2102869104",
+    "https://openalex.org/W2104891226",
+    "https://openalex.org/W2105553762",
+    "https://openalex.org/W2111030271",
+    "https://openalex.org/W2114235650",
+    "https://openalex.org/W2114495074",
+    "https://openalex.org/W2123105952",
+    "https://openalex.org/W2134812356",
+    "https://openalex.org/W2136633731",
+    "https://openalex.org/W2138170377",
+    "https://openalex.org/W2143463421",
+    "https://openalex.org/W2145479354",
+    "https://openalex.org/W2151138870",
+    "https://openalex.org/W2152143390",
+    "https://openalex.org/W2158734599",
+    "https://openalex.org/W2159902976",
+    "https://openalex.org/W2169009227",
+    "https://openalex.org/W2180717105",
+    "https://openalex.org/W2190141802",
+    "https://openalex.org/W2233044846",
+    "https://openalex.org/W2238780918",
+    "https://openalex.org/W2290419157",
+    "https://openalex.org/W2293176103",
+    "https://openalex.org/W2313248184",
+    "https://openalex.org/W2314713988",
+    "https://openalex.org/W2314906766",
+    "https://openalex.org/W2467367227",
+    "https://openalex.org/W2478711226",
+    "https://openalex.org/W2482960254",
+    "https://openalex.org/W2484140440",
+    "https://openalex.org/W2511954851",
+    "https://openalex.org/W2515800095",
+    "https://openalex.org/W2518686043",
+    "https://openalex.org/W2537799905",
+    "https://openalex.org/W2544837642",
+    "https://openalex.org/W2547358231",
+    "https://openalex.org/W2554773181",
+    "https://openalex.org/W2555200685",
+    "https://openalex.org/W2557765704",
+    "https://openalex.org/W2559216764",
+    "https://openalex.org/W2560809330",
+    "https://openalex.org/W2574671528",
+    "https://openalex.org/W2577011968",
+    "https://openalex.org/W2580576370",
+    "https://openalex.org/W2585276031",
+    "https://openalex.org/W2585354924",
+    "https://openalex.org/W2588049964",
+    "https://openalex.org/W2593852474",
+    "https://openalex.org/W2593910260",
+    "https://openalex.org/W2595165451",
+    "https://openalex.org/W2615993918",
+    "https://openalex.org/W2735577231",
+    "https://openalex.org/W2746410078",
+    "https://openalex.org/W2762914667",
+    "https://openalex.org/W2765097474",
+    "https://openalex.org/W2770985902",
+    "https://openalex.org/W2780622257",
+    "https://openalex.org/W2781482652",
+    "https://openalex.org/W2781525129",
+    "https://openalex.org/W2784013833",
+    "https://openalex.org/W2799696186",
+    "https://openalex.org/W2803598967",
+    "https://openalex.org/W2804447831",
+    "https://openalex.org/W2808403226",
+    "https://openalex.org/W2890702498",
+    "https://openalex.org/W2890798397",
+    "https://openalex.org/W2896625042",
+    "https://openalex.org/W2900568353",
+    "https://openalex.org/W2900583139",
+    "https://openalex.org/W2903596366",
+    "https://openalex.org/W2910136050",
+    "https://openalex.org/W2913798055",
+    "https://openalex.org/W2915963614",
+    "https://openalex.org/W2916790876",
+    "https://openalex.org/W2917477534",
+    "https://openalex.org/W2940164614",
+    "https://openalex.org/W2944578844",
+    "https://openalex.org/W2950482737",
+    "https://openalex.org/W2953291509",
+    "https://openalex.org/W2953815802",
+    "https://openalex.org/W2957022953",
+    "https://openalex.org/W4293049969",
+    "https://openalex.org/W989479261"
+  ],
+  "related_works": [
+    "https://openalex.org/W431759199",
+    "https://openalex.org/W4296229359",
+    "https://openalex.org/W4226436838",
+    "https://openalex.org/W2808792098",
+    "https://openalex.org/W2380442882",
+    "https://openalex.org/W2350471669",
+    "https://openalex.org/W2136564186",
+    "https://openalex.org/W2043351428",
+    "https://openalex.org/W1982053913",
+    "https://openalex.org/W152233855"
+  ],
+  "abstract_inverted_index": null,
+  "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W3001493837",
+  "counts_by_year": [
+    {
+      "year": 2025,
+      "cited_by_count": 25
+    },
+    {
+      "year": 2024,
+      "cited_by_count": 54
+    },
+    {
+      "year": 2023,
+      "cited_by_count": 37
+    },
+    {
+      "year": 2022,
+      "cited_by_count": 36
+    },
+    {
+      "year": 2021,
+      "cited_by_count": 28
+    },
+    {
+      "year": 2020,
+      "cited_by_count": 12
+    }
+  ],
+  "updated_date": "2025-09-10T09:45:17.814533",
+  "created_date": "2020-01-30"
+}

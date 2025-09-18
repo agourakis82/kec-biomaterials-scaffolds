@@ -12,7 +12,7 @@ from typing import Dict
 from fastapi import HTTPException, Request
 from fastapi.security import APIKeyHeader
 
-from .config import settings
+from config import settings
 
 logger = logging.getLogger(__name__)
 

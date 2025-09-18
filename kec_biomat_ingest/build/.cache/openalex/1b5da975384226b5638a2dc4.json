@@ -1,0 +1,1185 @@
+{
+  "id": "https://openalex.org/W4404292906",
+  "doi": "https://doi.org/10.3389/fbioe.2024.1444986",
+  "title": "Optimizing scaffold pore size for tissue engineering: insights across various tissue types",
+  "display_name": "Optimizing scaffold pore size for tissue engineering: insights across various tissue types",
+  "publication_year": 2024,
+  "publication_date": "2024-11-12",
+  "ids": {
+    "openalex": "https://openalex.org/W4404292906",
+    "doi": "https://doi.org/10.3389/fbioe.2024.1444986",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/39600888"
+  },
+  "language": "en",
+  "primary_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.3389/fbioe.2024.1444986",
+    "pdf_url": null,
+    "source": {
+      "id": "https://openalex.org/S2595131146",
+      "display_name": "Frontiers in Bioengineering and Biotechnology",
+      "issn_l": "2296-4185",
+      "issn": [
+        "2296-4185"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310320527",
+      "host_organization_name": "Frontiers Media",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310320527"
+      ],
+      "host_organization_lineage_names": [
+        "Frontiers Media"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "type": "review",
+  "type_crossref": "journal-article",
+  "indexed_in": [
+    "crossref",
+    "pubmed"
+  ],
+  "open_access": {
+    "is_oa": true,
+    "oa_status": "gold",
+    "oa_url": "https://doi.org/10.3389/fbioe.2024.1444986",
+    "any_repository_has_fulltext": false
+  },
+  "authorships": [
+    {
+      "author_position": "first",
+      "author": {
+        "id": "https://openalex.org/A5004014967",
+        "display_name": "Fariza Mukasheva",
+        "orcid": "https://orcid.org/0000-0002-1518-0126"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I60559429",
+          "display_name": "Nazarbayev University",
+          "ror": "https://ror.org/052bx8q98",
+          "country_code": "KZ",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ],
+      "countries": [
+        "KZ"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Fariza Mukasheva",
+      "raw_affiliation_strings": [
+        "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan",
+          "institution_ids": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5114612887",
+        "display_name": "Laura Adilova",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I60559429",
+          "display_name": "Nazarbayev University",
+          "ror": "https://ror.org/052bx8q98",
+          "country_code": "KZ",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ],
+      "countries": [
+        "KZ"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Laura Adilova",
+      "raw_affiliation_strings": [
+        "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan",
+          "institution_ids": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5114612888",
+        "display_name": "Aibek Dyussenbinov",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I60559429",
+          "display_name": "Nazarbayev University",
+          "ror": "https://ror.org/052bx8q98",
+          "country_code": "KZ",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ],
+      "countries": [
+        "KZ"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Aibek Dyussenbinov",
+      "raw_affiliation_strings": [
+        "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan",
+          "institution_ids": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5092617912",
+        "display_name": "Bota Yernaimanova",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I60559429",
+          "display_name": "Nazarbayev University",
+          "ror": "https://ror.org/052bx8q98",
+          "country_code": "KZ",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ],
+      "countries": [
+        "KZ"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Bota Yernaimanova",
+      "raw_affiliation_strings": [
+        "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan",
+          "institution_ids": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5051417684",
+        "display_name": "Мadi Аbilev",
+        "orcid": "https://orcid.org/0000-0002-8776-1333"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I185571130",
+          "display_name": "Al-Farabi Kazakh National University",
+          "ror": "https://ror.org/03q0vrn42",
+          "country_code": "KZ",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I185571130"
+          ]
+        }
+      ],
+      "countries": [
+        "KZ"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Madi Abilev",
+      "raw_affiliation_strings": [
+        "Department of Analytical, Colloid Chemistry and Technology of Rare Elements, Al-Farabi Kazakh National University, Almaty, Kazakhstan"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Analytical, Colloid Chemistry and Technology of Rare Elements, Al-Farabi Kazakh National University, Almaty, Kazakhstan",
+          "institution_ids": [
+            "https://openalex.org/I185571130"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "last",
+      "author": {
+        "id": "https://openalex.org/A5043054868",
+        "display_name": "Dana Akilbekova",
+        "orcid": "https://orcid.org/0000-0003-3694-0355"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I60559429",
+          "display_name": "Nazarbayev University",
+          "ror": "https://ror.org/052bx8q98",
+          "country_code": "KZ",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ],
+      "countries": [
+        "KZ"
+      ],
+      "is_corresponding": true,
+      "raw_author_name": "Dana Akilbekova",
+      "raw_affiliation_strings": [
+        "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical and Materials Engineering, School of Engineering and Digital Sciences, Nazarbayev University, Astana, Kazakhstan",
+          "institution_ids": [
+            "https://openalex.org/I60559429"
+          ]
+        }
+      ]
+    }
+  ],
+  "institution_assertions": [],
+  "countries_distinct_count": 1,
+  "institutions_distinct_count": 2,
+  "corresponding_author_ids": [
+    "https://openalex.org/A5043054868"
+  ],
+  "corresponding_institution_ids": [
+    "https://openalex.org/I60559429"
+  ],
+  "apc_list": {
+    "value": 2950,
+    "currency": "USD",
+    "value_usd": 2950
+  },
+  "apc_paid": {
+    "value": 2950,
+    "currency": "USD",
+    "value_usd": 2950
+  },
+  "fwci": 8.282,
+  "has_fulltext": false,
+  "cited_by_count": 78,
+  "citation_normalized_percentile": {
+    "value": 0.999398,
+    "is_in_top_1_percent": true,
+    "is_in_top_10_percent": true
+  },
+  "cited_by_percentile_year": {
+    "min": 99,
+    "max": 100
+  },
+  "biblio": {
+    "volume": "12",
+    "issue": null,
+    "first_page": null,
+    "last_page": null
+  },
+  "is_retracted": false,
+  "is_paratext": false,
+  "primary_topic": {
+    "id": "https://openalex.org/T10059",
+    "display_name": "Bone Tissue Engineering Materials",
+    "score": 0.9999,
+    "subfield": {
+      "id": "https://openalex.org/subfields/2204",
+      "display_name": "Biomedical Engineering"
+    },
+    "field": {
+      "id": "https://openalex.org/fields/22",
+      "display_name": "Engineering"
+    },
+    "domain": {
+      "id": "https://openalex.org/domains/3",
+      "display_name": "Physical Sciences"
+    }
+  },
+  "topics": [
+    {
+      "id": "https://openalex.org/T10059",
+      "display_name": "Bone Tissue Engineering Materials",
+      "score": 0.9999,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2204",
+        "display_name": "Biomedical Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T12264",
+      "display_name": "Tissue Engineering and Regenerative Medicine",
+      "score": 0.9996,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2746",
+        "display_name": "Surgery"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10729",
+      "display_name": "Electrospun Nanofibers in Biomedical Applications",
+      "score": 0.9996,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2502",
+        "display_name": "Biomaterials"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/25",
+        "display_name": "Materials Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    }
+  ],
+  "keywords": [
+    {
+      "id": "https://openalex.org/keywords/bone-tissue",
+      "display_name": "Bone tissue",
+      "score": 0.44114605
+    }
+  ],
+  "concepts": [
+    {
+      "id": "https://openalex.org/C89429830",
+      "wikidata": "https://www.wikidata.org/wiki/Q735710",
+      "display_name": "Scaffold",
+      "level": 2,
+      "score": 0.8661013
+    },
+    {
+      "id": "https://openalex.org/C49892992",
+      "wikidata": "https://www.wikidata.org/wiki/Q1540285",
+      "display_name": "Tissue engineering",
+      "level": 2,
+      "score": 0.6785406
+    },
+    {
+      "id": "https://openalex.org/C171056886",
+      "wikidata": "https://www.wikidata.org/wiki/Q193119",
+      "display_name": "Regeneration (biology)",
+      "level": 2,
+      "score": 0.52793616
+    },
+    {
+      "id": "https://openalex.org/C6648577",
+      "wikidata": "https://www.wikidata.org/wiki/Q622669",
+      "display_name": "Porosity",
+      "level": 2,
+      "score": 0.4935795
+    },
+    {
+      "id": "https://openalex.org/C192562407",
+      "wikidata": "https://www.wikidata.org/wiki/Q228736",
+      "display_name": "Materials science",
+      "level": 0,
+      "score": 0.44237417
+    },
+    {
+      "id": "https://openalex.org/C2778606738",
+      "wikidata": "https://www.wikidata.org/wiki/Q265868",
+      "display_name": "Bone tissue",
+      "level": 2,
+      "score": 0.44114605
+    },
+    {
+      "id": "https://openalex.org/C136229726",
+      "wikidata": "https://www.wikidata.org/wiki/Q327092",
+      "display_name": "Biomedical engineering",
+      "level": 1,
+      "score": 0.38868034
+    },
+    {
+      "id": "https://openalex.org/C185592680",
+      "wikidata": "https://www.wikidata.org/wiki/Q2329",
+      "display_name": "Chemistry",
+      "level": 0,
+      "score": 0.36527425
+    },
+    {
+      "id": "https://openalex.org/C171250308",
+      "wikidata": "https://www.wikidata.org/wiki/Q11468",
+      "display_name": "Nanotechnology",
+      "level": 1,
+      "score": 0.32133418
+    },
+    {
+      "id": "https://openalex.org/C95444343",
+      "wikidata": "https://www.wikidata.org/wiki/Q7141",
+      "display_name": "Cell biology",
+      "level": 1,
+      "score": 0.158362
+    },
+    {
+      "id": "https://openalex.org/C86803240",
+      "wikidata": "https://www.wikidata.org/wiki/Q420",
+      "display_name": "Biology",
+      "level": 0,
+      "score": 0.10176277
+    },
+    {
+      "id": "https://openalex.org/C159985019",
+      "wikidata": "https://www.wikidata.org/wiki/Q181790",
+      "display_name": "Composite material",
+      "level": 1,
+      "score": 0.06672773
+    },
+    {
+      "id": "https://openalex.org/C71924100",
+      "wikidata": "https://www.wikidata.org/wiki/Q11190",
+      "display_name": "Medicine",
+      "level": 0,
+      "score": 0.0
+    }
+  ],
+  "mesh": [],
+  "locations_count": 2,
+  "locations": [
+    {
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.3389/fbioe.2024.1444986",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S2595131146",
+        "display_name": "Frontiers in Bioengineering and Biotechnology",
+        "issn_l": "2296-4185",
+        "issn": [
+          "2296-4185"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_indexed_in_scopus": true,
+        "is_core": true,
+        "host_organization": "https://openalex.org/P4310320527",
+        "host_organization_name": "Frontiers Media",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310320527"
+        ],
+        "host_organization_lineage_names": [
+          "Frontiers Media"
+        ],
+        "type": "journal"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/39600888",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    }
+  ],
+  "best_oa_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.3389/fbioe.2024.1444986",
+    "pdf_url": null,
+    "source": {
+      "id": "https://openalex.org/S2595131146",
+      "display_name": "Frontiers in Bioengineering and Biotechnology",
+      "issn_l": "2296-4185",
+      "issn": [
+        "2296-4185"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310320527",
+      "host_organization_name": "Frontiers Media",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310320527"
+      ],
+      "host_organization_lineage_names": [
+        "Frontiers Media"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "sustainable_development_goals": [],
+  "grants": [
+    {
+      "funder": "https://openalex.org/F4320322726",
+      "funder_display_name": "Ministry of Education and Science of the Republic of Kazakhstan",
+      "award_id": "AP14869460 AP13067719"
+    }
+  ],
+  "datasets": [],
+  "versions": [],
+  "referenced_works_count": 130,
+  "referenced_works": [
+    "https://openalex.org/W1502095639",
+    "https://openalex.org/W1928785183",
+    "https://openalex.org/W1965808424",
+    "https://openalex.org/W1972570419",
+    "https://openalex.org/W1973795948",
+    "https://openalex.org/W1974388426",
+    "https://openalex.org/W1976212754",
+    "https://openalex.org/W1980384559",
+    "https://openalex.org/W1984685797",
+    "https://openalex.org/W1988264024",
+    "https://openalex.org/W1996361385",
+    "https://openalex.org/W2020349769",
+    "https://openalex.org/W2027069914",
+    "https://openalex.org/W2041016801",
+    "https://openalex.org/W2046425583",
+    "https://openalex.org/W2050875646",
+    "https://openalex.org/W2058069165",
+    "https://openalex.org/W2060953325",
+    "https://openalex.org/W2061761744",
+    "https://openalex.org/W2062145052",
+    "https://openalex.org/W2063666536",
+    "https://openalex.org/W2072396691",
+    "https://openalex.org/W2074865082",
+    "https://openalex.org/W2077367853",
+    "https://openalex.org/W2078156116",
+    "https://openalex.org/W2086993128",
+    "https://openalex.org/W2087210972",
+    "https://openalex.org/W2097889618",
+    "https://openalex.org/W2102339840",
+    "https://openalex.org/W2106944257",
+    "https://openalex.org/W2115142051",
+    "https://openalex.org/W2132605158",
+    "https://openalex.org/W2156806859",
+    "https://openalex.org/W2156874820",
+    "https://openalex.org/W2157081943",
+    "https://openalex.org/W2159210886",
+    "https://openalex.org/W2189486144",
+    "https://openalex.org/W2201141130",
+    "https://openalex.org/W2271800222",
+    "https://openalex.org/W2280388492",
+    "https://openalex.org/W2285365370",
+    "https://openalex.org/W2291522985",
+    "https://openalex.org/W2323661645",
+    "https://openalex.org/W2327117475",
+    "https://openalex.org/W2400716527",
+    "https://openalex.org/W2488980006",
+    "https://openalex.org/W2531779058",
+    "https://openalex.org/W2605510108",
+    "https://openalex.org/W2607087074",
+    "https://openalex.org/W2611633678",
+    "https://openalex.org/W2735730565",
+    "https://openalex.org/W2745157182",
+    "https://openalex.org/W2750238272",
+    "https://openalex.org/W2767857660",
+    "https://openalex.org/W2771266031",
+    "https://openalex.org/W2792432181",
+    "https://openalex.org/W2801567408",
+    "https://openalex.org/W2801921614",
+    "https://openalex.org/W2883081942",
+    "https://openalex.org/W2884029899",
+    "https://openalex.org/W2886664583",
+    "https://openalex.org/W2897084149",
+    "https://openalex.org/W2900612827",
+    "https://openalex.org/W2901906543",
+    "https://openalex.org/W2907594102",
+    "https://openalex.org/W2915949427",
+    "https://openalex.org/W2922918855",
+    "https://openalex.org/W2923629115",
+    "https://openalex.org/W2937507052",
+    "https://openalex.org/W2939564839",
+    "https://openalex.org/W2967466721",
+    "https://openalex.org/W2972068378",
+    "https://openalex.org/W2973899666",
+    "https://openalex.org/W2990914781",
+    "https://openalex.org/W2991697483",
+    "https://openalex.org/W2994526923",
+    "https://openalex.org/W2997229843",
+    "https://openalex.org/W3001689687",
+    "https://openalex.org/W3004424548",
+    "https://openalex.org/W3004519387",
+    "https://openalex.org/W3007638023",
+    "https://openalex.org/W3009034783",
+    "https://openalex.org/W3016166254",
+    "https://openalex.org/W3037029104",
+    "https://openalex.org/W3044079437",
+    "https://openalex.org/W3045468740",
+    "https://openalex.org/W3081321465",
+    "https://openalex.org/W3103562432",
+    "https://openalex.org/W3111348240",
+    "https://openalex.org/W3111857125",
+    "https://openalex.org/W3121379736",
+    "https://openalex.org/W3127277626",
+    "https://openalex.org/W3129681656",
+    "https://openalex.org/W3153780664",
+    "https://openalex.org/W3165723086",
+    "https://openalex.org/W3171498185",
+    "https://openalex.org/W3188720135",
+    "https://openalex.org/W3196945592",
+    "https://openalex.org/W3199456686",
+    "https://openalex.org/W3212728589",
+    "https://openalex.org/W3214033970",
+    "https://openalex.org/W3215395635",
+    "https://openalex.org/W4200464124",
+    "https://openalex.org/W4200618670",
+    "https://openalex.org/W4205858532",
+    "https://openalex.org/W4207043201",
+    "https://openalex.org/W4207062618",
+    "https://openalex.org/W4210355329",
+    "https://openalex.org/W4210385645",
+    "https://openalex.org/W4210940352",
+    "https://openalex.org/W4225403238",
+    "https://openalex.org/W4235825625",
+    "https://openalex.org/W4281256562",
+    "https://openalex.org/W4281295594",
+    "https://openalex.org/W4285732298",
+    "https://openalex.org/W4286251205",
+    "https://openalex.org/W4291019878",
+    "https://openalex.org/W4307706012",
+    "https://openalex.org/W4313543657",
+    "https://openalex.org/W4313823852",
+    "https://openalex.org/W4318567335",
+    "https://openalex.org/W4319161824",
+    "https://openalex.org/W4320002297",
+    "https://openalex.org/W4367367845",
+    "https://openalex.org/W4377030254",
+    "https://openalex.org/W4384945801",
+    "https://openalex.org/W4385841401",
+    "https://openalex.org/W4390886205",
+    "https://openalex.org/W4391930379",
+    "https://openalex.org/W4394694558"
+  ],
+  "related_works": [
+    "https://openalex.org/W922543731",
+    "https://openalex.org/W4394678687",
+    "https://openalex.org/W4256095375",
+    "https://openalex.org/W3196863326",
+    "https://openalex.org/W3003069570",
+    "https://openalex.org/W2626164717",
+    "https://openalex.org/W2478420051",
+    "https://openalex.org/W2412922490",
+    "https://openalex.org/W2387757681",
+    "https://openalex.org/W2385621653"
+  ],
+  "abstract_inverted_index": {
+    "Scaffold": [
+      0
+    ],
+    "porosity": [
+      1,
+      54
+    ],
+    "is": [
+      2
+    ],
+    "a": [
+      3
+    ],
+    "critical": [
+      4,
+      160
+    ],
+    "factor": [
+      5
+    ],
+    "in": [
+      6,
+      10,
+      98
+    ],
+    "replicating": [
+      7
+    ],
+    "the": [
+      8,
+      22,
+      50
+    ],
+    "complex": [
+      9
+    ],
+    "vivo": [
+      11
+    ],
+    "microenvironment,": [
+      12
+    ],
+    "directly": [
+      13
+    ],
+    "influencing": [
+      14
+    ],
+    "cellular": [
+      15,
+      45,
+      62
+    ],
+    "interactions,": [
+      16
+    ],
+    "migration,": [
+      17,
+      107
+    ],
+    "nutrient": [
+      18,
+      136,
+      156
+    ],
+    "transfer,": [
+      19
+    ],
+    "vascularization,": [
+      20
+    ],
+    "and": [
+      21,
+      44,
+      55,
+      64,
+      77,
+      108,
+      138,
+      141,
+      155,
+      163
+    ],
+    "formation": [
+      23,
+      66
+    ],
+    "of": [
+      24,
+      52
+    ],
+    "functional": [
+      25
+    ],
+    "tissues.": [
+      26,
+      79
+    ],
+    "For": [
+      27,
+      116
+    ],
+    "optimal": [
+      28
+    ],
+    "tissue": [
+      29,
+      65,
+      69,
+      118,
+      177
+    ],
+    "formation,": [
+      30
+    ],
+    "scaffold": [
+      31,
+      85,
+      173
+    ],
+    "design": [
+      32,
+      161
+    ],
+    "must": [
+      33
+    ],
+    "account": [
+      34
+    ],
+    "for": [
+      35,
+      87
+    ],
+    "various": [
+      36
+    ],
+    "parameters,": [
+      37
+    ],
+    "including": [
+      38
+    ],
+    "material": [
+      39
+    ],
+    "composition,": [
+      40
+    ],
+    "morphology,": [
+      41
+    ],
+    "mechanical": [
+      42
+    ],
+    "properties,": [
+      43
+    ],
+    "compatibility.": [
+      46
+    ],
+    "This": [
+      47
+    ],
+    "review": [
+      48,
+      169
+    ],
+    "highlights": [
+      49
+    ],
+    "importance": [
+      51
+    ],
+    "interconnected": [
+      53
+    ],
+    "pore": [
+      56,
+      81,
+      147,
+      165
+    ],
+    "size,": [
+      57
+    ],
+    "emphasizing": [
+      58
+    ],
+    "their": [
+      59
+    ],
+    "impact": [
+      60
+    ],
+    "on": [
+      61
+    ],
+    "behavior": [
+      63
+    ],
+    "across": [
+      67
+    ],
+    "several": [
+      68
+    ],
+    "engineering": [
+      70
+    ],
+    "domains,": [
+      71
+    ],
+    "such": [
+      72
+    ],
+    "as": [
+      73
+    ],
+    "skin,": [
+      74
+    ],
+    "bone,": [
+      75
+    ],
+    "cardiovascular,": [
+      76
+    ],
+    "lung": [
+      78,
+      142
+    ],
+    "Specific": [
+      80
+    ],
+    "size": [
+      82,
+      166
+    ],
+    "ranges": [
+      83
+    ],
+    "enhance": [
+      84,
+      135
+    ],
+    "functionality": [
+      86
+    ],
+    "different": [
+      88
+    ],
+    "tissues:": [
+      89
+    ],
+    "small": [
+      90
+    ],
+    "pores": [
+      91,
+      102,
+      110,
+      124,
+      132
+    ],
+    "(∼1–2": [
+      92
+    ],
+    "µm)": [
+      93,
+      104,
+      112,
+      126,
+      134,
+      150
+    ],
+    "aid": [
+      94
+    ],
+    "epidermal": [
+      95
+    ],
+    "cell": [
+      96,
+      128,
+      153
+    ],
+    "attachment": [
+      97
+    ],
+    "skin": [
+      99
+    ],
+    "regeneration,": [
+      100
+    ],
+    "moderate": [
+      101,
+      146
+    ],
+    "(∼2–12": [
+      103
+    ],
+    "support": [
+      105
+    ],
+    "dermal": [
+      106
+    ],
+    "larger": [
+      109,
+      131
+    ],
+    "(∼40–100": [
+      111
+    ],
+    "facilitate": [
+      113
+    ],
+    "vascular": [
+      114
+    ],
+    "structures.": [
+      115
+    ],
+    "bone": [
+      117
+    ],
+    "engineering,": [
+      119
+    ],
+    "multi-layered": [
+      120
+    ],
+    "scaffolds": [
+      121
+    ],
+    "with": [
+      122
+    ],
+    "smaller": [
+      123
+    ],
+    "(50–100": [
+      125
+    ],
+    "foster": [
+      127
+    ],
+    "attachment,": [
+      129
+    ],
+    "while": [
+      130
+    ],
+    "(200–400": [
+      133
+    ],
+    "diffusion": [
+      137
+    ],
+    "angiogenesis.": [
+      139
+    ],
+    "Cardiovascular": [
+      140
+    ],
+    "tissues": [
+      143
+    ],
+    "benefit": [
+      144
+    ],
+    "from": [
+      145
+    ],
+    "sizes": [
+      148
+    ],
+    "(∼25–60": [
+      149
+    ],
+    "to": [
+      151
+    ],
+    "balance": [
+      152
+    ],
+    "integration": [
+      154
+    ],
+    "diffusion.": [
+      157
+    ],
+    "By": [
+      158
+    ],
+    "addressing": [
+      159
+    ],
+    "challenges": [
+      162
+    ],
+    "optimizing": [
+      164
+    ],
+    "distributions,": [
+      167
+    ],
+    "this": [
+      168
+    ],
+    "provides": [
+      170
+    ],
+    "insights": [
+      171
+    ],
+    "into": [
+      172
+    ],
+    "innovations,": [
+      174
+    ],
+    "ultimately": [
+      175
+    ],
+    "advancing": [
+      176
+    ],
+    "regeneration": [
+      178
+    ],
+    "strategies.": [
+      179
+    ]
+  },
+  "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W4404292906",
+  "counts_by_year": [
+    {
+      "year": 2025,
+      "cited_by_count": 70
+    },
+    {
+      "year": 2024,
+      "cited_by_count": 3
+    }
+  ],
+  "updated_date": "2025-09-09T11:51:29.730544",
+  "created_date": "2024-11-13"
+}

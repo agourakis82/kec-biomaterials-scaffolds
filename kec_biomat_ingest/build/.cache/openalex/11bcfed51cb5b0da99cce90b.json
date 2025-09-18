@@ -1,0 +1,1040 @@
+{
+  "id": "https://openalex.org/W2942922338",
+  "doi": "https://doi.org/10.21105/joss.01296",
+  "title": "PoreSpy: A Python Toolkit for Quantitative Analysis of Porous Media Images",
+  "display_name": "PoreSpy: A Python Toolkit for Quantitative Analysis of Porous Media Images",
+  "publication_year": 2019,
+  "publication_date": "2019-05-01",
+  "ids": {
+    "openalex": "https://openalex.org/W2942922338",
+    "doi": "https://doi.org/10.21105/joss.01296",
+    "mag": "2942922338"
+  },
+  "language": "en",
+  "primary_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.21105/joss.01296",
+    "pdf_url": "https://joss.theoj.org/papers/10.21105/joss.01296.pdf",
+    "source": {
+      "id": "https://openalex.org/S4210214273",
+      "display_name": "The Journal of Open Source Software",
+      "issn_l": "2475-9066",
+      "issn": [
+        "2475-9066"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": false,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310315853",
+      "host_organization_name": "Open Journals",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310315853"
+      ],
+      "host_organization_lineage_names": [
+        "Open Journals"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "type": "article",
+  "type_crossref": "journal-article",
+  "indexed_in": [
+    "crossref"
+  ],
+  "open_access": {
+    "is_oa": true,
+    "oa_status": "diamond",
+    "oa_url": "https://joss.theoj.org/papers/10.21105/joss.01296.pdf",
+    "any_repository_has_fulltext": false
+  },
+  "authorships": [
+    {
+      "author_position": "first",
+      "author": {
+        "id": "https://openalex.org/A5017680491",
+        "display_name": "Jeff T. Gostick",
+        "orcid": "https://orcid.org/0000-0001-7736-7124"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I151746483",
+          "display_name": "University of Waterloo",
+          "ror": "https://ror.org/01aff2v68",
+          "country_code": "CA",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I151746483"
+          ]
+        }
+      ],
+      "countries": [
+        "CA"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Jeff Gostick",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada",
+          "institution_ids": [
+            "https://openalex.org/I151746483"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5071327704",
+        "display_name": "Zohaib Atiq Khan",
+        "orcid": "https://orcid.org/0000-0003-2115-7798"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I151746483",
+          "display_name": "University of Waterloo",
+          "ror": "https://ror.org/01aff2v68",
+          "country_code": "CA",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I151746483"
+          ]
+        }
+      ],
+      "countries": [
+        "CA"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Zohaib Khan",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada",
+          "institution_ids": [
+            "https://openalex.org/I151746483"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5084596555",
+        "display_name": "Thomas G. Tranter",
+        "orcid": "https://orcid.org/0000-0003-4721-5941"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I151746483",
+          "display_name": "University of Waterloo",
+          "ror": "https://ror.org/01aff2v68",
+          "country_code": "CA",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I151746483"
+          ]
+        },
+        {
+          "id": "https://openalex.org/I45129253",
+          "display_name": "University College London",
+          "ror": "https://ror.org/02jx3x895",
+          "country_code": "GB",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I124357947",
+            "https://openalex.org/I45129253"
+          ]
+        }
+      ],
+      "countries": [
+        "CA",
+        "GB"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Thomas Tranter",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, University College London, London, United Kingdom",
+        "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada",
+          "institution_ids": [
+            "https://openalex.org/I151746483"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University College London, London, United Kingdom",
+          "institution_ids": [
+            "https://openalex.org/I45129253"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5086674158",
+        "display_name": "Matthew D. R. Kok",
+        "orcid": "https://orcid.org/0000-0001-8410-9748"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I5023651",
+          "display_name": "McGill University",
+          "ror": "https://ror.org/01pxwe438",
+          "country_code": "CA",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I5023651"
+          ]
+        },
+        {
+          "id": "https://openalex.org/I45129253",
+          "display_name": "University College London",
+          "ror": "https://ror.org/02jx3x895",
+          "country_code": "GB",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I124357947",
+            "https://openalex.org/I45129253"
+          ]
+        }
+      ],
+      "countries": [
+        "CA",
+        "GB"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Matthew Kok",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, McGill University, Montreal, QC, Canada",
+        "Department of Chemical Engineering, University College London, London, United Kingdom"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, McGill University, Montreal, QC, Canada",
+          "institution_ids": [
+            "https://openalex.org/I5023651"
+          ]
+        },
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University College London, London, United Kingdom",
+          "institution_ids": [
+            "https://openalex.org/I45129253"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5027988675",
+        "display_name": "Mehrez Agnaou",
+        "orcid": "https://orcid.org/0000-0002-6635-080X"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I151746483",
+          "display_name": "University of Waterloo",
+          "ror": "https://ror.org/01aff2v68",
+          "country_code": "CA",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I151746483"
+          ]
+        }
+      ],
+      "countries": [
+        "CA"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Mehrez Agnaou",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University of Waterloo, Waterloo, ON, Canada",
+          "institution_ids": [
+            "https://openalex.org/I151746483"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5108680754",
+        "display_name": "Mohammadamin Sadeghi",
+        "orcid": null
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I5023651",
+          "display_name": "McGill University",
+          "ror": "https://ror.org/01pxwe438",
+          "country_code": "CA",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I5023651"
+          ]
+        }
+      ],
+      "countries": [
+        "CA"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Mohammadamin Sadeghi",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, McGill University, Montreal, QC, Canada"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, McGill University, Montreal, QC, Canada",
+          "institution_ids": [
+            "https://openalex.org/I5023651"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "last",
+      "author": {
+        "id": "https://openalex.org/A5058730172",
+        "display_name": "Rhodri Jervis",
+        "orcid": "https://orcid.org/0000-0003-2784-7802"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I45129253",
+          "display_name": "University College London",
+          "ror": "https://ror.org/02jx3x895",
+          "country_code": "GB",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I124357947",
+            "https://openalex.org/I45129253"
+          ]
+        }
+      ],
+      "countries": [
+        "GB"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Rhodri Jervis",
+      "raw_affiliation_strings": [
+        "Department of Chemical Engineering, University College London, London, United Kingdom"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Chemical Engineering, University College London, London, United Kingdom",
+          "institution_ids": [
+            "https://openalex.org/I45129253"
+          ]
+        }
+      ]
+    }
+  ],
+  "institution_assertions": [],
+  "countries_distinct_count": 2,
+  "institutions_distinct_count": 3,
+  "corresponding_author_ids": [],
+  "corresponding_institution_ids": [],
+  "apc_list": {
+    "value": 0,
+    "currency": "USD",
+    "value_usd": 0
+  },
+  "apc_paid": null,
+  "fwci": 17.607,
+  "has_fulltext": true,
+  "fulltext_origin": "pdf",
+  "cited_by_count": 343,
+  "citation_normalized_percentile": {
+    "value": 0.999949,
+    "is_in_top_1_percent": true,
+    "is_in_top_10_percent": true
+  },
+  "cited_by_percentile_year": {
+    "min": 99,
+    "max": 100
+  },
+  "biblio": {
+    "volume": "4",
+    "issue": "37",
+    "first_page": "1296",
+    "last_page": "1296"
+  },
+  "is_retracted": false,
+  "is_paratext": false,
+  "primary_topic": {
+    "id": "https://openalex.org/T10399",
+    "display_name": "Hydrocarbon exploration and reservoir analysis",
+    "score": 0.9981,
+    "subfield": {
+      "id": "https://openalex.org/subfields/2211",
+      "display_name": "Mechanics of Materials"
+    },
+    "field": {
+      "id": "https://openalex.org/fields/22",
+      "display_name": "Engineering"
+    },
+    "domain": {
+      "id": "https://openalex.org/domains/3",
+      "display_name": "Physical Sciences"
+    }
+  },
+  "topics": [
+    {
+      "id": "https://openalex.org/T10399",
+      "display_name": "Hydrocarbon exploration and reservoir analysis",
+      "score": 0.9981,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2211",
+        "display_name": "Mechanics of Materials"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10491",
+      "display_name": "Enhanced Oil Recovery Techniques",
+      "score": 0.9955,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2212",
+        "display_name": "Ocean Engineering"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/22",
+        "display_name": "Engineering"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10271",
+      "display_name": "Seismic Imaging and Inversion Techniques",
+      "score": 0.9923,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1908",
+        "display_name": "Geophysics"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/19",
+        "display_name": "Earth and Planetary Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    }
+  ],
+  "keywords": [
+    {
+      "id": "https://openalex.org/keywords/python",
+      "display_name": "Python",
+      "score": 0.904378
+    }
+  ],
+  "concepts": [
+    {
+      "id": "https://openalex.org/C519991488",
+      "wikidata": "https://www.wikidata.org/wiki/Q28865",
+      "display_name": "Python (programming language)",
+      "level": 2,
+      "score": 0.904378
+    },
+    {
+      "id": "https://openalex.org/C41008148",
+      "wikidata": "https://www.wikidata.org/wiki/Q21198",
+      "display_name": "Computer science",
+      "level": 0,
+      "score": 0.66208655
+    },
+    {
+      "id": "https://openalex.org/C121684516",
+      "wikidata": "https://www.wikidata.org/wiki/Q7600677",
+      "display_name": "Computer graphics (images)",
+      "level": 1,
+      "score": 0.5261659
+    },
+    {
+      "id": "https://openalex.org/C105569014",
+      "wikidata": "https://www.wikidata.org/wiki/Q3271208",
+      "display_name": "Porous medium",
+      "level": 3,
+      "score": 0.43852735
+    },
+    {
+      "id": "https://openalex.org/C136764020",
+      "wikidata": "https://www.wikidata.org/wiki/Q466",
+      "display_name": "World Wide Web",
+      "level": 1,
+      "score": 0.3561013
+    },
+    {
+      "id": "https://openalex.org/C199360897",
+      "wikidata": "https://www.wikidata.org/wiki/Q9143",
+      "display_name": "Programming language",
+      "level": 1,
+      "score": 0.25813493
+    },
+    {
+      "id": "https://openalex.org/C6648577",
+      "wikidata": "https://www.wikidata.org/wiki/Q622669",
+      "display_name": "Porosity",
+      "level": 2,
+      "score": 0.17662635
+    },
+    {
+      "id": "https://openalex.org/C127413603",
+      "wikidata": "https://www.wikidata.org/wiki/Q11023",
+      "display_name": "Engineering",
+      "level": 0,
+      "score": 0.10875639
+    },
+    {
+      "id": "https://openalex.org/C187320778",
+      "wikidata": "https://www.wikidata.org/wiki/Q1349130",
+      "display_name": "Geotechnical engineering",
+      "level": 1,
+      "score": 0.0
+    }
+  ],
+  "mesh": [],
+  "locations_count": 1,
+  "locations": [
+    {
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.21105/joss.01296",
+      "pdf_url": "https://joss.theoj.org/papers/10.21105/joss.01296.pdf",
+      "source": {
+        "id": "https://openalex.org/S4210214273",
+        "display_name": "The Journal of Open Source Software",
+        "issn_l": "2475-9066",
+        "issn": [
+          "2475-9066"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_indexed_in_scopus": false,
+        "is_core": true,
+        "host_organization": "https://openalex.org/P4310315853",
+        "host_organization_name": "Open Journals",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310315853"
+        ],
+        "host_organization_lineage_names": [
+          "Open Journals"
+        ],
+        "type": "journal"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    }
+  ],
+  "best_oa_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.21105/joss.01296",
+    "pdf_url": "https://joss.theoj.org/papers/10.21105/joss.01296.pdf",
+    "source": {
+      "id": "https://openalex.org/S4210214273",
+      "display_name": "The Journal of Open Source Software",
+      "issn_l": "2475-9066",
+      "issn": [
+        "2475-9066"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": false,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310315853",
+      "host_organization_name": "Open Journals",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310315853"
+      ],
+      "host_organization_lineage_names": [
+        "Open Journals"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "sustainable_development_goals": [
+    {
+      "display_name": "Decent work and economic growth",
+      "id": "https://metadata.un.org/sdg/8",
+      "score": 0.4
+    }
+  ],
+  "grants": [],
+  "datasets": [],
+  "versions": [],
+  "referenced_works_count": 19,
+  "referenced_works": [
+    "https://openalex.org/W1983855633",
+    "https://openalex.org/W2015159529",
+    "https://openalex.org/W2022462155",
+    "https://openalex.org/W2032247692",
+    "https://openalex.org/W2093851663",
+    "https://openalex.org/W2269651571",
+    "https://openalex.org/W2278652762",
+    "https://openalex.org/W2291283624",
+    "https://openalex.org/W2338225286",
+    "https://openalex.org/W2403618360",
+    "https://openalex.org/W2560321630",
+    "https://openalex.org/W2749066189",
+    "https://openalex.org/W2755016239",
+    "https://openalex.org/W2790668822",
+    "https://openalex.org/W2885688387",
+    "https://openalex.org/W2887025232",
+    "https://openalex.org/W2890922931",
+    "https://openalex.org/W2899221315",
+    "https://openalex.org/W2907443719"
+  ],
+  "related_works": [
+    "https://openalex.org/W4297799326",
+    "https://openalex.org/W4287027380",
+    "https://openalex.org/W4285822516",
+    "https://openalex.org/W3193760048",
+    "https://openalex.org/W3187193180",
+    "https://openalex.org/W3116064965",
+    "https://openalex.org/W2748952813",
+    "https://openalex.org/W2341492732",
+    "https://openalex.org/W1699080303",
+    "https://openalex.org/W106542691"
+  ],
+  "abstract_inverted_index": {
+    "Porous": [
+      0
+    ],
+    "materials": [
+      1,
+      65
+    ],
+    "play": [
+      2
+    ],
+    "a": [
+      3,
+      39,
+      67,
+      94,
+      140
+    ],
+    "central": [
+      4
+    ],
+    "role": [
+      5
+    ],
+    "in": [
+      6,
+      13,
+      25,
+      42,
+      143
+    ],
+    "many": [
+      7
+    ],
+    "technologies,": [
+      8
+    ],
+    "from": [
+      9,
+      135
+    ],
+    "micron-thick": [
+      10
+    ],
+    "electrodes": [
+      11
+    ],
+    "used": [
+      12
+    ],
+    "batteries": [
+      14
+    ],
+    "and": [
+      15,
+      30,
+      74,
+      82,
+      114,
+      131
+    ],
+    "fuel-cells": [
+      16
+    ],
+    "(Karan,": [
+      17
+    ],
+    "2017)": [
+      18
+    ],
+    "to": [
+      19
+    ],
+    "kilometer-long": [
+      20
+    ],
+    "geologic": [
+      21
+    ],
+    "formations": [
+      22
+    ],
+    "of": [
+      23,
+      63,
+      70,
+      84,
+      88,
+      123,
+      146
+    ],
+    "interest": [
+      24,
+      41
+    ],
+    "oil": [
+      26
+    ],
+    "recovery,": [
+      27
+    ],
+    "contaminant": [
+      28
+    ],
+    "transport": [
+      29,
+      45
+    ],
+    "CO2": [
+      31
+    ],
+    "sequestration": [
+      32
+    ],
+    "(Kumar": [
+      33
+    ],
+    "et": [
+      34,
+      106,
+      111
+    ],
+    "al.,": [
+      35,
+      107,
+      112
+    ],
+    "2005).These": [
+      36
+    ],
+    "applications": [
+      37
+    ],
+    "share": [
+      38
+    ],
+    "common": [
+      40
+    ],
+    "analyzing": [
+      43
+    ],
+    "the": [
+      44,
+      49,
+      55,
+      80,
+      85
+    ],
+    "processes": [
+      46
+    ],
+    "occurring": [
+      47
+    ],
+    "at": [
+      48
+    ],
+    "pore-scale,": [
+      50
+    ],
+    "since": [
+      51,
+      72
+    ],
+    "these": [
+      52,
+      124,
+      136
+    ],
+    "ultimately": [
+      53
+    ],
+    "control": [
+      54
+    ],
+    "observable": [
+      56
+    ],
+    "macroscopic": [
+      57
+    ],
+    "behavior": [
+      58
+    ],
+    "(Anovitz": [
+      59
+    ],
+    "&": [
+      60,
+      120
+    ],
+    "Cole,": [
+      61
+    ],
+    "2015).Images": [
+      62
+    ],
+    "porous": [
+      64,
+      147
+    ],
+    "are": [
+      66,
+      76,
+      90
+    ],
+    "valuable": [
+      68
+    ],
+    "source": [
+      69
+    ],
+    "information,": [
+      71
+    ],
+    "performance": [
+      73
+    ],
+    "structure": [
+      75,
+      98
+    ],
+    "intimately": [
+      77
+    ],
+    "linked": [
+      78
+    ],
+    "through": [
+      79
+    ],
+    "topology": [
+      81
+    ],
+    "geometry": [
+      83
+    ],
+    "media.A": [
+      86
+    ],
+    "variety": [
+      87
+    ],
+    "techniques": [
+      89
+    ],
+    "available": [
+      91
+    ],
+    "for": [
+      92
+    ],
+    "imaging": [
+      93
+    ],
+    "material's": [
+      95
+    ],
+    "internal": [
+      96
+    ],
+    "pore": [
+      97
+    ],
+    "with": [
+      99
+    ],
+    "sub-micron": [
+      100
+    ],
+    "resolution,": [
+      101
+    ],
+    "including": [
+      102
+    ],
+    "X-ray": [
+      103
+    ],
+    "tomography": [
+      104
+    ],
+    "(Coles": [
+      105
+    ],
+    "1998),": [
+      108
+    ],
+    "ptychography": [
+      109
+    ],
+    "(Dierolf": [
+      110
+    ],
+    "2010),": [
+      113
+    ],
+    "FIB-SEM": [
+      115
+    ],
+    "sectioning": [
+      116
+    ],
+    "(Heaney,": [
+      117
+    ],
+    "Vicenzi,": [
+      118
+    ],
+    "Giannuzzi,": [
+      119
+    ],
+    "Livi,": [
+      121
+    ],
+    "2001).Each": [
+      122
+    ],
+    "tools": [
+      125
+    ],
+    "can": [
+      126
+    ],
+    "provide": [
+      127
+    ],
+    "exquisitely": [
+      128
+    ],
+    "detailed": [
+      129
+    ],
+    "images,": [
+      130
+    ],
+    "retrieving": [
+      132
+    ],
+    "quantitative": [
+      133
+    ],
+    "information": [
+      134
+    ],
+    "images": [
+      137
+    ],
+    "has": [
+      138
+    ],
+    "become": [
+      139
+    ],
+    "vital": [
+      141
+    ],
+    "tool": [
+      142
+    ],
+    "all": [
+      144
+    ],
+    "areas": [
+      145
+    ],
+    "media": [
+      148
+    ],
+    "research.": [
+      149
+    ]
+  },
+  "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W2942922338",
+  "counts_by_year": [
+    {
+      "year": 2025,
+      "cited_by_count": 63
+    },
+    {
+      "year": 2024,
+      "cited_by_count": 82
+    },
+    {
+      "year": 2023,
+      "cited_by_count": 88
+    },
+    {
+      "year": 2022,
+      "cited_by_count": 51
+    },
+    {
+      "year": 2021,
+      "cited_by_count": 39
+    },
+    {
+      "year": 2020,
+      "cited_by_count": 14
+    },
+    {
+      "year": 2019,
+      "cited_by_count": 2
+    }
+  ],
+  "updated_date": "2025-09-15T20:26:32.983156",
+  "created_date": "2019-05-09"
+}

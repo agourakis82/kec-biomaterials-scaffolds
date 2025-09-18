@@ -1,0 +1,1238 @@
+{
+  "id": "https://openalex.org/W2411622228",
+  "doi": "https://doi.org/10.1038/srep22057",
+  "title": "Small-World Propensity and Weighted Brain Networks",
+  "display_name": "Small-World Propensity and Weighted Brain Networks",
+  "publication_year": 2016,
+  "publication_date": "2016-02-25",
+  "ids": {
+    "openalex": "https://openalex.org/W2411622228",
+    "doi": "https://doi.org/10.1038/srep22057",
+    "mag": "2411622228",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/26912196",
+    "pmcid": "https://www.ncbi.nlm.nih.gov/pmc/articles/4766852"
+  },
+  "language": "en",
+  "primary_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1038/srep22057",
+    "pdf_url": "https://www.nature.com/articles/srep22057.pdf",
+    "source": {
+      "id": "https://openalex.org/S196734849",
+      "display_name": "Scientific Reports",
+      "issn_l": "2045-2322",
+      "issn": [
+        "2045-2322"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310319908",
+      "host_organization_name": "Nature Portfolio",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310319908",
+        "https://openalex.org/P4310319965"
+      ],
+      "host_organization_lineage_names": [
+        "Nature Portfolio",
+        "Springer Nature"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "type": "article",
+  "type_crossref": "journal-article",
+  "indexed_in": [
+    "crossref",
+    "pubmed"
+  ],
+  "open_access": {
+    "is_oa": true,
+    "oa_status": "gold",
+    "oa_url": "https://www.nature.com/articles/srep22057.pdf",
+    "any_repository_has_fulltext": true
+  },
+  "authorships": [
+    {
+      "author_position": "first",
+      "author": {
+        "id": "https://openalex.org/A5015567863",
+        "display_name": "Sarah F. Muldoon",
+        "orcid": "https://orcid.org/0000-0002-2830-9291"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I79576946",
+          "display_name": "University of Pennsylvania",
+          "ror": "https://ror.org/00b30xv10",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I79576946"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Sarah Feldt Muldoon",
+      "raw_affiliation_strings": [
+        "Department of Bioengineering, University of Pennsylvania, Philadelphia, 19104, PA, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Bioengineering, University of Pennsylvania, Philadelphia, 19104, PA, USA",
+          "institution_ids": [
+            "https://openalex.org/I79576946"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "middle",
+      "author": {
+        "id": "https://openalex.org/A5085717731",
+        "display_name": "Eric Bridgeford",
+        "orcid": "https://orcid.org/0000-0001-6115-719X"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I79576946",
+          "display_name": "University of Pennsylvania",
+          "ror": "https://ror.org/00b30xv10",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I79576946"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Eric W. Bridgeford",
+      "raw_affiliation_strings": [
+        "Department of Bioengineering, University of Pennsylvania, Philadelphia, 19104, PA, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Bioengineering, University of Pennsylvania, Philadelphia, 19104, PA, USA",
+          "institution_ids": [
+            "https://openalex.org/I79576946"
+          ]
+        }
+      ]
+    },
+    {
+      "author_position": "last",
+      "author": {
+        "id": "https://openalex.org/A5009266404",
+        "display_name": "Danielle S. Bassett",
+        "orcid": "https://orcid.org/0000-0002-6183-4493"
+      },
+      "institutions": [
+        {
+          "id": "https://openalex.org/I79576946",
+          "display_name": "University of Pennsylvania",
+          "ror": "https://ror.org/00b30xv10",
+          "country_code": "US",
+          "type": "funder",
+          "lineage": [
+            "https://openalex.org/I79576946"
+          ]
+        }
+      ],
+      "countries": [
+        "US"
+      ],
+      "is_corresponding": false,
+      "raw_author_name": "Danielle S. Bassett",
+      "raw_affiliation_strings": [
+        "Department of Bioengineering, University of Pennsylvania, Philadelphia, 19104, PA, USA"
+      ],
+      "affiliations": [
+        {
+          "raw_affiliation_string": "Department of Bioengineering, University of Pennsylvania, Philadelphia, 19104, PA, USA",
+          "institution_ids": [
+            "https://openalex.org/I79576946"
+          ]
+        }
+      ]
+    }
+  ],
+  "institution_assertions": [],
+  "countries_distinct_count": 1,
+  "institutions_distinct_count": 1,
+  "corresponding_author_ids": [],
+  "corresponding_institution_ids": [],
+  "apc_list": {
+    "value": 1890,
+    "currency": "EUR",
+    "value_usd": 2190
+  },
+  "apc_paid": {
+    "value": 1890,
+    "currency": "EUR",
+    "value_usd": 2190
+  },
+  "fwci": 11.545,
+  "has_fulltext": true,
+  "fulltext_origin": "pdf",
+  "cited_by_count": 288,
+  "citation_normalized_percentile": {
+    "value": 0.999934,
+    "is_in_top_1_percent": true,
+    "is_in_top_10_percent": true
+  },
+  "cited_by_percentile_year": {
+    "min": 99,
+    "max": 100
+  },
+  "biblio": {
+    "volume": "6",
+    "issue": "1",
+    "first_page": null,
+    "last_page": null
+  },
+  "is_retracted": false,
+  "is_paratext": false,
+  "primary_topic": {
+    "id": "https://openalex.org/T10581",
+    "display_name": "Neural dynamics and brain function",
+    "score": 0.9953,
+    "subfield": {
+      "id": "https://openalex.org/subfields/2805",
+      "display_name": "Cognitive Neuroscience"
+    },
+    "field": {
+      "id": "https://openalex.org/fields/28",
+      "display_name": "Neuroscience"
+    },
+    "domain": {
+      "id": "https://openalex.org/domains/1",
+      "display_name": "Life Sciences"
+    }
+  },
+  "topics": [
+    {
+      "id": "https://openalex.org/T10581",
+      "display_name": "Neural dynamics and brain function",
+      "score": 0.9953,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2805",
+        "display_name": "Cognitive Neuroscience"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/28",
+        "display_name": "Neuroscience"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/1",
+        "display_name": "Life Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10241",
+      "display_name": "Functional Brain Connectivity Studies",
+      "score": 0.9932,
+      "subfield": {
+        "id": "https://openalex.org/subfields/2805",
+        "display_name": "Cognitive Neuroscience"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/28",
+        "display_name": "Neuroscience"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/1",
+        "display_name": "Life Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T13283",
+      "display_name": "Mental Health Research Topics",
+      "score": 0.9652,
+      "subfield": {
+        "id": "https://openalex.org/subfields/3205",
+        "display_name": "Experimental and Cognitive Psychology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/32",
+        "display_name": "Psychology"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    }
+  ],
+  "keywords": [
+    {
+      "id": "https://openalex.org/keywords/small-world-network",
+      "display_name": "Small-world network",
+      "score": 0.7896644
+    },
+    {
+      "id": "https://openalex.org/keywords/limiting",
+      "display_name": "Limiting",
+      "score": 0.45165455
+    },
+    {
+      "id": "https://openalex.org/keywords/toolbox",
+      "display_name": "Toolbox",
+      "score": 0.42327085
+    }
+  ],
+  "concepts": [
+    {
+      "id": "https://openalex.org/C183331307",
+      "wikidata": "https://www.wikidata.org/wiki/Q840026",
+      "display_name": "Small-world network",
+      "level": 3,
+      "score": 0.7896644
+    },
+    {
+      "id": "https://openalex.org/C41008148",
+      "wikidata": "https://www.wikidata.org/wiki/Q21198",
+      "display_name": "Computer science",
+      "level": 0,
+      "score": 0.66955495
+    },
+    {
+      "id": "https://openalex.org/C34947359",
+      "wikidata": "https://www.wikidata.org/wiki/Q665189",
+      "display_name": "Complex network",
+      "level": 2,
+      "score": 0.5585057
+    },
+    {
+      "id": "https://openalex.org/C176217482",
+      "wikidata": "https://www.wikidata.org/wiki/Q860554",
+      "display_name": "Metric (unit)",
+      "level": 2,
+      "score": 0.47478884
+    },
+    {
+      "id": "https://openalex.org/C188198153",
+      "wikidata": "https://www.wikidata.org/wiki/Q1613840",
+      "display_name": "Limiting",
+      "level": 2,
+      "score": 0.45165455
+    },
+    {
+      "id": "https://openalex.org/C28225019",
+      "wikidata": "https://www.wikidata.org/wiki/Q4915005",
+      "display_name": "Biological network",
+      "level": 2,
+      "score": 0.44913286
+    },
+    {
+      "id": "https://openalex.org/C2777655017",
+      "wikidata": "https://www.wikidata.org/wiki/Q1501161",
+      "display_name": "Toolbox",
+      "level": 2,
+      "score": 0.42327085
+    },
+    {
+      "id": "https://openalex.org/C154945302",
+      "wikidata": "https://www.wikidata.org/wiki/Q11660",
+      "display_name": "Artificial intelligence",
+      "level": 1,
+      "score": 0.38600802
+    },
+    {
+      "id": "https://openalex.org/C124101348",
+      "wikidata": "https://www.wikidata.org/wiki/Q172491",
+      "display_name": "Data mining",
+      "level": 1,
+      "score": 0.35191354
+    },
+    {
+      "id": "https://openalex.org/C119857082",
+      "wikidata": "https://www.wikidata.org/wiki/Q2539",
+      "display_name": "Machine learning",
+      "level": 1,
+      "score": 0.34978777
+    },
+    {
+      "id": "https://openalex.org/C80444323",
+      "wikidata": "https://www.wikidata.org/wiki/Q2878974",
+      "display_name": "Theoretical computer science",
+      "level": 1,
+      "score": 0.32624
+    },
+    {
+      "id": "https://openalex.org/C86803240",
+      "wikidata": "https://www.wikidata.org/wiki/Q420",
+      "display_name": "Biology",
+      "level": 0,
+      "score": 0.1569727
+    },
+    {
+      "id": "https://openalex.org/C60644358",
+      "wikidata": "https://www.wikidata.org/wiki/Q128570",
+      "display_name": "Bioinformatics",
+      "level": 1,
+      "score": 0.117096454
+    },
+    {
+      "id": "https://openalex.org/C78519656",
+      "wikidata": "https://www.wikidata.org/wiki/Q101333",
+      "display_name": "Mechanical engineering",
+      "level": 1,
+      "score": 0.0
+    },
+    {
+      "id": "https://openalex.org/C21547014",
+      "wikidata": "https://www.wikidata.org/wiki/Q1423657",
+      "display_name": "Operations management",
+      "level": 1,
+      "score": 0.0
+    },
+    {
+      "id": "https://openalex.org/C199360897",
+      "wikidata": "https://www.wikidata.org/wiki/Q9143",
+      "display_name": "Programming language",
+      "level": 1,
+      "score": 0.0
+    },
+    {
+      "id": "https://openalex.org/C136764020",
+      "wikidata": "https://www.wikidata.org/wiki/Q466",
+      "display_name": "World Wide Web",
+      "level": 1,
+      "score": 0.0
+    },
+    {
+      "id": "https://openalex.org/C127413603",
+      "wikidata": "https://www.wikidata.org/wiki/Q11023",
+      "display_name": "Engineering",
+      "level": 0,
+      "score": 0.0
+    },
+    {
+      "id": "https://openalex.org/C162324750",
+      "wikidata": "https://www.wikidata.org/wiki/Q8134",
+      "display_name": "Economics",
+      "level": 0,
+      "score": 0.0
+    }
+  ],
+  "mesh": [
+    {
+      "descriptor_ui": "D001921",
+      "descriptor_name": "Brain",
+      "qualifier_ui": "Q000502",
+      "qualifier_name": "physiology",
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D008954",
+      "descriptor_name": "Models, Biological",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D016571",
+      "descriptor_name": "Neural Networks, Computer",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": true
+    },
+    {
+      "descriptor_ui": "D000465",
+      "descriptor_name": "Algorithms",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D000818",
+      "descriptor_name": "Animals",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D001921",
+      "descriptor_name": "Brain",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D016000",
+      "descriptor_name": "Cluster Analysis",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    },
+    {
+      "descriptor_ui": "D006801",
+      "descriptor_name": "Humans",
+      "qualifier_ui": "",
+      "qualifier_name": null,
+      "is_major_topic": false
+    }
+  ],
+  "locations_count": 3,
+  "locations": [
+    {
+      "is_oa": true,
+      "landing_page_url": "https://doi.org/10.1038/srep22057",
+      "pdf_url": "https://www.nature.com/articles/srep22057.pdf",
+      "source": {
+        "id": "https://openalex.org/S196734849",
+        "display_name": "Scientific Reports",
+        "issn_l": "2045-2322",
+        "issn": [
+          "2045-2322"
+        ],
+        "is_oa": true,
+        "is_in_doaj": true,
+        "is_indexed_in_scopus": true,
+        "is_core": true,
+        "host_organization": "https://openalex.org/P4310319908",
+        "host_organization_name": "Nature Portfolio",
+        "host_organization_lineage": [
+          "https://openalex.org/P4310319908",
+          "https://openalex.org/P4310319965"
+        ],
+        "host_organization_lineage_names": [
+          "Nature Portfolio",
+          "Springer Nature"
+        ],
+        "type": "journal"
+      },
+      "license": "cc-by",
+      "license_id": "https://openalex.org/licenses/cc-by",
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": true,
+      "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4766852",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S2764455111",
+        "display_name": "PubMed Central",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": true,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": "publishedVersion",
+      "is_accepted": true,
+      "is_published": true
+    },
+    {
+      "is_oa": false,
+      "landing_page_url": "https://pubmed.ncbi.nlm.nih.gov/26912196",
+      "pdf_url": null,
+      "source": {
+        "id": "https://openalex.org/S4306525036",
+        "display_name": "PubMed",
+        "issn_l": null,
+        "issn": null,
+        "is_oa": false,
+        "is_in_doaj": false,
+        "is_indexed_in_scopus": false,
+        "is_core": false,
+        "host_organization": "https://openalex.org/I1299303238",
+        "host_organization_name": "National Institutes of Health",
+        "host_organization_lineage": [
+          "https://openalex.org/I1299303238"
+        ],
+        "host_organization_lineage_names": [
+          "National Institutes of Health"
+        ],
+        "type": "repository"
+      },
+      "license": null,
+      "license_id": null,
+      "version": null,
+      "is_accepted": false,
+      "is_published": false
+    }
+  ],
+  "best_oa_location": {
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1038/srep22057",
+    "pdf_url": "https://www.nature.com/articles/srep22057.pdf",
+    "source": {
+      "id": "https://openalex.org/S196734849",
+      "display_name": "Scientific Reports",
+      "issn_l": "2045-2322",
+      "issn": [
+        "2045-2322"
+      ],
+      "is_oa": true,
+      "is_in_doaj": true,
+      "is_indexed_in_scopus": true,
+      "is_core": true,
+      "host_organization": "https://openalex.org/P4310319908",
+      "host_organization_name": "Nature Portfolio",
+      "host_organization_lineage": [
+        "https://openalex.org/P4310319908",
+        "https://openalex.org/P4310319965"
+      ],
+      "host_organization_lineage_names": [
+        "Nature Portfolio",
+        "Springer Nature"
+      ],
+      "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true
+  },
+  "sustainable_development_goals": [],
+  "grants": [],
+  "datasets": [],
+  "versions": [],
+  "referenced_works_count": 69,
+  "referenced_works": [
+    "https://openalex.org/W155417673",
+    "https://openalex.org/W1671906456",
+    "https://openalex.org/W1714025407",
+    "https://openalex.org/W1875112053",
+    "https://openalex.org/W1890632236",
+    "https://openalex.org/W1974338285",
+    "https://openalex.org/W1974412164",
+    "https://openalex.org/W1979426401",
+    "https://openalex.org/W1987778722",
+    "https://openalex.org/W1991362940",
+    "https://openalex.org/W1994801733",
+    "https://openalex.org/W1998071216",
+    "https://openalex.org/W2004824191",
+    "https://openalex.org/W2006038621",
+    "https://openalex.org/W2011615785",
+    "https://openalex.org/W2017532337",
+    "https://openalex.org/W2020055733",
+    "https://openalex.org/W2022202415",
+    "https://openalex.org/W2026965872",
+    "https://openalex.org/W2028115371",
+    "https://openalex.org/W2032332507",
+    "https://openalex.org/W2033488646",
+    "https://openalex.org/W2036354372",
+    "https://openalex.org/W2036474766",
+    "https://openalex.org/W2037716995",
+    "https://openalex.org/W2040092971",
+    "https://openalex.org/W2049462780",
+    "https://openalex.org/W2055139905",
+    "https://openalex.org/W2058711140",
+    "https://openalex.org/W2060705109",
+    "https://openalex.org/W2071869259",
+    "https://openalex.org/W2073847748",
+    "https://openalex.org/W2075496760",
+    "https://openalex.org/W2077672559",
+    "https://openalex.org/W2082445321",
+    "https://openalex.org/W2082915760",
+    "https://openalex.org/W2090357978",
+    "https://openalex.org/W2094017021",
+    "https://openalex.org/W2094885808",
+    "https://openalex.org/W2100145912",
+    "https://openalex.org/W2101571519",
+    "https://openalex.org/W2109273473",
+    "https://openalex.org/W2111090475",
+    "https://openalex.org/W2112090702",
+    "https://openalex.org/W2112615110",
+    "https://openalex.org/W2116047834",
+    "https://openalex.org/W2117344958",
+    "https://openalex.org/W2117391947",
+    "https://openalex.org/W2120092772",
+    "https://openalex.org/W2129057035",
+    "https://openalex.org/W2129934604",
+    "https://openalex.org/W2137350833",
+    "https://openalex.org/W2145872936",
+    "https://openalex.org/W2147238273",
+    "https://openalex.org/W2149055390",
+    "https://openalex.org/W2151720121",
+    "https://openalex.org/W2153624566",
+    "https://openalex.org/W2155338866",
+    "https://openalex.org/W2164928285",
+    "https://openalex.org/W2165096765",
+    "https://openalex.org/W2167822639",
+    "https://openalex.org/W2168189894",
+    "https://openalex.org/W2170766502",
+    "https://openalex.org/W261461018",
+    "https://openalex.org/W2964197159",
+    "https://openalex.org/W3037085755",
+    "https://openalex.org/W3101529970",
+    "https://openalex.org/W3106209931",
+    "https://openalex.org/W3124443731"
+  ],
+  "related_works": [
+    "https://openalex.org/W3128853513",
+    "https://openalex.org/W2578454336",
+    "https://openalex.org/W2545891183",
+    "https://openalex.org/W2386899876",
+    "https://openalex.org/W2356784915",
+    "https://openalex.org/W2353485001",
+    "https://openalex.org/W2088831353",
+    "https://openalex.org/W2070704205",
+    "https://openalex.org/W2022363230",
+    "https://openalex.org/W1964392667"
+  ],
+  "abstract_inverted_index": {
+    "Quantitative": [
+      0
+    ],
+    "descriptions": [
+      1
+    ],
+    "of": [
+      2,
+      12,
+      66,
+      99,
+      104,
+      114,
+      133,
+      193
+    ],
+    "network": [
+      3,
+      67,
+      144
+    ],
+    "structure": [
+      4,
+      101
+    ],
+    "can": [
+      5,
+      42
+    ],
+    "provide": [
+      6
+    ],
+    "fundamental": [
+      7
+    ],
+    "insights": [
+      8
+    ],
+    "into": [
+      9
+    ],
+    "the": [
+      10,
+      64,
+      85,
+      93,
+      112,
+      134,
+      147,
+      161,
+      165,
+      170,
+      189
+    ],
+    "function": [
+      11,
+      40
+    ],
+    "interconnected": [
+      13
+    ],
+    "complex": [
+      14
+    ],
+    "systems.": [
+      15,
+      74
+    ],
+    "Small-world": [
+      16
+    ],
+    "structure,": [
+      17
+    ],
+    "diagnosed": [
+      18
+    ],
+    "by": [
+      19,
+      118
+    ],
+    "high": [
+      20
+    ],
+    "local": [
+      21
+    ],
+    "clustering": [
+      22
+    ],
+    "yet": [
+      23
+    ],
+    "short": [
+      24
+    ],
+    "average": [
+      25
+    ],
+    "path": [
+      26
+    ],
+    "length": [
+      27
+    ],
+    "between": [
+      28,
+      47
+    ],
+    "any": [
+      29
+    ],
+    "two": [
+      30
+    ],
+    "nodes,": [
+      31
+    ],
+    "promotes": [
+      32
+    ],
+    "information": [
+      33
+    ],
+    "flow": [
+      34
+    ],
+    "in": [
+      35,
+      72,
+      102,
+      196
+    ],
+    "coupled": [
+      36
+    ],
+    "systems,": [
+      37
+    ],
+    "a": [
+      38,
+      81,
+      121,
+      130,
+      138,
+      185
+    ],
+    "key": [
+      39
+    ],
+    "that": [
+      41,
+      164
+    ],
+    "differ": [
+      43
+    ],
+    "across": [
+      44
+    ],
+    "conditions": [
+      45
+    ],
+    "or": [
+      46
+    ],
+    "groups.": [
+      48
+    ],
+    "However,": [
+      49
+    ],
+    "current": [
+      50
+    ],
+    "techniques": [
+      51,
+      153
+    ],
+    "to": [
+      52,
+      111,
+      154
+    ],
+    "quantify": [
+      53
+    ],
+    "small-worldness": [
+      54
+    ],
+    "are": [
+      55
+    ],
+    "density": [
+      56
+    ],
+    "dependent": [
+      57
+    ],
+    "and": [
+      58,
+      136,
+      182,
+      191
+    ],
+    "neglect": [
+      59
+    ],
+    "important": [
+      60
+    ],
+    "features": [
+      61
+    ],
+    "such": [
+      62
+    ],
+    "as": [
+      63
+    ],
+    "strength": [
+      65
+    ],
+    "connections,": [
+      68
+    ],
+    "limiting": [
+      69
+    ],
+    "their": [
+      70
+    ],
+    "application": [
+      71
+    ],
+    "real-world": [
+      73,
+      156
+    ],
+    "Here,": [
+      75
+    ],
+    "we": [
+      76,
+      159
+    ],
+    "address": [
+      77
+    ],
+    "both": [
+      78
+    ],
+    "limitations": [
+      79
+    ],
+    "with": [
+      80
+    ],
+    "novel": [
+      82
+    ],
+    "metric": [
+      83
+    ],
+    "called": [
+      84
+    ],
+    "Small-World": [
+      86
+    ],
+    "Propensity": [
+      87
+    ],
+    "(SWP).": [
+      88
+    ],
+    "In": [
+      89,
+      150
+    ],
+    "its": [
+      90
+    ],
+    "binary": [
+      91
+    ],
+    "instantiation,": [
+      92
+    ],
+    "SWP": [
+      94
+    ],
+    "provides": [
+      95
+    ],
+    "an": [
+      96
+    ],
+    "unbiased": [
+      97
+    ],
+    "assessment": [
+      98,
+      190
+    ],
+    "small-world": [
+      100,
+      127,
+      168
+    ],
+    "networks": [
+      103,
+      117
+    ],
+    "varying": [
+      105
+    ],
+    "densities.": [
+      106
+    ],
+    "We": [
+      107
+    ],
+    "extend": [
+      108
+    ],
+    "this": [
+      109
+    ],
+    "concept": [
+      110
+    ],
+    "case": [
+      113
+    ],
+    "weighted": [
+      115,
+      126,
+      131
+    ],
+    "brain": [
+      116,
+      143,
+      157,
+      197
+    ],
+    "developing": [
+      119
+    ],
+    "(i)": [
+      120
+    ],
+    "standardized": [
+      122
+    ],
+    "procedure": [
+      123
+    ],
+    "for": [
+      124,
+      140,
+      188
+    ],
+    "generating": [
+      125
+    ],
+    "networks,": [
+      128,
+      158
+    ],
+    "(ii)": [
+      129
+    ],
+    "extension": [
+      132
+    ],
+    "SWP,": [
+      135
+    ],
+    "(iii)": [
+      137
+    ],
+    "method": [
+      139
+    ],
+    "mapping": [
+      141
+    ],
+    "observed": [
+      142
+    ],
+    "data": [
+      145
+    ],
+    "onto": [
+      146
+    ],
+    "theoretical": [
+      148
+    ],
+    "model.": [
+      149
+    ],
+    "applying": [
+      151
+    ],
+    "these": [
+      152
+    ],
+    "compare": [
+      155
+    ],
+    "uncover": [
+      160
+    ],
+    "surprising": [
+      162
+    ],
+    "fact": [
+      163
+    ],
+    "canonical": [
+      166
+    ],
+    "biological": [
+      167
+    ],
+    "network,": [
+      169,
+      174
+    ],
+    "C.": [
+      171
+    ],
+    "elegans": [
+      172
+    ],
+    "neuronal": [
+      173
+    ],
+    "has": [
+      175
+    ],
+    "strikingly": [
+      176
+    ],
+    "low": [
+      177
+    ],
+    "SWP.": [
+      178
+    ],
+    "These": [
+      179
+    ],
+    "metrics,": [
+      180
+    ],
+    "models,": [
+      181
+    ],
+    "maps": [
+      183
+    ],
+    "form": [
+      184
+    ],
+    "coherent": [
+      186
+    ],
+    "toolbox": [
+      187
+    ],
+    "comparison": [
+      192
+    ],
+    "architectural": [
+      194
+    ],
+    "properties": [
+      195
+    ],
+    "networks.": [
+      198
+    ]
+  },
+  "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W2411622228",
+  "counts_by_year": [
+    {
+      "year": 2025,
+      "cited_by_count": 14
+    },
+    {
+      "year": 2024,
+      "cited_by_count": 32
+    },
+    {
+      "year": 2023,
+      "cited_by_count": 38
+    },
+    {
+      "year": 2022,
+      "cited_by_count": 37
+    },
+    {
+      "year": 2021,
+      "cited_by_count": 51
+    },
+    {
+      "year": 2020,
+      "cited_by_count": 30
+    },
+    {
+      "year": 2019,
+      "cited_by_count": 26
+    },
+    {
+      "year": 2018,
+      "cited_by_count": 26
+    },
+    {
+      "year": 2017,
+      "cited_by_count": 21
+    },
+    {
+      "year": 2016,
+      "cited_by_count": 12
+    },
+    {
+      "year": 2015,
+      "cited_by_count": 1
+    }
+  ],
+  "updated_date": "2025-08-25T04:07:56.628974",
+  "created_date": "2016-06-24"
+}
