@@ -19,7 +19,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel, Field
 
-from ..security import require_api_key, rate_limit
+from security import require_api_key, rate_limit
 from services.rag_plus import DarwinRAGPlusService, get_rag_plus_service
 
 logger = logging.getLogger(__name__)

@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 
-from ..security import rate_limit, require_api_key
+from security import rate_limit, require_api_key
 from services.rag_vertex import get_rag
 
 logger = logging.getLogger(__name__)

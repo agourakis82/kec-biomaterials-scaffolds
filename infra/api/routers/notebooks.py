@@ -6,9 +6,9 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from services.notebook_service import notebook_service
 
-from ..auth import optional_api_key
-from ..logging import get_logger
-from ..rate_limit import rate_limit_dependency
+from auth import optional_api_key
+from custom_logging import get_logger
+from rate_limit import rate_limit_dependency
 
 logger = get_logger("notebooks_router")
 

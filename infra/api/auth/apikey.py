@@ -21,7 +21,7 @@ from starlette.responses import Response
 from starlette.types import ASGIApp
 from starlette.applications import Starlette
 
-from ..config import settings
+from config import settings
 
 # Configure module logger
 logger = logging.getLogger(__name__)

@@ -10,10 +10,10 @@ from services.helio_service import helio_service
 from services.notebook_service import notebook_service
 from services.rag_service import rag_service
 
-from ..auth import optional_api_key
-from ..config import settings
-from ..logging import get_logger
-from ..models import HealthResponse, VersionResponse
+from auth import optional_api_key
+from config import settings
+from custom_logging import get_logger
+from models import HealthResponse, VersionResponse
 
 logger = get_logger("admin_router")
 

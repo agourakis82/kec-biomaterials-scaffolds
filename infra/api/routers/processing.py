@@ -9,9 +9,9 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
 
-from ..auth import verify_token
-from ..logging import get_logger
-from ..processing import JobPriority, JobStatus, job_manager
+from auth import verify_token
+from custom_logging import get_logger
+from processing import JobPriority, JobStatus, job_manager
 
 router = APIRouter(prefix="/processing", tags=["processing"])
 logger = get_logger(__name__)

@@ -71,7 +71,7 @@ async def rate_limit_dependency(request) -> None:
 def get_rate_limit_status(request) -> dict:
     """Compat: return minimal rate limit status."""
     try:
-        from ..config import settings  # type: ignore
+        from config import settings  # type: ignore
     except Exception:
 
         class _S:
