@@ -60,16 +60,6 @@ class RAGEngine:
         full_metadata.setdefault("content", content)
         embedding = _embed_texts([content])[0]
         self.vector_store.add(doc_id, embedding, full_metadata)
-        _persist_metadata_if_needed(
-            {
-                "doc_id": doc_id,
-                "title": full_metadata.get("title", ""),
-                "url": full_metadata.get("url", ""),
-                "abstract": full_metadata.get("abstract", ""),
-                "content": content,
-                "source": full_metadata.get("source", "manual"),
-            }
-        )
         return doc_id
 
     def search(self, query: str, top_k: int = 5) -> List[deps.QueryResult]:
