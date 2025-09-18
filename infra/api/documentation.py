@@ -16,8 +16,8 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from pydantic import BaseModel, Field
 
-from .config import settings
-from .custom_logging import get_logger
+from config import settings
+from custom_logging import get_logger
 
 logger = get_logger("documentation")
 
