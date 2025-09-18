@@ -6,3 +6,5 @@ pydantic-settings
 pyjwt
 psutil
 pyyaml
+google-cloud-aiplatform
+google-cloud-bigquery

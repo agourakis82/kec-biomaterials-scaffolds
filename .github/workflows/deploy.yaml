@@ -40,7 +40,20 @@ jobs:
             --region "${{ secrets.GCP_REGION }}" \
             --platform managed \
             --allow-unauthenticated=false \
-            --set-env-vars "NAMESPACE=KEC_BIOMAT_V1,API_KEY=${{ secrets.API_KEY }}"
+            --set-env-vars "\
+              NAMESPACE=KEC_BIOMAT_V1,\
+              API_KEYS=${{ secrets.API_KEYS }},\
+              API_KEY_REQUIRED=true,\
+              PROJECT_ID=${{ secrets.GCP_PROJECT_ID }},\
+              LOCATION=${{ secrets.GCP_REGION }},\
+              BASE_URL=${{ secrets.BASE_URL }},\
+              VECTOR_INDEX_ID=${{ secrets.VECTOR_INDEX_ID }},\
+              VECTOR_ENDPOINT_ID=${{ secrets.VECTOR_ENDPOINT_ID }},\
+              RAG_CORPUS_ID=${{ secrets.RAG_CORPUS_ID }},\
+              RAG_PLUS_DATASET_ID=${{ secrets.RAG_PLUS_DATASET_ID }},\
+              RAG_PLUS_TABLE_ID=${{ secrets.RAG_PLUS_TABLE_ID }},\
+              VERTEX_EMB_MODEL=text-embedding-004\
+            "
 
       - name: Show service URL
         run: |
