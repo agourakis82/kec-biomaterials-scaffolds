@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/1",
+  "package": {
+    "productName": "DARWIN RAG++",
+    "version": "0.1.0"
+  },
+  "build": {
+    "beforeBuildCommand": "",
+    "beforeDevCommand": "",
+    "devPath": "http://localhost:3000",
+    "distDir": "../out"
+  },
+  "tauri": {
+    "windows": [
+      {
+        "title": "DARWIN RAG++",
+        "width": 1200,
+        "height": 800,
+        "resizable": true
+      }
+    ],
+    "allowlist": {
+      "shell": { "open": true }
+    },
+    "bundle": {
+      "active": true,
+      "identifier": "br.med.agourakis.darwinragpp"
+    }
+  }
+}

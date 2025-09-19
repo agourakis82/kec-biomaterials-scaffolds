@@ -1,0 +1,25 @@
+[package]
+name = "darwin-ui"
+version = "0.1.0"
+description = "DARWIN RAG++ desktop"
+authors = ["DARWIN Team"]
+edition = "2021"
+default-run = "darwin-ui"
+
+[build-dependencies]
+tauri-build = { version = "1", features = [] }
+
+[dependencies]
+tauri = { version = "1", features = ["shell-open"] }
+tauri-plugin-window-state = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+directories = "5"
+keyring = "2"
+thiserror = "1"
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
