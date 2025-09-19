@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { Search, Sparkles, Zap, BookOpen, History, Star } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { Search, Sparkles, Zap, BookOpen, History, Star, Compass, Info } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { AnswerCard } from "@/components/answers/AnswerCard"
 import { SourcesList, type SourceItem } from "@/components/sources/SourcesList"
 import { PdfDrawer } from "@/components/pdf/PdfDrawer"
+import { UsageGuide } from "@/components/guide/UsageGuide"
 import { darwin } from "@/lib/darwin"
 import { useActiveProfile } from "@/hooks/useActiveProfile"
 
@@ -100,24 +101,38 @@ export default function HomePage() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-6 py-12"
+          className="text-center space-y-8 py-12"
         >
           <div className="space-y-4">
             <motion.div
-              initial={{ scale: 0.8 }}
+              initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium"
             >
               <Sparkles className="h-4 w-4" />
-              Powered by Advanced RAG Technology
+              Agourakis Med Research · Biomateriais inteligentes
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-bold text-gradient">
-              Explore Biomaterials
+              Inteligência clínica para biomateriais
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Descubra insights avançados sobre biomateriais e scaffolds com nossa plataforma de IA especializada
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Descubra, compare e valide evidências sobre scaffolds e tecnologias biomédicas com a curadoria de Demetrios Chiuratto Agourakis.
             </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button asChild size="lg" className="px-6 shadow-glow">
+              <Link href="#guia-de-uso" className="inline-flex items-center gap-2">
+                <Compass className="h-4 w-4" />
+                Ver guia de uso
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="px-6">
+              <Link href="mailto:contato@agourakis.med.br" className="inline-flex items-center gap-2">
+                <Info className="h-4 w-4" />
+                Falar com o suporte científico
+              </Link>
+            </Button>
           </div>
         </motion.div>
       )}
@@ -331,6 +346,7 @@ export default function HomePage() {
         </motion.div>
       )}
 
+      <UsageGuide />
       <PdfDrawer url={pdfUrl} open={pdfOpen} onOpenChange={setPdfOpen} />
     </div>
   )
