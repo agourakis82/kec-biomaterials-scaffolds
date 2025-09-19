@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "KEC_BIOMAT Actions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for KEC_BIOMAT health and KEC compute endpoints"
+  },
+  "item": [
+    {
+      "name": "GET /health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "POST /kec/compute",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"graph_id\": \"demo-001\",\n  \"sigma_q\": false\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/kec/compute",
+          "host": ["{{baseUrl}}"],
+          "path": ["kec", "compute"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.agourakis.med.br" },
+    { "key": "apiKey", "value": "" }
+  ]
+}
+

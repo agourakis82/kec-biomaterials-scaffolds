@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from services.ag5_service import ag5_service
 from services.helio_service import helio_service
 
-from auth import optional_api_key, require_api_key
+from auth import get_api_key_optional, require_api_key
 from custom_logging import get_logger
 from models import HELIOSummary, PaginationParams
 from rate_limit import rate_limit_dependency
@@ -19,7 +19,7 @@ router = APIRouter(prefix="/data", tags=["data"])
 
 @router.get("/ag5/datasets")
 async def list_ag5_datasets(
-    api_key: str = Depends(optional_api_key),
+    api_key: str = Depends(get_api_key_optional),
     _rate_limit: None = Depends(rate_limit_dependency),
 ):
     """List available AG5 datasets."""
@@ -59,7 +59,7 @@ async def get_ag5_dataset_info(
 @router.get("/ag5/search")
 async def search_ag5_datasets(
     q: str = Query(..., description="Search query"),
-    api_key: str = Depends(optional_api_key),
+    api_key: str = Depends(get_api_key_optional),
     _rate_limit: None = Depends(rate_limit_dependency),
 ):
     """Search AG5 datasets."""
@@ -79,7 +79,7 @@ async def get_helio_summaries(
     limit: Optional[int] = Query(
         None, ge=1, le=100, description="Limit number of results"
     ),
-    api_key: str = Depends(optional_api_key),
+    api_key: str = Depends(get_api_key_optional),
     _rate_limit: None = Depends(rate_limit_dependency),
 ):
     """Get HELIO summaries."""

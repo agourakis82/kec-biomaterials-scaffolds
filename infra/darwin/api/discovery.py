@@ -172,4 +172,9 @@ def run_discovery(run_once: bool = False) -> Dict[str, Any]:
             ingested.append({"doc_id": doc_id, "feed": name, "title": metadata["title"]})
         if run_once:
             break
-    return {"feeds": feeds, "ingested": ingested}
+    return {
+        "feeds": feeds, 
+        "ingested": ingested,
+        "added": len(ingested),
+        "message": f"Successfully ingested {len(ingested)} documents from {len(feeds)} feeds"
+    }

@@ -7,3 +7,21 @@ data/interim/
 __pycache__/
 .venv/
 .ipynb_checkpoints/
+
+# node / next.js
+node_modules/
+ui/node_modules/
+.next/
+ui/.next/
+out/
+ui/out/
+
+# editor / system detritus
+*.Zone.Identifier*
+*.DS_Store
+.env.local
+.env
+
+# build artifacts
+dist/
+build/

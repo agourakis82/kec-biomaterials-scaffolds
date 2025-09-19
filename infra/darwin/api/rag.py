@@ -103,4 +103,7 @@ class RAGEngine:
 
 def persist_metadata(row: Dict[str, Any]) -> None:
     """Public helper for other modules to push metadata into BigQuery when enabled."""
+    import logging
+    logger = logging.getLogger()
+    logger.info(f"persist_metadata called with VECTOR_BACKEND={VECTOR_BACKEND}, GCP_PROJECT_ID={GCP_PROJECT_ID}")
     _persist_metadata_if_needed(row)

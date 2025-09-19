@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: KEC_BIOMAT — Pipeline KEC 2.0 (Adendo Computacional)
+message: Cite esta versão do pipeline ao reutilizar o código ou a especificação.
+type: software
+authors:
+  - family-names: Agourakis
+    given-names: Demetrios Chiuratto
+    orcid: "https://orcid.org/0000-0002-8596-5097"
+  - family-names: Chiuratto Agourakis
+    given-names: Dionisio
+repository-code: "https://github.com/agourakis82/KEC_BIOMAT"
+version: "2025.09.19"
+date-released: "2025-09-19"
+doi: "10.5281/zenodo.XXXXX"  # substitua se aplicável
+license: MIT

@@ -1,0 +1,97 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      deploy_api:
+        description: "Deploy Cloud Run (API)"
+        required: false
+        default: "false"
+
+jobs:
+  build-test-ui:
+    name: Build UI
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - name: Install deps
+        run: |
+          npm ci --ignore-scripts || npm i --ignore-scripts
+      - name: Build
+        run: npm run build
+      - name: Upload static site
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-out
+          path: ui/out
+
+  build-desktop:
+    name: Build Desktop (Tauri)
+    needs: build-test-ui
+    strategy:
+      matrix:
+        os: [ windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - name: Install Node deps
+        run: |
+          npm ci --ignore-scripts || npm i --ignore-scripts
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Build UI static
+        run: npm run build
+      - name: Build Tauri
+        run: npm run tauri:build
+      - name: Upload desktop artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.os }}
+          path: ui/src-tauri/target/release/bundle/**
+
+  deploy-cloudrun:
+    name: Deploy Cloud Run (API)
+    if: |
+      github.event_name == 'workflow_dispatch' && inputs.deploy_api == 'true' ||
+      (github.event_name == 'pull_request' && contains(toJson(github.event.pull_request.labels.*.name), 'deploy-api'))
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          # Set these in repo settings (secrets/vars)
+          workload_identity_provider: ${{ secrets.GCP_OIDC }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Set up gcloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ vars.CLOUD_RUN_SERVICE }}
+          region: ${{ vars.REGION }}
+          source: ./infra/darwin/api
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+

@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from auth import APIKeyMiddleware
 from cache import cache_manager
@@ -20,7 +21,7 @@ from errors import (
 from custom_logging import RequestLoggingMiddleware, get_logger
 from monitoring import initialize_monitoring, shutdown_monitoring
 from processing import start_processing, stop_processing
-from rate_limit import RateLimitMiddleware
+from rate_limit import add_rate_limiting
 from routers import (
     admin,
     core,
@@ -39,6 +40,34 @@ import os
 from fastapi import Request, Depends
 
 logger = get_logger("main")
+
+
+class ASGILoggingMiddleware(BaseHTTPMiddleware):
+    """Middleware that logs the ASGI scope for incoming requests.
+
+    Logs `path`, `raw_path` and request headers at INFO level with a clear
+    marker so it can be filtered in Cloud Run logs for debugging ingress/path
+    normalization issues (e.g. missing /healthz).
+    """
+
+    async def dispatch(self, request, call_next):
+        try:
+            scope = request.scope
+            path = scope.get("path")
+            raw_path = scope.get("raw_path")
+            # Collect a few headers to avoid huge logs
+            headers = {k.decode(): v.decode() for k, v in scope.get("headers", []) if k.decode().lower() in ("host", "x-forwarded-for", "x-forwarded-host", "x-appengine-country")}
+        except Exception as exc:  # pragma: no cover - defensive
+            logger.warning("ASGI scope extraction failed", exc_info=exc)
+            return await call_next(request)
+
+        logger.info(
+            f"ASGI_SCOPE_INSTRUMENT path={path} raw_path={raw_path} headers={headers}"
+        )
+
+        # Continue request processing
+        response = await call_next(request)
+        return response
 
 
 @asynccontextmanager
@@ -148,6 +177,9 @@ def create_app() -> FastAPI:
         )
         logger.info("CORS enabled", extra={"origins": settings.cors_origins or ["*"]})
 
+    # Instrumentation: log ASGI scope early for debugging ingress/path issues
+    app.add_middleware(ASGILoggingMiddleware)
+
     # Add middleware pipeline in reverse order (last added = first executed)
 
     # 1. Request logging (outermost - logs everything)
@@ -158,10 +190,10 @@ def create_app() -> FastAPI:
     )
 
     # 2. Rate limiting (before authentication to limit all requests)
-    app.add_middleware(
-        RateLimitMiddleware,
-        exempt_paths=["/", "/healthz", "/ping", "/docs", "/redoc", "/openapi.json"],
-        tokens_per_request=1,
+    add_rate_limiting(
+        app,
+        exclude_paths=["/", "/healthz", "/ping", "/docs", "/redoc", "/openapi.json", "/openapi.yaml"],
+        header_prefix="X-RateLimit",
     )
 
     # 3. Authentication (innermost - only applies to protected endpoints)

@@ -40,9 +40,33 @@ except ImportError:
             return 1
 
         async def pipeline(self):
-            return self
+            return MockPipeline()
 
         async def execute(self):
+            return []
+
+        async def hincrby(self, key, field, amount=1):
+            return amount
+
+        async def zincrby(self, key, amount, member):
+            return amount
+
+        async def zrevrange(self, key, start, end, withscores=False):
+            return []
+
+        async def zremrangebyscore(self, key, min_score, max_score):
+            return 0
+
+        async def zcard(self, key):
+            return 0
+
+        async def zadd(self, key, mapping):
+            return 1
+
+        async def hgetall(self, key):
+            return {}
+
+        async def keys(self, pattern):
             return []
 
         def __aenter__(self):
@@ -50,6 +74,70 @@ except ImportError:
 
         async def __aexit__(self, *args):
             pass
+
+
+class MockPipeline:
+    """Mock pipeline that supports async context manager"""
+
+    def __init__(self):
+        self.commands = []
+
+    async def incr(self, key):
+        self.commands.append(('incr', key))
+        return 1
+
+    async def expire(self, key, seconds):
+        self.commands.append(('expire', key, seconds))
+        return True
+
+    async def zremrangebyscore(self, key, min_score, max_score):
+        self.commands.append(('zremrangebyscore', key, min_score, max_score))
+        return 0
+
+    async def zcard(self, key):
+        self.commands.append(('zcard', key))
+        return 0
+
+    async def zadd(self, key, mapping):
+        self.commands.append(('zadd', key, mapping))
+        return 1
+
+    async def hincrby(self, key, field, amount=1):
+        self.commands.append(('hincrby', key, field, amount))
+        return amount
+
+    async def zincrby(self, key, amount, member):
+        self.commands.append(('zincrby', key, amount, member))
+        return amount
+
+    async def execute(self):
+        # Simulate execution by returning mock results
+        results = []
+        for cmd in self.commands:
+            if cmd[0] == 'incr':
+                results.append(1)
+            elif cmd[0] == 'expire':
+                results.append(True)
+            elif cmd[0] == 'zremrangebyscore':
+                results.append(0)
+            elif cmd[0] == 'zcard':
+                results.append(0)
+            elif cmd[0] == 'zadd':
+                results.append(1)
+            elif cmd[0] == 'hincrby':
+                results.append(cmd[3] if len(cmd) > 3 else 1)
+            elif cmd[0] == 'zincrby':
+                results.append(cmd[2])
+            else:
+                results.append(None)
+        self.commands = []
+        return results
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *args):
+        pass
 
 
 logger = logging.getLogger(__name__)
@@ -265,31 +353,31 @@ class AdvancedRateLimiter:
         window_start = (current_time // window) * window
         window_key = f"{key}:{window_start}"
 
-        async with self.redis_client.pipeline() as pipe:
-            current_count = await self.redis_client.get(window_key)
-            current_count = int(current_count) if current_count else 0
+        pipe = await self.redis_client.pipeline()
+        current_count = await self.redis_client.get(window_key)
+        current_count = int(current_count) if current_count else 0
 
-            if current_count >= limit:
-                reset_time = window_start + window
-                return RateLimitResult(
-                    allowed=False,
-                    limit=limit,
-                    remaining=0,
-                    reset_time=reset_time,
-                    retry_after=reset_time - current_time,
-                )
-
-            # Increment counter
-            pipe.incr(window_key)
-            pipe.expire(window_key, window + 1)
-            await pipe.execute()
-
+        if current_count >= limit:
+            reset_time = window_start + window
             return RateLimitResult(
-                allowed=True,
+                allowed=False,
                 limit=limit,
-                remaining=limit - current_count - 1,
-                reset_time=window_start + window,
+                remaining=0,
+                reset_time=reset_time,
+                retry_after=reset_time - current_time,
             )
+
+        # Increment counter
+        pipe.incr(window_key)
+        pipe.expire(window_key, window + 1)
+        await pipe.execute()
+
+        return RateLimitResult(
+            allowed=True,
+            limit=limit,
+            remaining=limit - current_count - 1,
+            reset_time=window_start + window,
+        )
 
     async def _check_sliding_window(
         self, key: str, limit: int, window: int
@@ -299,34 +387,34 @@ class AdvancedRateLimiter:
         window_start = current_time - window
 
         # Clean old entries and count current
-        async with self.redis_client.pipeline() as pipe:
-            # Remove expired entries
-            pipe.zremrangebyscore(key, 0, window_start)
-            # Count current entries
-            pipe.zcard(key)
-            # Add current request
-            pipe.zadd(key, {str(current_time): current_time})
-            # Set expiration
-            pipe.expire(key, window + 1)
+        pipe = await self.redis_client.pipeline()
+        # Remove expired entries
+        pipe.zremrangebyscore(key, 0, window_start)
+        # Count current entries
+        pipe.zcard(key)
+        # Add current request
+        pipe.zadd(key, {str(current_time): current_time})
+        # Set expiration
+        pipe.expire(key, window + 1)
 
-            results = await pipe.execute()
-            current_count = results[1] if len(results) > 1 else 0
+        results = await pipe.execute()
+        current_count = results[1] if len(results) > 1 else 0
 
-            if current_count >= limit:
-                return RateLimitResult(
-                    allowed=False,
-                    limit=limit,
-                    remaining=0,
-                    reset_time=int(current_time + window),
-                    retry_after=1,
-                )
-
+        if current_count >= limit:
             return RateLimitResult(
-                allowed=True,
+                allowed=False,
                 limit=limit,
-                remaining=limit - current_count - 1,
+                remaining=0,
                 reset_time=int(current_time + window),
+                retry_after=1,
             )
+
+        return RateLimitResult(
+            allowed=True,
+            limit=limit,
+            remaining=limit - current_count - 1,
+            reset_time=int(current_time + window),
+        )
 
     async def _check_token_bucket(
         self, key: str, limit: int, window: int, burst: Optional[int] = None
@@ -498,7 +586,7 @@ class AdvancedRateLimiter:
 
         # Return default allowed result
         return RateLimitResult(
-            allowed=True, limit=float("inf"), remaining=float("inf"), reset_time=0
+            allowed=True, limit=999999999, remaining=999999999, reset_time=0
         )
 
     async def _record_blocked_request(self, scope: RateLimitScope, identifier: str):
@@ -508,22 +596,22 @@ class AdvancedRateLimiter:
             current_time = int(time.time())
             day_key = f"{metrics_key}:day:{current_time // 86400}"
 
-            async with self.redis_client.pipeline() as pipe:
-                # Increment counters
-                pipe.hincrby(day_key, "blocked_requests", 1)
-                pipe.hincrby(day_key, f"blocked_by_scope:{scope.value}", 1)
+            pipe = await self.redis_client.pipeline()
+            # Increment counters
+            pipe.hincrby(day_key, "blocked_requests", 1)
+            pipe.hincrby(day_key, f"blocked_by_scope:{scope.value}", 1)
 
-                if scope in [RateLimitScope.IP, RateLimitScope.IP_ENDPOINT]:
-                    pipe.zincrby(f"{day_key}:blocked_ips", 1, identifier)
-                elif scope in [RateLimitScope.USER, RateLimitScope.USER_ENDPOINT]:
-                    pipe.zincrby(f"{day_key}:blocked_users", 1, identifier)
+            if scope in [RateLimitScope.IP, RateLimitScope.IP_ENDPOINT]:
+                pipe.zincrby(f"{day_key}:blocked_ips", 1, identifier)
+            elif scope in [RateLimitScope.USER, RateLimitScope.USER_ENDPOINT]:
+                pipe.zincrby(f"{day_key}:blocked_users", 1, identifier)
 
-                # Set expiration
-                pipe.expire(day_key, 86400 * 7)  # Keep for 7 days
-                pipe.expire(f"{day_key}:blocked_ips", 86400 * 7)
-                pipe.expire(f"{day_key}:blocked_users", 86400 * 7)
+            # Set expiration
+            pipe.expire(day_key, 86400 * 7)  # Keep for 7 days
+            pipe.expire(f"{day_key}:blocked_ips", 86400 * 7)
+            pipe.expire(f"{day_key}:blocked_users", 86400 * 7)
 
-                await pipe.execute()
+            await pipe.execute()
         except Exception as e:
             logger.error(f"Error recording blocked request metrics: {e}")
 
