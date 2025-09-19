@@ -6,10 +6,14 @@ Provides a stable `get_settings()` for modules outside `infra.api`.
 from typing import Any
 
 try:
-    # Prefer the application settings
-    from infra.api.config import settings as _settings
-except Exception:  # pragma: no cover
-    _settings = None  # type: ignore
+    # Prefer the application settings when running as the API package
+    from config import settings as _settings
+except Exception:
+    try:
+        # Fallback to module path used in other contexts
+        from infra.api.config import settings as _settings
+    except Exception:  # pragma: no cover
+        _settings = None  # type: ignore
 
 
 def get_settings() -> Any:

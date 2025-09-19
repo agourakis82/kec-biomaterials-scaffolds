@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional
+from pydantic import BaseModel, Field
 
 
 class AlertSeverity(Enum):
@@ -45,16 +46,20 @@ class Alert:
     resolved_at: Optional[datetime] = None
 
 
-@dataclass
-class AlertRule:
+class AlertRule(BaseModel):
     """Regra para geração de alertas."""
 
     name: str
-    condition: Callable[[Dict[str, Any]], bool]
     severity: AlertSeverity
     message_template: str
-    cooldown_minutes: int = 5
-    tags: Dict[str, str] = field(default_factory=dict)
+    cooldown_minutes: int = Field(default=5)
+    tags: Dict[str, str] = Field(default_factory=dict)
+
+    # Campo não serializável para OpenAPI
+    condition: Optional[Callable[[Dict[str, Any]], bool]] = Field(default=None, exclude=True)
+
+    class Config:
+        arbitrary_types_allowed = True
 
 
 class AlertManager:
@@ -153,7 +158,7 @@ class AlertManager:
                         continue
 
                 # Avaliar condição
-                if rule.condition(metrics):
+                if rule.condition and rule.condition(metrics):
                     await self._trigger_alert(rule, metrics)
 
             except Exception as e:
@@ -311,7 +316,7 @@ class AlertManager:
                         continue
 
                 # Avaliar condição
-                if rule.condition(metrics):
+                if rule.condition and rule.condition(metrics):
                     # Criar alerta
                     alert_data = {
                         "name": rule.name,

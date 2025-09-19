@@ -342,6 +342,36 @@ async def ping():
     }
 
 
+@router.get("/healthz", summary="Healthz alias", response_model=HealthResponse)
+async def healthz_alias(request: Request):
+    """
+    Alias endpoint for compatibility with external health checks.
+
+    Returns the same payload as `/health`.
+    """
+    return await health_check(request)
+
+
+@router.get("/healthz/", summary="Healthz alias with trailing slash", response_model=HealthResponse)
+async def healthz_alias_trailing(request: Request):
+    """
+    Alias endpoint with trailing slash for compatibility with path normalization.
+
+    Returns the same payload as `/health`.
+    """
+    return await health_check(request)
+
+
+@router.get("/.well-known/healthz", summary="Well-known healthz alias", response_model=HealthResponse)
+async def healthz_well_known(request: Request):
+    """
+    Well-known alias endpoint for external health checks and discovery.
+
+    Returns the same payload as `/health`.
+    """
+    return await health_check(request)
+
+
 @router.post("/test-validation", summary="Test validation system")
 async def test_validation(request_data: ErrorValidationRequest) -> Dict[str, Any]:
     """

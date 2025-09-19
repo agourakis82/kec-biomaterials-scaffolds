@@ -23,7 +23,6 @@ gcloud run deploy "$SERVICE_NAME" \
   --image "$IMAGE" \
   --region "$GCP_REGION" \
   --platform managed \
-  --allow-unauthenticated=false \
   --service-account "$SERVICE_ACCOUNT" \
   --set-env-vars "NAMESPACE=$NAMESPACE" \
   --set-env-vars "BIGQUERY_DATASET=$BIGQUERY_DATASET,BIGQUERY_TABLE=$BIGQUERY_TABLE" \

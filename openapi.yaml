@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: KEC_BIOMAT API
+  version: "2025-09-19"
+  description: |
+    Minimal OpenAPI spec for integrating KEC_BIOMAT with ChatGPT (Actions).
+    Use Custom API Key auth via the X-API-Key header.
+servers:
+  - url: https://api.agourakis.med.br
+    description: Production
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Health check
+      description: Returns service health.
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                required: [status]
+              example:
+                status: ok
+  /kec/compute:
+    post:
+      operationId: computeKEC
+      summary: Compute KEC metrics for a graph
+      description: Triggers a KEC computation (stub) and returns computed metrics.
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                graph_id:
+                  type: string
+                  description: Identifier of the graph to compute KEC metrics for.
+                sigma_q:
+                  type: boolean
+                  default: false
+                  description: Whether to enable the sigma quality variant.
+              required: [graph_id]
+            example:
+              graph_id: demo-001
+              sigma_q: false
+      responses:
+        "200":
+          description: Computed KEC metrics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  H_spectral:
+                    type: number
+                    format: double
+                  k_forman_mean:
+                    type: number
+                    format: double
+                  sigma:
+                    type: number
+                    format: double
+                  swp:
+                    type: number
+                    format: double
+                required: [H_spectral, k_forman_mean, sigma, swp]
+              example:
+                H_spectral: 1.234
+                k_forman_mean: 0.567
+                sigma: 0.89
+                swp: 12.34
+  /jobs/{id}:
+    get:
+      operationId: getJobStatus
+      summary: Get computation job status
+      description: Returns the status of a previously triggered computation job (stub).
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Job identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Job status information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  status:
+                    type: string
+                    enum: [queued, running, done, error]
+                  result:
+                    type: object
+                    properties:
+                      H_spectral:
+                        type: number
+                        format: double
+                      k_forman_mean:
+                        type: number
+                        format: double
+                      sigma:
+                        type: number
+                        format: double
+                      swp:
+                        type: number
+                        format: double
+                required: [id, status]
+              example:
+                id: job-123
+                status: done
+                result:
+                  H_spectral: 1.234
+                  k_forman_mean: 0.567
+                  sigma: 0.89
+                  swp: 12.34
+

@@ -23,6 +23,7 @@ from typing import Any, Callable, Deque, Dict, List, Optional
 import psutil
 
 from .custom_logging import get_logger
+from .alerts import _alert_manager as alert_manager
 
 logger = get_logger("monitoring")
 
@@ -442,7 +443,7 @@ class AlertManager:
         logger.info(f"Regra de alerta adicionada: {rule_func.__name__}")
         
     def trigger_alert(self, alert_id: str, severity: AlertSeverity, 
-                     component: str, message: str, metadata: Dict[str, Any] = None):
+                     component: str, message: str, metadata: Optional[Dict[str, Any]] = None):
         """Dispara um alerta."""
         alert = Alert(
             id=alert_id,
@@ -495,7 +496,7 @@ class AlertManager:
 # Instâncias globais
 metrics_collector = MetricsCollector()
 health_checker = HealthChecker()
-alert_manager = AlertManager()
+# alert_manager agora vem do monitoring/__init__.py
 
 
 async def initialize_monitoring():

@@ -37,6 +37,9 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member "serviceAccount:${SA_EMAIL}" \
   --role "roles/bigquery.admin"
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member "serviceAccount:${SA_EMAIL}" \
+  --role "roles/logging.logWriter"
 
 # BigQuery dataset & tabela
 bq --location="$REGION" mk -d --description "DARWIN KG" "${PROJECT_ID}:${BQ_DATASET}" || true

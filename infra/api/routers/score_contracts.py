@@ -60,7 +60,7 @@ class AvailableContract(BaseModel):
     type: str
     name: str
     description: str
-    schema: Dict[str, Any]
+    contract_schema: Dict[str, Any]
 
 
 class BatchExecuteRequest(BaseModel):
@@ -235,7 +235,7 @@ async def get_available_contracts() -> List[AvailableContract]:
                 type=contract["type"],
                 name=contract["name"],
                 description=_get_contract_description(contract["type"]),
-                schema=contract["schema"],
+                contract_schema=contract["schema"],
             )
             for contract in contracts
         ]

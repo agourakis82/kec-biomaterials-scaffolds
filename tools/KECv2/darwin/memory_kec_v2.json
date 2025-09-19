@@ -1,0 +1,33 @@
+{
+  "project": "KEC_BIOMAT",
+  "module": "KEC_2_0",
+  "version": "2025-09-19",
+  "invariants": {
+    "outputs": [
+      "H",
+      "kappa",
+      "sigma",
+      "phi"
+    ],
+    "objective": "Predição de desempenho tecidual baseada na microarquitetura (poros).",
+    "scope_guard": "Evolução computacional sem alterar escopo/outputs aprovados."
+  },
+  "metrics": {
+    "H": "Entropia espectral (von Neumann) do Laplaciano normalizado",
+    "kappa": "Curvaturas: Forman 2-complex (global) + Ollivier–Ricci aproximada (amostragem)",
+    "sigma": "Small-world σ (Humphries & Gurney)",
+    "phi": "Small-World Propensity (SWP)",
+    "sigma_Q_optional": "S(diag ρ) − S(ρ) (proxy de coerência quântica)"
+  },
+  "configs_ref": "configs/kec_config.yaml",
+  "quality_gates": {
+    "reproducibility": "variação <5% entre execuções; seeds fixos",
+    "scalability": "graf. >10k arestas processados com ORC aproximada/amostragem",
+    "predictive": "ΔAUROC/ΔR² significativo (nested CV) vs baseline RF ou não-inferioridade"
+  },
+  "prompts": {
+    "triage_refs": "Busque artigos 2024-2025 sobre spectral entropy em complex networks; Ricci curvature approximations; SWP small-world.",
+    "data_policy": "Usar μCT públicos (MorphoSource/DigitalRocks) com licenças adequadas.",
+    "explainability": "Gerar SHAP p/ RF e IG/Grad-CAM p/ GNN; salvar figuras."
+  }
+}

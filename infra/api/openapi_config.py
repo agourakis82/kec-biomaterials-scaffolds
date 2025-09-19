@@ -8,6 +8,8 @@ from typing import Any, Dict
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from fastapi.responses import JSONResponse
+from fastapi.responses import PlainTextResponse
+import yaml
 
 from services.settings import get_settings
 
@@ -204,6 +206,35 @@ def setup_well_known_routes(app: FastAPI) -> None:
             content=create_gemini_extension_manifest(),
             headers={"Content-Type": "application/json"},
         )
+
+    @app.get("/openapi.yaml", response_class=PlainTextResponse, include_in_schema=False)
+    async def openapi_yaml():
+        """Serve the application's OpenAPI schema as YAML."""
+        try:
+            # app.openapi is configured to return the custom schema dict
+            schema = app.openapi()
+        except Exception:
+            schema = app.openapi_schema or {}
+        # Convert to YAML preserving order
+        text = yaml.safe_dump(schema, sort_keys=False)
+        # Ensure healthz path present for external health checks
+        if "paths" in schema and "/healthz" not in schema["paths"]:
+            schema.setdefault("paths", {})["/healthz"] = {
+                "get": {
+                    "summary": "Healthz alias",
+                    "responses": {"200": {"description": "OK"}},
+                }
+            }
+        return PlainTextResponse(content=text, media_type="text/yaml")
+
+    @app.get("/openapi.json", include_in_schema=False)
+    async def openapi_json():
+        """Serve the application's OpenAPI schema as JSON (explicit endpoint)."""
+        try:
+            schema = app.openapi()
+        except Exception:
+            schema = app.openapi_schema or {}
+        return JSONResponse(content=schema)
 
 
 def configure_openapi_security(app: FastAPI) -> None:

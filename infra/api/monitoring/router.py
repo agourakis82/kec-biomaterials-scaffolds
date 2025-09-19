@@ -14,6 +14,7 @@ from . import (
     DashboardManager,
     HealthChecker,
     StructuredLogger,
+    alert_manager,
     get_metrics_collector,
     get_performance_monitor,
 )
@@ -22,7 +23,6 @@ router = APIRouter(prefix="/api/v1/monitoring", tags=["monitoring"])
 
 # Instâncias dos componentes
 health_checker = HealthChecker()
-alert_manager = AlertManager()
 dashboard_manager = DashboardManager()
 logger = StructuredLogger("monitoring_api")
 

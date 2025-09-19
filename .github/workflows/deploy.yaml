@@ -2,9 +2,9 @@ name: Deploy Darwin API to Cloud Run
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
     paths:
-      - 'infra/api/**'
+    - 'infra/api/**'
 
 jobs:
   deploy:
@@ -14,47 +14,47 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-          workload_identity_provider: ${{ secrets.GCP_WIP }}
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+        workload_identity_provider: ${{ secrets.GCP_WIP }}
 
-      - name: Configure Docker for gcloud
-        run: |
-          gcloud auth configure-docker
+    - name: Configure Docker for gcloud
+      run: |
+        gcloud auth configure-docker
 
-      - name: Build and push Docker image
-        run: |
-          IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/darwin-kec-biomat
-          gcloud builds submit --tag "$IMAGE" infra/api
+    - name: Build and push Docker image
+      run: |
+        IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/darwin-kec-biomat
+        gcloud builds submit --tag "$IMAGE" infra/api
 
-      - name: Deploy to Cloud Run
-        run: |
-          gcloud run deploy darwin-kec-biomat \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/darwin-kec-biomat \
-            --region "${{ secrets.GCP_REGION }}" \
-            --platform managed \
-            --allow-unauthenticated=false \
-            --set-env-vars "\
-              NAMESPACE=KEC_BIOMAT_V1,\
-              API_KEYS=${{ secrets.API_KEYS }},\
-              API_KEY_REQUIRED=true,\
-              PROJECT_ID=${{ secrets.GCP_PROJECT_ID }},\
-              LOCATION=${{ secrets.GCP_REGION }},\
-              BASE_URL=${{ secrets.BASE_URL }},\
-              VECTOR_INDEX_ID=${{ secrets.VECTOR_INDEX_ID }},\
-              VECTOR_ENDPOINT_ID=${{ secrets.VECTOR_ENDPOINT_ID }},\
-              RAG_CORPUS_ID=${{ secrets.RAG_CORPUS_ID }},\
-              RAG_PLUS_DATASET_ID=${{ secrets.RAG_PLUS_DATASET_ID }},\
-              RAG_PLUS_TABLE_ID=${{ secrets.RAG_PLUS_TABLE_ID }},\
-              VERTEX_EMB_MODEL=text-embedding-004\
-            "
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy darwin-kec-biomat \
+          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/darwin-kec-biomat \
+          --region "${{ secrets.GCP_REGION }}" \
+          --platform managed \
+          --allow-unauthenticated=false \
+          --set-env-vars "\
+            NAMESPACE=KEC_BIOMAT_V1,\
+            API_KEYS=${{ secrets.API_KEYS }},\
+            API_KEY_REQUIRED=true,\
+            PROJECT_ID=${{ secrets.GCP_PROJECT_ID }},\
+            LOCATION=${{ secrets.GCP_REGION }},\
+            BASE_URL=${{ secrets.BASE_URL }},\
+            VECTOR_INDEX_ID=${{ secrets.VECTOR_INDEX_ID }},\
+            VECTOR_ENDPOINT_ID=${{ secrets.VECTOR_ENDPOINT_ID }},\
+            RAG_CORPUS_ID=${{ secrets.RAG_CORPUS_ID }},\
+            RAG_PLUS_DATASET_ID=${{ secrets.RAG_PLUS_DATASET_ID }},\
+            RAG_PLUS_TABLE_ID=${{ secrets.RAG_PLUS_TABLE_ID }},\
+            VERTEX_EMB_MODEL=text-embedding-004\
+          "
 
-      - name: Show service URL
-        run: |
-          gcloud run services describe darwin-kec-biomat --region "${{ secrets.GCP_REGION }}" --format='value(status.url)'
+    - name: Show service URL
+      run: |
+        gcloud run services describe darwin-kec-biomat --region "${{ secrets.GCP_REGION }}" --format='value(status.url)'

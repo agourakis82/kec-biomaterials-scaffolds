@@ -10,7 +10,7 @@ from services.helio_service import helio_service
 from services.notebook_service import notebook_service
 from services.rag_service import rag_service
 
-from auth import optional_api_key
+from auth import get_api_key_optional
 from config import settings
 from custom_logging import get_logger
 from models import HealthResponse, VersionResponse
@@ -24,7 +24,7 @@ _start_time = time.time()
 
 
 @router.get("/health", response_model=HealthResponse)
-async def health_check(api_key: str = Depends(optional_api_key)):
+async def health_check(api_key: str = Depends(get_api_key_optional)):
     """
     Get application health status.
 
@@ -77,7 +77,7 @@ async def health_check(api_key: str = Depends(optional_api_key)):
 
 
 @router.get("/version", response_model=VersionResponse)
-async def version_info(api_key: str = Depends(optional_api_key)):
+async def version_info(api_key: str = Depends(get_api_key_optional)):
     """
     Get API version and build information.
 

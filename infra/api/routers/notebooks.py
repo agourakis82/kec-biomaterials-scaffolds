@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from services.notebook_service import notebook_service
 
-from auth import optional_api_key
+from auth import get_api_key_optional
 from custom_logging import get_logger
 from rate_limit import rate_limit_dependency
 
@@ -17,7 +17,7 @@ router = APIRouter(prefix="/notebooks", tags=["notebooks"])
 
 @router.get("/")
 async def list_notebooks(
-    api_key: str = Depends(optional_api_key),
+    api_key: str = Depends(get_api_key_optional),
     _rate_limit: None = Depends(rate_limit_dependency),
 ):
     """List available Jupyter notebooks."""
