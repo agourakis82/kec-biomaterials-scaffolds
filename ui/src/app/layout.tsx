@@ -3,8 +3,8 @@ import './globals.css'
 import { Providers } from '@/components/providers'
 
 export const metadata: Metadata = {
-  title: 'DARWIN RAG++',
-  description: 'Advanced RAG and AI discovery platform',
+  title: 'Agourakis Med Research',
+  description: 'Plataforma de insights sobre biomateriais conduzida por Demetrios Chiuratto Agourakis',
 }
 
 export default function RootLayout({
