@@ -46,6 +46,22 @@ app = FastAPI(
     ),
 )
 
+# Try to embed a static openapi.json at import time so the running container
+# can always serve the intended spec even if filesystem paths vary at runtime.
+EMBED_OPENAPI_JSON = None
+try:
+    _p = Path(__file__).parent / "openapi.json"
+    if _p.exists():
+        import json as _json
+        EMBED_OPENAPI_JSON = _json.loads(_p.read_text())
+    else:
+        _p2 = Path('/app/openapi.json')
+        if _p2.exists():
+            import json as _json
+            EMBED_OPENAPI_JSON = _json.loads(_p2.read_text())
+except Exception:
+    EMBED_OPENAPI_JSON = None
+
 # Restrictive CORS: allow only ChatGPT UI origin by default.
 app.add_middleware(
     CORSMiddleware,
@@ -140,7 +156,7 @@ async def ai_plugin_manifest():
         },
         "api": {
             "type": "openapi",
-            "url": "https://api.agourakis.med.br/openapi.yaml",
+            "url": "https://api.agourakis.med.br/openapi.json",
             "is_user_authenticated": False
         },
         "logo_url": "https://api.agourakis.med.br/static/logo.png",
@@ -156,7 +172,7 @@ async def gemini_extension_manifest():
         "name": "KEC_BIOMAT API",
         "description": "Compute KEC metrics for biomaterial scaffolds",
         "version": "1.0",
-        "api_spec_url": "https://api.agourakis.med.br/openapi.yaml",
+    "api_spec_url": "https://api.agourakis.med.br/openapi.json",
         "auth_config": {
             "auth_type": "API_KEY",
             "api_key_config": {
@@ -167,6 +183,28 @@ async def gemini_extension_manifest():
         "logo_url": "https://api.agourakis.med.br/static/logo.png",
         "contact_email": "support@agourakis.med.br"
     }
+
+
+
+@app.get("/openapi.json", include_in_schema=False)
+async def serve_openapi_json():
+    """Serve a static `openapi.json` file if present in the container, otherwise return generated spec."""
+    static_path = Path("/app/openapi.json")
+    if EMBED_OPENAPI_JSON is not None:
+        return EMBED_OPENAPI_JSON
+    if static_path.exists():
+        import json as _json
+        return _json.loads(static_path.read_text())
+    return app.openapi()
+
+
+@app.get("/openapi.yaml", include_in_schema=False)
+async def serve_openapi_yaml():
+    static_path = Path("/app/openapi.yaml")
+    if static_path.exists():
+        return PlainTextResponse(static_path.read_text(), media_type="application/yaml")
+    spec = app.openapi()
+    return PlainTextResponse(yaml.safe_dump(spec), media_type="application/yaml")
 
 
 # Notes:

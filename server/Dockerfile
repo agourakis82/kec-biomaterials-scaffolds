@@ -11,7 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY fastapi_app.py ./fastapi_app.py
-COPY ../openapi.yaml ./openapi.yaml
+COPY openapi.yaml ./openapi.yaml
+COPY openapi.json ./openapi.json
 
 EXPOSE 8080
 
