@@ -44,6 +44,9 @@ app = FastAPI(
         "Stub API for KEC_BIOMAT to validate ChatGPT Actions integration.\n"
         "Protects selected routes with X-API-Key header."
     ),
+    openapi_url=None,  # disable default /openapi.json so we can serve a static spec
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
 # Try to embed a static openapi.json at import time so the running container
