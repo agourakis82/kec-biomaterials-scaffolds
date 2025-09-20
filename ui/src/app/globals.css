@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:wght@400..900&family=Cormorant+Garamond:wght@300..700&family=JetBrains+Mono:wght@100..800&display=swap');
 
 @layer base {
   :root {
@@ -36,17 +36,25 @@
     --info: 221.2 83.2% 53.3%;
     --info-foreground: 210 40% 98%;
     
+    /* Liquid Glass Colors */
+    --glass-primary: 262.1 83.3% 57.8%;
+    --glass-secondary: 221.2 83.2% 53.3%;
+    --glass-accent: 180 100% 50%;
+    --glass-surface: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-shadow: 262.1 83.3% 57.8% / 0.3;
+    
     /* Gradient colors */
     --gradient-from: 262.1 83.3% 57.8%;
     --gradient-to: 221.2 83.2% 53.3%;
+    --gradient-accent: 180 100% 50%;
     
-    /* Glass effect */
-    --glass-bg: 0 0% 100% / 0.05;
-    --glass-border: 0 0% 100% / 0.1;
+    /* Background gradients */
+    --bg-main: linear-gradient(135deg, hsl(262.1 83.3% 57.8% / 0.1), hsl(221.2 83.2% 53.3% / 0.1));
   }
 
   .dark {
-    /* Dark theme colors - enhanced */
+    /* Dark theme colors - enhanced for liquid glass */
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
@@ -75,13 +83,21 @@
     --info: 217.2 91.2% 59.8%;
     --info-foreground: 222.2 84% 4.9%;
     
+    /* Liquid Glass Colors for dark */
+    --glass-primary: 263.4 70% 50.4%;
+    --glass-secondary: 217.2 91.2% 59.8%;
+    --glass-accent: 180 100% 50%;
+    --glass-surface: 0 0% 100% / 0.03;
+    --glass-border: 0 0% 100% / 0.08;
+    --glass-shadow: 263.4 70% 50.4% / 0.4;
+    
     /* Gradient colors for dark */
     --gradient-from: 263.4 70% 50.4%;
     --gradient-to: 217.2 91.2% 59.8%;
+    --gradient-accent: 180 100% 50%;
     
-    /* Glass effect for dark */
-    --glass-bg: 0 0% 100% / 0.05;
-    --glass-border: 0 0% 100% / 0.1;
+    /* Background gradients for dark */
+    --bg-main: linear-gradient(135deg, hsl(224 71.4% 4.1%), hsl(215 27.9% 16.9% / 0.8));
   }
 }
 
@@ -93,6 +109,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: var(--bg-main);
+    min-height: 100vh;
   }
   
   /* Smooth scrolling */
@@ -120,63 +138,133 @@
 }
 
 @layer components {
-  /* Glass morphism effect */
+  /* Liquid Glass morphism effects */
   .glass {
-    background: hsl(var(--glass-bg));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: hsl(var(--glass-surface));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glass-border));
+    box-shadow: 0 8px 32px hsl(var(--glass-shadow));
   }
   
-  /* Gradient backgrounds */
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)));
+  .glass-card {
+    @apply glass rounded-2xl;
+    background: linear-gradient(135deg, 
+      hsl(var(--glass-surface)), 
+      hsl(var(--glass-surface) / 0.8)
+    );
   }
   
-  .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)));
+  .glass-nav {
+    @apply glass rounded-full;
+    background: hsl(var(--glass-surface) / 0.9);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  
+  /* Liquid gradients */
+  .liquid-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--gradient-from)), 
+      hsl(var(--gradient-to)), 
+      hsl(var(--gradient-accent))
+    );
+    background-size: 200% 200%;
+    animation: liquidFlow 8s ease-in-out infinite;
+  }
+  
+  .liquid-gradient-text {
+    background: linear-gradient(135deg, 
+      hsl(var(--gradient-from)), 
+      hsl(var(--gradient-to)), 
+      hsl(var(--gradient-accent))
+    );
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: liquidFlow 8s ease-in-out infinite;
   }
   
-  /* Enhanced shadows */
+  /* Apple-inspired shadows */
+  .shadow-apple {
+    box-shadow: 0 4px 20px hsl(var(--foreground) / 0.08), 
+                0 1px 3px hsl(var(--foreground) / 0.12);
+  }
+  
+  .shadow-apple-lg {
+    box-shadow: 0 10px 40px hsl(var(--foreground) / 0.12), 
+                0 4px 12px hsl(var(--foreground) / 0.16);
+  }
+  
   .shadow-glow {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 30px hsl(var(--glass-shadow));
   }
   
   .shadow-soft {
-    box-shadow: 0 2px 8px hsl(var(--foreground) / 0.04), 0 1px 3px hsl(var(--foreground) / 0.08);
+    box-shadow: 0 2px 8px hsl(var(--foreground) / 0.04), 
+                0 1px 3px hsl(var(--foreground) / 0.08);
   }
   
-  /* Animation utilities */
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+  /* Floating animations */
+  .float {
+    animation: float 6s ease-in-out infinite;
   }
   
-  .animate-slide-up {
-    animation: slideUp 0.5s ease-out;
-  }
-  
-  .animate-scale-in {
-    animation: scaleIn 0.3s ease-out;
+  .float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
   }
   
   /* Hover effects */
   .hover-lift {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px hsl(var(--glass-shadow));
+  }
+  
+  .hover-glass {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-glass:hover {
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    background: hsl(var(--glass-surface) / 0.8);
+    border-color: hsl(var(--glass-border) / 0.3);
+  }
+  
+  /* Button enhancements */
+  .btn-glass {
+    @apply glass px-6 py-3 rounded-full font-medium transition-all duration-300;
+    background: linear-gradient(135deg, 
+      hsl(var(--glass-surface) / 0.8), 
+      hsl(var(--glass-surface) / 0.6)
+    );
+  }
+  
+  .btn-glass:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px hsl(var(--foreground) / 0.1);
+    box-shadow: 0 12px 40px hsl(var(--glass-shadow));
+  }
+  
+  .btn-liquid {
+    @apply liquid-gradient text-white px-8 py-4 rounded-full font-semibold transition-all duration-300;
+    box-shadow: 0 8px 32px hsl(var(--glass-shadow));
+  }
+  
+  .btn-liquid:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 16px 48px hsl(var(--glass-shadow));
   }
 }
 
 @layer utilities {
   /* Typography utilities */
   .text-gradient {
-    @apply gradient-text;
+    @apply liquid-gradient-text;
   }
   
   /* Layout utilities */
@@ -187,9 +275,36 @@
   .container-wide {
     @apply container max-w-7xl;
   }
+  
+  /* Apple-inspired spacing */
+  .section-padding {
+    @apply py-24 px-6;
+  }
+  
+  .section-padding-sm {
+    @apply py-16 px-4;
+  }
 }
 
 /* Keyframe animations */
+@keyframes liquidFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -202,7 +317,7 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -213,7 +328,7 @@
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
@@ -246,6 +361,22 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
+.font-display {
+  font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .font-mono {
   font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-16 px-4;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
 }

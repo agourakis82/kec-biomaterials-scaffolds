@@ -44,6 +44,7 @@ export default function HomePage() {
   const [pdfUrl, setPdfUrl] = React.useState<string | null>(null)
   const [pdfOpen, setPdfOpen] = React.useState(false)
   const [hasSearched, setHasSearched] = React.useState(false)
+  const [healthStatus, setHealthStatus] = React.useState<any>(null)
 
   const profile = useActiveProfile()
 
@@ -76,6 +77,11 @@ export default function HomePage() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const checkHealth = async () => {
+    const status = await darwin.getHealth()
+    setHealthStatus(status)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -143,11 +149,12 @@ export default function HomePage() {
         className={`${hasSearched ? 'max-w-4xl mx-auto' : 'max-w-3xl mx-auto'}`}
       >
         <Card className="shadow-soft hover-lift">
-          <CardHeader className="pb-4">
+          <CardHeader className="pb-4 flex flex-row items-center justify-between">
             <CardTitle className="flex items-center gap-2">
               <Search className="h-5 w-5 text-primary" />
               {hasSearched ? "Nova Consulta" : "Faça sua pergunta"}
             </CardTitle>
+            <Button onClick={checkHealth} variant="outline" size="sm">Check Health</Button>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="relative">
@@ -202,6 +209,11 @@ export default function HomePage() {
             </div>
           </CardContent>
         </Card>
+        {healthStatus && (
+          <pre className="text-xs bg-gray-100 p-4 rounded-md mt-4">
+            {JSON.stringify(healthStatus, null, 2)}
+          </pre>
+        )}
       </motion.div>
 
       {/* Suggestions - Only show when no search has been made */}
@@ -213,7 +225,7 @@ export default function HomePage() {
           className="max-w-4xl mx-auto space-y-6"
         >
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="hover-lift">
+            <Card className="hover-lift bg-card/60 backdrop-blur-lg border border-border/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <BookOpen className="h-5 w-5 text-primary" />
@@ -235,7 +247,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="hover-lift">
+            <Card className="hover-lift bg-card/60 backdrop-blur-lg border border-border/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <History className="h-5 w-5 text-primary" />

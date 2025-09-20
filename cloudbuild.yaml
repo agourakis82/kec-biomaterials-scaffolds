@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/pcs-helio/darwin-kec-biomat:latest', '.', '-f', 'src/kec_biomat_api/Dockerfile' ]
+images:
+- 'gcr.io/pcs-helio/darwin-kec-biomat:latest'

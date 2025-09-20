@@ -3,7 +3,7 @@ import yaml
 import pytest
 from fastapi.testclient import TestClient
 
-from server.fastapi_app import app
+from src.kec_biomat_api.main import app
 
 
 @pytest.fixture()
@@ -16,7 +16,9 @@ def client(monkeypatch):
 def test_health_endpoint(client):
     response = client.get("/health")
     assert response.status_code == 200
-    assert response.json() == {"status": "ok"}
+    data = response.json()
+    assert data["status"] == "healthy"
+    assert "uptime_seconds" in data
 
 
 def test_compute_requires_api_key(client):

@@ -56,4 +56,12 @@ export const darwin = {
     const response = await fetch('/api/admin/status')
     return response.json()
   },
+
+  async getHealth() {
+    if (isTauri()) {
+      return tauriSecureFetch('/health', 'GET')
+    }
+    const response = await fetch('/api/health')
+    return response.json()
+  },
 }

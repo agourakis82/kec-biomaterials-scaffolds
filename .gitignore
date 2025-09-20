@@ -1,27 +1,136 @@
-# data
-data/raw/
-data/interim/
-*.tiff *.tif *.mhd *.nii *.zip
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# python
-__pycache__/
-.venv/
-.ipynb_checkpoints/
-
-# node / next.js
+# dependencies
 node_modules/
-ui/node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
 .next/
-ui/.next/
 out/
-ui/out/
 
-# editor / system detritus
-*.Zone.Identifier*
-*.DS_Store
-.env.local
-.env
-
-# build artifacts
-dist/
+# production
 build/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+/dist
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Cache and temporary files
+.cache/
+*.cache
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# IDE and editor files
+.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.secrets/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows Zone.Identifier files
+*:Zone.Identifier
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Node.js additional ignores
+.npm
+.yarn-integrity
