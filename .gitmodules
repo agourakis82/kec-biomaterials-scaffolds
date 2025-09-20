@@ -1,0 +1,3 @@
+[submodule "external/pcs-meta-repo"]
+	path = external/pcs-meta-repo
+	url = https://github.com/agourakis82/pcs-meta-repo
