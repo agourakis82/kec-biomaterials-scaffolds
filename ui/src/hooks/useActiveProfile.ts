@@ -22,6 +22,6 @@ export function useActiveProfile(): Profile | null {
       defaultMode: p.defaultMode ?? "rag",
       notes: p.notes ?? "",
     }
-  }, [getActiveProfile, profiles, activeProfileId])
+  }, [getActiveProfile])
 }
 

@@ -1,0 +1,61 @@
+{
+  "name": "0f04e53c624e8f315371d5969b68506739f50fabb128b43ccc66ae588f237294",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "next start"
+  },
+  "dependencies": {
+    "@kombai/react-error-boundary": "^1.1.0",
+    "@tanstack/react-query": "^5.89.0",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.544.0",
+    "next": "15.5.3",
+    "postcss": "^8.5.6",
+    "postcss-import": "^16.1.1",
+    "postcss-preset-env": "^10.3.1",
+    "radix-ui": "^1.4.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwindcss": "^3.4.17",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.17",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "comment-json": "^4.2.5",
+    "env-cmd": "^11.0.0",
+    "ts-morph": "^27.0.0",
+    "typescript": "^5",
+    "webpack": "^5.101.3"
+  },
+  "type": "module",
+  "strictDependencies": {
+    "@kombai/react-error-boundary": "^1.1.0",
+    "@tanstack/react-query": "^5.89.0",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.544.0",
+    "next": "15.5.3",
+    "postcss": "^8.5.6",
+    "postcss-import": "^16.1.1",
+    "postcss-preset-env": "^10.3.1",
+    "radix-ui": "^1.4.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwindcss": "^3.4.17",
+    "zustand": "^5.0.8",
+    "framer-motion": "latest",
+    "@types/node": "^20.19.17",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "comment-json": "^4.2.5",
+    "env-cmd": "^11.0.0",
+    "ts-morph": "^27.0.0",
+    "typescript": "^5",
+    "webpack": "^5.101.3"
+  }
+}

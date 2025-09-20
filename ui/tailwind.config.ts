@@ -18,6 +18,9 @@ const config: Config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'main-gradient': 'linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--muted)))',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

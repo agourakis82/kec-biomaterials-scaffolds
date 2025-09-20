@@ -1,67 +1,36 @@
-# KEC Metrics for Porous Biomaterial Scaffolds
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Exact implementation of the MSc project pipeline:
-micro-CT → segmentation → pore-graph extraction → KEC (Entropy H, Curvature κ_OR/Forman,
-Coherence σ/ϕ) + percolation diameter (d_perc) → predictive models.
+## Getting Started
 
-**Scope lock:** strictly adhere to the PDF (Methods pp. 7–10; Fig. 1 p. 6; Expected Results pp. 11–13).
-Data: public μCT sources only; no raw data stored here—metadata and links only.
-
-Folders: /data, /src/kec_biomat, /notebooks, /results, /infra (Darwin bridge).
-
-## Darwin API — Biomaterials Bridge
-
-The Darwin API provides a FastAPI-based RAG and memory service for biomaterials research, deployable locally or on Google Cloud Run.
-
-### Quickstart (Local)
+First, run the development server:
 
 ```bash
-# Install dependencies (in infra/api)
-cd infra/api
-pip install -r requirements.txt
-
-# Copy .env.example and edit secrets as needed
-cp .env.example .env
-
-# Run locally
-make run
-# Or directly:
-uvicorn main:app --reload --host 0.0.0.0 --port 8080
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Quickstart (Cloud Run)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-export GCP_PROJECT_ID=<your-gcp-project>
-export GCP_REGION=us-central1
-./infra/api/deploy/cloudrun_deploy.sh
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Python Client Usage
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-```python
-from darwin_client import DarwinClient
-client = DarwinClient(base_url="http://localhost:8080", api_key="replace-with-secret")
+## Learn More
 
-# Health check
-print(client.health())
+To learn more about Next.js, take a look at the following resources:
 
-# Query RAG
-result = client.query("What is percolation diameter?", top_k=3)
-print(result)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-# Index a document
-doc = client.index(text="Sample document text", title="Test Doc")
-print(doc)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-# Iterative query
-iter_result = client.query_iterative("Explain entropy in biomaterials", max_iters=2)
-print(iter_result)
+## Deploy on Vercel
 
-# Tree search
-tree = client.tree_search("Find optimal scaffold", max_depth=2)
-print(tree)
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-API endpoints: `/healthz`, `/rag`, `/rag/index`, `/tree-search/search`, `/rag-plus/query` and more.
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

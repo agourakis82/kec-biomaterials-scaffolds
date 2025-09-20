@@ -1,0 +1,90 @@
+# KEC Biomaterials - Cloud Configuration
+# Configuração otimizada para Vertex AI, BigQuery e Cloud Run
+
+project:
+  id: "kec-biomaterials-prod"
+  region: "us-central1"
+  zone: "us-central1-a"
+
+vertex_ai:
+  enabled: true
+  location: "us-central1"
+  models:
+    embedding: "textembedding-gecko@003"
+    generation: "gemini-1.5-flash"
+    multimodal: "gemini-1.5-pro-vision"
+  endpoints:
+    custom_model: null
+  quotas:
+    requests_per_minute: 300
+    tokens_per_minute: 150000
+
+bigquery:
+  enabled: true
+  dataset_id: "kec_knowledge_base"
+  location: "US"
+  tables:
+    documents: "scientific_documents"
+    embeddings: "document_embeddings"
+    conversations: "conversation_history"
+    discoveries: "scientific_discoveries"
+  storage:
+    retention_days: 365
+    partition_field: "timestamp"
+  performance:
+    clustering_fields: [ "category", "relevance_score" ]
+    streaming_inserts: true
+
+cloud_run:
+  service_name: "kec-biomaterials-api"
+  region: "us-central1"
+  platform: "managed"
+  config:
+    cpu: "2"
+    memory: "4Gi"
+    min_instances: 1
+    max_instances: 10
+    concurrency: 100
+    timeout: 300s
+    port: 8080
+  environment:
+    PYTHONPATH: "/app/src:/app/external/pcs-meta-repo"
+    KEC_CONFIG_PATH: "/app/src/kec_biomat/configs"
+    DARWIN_MEMORY_PATH: "/app/src/darwin_core/memory"
+    GOOGLE_CLOUD_PROJECT: "kec-biomaterials-prod"
+
+cloud_storage:
+  buckets:
+    data: "kec-biomaterials-data"
+    models: "kec-biomaterials-models"
+    exports: "kec-biomaterials-exports"
+  locations: "US-CENTRAL1"
+
+monitoring:
+  enabled: true
+  alerting:
+    error_rate_threshold: 0.05
+    latency_threshold: "5s"
+    uptime_threshold: 0.99
+  dashboards:
+  - "kec-api-performance"
+  - "kec-memory-systems"
+  - "kec-discovery-metrics"
+
+security:
+  cors:
+    allowed_origins: [ "https://chat.openai.com", "https://chatgpt.com" ]
+    allowed_methods: [ "GET", "POST", "OPTIONS" ]
+    allowed_headers: [ "*" ]
+  rate_limiting:
+    requests_per_minute: 100
+    burst_capacity: 200
+
+optimization:
+  remove_unused_services:
+  - "cloud-sql-proxy"
+  - "memorystore-redis"
+  - "cloud-tasks"
+  enable_caching: true
+  compression: true
+  startup_optimization: true

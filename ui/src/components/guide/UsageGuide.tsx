@@ -88,7 +88,7 @@ export function UsageGuide() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
-                <Card className="h-full border-primary/20 bg-background/80 backdrop-blur">
+                <Card className="h-full rounded-xl border-primary/20 bg-card/70 backdrop-blur-lg">
                   <CardHeader className="space-y-3">
                     <div className="flex items-center gap-3">
                       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">

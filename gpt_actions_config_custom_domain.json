@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "kec_biomaterials_api",
+  "name_for_human": "KEC Biomaterials Analysis API",
+  "description_for_model": "Advanced biomaterials analysis API with RAG++, tree search, memory systems, and scientific discovery. Provides KEC metrics (entropy, curvature, small-world) calculation, knowledge retrieval, and automated research discovery. Deployed at api.agourakis.med.br",
+  "description_for_human": "Analyze porous biomaterials using advanced KEC metrics, search scientific knowledge, and discover recent research.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://api.agourakis.med.br/openapi.json"
+  },
+  "logo_url": "https://api.agourakis.med.br/static/logo.png",
+  "contact_email": "admin@agourakis.med.br",
+  "legal_info_url": "https://api.agourakis.med.br/docs"
+}

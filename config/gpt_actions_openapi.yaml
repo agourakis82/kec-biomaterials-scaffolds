@@ -1,0 +1,243 @@
+openapi: 3.0.0
+info:
+  title: "KEC Biomaterials Analysis API for GPT Actions"
+  description: "Advanced biomaterials analysis with RAG++, Tree Search, Memory Systems, and Scientific Discovery"
+  version: "2.0.0"
+  contact:
+    name: "KEC Biomaterials Team"
+    url: "https://github.com/agourakis82/kec-biomaterials-scaffolds"
+
+servers:
+- url: "https://kec-biomaterials-api-pcs-helio.a.run.app"
+  description: "Production Cloud Run Service"
+
+paths:
+  /gpt-actions/analyze-kec-metrics:
+    post:
+      operationId: analyzeKECMetrics
+      summary: "Analyze Biomaterial KEC Metrics"
+      description: "Calculate H (entropy), κ (curvature), σ/ϕ (small-world) metrics for porous scaffold structures"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                graph_data:
+                  type: object
+                  description: "NetworkX graph in JSON format with nodes and edges"
+                  example:
+                    nodes: [ { "id": 0 }, { "id": 1 }, { "id": 2 } ]
+                    edges: [ { "source": 0, "target": 1 }, { "source": 1, "target": 2 } ]
+                config_overrides:
+                  type: object
+                  description: "KEC configuration parameters"
+                  properties:
+                    k_eigs:
+                      type: integer
+                      default: 64
+                      description: "Number of eigenvalues for spectral entropy"
+                    sigma_Q:
+                      type: boolean
+                      default: false
+                      description: "Calculate quantum coherence σ_Q"
+                    include_triangles:
+                      type: boolean
+                      default: true
+                      description: "Include triangles in Forman curvature"
+      responses:
+        '200':
+          description: "KEC metrics calculated successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  kec_metrics:
+                    type: object
+                    properties:
+                      H_spectral:
+                        type: number
+                        description: "Spectral entropy (von Neumann)"
+                      k_forman_mean:
+                        type: number
+                        description: "Mean Forman curvature"
+                      sigma:
+                        type: number
+                        description: "Small-world sigma coefficient"
+                      swp:
+                        type: number
+                        description: "Small-World Propensity"
+                  interpretation:
+                    type: object
+                    description: "Human-readable interpretation of metrics"
+
+  /gpt-actions/rag-query:
+    post:
+      operationId: ragQuery
+      summary: "RAG++ Knowledge Search"
+      description: "Search scientific knowledge using advanced RAG++ with iterative refinement"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ "query" ]
+              properties:
+                query:
+                  type: string
+                  description: "Research question or search query"
+                  example: "latest advances in biomaterial scaffolds porosity"
+                use_iterative:
+                  type: boolean
+                  default: false
+                  description: "Use iterative search refinement for complex queries"
+                max_sources:
+                  type: integer
+                  default: 5
+                  maximum: 20
+                  description: "Maximum number of sources to return"
+      responses:
+        '200':
+          description: "Knowledge search completed"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  answer:
+                    type: string
+                    description: "Generated answer based on retrieved knowledge"
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        snippet:
+                          type: string
+                        url:
+                          type: string
+                        score:
+                          type: number
+
+  /gpt-actions/project-status:
+    get:
+      operationId: getProjectStatus
+      summary: "Get Complete Project Status"
+      description: "Current project status, progress, next steps, and system health"
+      responses:
+        '200':
+          description: "Project status retrieved"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  project_overview:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      backend_type:
+                        type: string
+                      architecture:
+                        type: string
+                  current_status:
+                    type: object
+                    properties:
+                      phase:
+                        type: string
+                      momentum:
+                        type: number
+                      health:
+                        type: string
+                  next_actions:
+                    type: array
+                    items:
+                      type: string
+
+  /gpt-actions/scientific-discovery:
+    post:
+      operationId: triggerDiscovery
+      summary: "Trigger Scientific Discovery"
+      description: "Execute immediate scientific discovery across multiple research sources"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                force_update:
+                  type: boolean
+                  default: false
+      responses:
+        '200':
+          description: "Discovery completed"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  discovery_triggered:
+                    type: boolean
+                  total_discoveries:
+                    type: integer
+                  top_findings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        source:
+                          type: string
+                        relevance:
+                          type: number
+                        url:
+                          type: string
+
+  /gpt-actions/system-health:
+    get:
+      operationId: getSystemHealth
+      summary: "System Health Check"
+      description: "Health status of all backend modules and memory systems"
+      responses:
+        '200':
+          description: "System health retrieved"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  overall_status:
+                    type: string
+                    enum: [ "excellent", "good", "fair", "needs_attention" ]
+                  systems:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  memory_active:
+                    type: boolean
+                  discovery_active:
+                    type: boolean
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: "Error message"
