@@ -4,13 +4,11 @@ Sistema H2 - Estratégias de Invalidação de Cache
 Módulo para diferentes estratégias de invalidação e limpeza de cache.
 """
 
-import asyncio
 import logging
 import threading
 import time
 from abc import ABC, abstractmethod
 from collections import defaultdict
-from datetime import datetime, timedelta
 from typing import Any, Callable, Dict, List, Optional, Set
 
 logger = logging.getLogger(__name__)

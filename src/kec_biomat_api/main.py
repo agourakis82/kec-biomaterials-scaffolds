@@ -5,9 +5,9 @@ import sys
 import os
 
 # Add modular backend to path
-sys.path.insert(0, '/app/src')
+sys.path.insert(0, "/app/src")
 
-from fastapi import FastAPI, Request, Depends
+from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -64,7 +64,17 @@ class ASGILoggingMiddleware(BaseHTTPMiddleware):
             path = scope.get("path")
             raw_path = scope.get("raw_path")
             # Collect a few headers to avoid huge logs
-            headers = {k.decode(): v.decode() for k, v in scope.get("headers", []) if k.decode().lower() in ("host", "x-forwarded-for", "x-forwarded-host", "x-appengine-country")}
+            headers = {
+                k.decode(): v.decode()
+                for k, v in scope.get("headers", [])
+                if k.decode().lower()
+                in (
+                    "host",
+                    "x-forwarded-for",
+                    "x-forwarded-host",
+                    "x-appengine-country",
+                )
+            }
         except Exception as exc:  # pragma: no cover - defensive
             logger.warning("ASGI scope extraction failed", exc_info=exc)
             return await call_next(request)
@@ -105,11 +115,13 @@ async def lifespan(app: FastAPI):
         memory_system = await get_integrated_memory_system()
         app.state.memory_system = memory_system
         logger.info("✅ Integrated Memory System initialized")
-        
+
         # Store startup context for session continuity
         startup_context = await memory_system.get_complete_project_context()
-        logger.info(f"📋 Project context loaded - Phase: {startup_context['project_state']['current_phase']}")
-        
+        logger.info(
+            f"📋 Project context loaded - Phase: {startup_context['project_state']['current_phase']}"
+        )
+
     except Exception as e:
         logger.error(f"❌ Error initializing modular backend: {e}")
         logger.info("⚠️  Continuing with basic functionality")
@@ -130,7 +142,7 @@ async def lifespan(app: FastAPI):
 
     # NEW: Shutdown modular systems
     try:
-        if hasattr(app.state, 'memory_system'):
+        if hasattr(app.state, "memory_system"):
             # Stop scientific discovery if running
             if app.state.memory_system.scientific_discovery:
                 await app.state.memory_system.scientific_discovery.stop_continuous_discovery()
@@ -222,7 +234,15 @@ def create_app() -> FastAPI:
     # 2. Rate limiting (before authentication to limit all requests)
     add_rate_limiting(
         app,
-        exclude_paths=["/", "/healthz", "/ping", "/docs", "/redoc", "/openapi.json", "/openapi.yaml"],
+        exclude_paths=[
+            "/",
+            "/healthz",
+            "/ping",
+            "/docs",
+            "/redoc",
+            "/openapi.json",
+            "/openapi.yaml",
+        ],
         header_prefix="X-RateLimit",
     )
 
@@ -247,11 +267,12 @@ def create_app() -> FastAPI:
     app.include_router(notebooks.router)
     app.include_router(monitoring.router, prefix="/monitoring")  # Monitoring endpoints
     app.include_router(processing_router)  # Processing endpoints
-    app.include_router(memory.router, prefix="", tags=["Memory"])  # Mount memory router at root
+    app.include_router(
+        memory.router, prefix="", tags=["Memory"]
+    )  # Mount memory router at root
     app.include_router(tree_search.router)
     app.include_router(score_contracts.router)
-    
-    
+
     # NEW: GPT Actions router for ChatGPT integration
     app.include_router(gpt_actions_router, tags=["GPT Actions"])
     logger.info("🤖 GPT Actions router mounted at /gpt-actions")
@@ -284,13 +305,13 @@ def create_app() -> FastAPI:
         Preserves Authorization header.
         """
         from .routers import rag_plus  # Avoid circular import
+
         # Get the service instance
         service = await rag_plus.get_rag_plus_service()
         body = await request.json()
         # Call the add_document function directly
         response = await rag_plus.add_document(
-            request=rag_plus.DocumentAdd(**body),
-            service=service
+            request=rag_plus.DocumentAdd(**body), service=service
         )
         return response
 

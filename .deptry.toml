@@ -1,0 +1,8 @@
+known_first_party = [
+    "kec_biomat_api",
+    "darwin_core",
+    "kec_biomat",
+    "pcs_helio",
+    "infra",
+    "gemini_direct_api",
+]

@@ -6,7 +6,7 @@ Definições de tipos GraphQL para todos os sistemas integrados.
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 import strawberry
 
@@ -18,8 +18,9 @@ from kec_biomat_api.auth.user_manager import UserStatus
 @strawberry.enum
 class UserStatusEnum(Enum):
     """Enum para status do usuário."""
+
     ACTIVE = "active"
-    INACTIVE = "inactive" 
+    INACTIVE = "inactive"
     SUSPENDED = "suspended"
     PENDING = "pending"
 
@@ -27,6 +28,7 @@ class UserStatusEnum(Enum):
 @strawberry.type
 class Role:
     """Tipo GraphQL para Role."""
+
     id: str
     name: str
     description: str
@@ -37,6 +39,7 @@ class Role:
 @strawberry.type
 class User:
     """Tipo GraphQL para User."""
+
     id: str
     username: str
     email: str
@@ -54,6 +57,7 @@ class User:
 @strawberry.type
 class AuthSession:
     """Tipo GraphQL para sessão de autenticação."""
+
     session_id: str
     user_id: str
     created_at: datetime
@@ -65,6 +69,7 @@ class AuthSession:
 @strawberry.type
 class ConnectionStats:
     """Tipo GraphQL para estatísticas de conexão WebSocket."""
+
     active_connections: int
     authenticated_connections: int
     anonymous_connections: int
@@ -76,6 +81,7 @@ class ConnectionStats:
 @strawberry.type
 class RoomInfo:
     """Tipo GraphQL para informações de sala WebSocket."""
+
     room: str
     connection_count: int
     connections: List[str]
@@ -84,6 +90,7 @@ class RoomInfo:
 @strawberry.type
 class CacheStats:
     """Tipo GraphQL para estatísticas de cache."""
+
     total_keys: int
     memory_usage: int
     hit_rate: float
@@ -94,6 +101,7 @@ class CacheStats:
 @strawberry.type
 class MetricData:
     """Tipo GraphQL para dados de métricas."""
+
     name: str
     type: str
     value: float
@@ -104,6 +112,7 @@ class MetricData:
 @strawberry.type
 class SystemHealth:
     """Tipo GraphQL para saúde do sistema."""
+
     status: str
     uptime: int
     memory_usage: float
@@ -115,6 +124,7 @@ class SystemHealth:
 @strawberry.type
 class GatewayInfo:
     """Tipo GraphQL para informações do gateway."""
+
     name: str
     version: str
     security_level: str
@@ -128,6 +138,7 @@ class GatewayInfo:
 @strawberry.type
 class RouteInfo:
     """Tipo GraphQL para informações de rota."""
+
     path: str
     methods: List[str]
     tags: List[str]
@@ -139,6 +150,7 @@ class RouteInfo:
 @strawberry.type
 class ApiKey:
     """Tipo GraphQL para API Key."""
+
     key: str
     name: str
     user_id: str
@@ -151,6 +163,7 @@ class ApiKey:
 @strawberry.input
 class CreateUserInput:
     """Input para criação de usuário."""
+
     username: str
     email: str
     password: str
@@ -162,6 +175,7 @@ class CreateUserInput:
 @strawberry.input
 class UpdateUserInput:
     """Input para atualização de usuário."""
+
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     email: Optional[str] = None
@@ -171,6 +185,7 @@ class UpdateUserInput:
 @strawberry.input
 class LoginInput:
     """Input para login."""
+
     username: str
     password: str
 
@@ -178,6 +193,7 @@ class LoginInput:
 @strawberry.input
 class CreateApiKeyInput:
     """Input para criação de API key."""
+
     name: str
     permissions: List[str] = strawberry.field(default_factory=list)
 
@@ -185,6 +201,7 @@ class CreateApiKeyInput:
 @strawberry.input
 class CacheInput:
     """Input para operações de cache."""
+
     key: str
     value: str
     ttl: Optional[int] = None
@@ -193,6 +210,7 @@ class CacheInput:
 @strawberry.input
 class WebSocketMessageInput:
     """Input para mensagem WebSocket."""
+
     room: str
     message: str
     type: str = "text"
@@ -201,6 +219,7 @@ class WebSocketMessageInput:
 @strawberry.type
 class AuthResult:
     """Resultado de autenticação."""
+
     success: bool
     user: Optional[User]
     access_token: Optional[str]
@@ -212,6 +231,7 @@ class AuthResult:
 @strawberry.type
 class OperationResult:
     """Resultado genérico de operação."""
+
     success: bool
     message: str
     data: Optional[str] = None
@@ -220,6 +240,7 @@ class OperationResult:
 @strawberry.type
 class PaginationInfo:
     """Informações de paginação."""
+
     page: int
     page_size: int
     total_items: int
@@ -231,6 +252,7 @@ class PaginationInfo:
 @strawberry.type
 class UserConnection:
     """Conexão paginada de usuários."""
+
     users: List[User]
     pagination: PaginationInfo
 
@@ -238,6 +260,7 @@ class UserConnection:
 @strawberry.type
 class MetricsConnection:
     """Conexão paginada de métricas."""
+
     metrics: List[MetricData]
     pagination: PaginationInfo
 
@@ -245,6 +268,7 @@ class MetricsConnection:
 @strawberry.type
 class RolePermission:
     """Permissão de role."""
+
     resource: str
     action: str
     description: str
@@ -253,6 +277,7 @@ class RolePermission:
 @strawberry.type
 class PermissionCheck:
     """Resultado de verificação de permissão."""
+
     user_id: str
     permission: str
     granted: bool
@@ -274,7 +299,7 @@ def auth_user_to_graphql(auth_user: AuthUser) -> User:
         updated_at=auth_user.updated_at,
         last_login=auth_user.last_login,
         full_name=auth_user.full_name,
-        is_active=auth_user.is_active
+        is_active=auth_user.is_active,
     )
 
 
@@ -285,10 +310,10 @@ def auth_role_to_graphql(auth_role: AuthRole) -> Role:
         name=auth_role.name,
         description=auth_role.description,
         permissions=auth_role.permissions,
-        is_system=auth_role.is_system
+        is_system=auth_role.is_system,
     )
 
 
 def user_status_from_enum(status: UserStatusEnum) -> UserStatus:
     """Converte enum GraphQL para UserStatus."""
-    return UserStatus(status.value)    return UserStatus(status.value)
+    return UserStatus(status.value)

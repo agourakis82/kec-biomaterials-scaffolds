@@ -21,7 +21,12 @@ async def test_h4_integration():
 
     try:
         # Importa componentes H4
-        from kec_biomat_api.data_processing import DataFormat, health_check, quick_etl, system_info
+        from kec_biomat_api.data_processing import (
+            DataFormat,
+            health_check,
+            quick_etl,
+            system_info,
+        )
 
         print("✅ Importações H4 bem-sucedidas")
 
@@ -101,7 +106,10 @@ async def test_h4_templates():
     print("\n🔧 Testando templates do Sistema H4")
 
     try:
-        from kec_biomat_api.data_processing.pipelines.templates import get_template, list_templates
+        from kec_biomat_api.data_processing.pipelines.templates import (
+            get_template,
+            list_templates,
+        )
 
         # Lista templates disponíveis
         templates = list_templates()
@@ -128,7 +136,9 @@ async def test_h4_processors():
     print("\n⚙️ Testando processadores do Sistema H4")
 
     try:
-        from kec_biomat_api.data_processing.processors.data_processors import create_processor
+        from kec_biomat_api.data_processing.processors.data_processors import (
+            create_processor,
+        )
 
         processor_types = [
             "validation",
@@ -161,7 +171,9 @@ async def test_h4_formats():
 
     try:
         from kec_biomat_api.data_processing.config import DataFormat
-        from kec_biomat_api.data_processing.formats.file_handlers import get_format_handler
+        from kec_biomat_api.data_processing.formats.file_handlers import (
+            get_format_handler,
+        )
 
         formats = [DataFormat.JSON, DataFormat.CSV, DataFormat.XML]
 

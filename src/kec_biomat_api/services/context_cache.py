@@ -4,7 +4,7 @@ Implements basic prompt prefix extraction to mimic Vertex context cache usage.
 """
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, Tuple
 
 
 def _split_prefix_suffix(prompt: str) -> Tuple[str, str]:
@@ -31,7 +31,8 @@ class _ContextCache:
             "total_hits": hits,
             "total_requests": total,
             "top_prefixes": [
-                {"prefix": k[:40], "uses": v} for k, v in list(self.prefix_stats.items())[:5]
+                {"prefix": k[:40], "uses": v}
+                for k, v in list(self.prefix_stats.items())[:5]
             ],
         }
 
@@ -77,4 +78,3 @@ def prepare_cached_prompt(prompt: str, model: str) -> Dict[str, Any]:
         "model": model,
         "optimization": {"savings": 0.75 if prefix else 0.0},
     }
-

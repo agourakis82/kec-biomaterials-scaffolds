@@ -9,7 +9,7 @@ from kec_biomat_api.services.helio_service import helio_service
 
 from kec_biomat_api.auth import get_api_key_optional, require_api_key
 from kec_biomat_api.custom_logging import get_logger
-from kec_biomat_api.models import HELIOSummary, PaginationParams
+from kec_biomat_api.models import HELIOSummary
 from kec_biomat_api.rate_limit import rate_limit_dependency
 
 logger = get_logger("data_router")

@@ -5,7 +5,6 @@ Handlers específicos para diferentes tipos de eventos WebSocket.
 """
 
 import logging
-from typing import Any, Dict, Optional
 
 from .connection_manager import (
     MessageType,
@@ -22,7 +21,7 @@ async def handle_chat_message(connection: WSConnection, message: WSMessage):
     try:
         if not connection.user:
             return
-        
+
         # Broadcast para sala se especificada
         if message.room:
             manager = get_connection_manager()
@@ -32,9 +31,9 @@ async def handle_chat_message(connection: WSConnection, message: WSMessage):
                     "type": "chat",
                     "user": connection.user.username,
                     "message": message.data,
-                    "timestamp": message.timestamp.isoformat()
+                    "timestamp": message.timestamp.isoformat(),
                 },
-                exclude_connection=connection.id
+                exclude_connection=connection.id,
             )
     except Exception as e:
         logger.error(f"Error handling chat message: {e}")
@@ -50,11 +49,6 @@ async def handle_system_notification(connection: WSConnection, message: WSMessag
 
 
 def register_default_handlers():
-    """Registra handlers padrão."""
-    manager = get_connection_manager()
-    manager.register_message_handler(MessageType.TEXT, handle_chat_message)
-    manager.register_message_handler(MessageType.JSON, handle_chat_message)
-    manager.register_message_handler(MessageType.SYSTEM, handle_system_notification)def register_default_handlers():
     """Registra handlers padrão."""
     manager = get_connection_manager()
     manager.register_message_handler(MessageType.TEXT, handle_chat_message)

@@ -16,10 +16,8 @@ from typing import Any, Callable, Dict, Optional
 from fastapi import HTTPException, Request, status
 from fastapi.security import HTTPBearer
 from fastapi.security.utils import get_authorization_scheme_param
-from starlette.applications import Starlette
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import Response
-from starlette.types import ASGIApp
 
 from .config import settings
 
@@ -125,7 +123,9 @@ def require_authentication(request: Request) -> str:
         InvalidAPIKeyError: If API key is invalid
     """
     logger.info(f"🔍 REQUIRE_AUTH called for {request.url.path}")
-    print(f"🔍 REQUIRE_AUTH: API_KEY_REQUIRED={settings.API_KEY_REQUIRED}, path={request.url.path}")
+    print(
+        f"🔍 REQUIRE_AUTH: API_KEY_REQUIRED={settings.API_KEY_REQUIRED}, path={request.url.path}"
+    )
     if not settings.API_KEY_REQUIRED:
         print("🔓 REQUIRE_AUTH: API_KEY_REQUIRED is False - bypassing")
         logger.info("🔓 API_KEY_REQUIRED is False - bypassing auth")
@@ -234,14 +234,16 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
             Response from next middleware/endpoint
         """
         print(f"🔍 MIDDLEWARE: Processing {request.method} {request.url.path}")
-        
+
         # Skip authentication for exempt paths
         if request.url.path in self.exempt_paths:
             print(f"🔓 MIDDLEWARE: Exempt path {request.url.path}")
             return await call_next(request)
 
         # Skip if authentication not required globally
-        print(f"🔑 MIDDLEWARE: API_KEY_REQUIRED={settings.API_KEY_REQUIRED}, require_auth={self.require_auth}")
+        print(
+            f"🔑 MIDDLEWARE: API_KEY_REQUIRED={settings.API_KEY_REQUIRED}, require_auth={self.require_auth}"
+        )
         if not self.require_auth or not settings.API_KEY_REQUIRED:
             print("🔓 MIDDLEWARE: Auth not required - bypassing")
             return await call_next(request)

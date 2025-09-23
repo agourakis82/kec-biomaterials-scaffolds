@@ -1,0 +1,166 @@
+# compose-spec (version key removed)
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  api:
+    build:
+      context: ./darwin/backend/kec_unified_api
+      dockerfile: Dockerfile
+      network: host
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-local}
+      - PORT=${BACKEND_PORT:-8080}
+      - DB_REDIS_HOST=redis
+      - DB_REDIS_PORT=${REDIS_PORT:-6379}
+      - DB_REDIS_DB=${REDIS_DB:-0}
+      - DB_VECTOR_BACKEND=${DB_VECTOR_BACKEND:-chroma}
+      - DB_CHROMA_HOST=vectordb
+      - DB_CHROMA_PORT=8000
+      - MULTI_AI_DEFAULT_PROVIDER=${MULTI_AI_DEFAULT_PROVIDER:-openai}
+      - MULTI_AI_GCP_PROJECT_ID=${PROJECT_ID:-pcs-helio}
+      - CORS_ENABLED=${CORS_ENABLED:-true}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,https://darwin.agourakis.med.br}
+      - BASE_EXTERNAL_URL=${API_BASE_URL:-http://localhost:8080}
+      - CONFIG_FILE=/app/config/production.yaml
+    depends_on:
+      redis:
+        condition: service_healthy
+      vectordb:
+        condition: service_started
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -qO- http://localhost:${PORT:-8080}/health || curl -fsS http://localhost:${PORT:-8080}/health || exit 1",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  web:
+    build:
+      context: ./darwin/frontend/ui
+      dockerfile: Dockerfile.production
+      network: host
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=${API_BASE_URL:-http://localhost:8080}
+      - NEXT_PUBLIC_ENVIRONMENT=${NEXT_PUBLIC_ENVIRONMENT:-local}
+      - NEXT_PUBLIC_APP_URL=${FRONTEND_BASE_URL:-http://localhost:3000}
+    depends_on:
+      api:
+        condition: service_started
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  jupyter:
+    image: jupyter/minimal-notebook:python-3.11
+    command: start-notebook.sh --NotebookApp.token=''
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./darwin/notebooks:/home/jovyan/work
+    ports:
+      - "${JUPYTER_PORT:-8888}:8888"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8888/api"]
+      interval: 30s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  vectordb:
+    image: chromadb/chroma:latest
+    environment:
+      - CHROMA_SERVER_HOST=0.0.0.0
+      - CHROMA_SERVER_HTTP_PORT=8000
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/data
+    volumes:
+      - chroma_data:/chroma/data
+    ports:
+      - "${CHROMA_PORT:-8000}:8000"
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:11434/api/tags"]
+      interval: 20s
+      timeout: 5s
+      retries: 15
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ["gpu"]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - OLLAMA_KEEP_ALIVE=${OLLAMA_KEEP_ALIVE:-5m}
+    networks:
+      - app_net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    profiles:
+      - tunnel
+    command: tunnel run darwin
+    depends_on:
+      api:
+        condition: service_started
+      web:
+        condition: service_started
+    volumes:
+      - ./.cloudflared:/etc/cloudflared
+    restart: unless-stopped
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
+
+volumes:
+  redis_data:
+  chroma_data:
+  ollama_data:

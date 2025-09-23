@@ -2,4 +2,3 @@
 
 Contains Vertex RAG adapters, tree search, score contracts, and utilities.
 """
-

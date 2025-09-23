@@ -61,18 +61,25 @@ class _Sandbox:
     def get_contract_schema(self, ctype: ContractType) -> Dict[str, Any]:
         return self._schema(ctype)
 
-    def get_execution_history(self, ctype: Optional[ContractType], limit: int) -> List[ContractOutput]:
-        items = [h for h in self._history if (ctype is None or h.contract_type == ctype)]
+    def get_execution_history(
+        self, ctype: Optional[ContractType], limit: int
+    ) -> List[ContractOutput]:
+        items = [
+            h for h in self._history if (ctype is None or h.contract_type == ctype)
+        ]
         return items[-limit:]
 
     async def execute_contract(self, cin: ContractInput) -> ContractOutput:
         eid = str(uuid.uuid4())
         start = time.time()
         try:
+
             async def _run() -> ContractOutput:
                 # Deterministic scoring by type
                 if cin.contract_type == ContractType.DELTA_KEC_V1:
-                    s = float(cin.data.get("target_entropy", 0)) - float(cin.data.get("source_entropy", 0))
+                    s = float(cin.data.get("target_entropy", 0)) - float(
+                        cin.data.get("source_entropy", 0)
+                    )
                     score = max(-3.0, min(3.0, s))
                 elif cin.contract_type == ContractType.ZUCO_READING_V1:
                     score = 0.5  # placeholder
@@ -113,4 +120,3 @@ _SANDBOX = _Sandbox()
 
 def get_sandbox() -> _Sandbox:
     return _SANDBOX
-

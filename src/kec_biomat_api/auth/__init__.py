@@ -21,9 +21,7 @@ from .apikey import (
     optional_api_key,
     optional_authentication,
 )
-from .apikey import (
-    require_api_key as _require_api_key_impl,  # decorators and dependencies; helpers and utilities
-)
+
 from .apikey import require_authentication, validate_api_key, verify_token
 from .auth_manager import (
     AuthConfig,

@@ -200,10 +200,15 @@ class PaginatedResponse(BaseModel):
     has_next: bool = Field(..., description="Whether there is a next page")
     has_prev: bool = Field(..., description="Whether there is a previous page")
 
+
 # Models for KEC Endpoints
 class ComputeRequest(BaseModel):
-    graph_id: str = Field(..., description="Identifier of the graph to compute KEC metrics for")
-    sigma_q: bool = Field(False, description="Whether to enable the sigma quality variant")
+    graph_id: str = Field(
+        ..., description="Identifier of the graph to compute KEC metrics for"
+    )
+    sigma_q: bool = Field(
+        False, description="Whether to enable the sigma quality variant"
+    )
 
 
 class ComputeResponse(BaseModel):

@@ -5,7 +5,7 @@ scientific discovery, and iterative search capabilities.
 
 Endpoints:
 - POST /rag-plus/query - Simple RAG query
-- POST /rag-plus/iterative - Iterative reasoning query  
+- POST /rag-plus/iterative - Iterative reasoning query
 - POST /rag-plus/discovery - Trigger discovery update
 - GET /rag-plus/status - Service status
 - POST /rag-plus/discovery/start - Start continuous discovery
@@ -34,6 +34,7 @@ router = APIRouter(
 # Request/Response Models
 class RAGPlusQuery(BaseModel):
     """RAG++ query request"""
+
     query: str = Field(..., description="Research question or query")
     top_k: Optional[int] = Field(None, description="Number of documents to retrieve")
     include_sources: bool = Field(True, description="Include source information")
@@ -41,6 +42,7 @@ class RAGPlusQuery(BaseModel):
 
 class RAGPlusResponse(BaseModel):
     """RAG++ query response"""
+
     answer: str = Field(..., description="Generated answer")
     sources: List[Dict[str, Any]] = Field(
         default_factory=list, description="Source documents"
@@ -57,6 +59,7 @@ class RAGPlusResponse(BaseModel):
 
 class DiscoveryResponse(BaseModel):
     """Discovery operation response"""
+
     status: str = Field(..., description="Operation status")
     fetched: int = Field(..., description="Articles fetched")
     novel: int = Field(..., description="Novel articles found")
@@ -66,6 +69,7 @@ class DiscoveryResponse(BaseModel):
 
 class ServiceStatus(BaseModel):
     """RAG++ service status"""
+
     service: str = Field(..., description="Service name")
     status: str = Field(..., description="Service status")
     components: Dict[str, Any] = Field(..., description="Component status")
@@ -75,6 +79,7 @@ class ServiceStatus(BaseModel):
 
 class DocumentAdd(BaseModel):
     """Add document to knowledge base"""
+
     content: str = Field(..., description="Document content")
     source: str = Field("", description="Document source")
     metadata: Optional[Dict[str, Any]] = Field(None, description="Additional metadata")
@@ -82,26 +87,25 @@ class DocumentAdd(BaseModel):
 
 @router.post("/query", response_model=RAGPlusResponse)
 async def query_rag_plus(
-    request: RAGPlusQuery,
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    request: RAGPlusQuery, service: DarwinRAGPlusService = Depends(get_rag_plus_service)
 ):
     """
     Query RAG++ system with simple retrieval-augmented generation.
-    
+
     Uses semantic search to find relevant documents and generates
     an answer with citations from the Darwin knowledge base.
     """
     try:
         logger.info(f"RAG++ query: {request.query[:100]}...")
-        
+
         result = await service.answer_question(request.query)
-        
+
         # Filter sources if not requested
         if not request.include_sources:
             result["sources"] = []
-        
+
         return RAGPlusResponse(**result)
-        
+
     except Exception as e:
         logger.error(f"Error in RAG++ query: {e}")
         raise HTTPException(status_code=500, detail=f"Query failed: {str(e)}")
@@ -109,26 +113,25 @@ async def query_rag_plus(
 
 @router.post("/iterative", response_model=RAGPlusResponse)
 async def query_iterative(
-    request: RAGPlusQuery,
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    request: RAGPlusQuery, service: DarwinRAGPlusService = Depends(get_rag_plus_service)
 ):
     """
     Query RAG++ system with iterative ReAct reasoning.
-    
+
     Uses Thought→Action→Observation loops for complex questions
     requiring multi-step reasoning and information gathering.
     """
     try:
         logger.info(f"RAG++ iterative query: {request.query[:100]}...")
-        
+
         result = await service.answer_question_iterative(request.query)
-        
+
         # Filter sources if not requested
         if not request.include_sources and "sources" in result:
             result["sources"] = []
-        
+
         return RAGPlusResponse(**result)
-        
+
     except Exception as e:
         logger.error(f"Error in RAG++ iterative query: {e}")
         raise HTTPException(status_code=500, detail=f"Iterative query failed: {str(e)}")
@@ -137,28 +140,28 @@ async def query_iterative(
 @router.post("/discovery", response_model=DiscoveryResponse)
 async def trigger_discovery(
     background_tasks: BackgroundTasks,
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     Trigger scientific discovery update.
-    
+
     Scans configured RSS feeds for new articles, performs novelty
     detection, and adds relevant discoveries to the knowledge base.
     """
     try:
         logger.info("Triggering RAG++ discovery update")
-        
+
         # Run discovery in background to avoid timeout
         stats = await service.discover_new_knowledge()
-        
+
         return DiscoveryResponse(
             status="completed",
             fetched=stats.get("fetched", 0),
             novel=stats.get("novel", 0),
             added=stats.get("added", 0),
-            errors=stats.get("errors", 0)
+            errors=stats.get("errors", 0),
         )
-        
+
     except Exception as e:
         logger.error(f"Error in RAG++ discovery: {e}")
         raise HTTPException(status_code=500, detail=f"Discovery failed: {str(e)}")
@@ -166,18 +169,18 @@ async def trigger_discovery(
 
 @router.get("/status", response_model=ServiceStatus)
 async def get_service_status(
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     Get comprehensive RAG++ service status.
-    
+
     Returns health information for all components including
     BigQuery, Vertex AI models, and discovery monitoring.
     """
     try:
         status = await service.get_service_status()
         return ServiceStatus(**status)
-        
+
     except Exception as e:
         logger.error(f"Error getting RAG++ status: {e}")
         raise HTTPException(status_code=500, detail=f"Status check failed: {str(e)}")
@@ -185,11 +188,11 @@ async def get_service_status(
 
 @router.post("/discovery/start")
 async def start_continuous_discovery(
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     Start continuous scientific discovery monitoring.
-    
+
     Begins 24/7 monitoring of scientific sources with automatic
     knowledge base updates for novel discoveries.
     """
@@ -198,21 +201,23 @@ async def start_continuous_discovery(
         return {
             "status": "started",
             "message": "Continuous discovery monitoring started",
-            "interval_seconds": service.config.discovery_interval
+            "interval_seconds": service.config.discovery_interval,
         }
-        
+
     except Exception as e:
         logger.error(f"Error starting RAG++ discovery: {e}")
-        raise HTTPException(status_code=500, detail=f"Failed to start discovery: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Failed to start discovery: {str(e)}"
+        )
 
 
 @router.post("/discovery/stop")
 async def stop_continuous_discovery(
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     Stop continuous scientific discovery monitoring.
-    
+
     Stops the background discovery process while preserving
     the existing knowledge base.
     """
@@ -220,42 +225,46 @@ async def stop_continuous_discovery(
         await service.stop_continuous_discovery()
         return {
             "status": "stopped",
-            "message": "Continuous discovery monitoring stopped"
+            "message": "Continuous discovery monitoring stopped",
         }
-        
+
     except Exception as e:
         logger.error(f"Error stopping RAG++ discovery: {e}")
-        raise HTTPException(status_code=500, detail=f"Failed to stop discovery: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Failed to stop discovery: {str(e)}"
+        )
 
 
 @router.get("/sources")
 async def list_discovery_sources(
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     List configured scientific discovery sources.
-    
+
     Returns information about RSS feeds and other sources
     monitored for scientific discoveries.
     """
     try:
         sources = []
         for source in service.sources:
-            sources.append({
-                "name": source.name,
-                "type": source.type,
-                "url": source.url,
-                "enabled": source.enabled,
-                "check_interval": source.check_interval
-            })
-        
+            sources.append(
+                {
+                    "name": source.name,
+                    "type": source.type,
+                    "url": source.url,
+                    "enabled": source.enabled,
+                    "check_interval": source.check_interval,
+                }
+            )
+
         return {
             "sources": sources,
             "total_sources": len(sources),
             "enabled_sources": len([s for s in service.sources if s.enabled]),
-            "discovery_enabled": service.config.discovery_enabled
+            "discovery_enabled": service.config.discovery_enabled,
         }
-        
+
     except Exception as e:
         logger.error(f"Error listing RAG++ sources: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to list sources: {str(e)}")
@@ -263,12 +272,11 @@ async def list_discovery_sources(
 
 @router.post("/documents")
 async def add_document(
-    request: DocumentAdd,
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    request: DocumentAdd, service: DarwinRAGPlusService = Depends(get_rag_plus_service)
 ):
     """
     Add document to RAG++ knowledge base.
-    
+
     Manually add a document with content and metadata to the
     Darwin knowledge base for use in future queries.
     """
@@ -277,24 +285,24 @@ async def add_document(
 
         # Generate document ID
         doc_id = hashlib.md5(request.content.encode()).hexdigest()
-        
+
         success = await service.add_document(
             doc_id=doc_id,
             content=request.content,
             source=request.source,
             metadata=request.metadata,
-            discovery_type="manual_addition"
+            discovery_type="manual_addition",
         )
-        
+
         if success:
             return {
                 "status": "added",
                 "document_id": doc_id,
-                "message": "Document added to knowledge base successfully"
+                "message": "Document added to knowledge base successfully",
             }
         else:
             raise HTTPException(status_code=400, detail="Failed to add document")
-            
+
     except HTTPException:
         raise
     except Exception as e:
@@ -306,23 +314,19 @@ async def add_document(
 async def search_knowledge_base(
     query: str,
     top_k: int = 5,
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     Search RAG++ knowledge base directly.
-    
+
     Performs semantic search without answer generation,
     returning the most relevant documents with similarity scores.
     """
     try:
         results = await service.query_knowledge_base(query, top_k=top_k)
-        
-        return {
-            "query": query,
-            "results": results,
-            "total_results": len(results)
-        }
-        
+
+        return {"query": query, "results": results, "total_results": len(results)}
+
     except Exception as e:
         logger.error(f"Error searching knowledge base: {e}")
         raise HTTPException(status_code=500, detail=f"Search failed: {str(e)}")
@@ -330,11 +334,11 @@ async def search_knowledge_base(
 
 @router.get("/config")
 async def get_configuration(
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
+    service: DarwinRAGPlusService = Depends(get_rag_plus_service),
 ):
     """
     Get RAG++ service configuration.
-    
+
     Returns current configuration parameters including
     models, thresholds, and discovery settings.
     """
@@ -350,9 +354,9 @@ async def get_configuration(
             "max_iterations": service.config.max_iterations,
             "top_k_retrieval": service.config.top_k_retrieval,
             "discovery_enabled": service.config.discovery_enabled,
-            "discovery_interval": service.config.discovery_interval
+            "discovery_interval": service.config.discovery_interval,
         }
-        
+
     except Exception as e:
         logger.error(f"Error getting RAG++ config: {e}")
         raise HTTPException(
@@ -362,12 +366,10 @@ async def get_configuration(
 
 # Health check endpoint for monitoring
 @router.get("/health")
-async def health_check(
-    service: DarwinRAGPlusService = Depends(get_rag_plus_service)
-):
+async def health_check(service: DarwinRAGPlusService = Depends(get_rag_plus_service)):
     """
     Quick health check for RAG++ service.
-    
+
     Returns basic health status without comprehensive testing.
     Use /status for detailed health information.
     """
@@ -375,16 +377,15 @@ async def health_check(
         # Quick test
         test_result = await service.get_embedding("health check")
         healthy = len(test_result) > 0
-        
+
         return {
             "healthy": healthy,
             "service": "rag_plus",
             "message": (
-                "RAG++ service is operational" 
-                if healthy else "RAG++ service degraded"
-            )
+                "RAG++ service is operational" if healthy else "RAG++ service degraded"
+            ),
         }
-        
+
     except Exception as e:
         logger.error(f"RAG++ health check failed: {e}")
         return {

@@ -10,6 +10,7 @@ from google.cloud import bigquery
 
 router = APIRouter()
 
+
 @router.get("/test-bigquery", tags=["Tests"])
 async def test_bigquery_integration():
     """
@@ -36,4 +37,6 @@ async def test_bigquery_integration():
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"An error occurred with BigQuery: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"An error occurred with BigQuery: {str(e)}"
+        )

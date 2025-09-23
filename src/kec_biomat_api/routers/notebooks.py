@@ -1,7 +1,5 @@
 """Notebooks router for Jupyter notebook operations."""
 
-from typing import List
-
 from fastapi import APIRouter, Depends, HTTPException
 
 from kec_biomat_api.services.notebook_service import notebook_service

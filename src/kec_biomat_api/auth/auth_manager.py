@@ -9,10 +9,10 @@ import logging
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import Enum
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from .jwt_handler import JWTHandler
-from .permissions import Permission, PermissionManager, Role
+from .permissions import PermissionManager
 from .user_manager import User, UserManager
 
 logger = logging.getLogger(__name__)

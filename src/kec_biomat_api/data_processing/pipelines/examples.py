@@ -7,16 +7,10 @@ Exemplos práticos de como usar o sistema de processamento de dados.
 import asyncio
 import logging
 from pathlib import Path
-from typing import Dict, List
 
 from ..config import DataFormat, DistributionStrategy, ProcessingMode
 from .templates import (
-    aggregate_data_file,
-    clean_data_file,
-    convert_file_format,
     execute_template_pipeline,
-    simple_file_to_file_etl,
-    validate_data_file,
 )
 
 logger = logging.getLogger(__name__)
@@ -51,7 +45,7 @@ async def example_simple_etl():
             enable_validation=True,
         )
 
-        print(f"Pipeline executado com sucesso!")
+        print("Pipeline executado com sucesso!")
         print(f"Métricas: {result.metrics}")
 
         # Verifica arquivo de saída
@@ -120,7 +114,7 @@ async def example_data_validation():
             generate_report=True,
         )
 
-        print(f"Validação executada!")
+        print("Validação executada!")
         print(f"Métricas: {result.metrics}")
 
         # Lê relatório de validação
@@ -177,7 +171,7 @@ async def example_data_cleaning():
             cleaning_rules=cleaning_rules,
         )
 
-        print(f"Limpeza executada!")
+        print("Limpeza executada!")
         print(f"Métricas: {result.metrics}")
 
         # Verifica dados limpos
@@ -224,7 +218,7 @@ async def example_format_conversion():
             output_format=DataFormat.CSV,
         )
 
-        print(f"Conversão executada!")
+        print("Conversão executada!")
         print(f"Métricas: {result.metrics}")
 
         # Verifica arquivo CSV
@@ -285,7 +279,7 @@ async def example_data_aggregation():
             aggregations=aggregations,
         )
 
-        print(f"Agregação executada!")
+        print("Agregação executada!")
         print(f"Métricas: {result.metrics}")
 
         # Verifica resultado
@@ -330,7 +324,7 @@ async def example_multi_file_processing():
             output_format=DataFormat.JSON,
         )
 
-        print(f"Consolidação executada!")
+        print("Consolidação executada!")
         print(f"Métricas: {result.metrics}")
 
         # Verifica arquivo consolidado
@@ -467,7 +461,7 @@ async def example_custom_pipeline():
         # Executa pipeline
         result = await executor.execute_pipeline(pipeline_config)
 
-        print(f"Pipeline customizado executado!")
+        print("Pipeline customizado executado!")
         print(f"Métricas: {result.metrics}")
 
         # Verifica resultado

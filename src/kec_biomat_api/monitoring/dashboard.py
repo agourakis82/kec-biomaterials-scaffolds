@@ -155,7 +155,6 @@ class DashboardManager:
     ) -> Dict[str, Any]:
         """Gera dados para gráficos de métricas."""
         # Filtrar por tempo
-        cutoff_time = datetime.now() - timedelta(hours=time_range_hours)
 
         # Simular dados (em produção viria do histórico real)
         timestamps = []
@@ -216,16 +215,18 @@ class DashboardManager:
                 {
                     "label": "CPU Usage",
                     "value": f"{metrics_data.get('cpu_percent', 0):.1f}%",
-                    "status": "warning"
-                    if metrics_data.get("cpu_percent", 0) > 80
-                    else "good",
+                    "status": (
+                        "warning" if metrics_data.get("cpu_percent", 0) > 80 else "good"
+                    ),
                 },
                 {
                     "label": "Memory Usage",
                     "value": f"{metrics_data.get('memory_percent', 0):.1f}%",
-                    "status": "warning"
-                    if metrics_data.get("memory_percent", 0) > 85
-                    else "good",
+                    "status": (
+                        "warning"
+                        if metrics_data.get("memory_percent", 0) > 85
+                        else "good"
+                    ),
                 },
                 {
                     "label": "Active Requests",
@@ -235,16 +236,20 @@ class DashboardManager:
                 {
                     "label": "Error Rate",
                     "value": f"{metrics_data.get('error_rate', 0):.1%}",
-                    "status": "warning"
-                    if metrics_data.get("error_rate", 0) > 0.05
-                    else "good",
+                    "status": (
+                        "warning"
+                        if metrics_data.get("error_rate", 0) > 0.05
+                        else "good"
+                    ),
                 },
                 {
                     "label": "Avg Response",
                     "value": f"{metrics_data.get('avg_response_time', 0):.0f}ms",
-                    "status": "warning"
-                    if metrics_data.get("avg_response_time", 0) > 1000
-                    else "good",
+                    "status": (
+                        "warning"
+                        if metrics_data.get("avg_response_time", 0) > 1000
+                        else "good"
+                    ),
                 },
             ]
         }
@@ -274,7 +279,7 @@ class DashboardManager:
                 return f"{delta.total_seconds()/3600:.0f}h ago"
             else:
                 return f"{delta.days}d ago"
-        except:
+        except Exception:
             return "unknown"
 
     def get_dashboard_json(self, dashboard_id: str) -> Optional[str]:

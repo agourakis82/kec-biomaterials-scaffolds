@@ -12,7 +12,7 @@ import json
 import logging
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, AsyncIterator, Dict, Iterator, List, Optional
+from typing import Any, AsyncIterator, Dict, List, Optional
 
 from ..config import DataFormat, DataSinkConfig, DataSourceConfig
 from ..engine import DataSink, DataSource, ProcessingContext

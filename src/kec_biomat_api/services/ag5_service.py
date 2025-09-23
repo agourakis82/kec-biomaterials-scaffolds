@@ -18,4 +18,3 @@ class _AG5Service:
 
 
 ag5_service = _AG5Service()
-

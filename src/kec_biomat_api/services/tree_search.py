@@ -7,11 +7,9 @@ Suitable for unit tests and local runs; extend for full features.
 from __future__ import annotations
 
 import math
-import random
-import time
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Generic, List, Optional, Sequence, Tuple, TypeVar
+from typing import Generic, List, Optional, Tuple, TypeVar
 
 S = TypeVar("S")  # State type
 
@@ -85,13 +83,19 @@ class TestStateEvaluator(Generic[S]):
 
 
 class TreeSearch(Generic[S]):
-    def __init__(self, evaluator: TestStateEvaluator[S], config: Optional[TreeSearchConfig] = None) -> None:
+    def __init__(
+        self,
+        evaluator: TestStateEvaluator[S],
+        config: Optional[TreeSearchConfig] = None,
+    ) -> None:
         self.evaluator = evaluator
         self.config = config or TreeSearchConfig()
         self.root: Optional[TreeNode[S]] = None
         self.nodes_explored = 0
 
-    async def search(self, initial_state: S, budget: Optional[int] = None) -> TreeNode[S]:
+    async def search(
+        self, initial_state: S, budget: Optional[int] = None
+    ) -> TreeNode[S]:
         budget = budget or self.config.default_budget
         self.root = TreeNode(state=initial_state, depth=self.config.max_depth)
         current_budget = 0
@@ -125,12 +129,17 @@ class TreeSearch(Generic[S]):
             return
         children = await self.evaluator.expand(node.state)
         for action, new_state, prior in children:
-            child = TreeNode(state=new_state, parent=node, action_taken=action, depth=node.depth - 1)
+            child = TreeNode(
+                state=new_state, parent=node, action_taken=action, depth=node.depth - 1
+            )
             node.children.append(child)
 
     async def _simulate(self, node: TreeNode[S]) -> float:
         # Use rollouts from evaluator
-        values = [await self.evaluator.rollout(node.state) for _ in range(self.config.simulation_rollouts)]
+        values = [
+            await self.evaluator.rollout(node.state)
+            for _ in range(self.config.simulation_rollouts)
+        ]
         return sum(values) / max(1, len(values))
 
     def _backpropagate(self, node: TreeNode[S], value: float) -> None:
@@ -167,6 +176,9 @@ class TreeSearch(Generic[S]):
             return {"nodes_count": 0, "max_depth": 0, "search_efficiency": 0.0}
         nodes = count_nodes(self.root)
         d = depth(self.root)
-        eff = (self.nodes_explored / max(1, nodes))
-        return {"nodes_count": nodes, "max_depth": d, "search_efficiency": round(eff, 3)}
-
+        eff = self.nodes_explored / max(1, nodes)
+        return {
+            "nodes_count": nodes,
+            "max_depth": d,
+            "search_efficiency": round(eff, 3),
+        }

@@ -4,7 +4,6 @@ Sistema H2 - Cache Redis
 Implementação de cache Redis com conexão assíncrona.
 """
 
-import asyncio
 import json
 import pickle
 from datetime import datetime, timedelta
@@ -105,9 +104,11 @@ class RedisCache(CacheBackendInterface):
                         key=key,
                         value=value,
                         created_at=datetime.fromisoformat(metadata.get("created_at")),
-                        expires_at=datetime.fromisoformat(metadata.get("expires_at"))
-                        if metadata.get("expires_at")
-                        else None,
+                        expires_at=(
+                            datetime.fromisoformat(metadata.get("expires_at"))
+                            if metadata.get("expires_at")
+                            else None
+                        ),
                         access_count=metadata.get("access_count", 0) + 1,
                         last_accessed=datetime.now(),
                         size_bytes=metadata.get("size_bytes", 0),
@@ -176,10 +177,10 @@ class RedisCache(CacheBackendInterface):
             metadata = {
                 "created_at": datetime.now().isoformat(),
                 "expires_at": (
-                    datetime.now() + timedelta(seconds=effective_ttl)
-                ).isoformat()
-                if effective_ttl > 0
-                else None,
+                    (datetime.now() + timedelta(seconds=effective_ttl)).isoformat()
+                    if effective_ttl > 0
+                    else None
+                ),
                 "access_count": 0,
                 "size_bytes": len(serialized_value),
                 "compressed": False,
@@ -380,13 +381,13 @@ class RedisCache(CacheBackendInterface):
 
             metadata = {
                 "created_at": entry.created_at.isoformat(),
-                "expires_at": entry.expires_at.isoformat()
-                if entry.expires_at
-                else None,
+                "expires_at": (
+                    entry.expires_at.isoformat() if entry.expires_at else None
+                ),
                 "access_count": entry.access_count,
-                "last_accessed": entry.last_accessed.isoformat()
-                if entry.last_accessed
-                else None,
+                "last_accessed": (
+                    entry.last_accessed.isoformat() if entry.last_accessed else None
+                ),
                 "size_bytes": entry.size_bytes,
                 "compressed": entry.compressed,
             }

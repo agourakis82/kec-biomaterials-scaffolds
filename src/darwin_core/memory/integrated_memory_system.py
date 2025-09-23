@@ -395,7 +395,7 @@ class IntegratedMemorySystem:
             },
             "project_state": {
                 "current_phase": continuity_ctx["project_status"]["current_phase"],
-                "momentum": continuity_ctx["continuity_indicators"]["project_momentum"],
+                "momentum": continuity_ctx["resumption_context"]["project_momentum"],
                 "health": continuity_ctx["project_status"]["health_indicators"],
                 "architecture": architectural_context
             },

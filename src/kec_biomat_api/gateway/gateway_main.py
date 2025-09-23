@@ -9,7 +9,6 @@ from contextlib import asynccontextmanager
 from typing import List, Optional
 
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 
 from .config import GatewayConfig, get_gateway_config
 from .middleware import (

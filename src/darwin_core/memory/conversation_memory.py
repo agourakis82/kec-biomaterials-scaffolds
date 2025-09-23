@@ -546,6 +546,6 @@ _conversation_memory = ConversationMemorySystem()
 
 async def get_conversation_memory() -> ConversationMemorySystem:
     """Factory function para sistema de memória."""
-    if not _conversation_memory._db_path.exists():
+    if not _conversation_memory.db_path.exists():
         await _conversation_memory.initialize()
     return _conversation_memory

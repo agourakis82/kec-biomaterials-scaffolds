@@ -35,7 +35,9 @@ class ConversationMessage(BaseModel):
     role: str = Field(..., description="Message role (user/assistant/system)")
     content: str = Field(..., description="Message content")
     timestamp: Optional[datetime] = Field(None, description="Message timestamp")
-    metadata: Optional[Dict[str, Any]] = Field(default_factory=dict, description="Additional metadata")
+    metadata: Optional[Dict[str, Any]] = Field(
+        default_factory=dict, description="Additional metadata"
+    )
 
 
 class ConversationEntry(BaseModel):
@@ -45,7 +47,9 @@ class ConversationEntry(BaseModel):
     project_id: str = Field(..., description="Project identifier")
     knowledge_area: str = Field(..., description="Knowledge area/domain")
     title: str = Field(..., description="Conversation title/summary")
-    messages: List[ConversationMessage] = Field(default_factory=list, description="Conversation messages")
+    messages: List[ConversationMessage] = Field(
+        default_factory=list, description="Conversation messages"
+    )
     tags: List[str] = Field(default_factory=list, description="Conversation tags")
     is_active: bool = Field(default=True, description="Whether conversation is active")
     last_updated: Optional[datetime] = Field(None, description="Last update timestamp")
@@ -146,7 +150,8 @@ class AdvancedMemoryStorage:
         """Initialize SQLite database for conversations and projects."""
         with sqlite3.connect(self.db_file) as conn:
             # Conversations table
-            conn.execute("""
+            conn.execute(
+                """
                 CREATE TABLE IF NOT EXISTS conversations (
                     conversation_id TEXT PRIMARY KEY,
                     project_id TEXT NOT NULL,
@@ -158,10 +163,12 @@ class AdvancedMemoryStorage:
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """)
+            """
+            )
 
             # Projects table
-            conn.execute("""
+            conn.execute(
+                """
                 CREATE TABLE IF NOT EXISTS projects (
                     project_id TEXT PRIMARY KEY,
                     name TEXT NOT NULL,
@@ -170,10 +177,12 @@ class AdvancedMemoryStorage:
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                     last_activity DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """)
+            """
+            )
 
             # Sessions table (legacy)
-            conn.execute("""
+            conn.execute(
+                """
                 CREATE TABLE IF NOT EXISTS sessions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     request_id TEXT UNIQUE NOT NULL,
@@ -183,27 +192,38 @@ class AdvancedMemoryStorage:
                     actor TEXT,
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
-            """)
+            """
+            )
 
             # Create indexes for performance
-            conn.execute("""
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_conversations_project 
                 ON conversations(project_id)
-            """)
-            conn.execute("""
+            """
+            )
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_conversations_area 
                 ON conversations(knowledge_area)
-            """)
-            conn.execute("""
+            """
+            )
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_conversations_active 
                 ON conversations(is_active)
-            """)
-            conn.execute("""
+            """
+            )
+            conn.execute(
+                """
                 CREATE INDEX IF NOT EXISTS idx_projects_area 
                 ON projects(knowledge_area)
-            """)
+            """
+            )
 
-    async def create_or_update_conversation(self, entry: ConversationEntry) -> ConversationResponse:
+    async def create_or_update_conversation(
+        self, entry: ConversationEntry
+    ) -> ConversationResponse:
         """
         Create or update a conversation.
 
@@ -222,12 +242,18 @@ class AdvancedMemoryStorage:
         # Prepare messages for storage
         messages_data = []
         for msg in entry.messages:
-            messages_data.append({
-                "role": msg.role,
-                "content": msg.content,
-                "timestamp": msg.timestamp.isoformat() if msg.timestamp else timestamp.isoformat(),
-                "metadata": msg.metadata or {}
-            })
+            messages_data.append(
+                {
+                    "role": msg.role,
+                    "content": msg.content,
+                    "timestamp": (
+                        msg.timestamp.isoformat()
+                        if msg.timestamp
+                        else timestamp.isoformat()
+                    ),
+                    "metadata": msg.metadata or {},
+                }
+            )
 
         try:
             with sqlite3.connect(self.db_file) as conn:
@@ -290,12 +316,19 @@ class AdvancedMemoryStorage:
                         INSERT INTO projects (project_id, name, knowledge_area, description)
                         VALUES (?, ?, ?, ?)
                     """,
-                        (project_id, project_id, knowledge_area, f"Project {project_id}"),
+                        (
+                            project_id,
+                            project_id,
+                            knowledge_area,
+                            f"Project {project_id}",
+                        ),
                     )
         except Exception as e:
             logger.error(f"Failed to ensure project exists: {e}")
 
-    async def get_conversation_context(self, request: ContextRetrievalRequest) -> List[ContextRetrievalResponse]:
+    async def get_conversation_context(
+        self, request: ContextRetrievalRequest
+    ) -> List[ContextRetrievalResponse]:
         """
         Retrieve conversation context.
 
@@ -336,22 +369,28 @@ class AdvancedMemoryStorage:
                     messages = []
 
                     # Convert stored messages back to objects
-                    for msg_data in messages_data[-request.max_messages:]:  # Get last N messages
-                        messages.append(ConversationMessage(
-                            role=msg_data["role"],
-                            content=msg_data["content"],
-                            timestamp=datetime.fromisoformat(msg_data["timestamp"]),
-                            metadata=msg_data.get("metadata", {})
-                        ))
+                    for msg_data in messages_data[
+                        -request.max_messages :
+                    ]:  # Get last N messages
+                        messages.append(
+                            ConversationMessage(
+                                role=msg_data["role"],
+                                content=msg_data["content"],
+                                timestamp=datetime.fromisoformat(msg_data["timestamp"]),
+                                metadata=msg_data.get("metadata", {}),
+                            )
+                        )
 
-                    results.append(ContextRetrievalResponse(
-                        conversation_id=row["conversation_id"],
-                        project_id=row["project_id"],
-                        knowledge_area=row["knowledge_area"],
-                        messages=messages,
-                        total_messages=len(messages_data),
-                        last_updated=datetime.fromisoformat(row["last_updated"]),
-                    ))
+                    results.append(
+                        ContextRetrievalResponse(
+                            conversation_id=row["conversation_id"],
+                            project_id=row["project_id"],
+                            knowledge_area=row["knowledge_area"],
+                            messages=messages,
+                            total_messages=len(messages_data),
+                            last_updated=datetime.fromisoformat(row["last_updated"]),
+                        )
+                    )
 
                     # If specific conversation requested, return only that one
                     if request.conversation_id:
@@ -371,32 +410,41 @@ class AdvancedMemoryStorage:
             with sqlite3.connect(self.db_file) as conn:
                 conn.row_factory = sqlite3.Row
 
-                cursor = conn.execute("""
+                cursor = conn.execute(
+                    """
                     SELECT p.*,
                            COUNT(c.conversation_id) as conversation_count
                     FROM projects p
                     LEFT JOIN conversations c ON p.project_id = c.project_id
                     GROUP BY p.project_id
                     ORDER BY p.last_activity DESC
-                """)
+                """
+                )
 
                 for row in cursor:
-                    projects.append(ProjectInfo(
-                        project_id=row["project_id"],
-                        name=row["name"],
-                        knowledge_area=row["knowledge_area"],
-                        description=row["description"],
-                        conversation_count=row["conversation_count"],
-                        last_activity=datetime.fromisoformat(row["last_activity"]),
-                    ))
+                    projects.append(
+                        ProjectInfo(
+                            project_id=row["project_id"],
+                            name=row["name"],
+                            knowledge_area=row["knowledge_area"],
+                            description=row["description"],
+                            conversation_count=row["conversation_count"],
+                            last_activity=datetime.fromisoformat(row["last_activity"]),
+                        )
+                    )
 
         except Exception as e:
             logger.error(f"Failed to list projects: {e}")
 
         return projects
 
-    async def search_conversations(self, query: str, project_id: Optional[str] = None,
-                                 knowledge_area: Optional[str] = None, limit: int = 10) -> List[Dict[str, Any]]:
+    async def search_conversations(
+        self,
+        query: str,
+        project_id: Optional[str] = None,
+        knowledge_area: Optional[str] = None,
+        limit: int = 10,
+    ) -> List[Dict[str, Any]]:
         """Search conversations by content."""
         results = []
 
@@ -404,11 +452,13 @@ class AdvancedMemoryStorage:
             with sqlite3.connect(self.db_file) as conn:
                 conn.row_factory = sqlite3.Row
 
-                query_parts = ["""
+                query_parts = [
+                    """
                     SELECT conversation_id, project_id, knowledge_area, title, messages, tags, last_updated
                     FROM conversations
                     WHERE (title LIKE ? OR messages LIKE ? OR tags LIKE ?)
-                """]
+                """
+                ]
 
                 params = [f"%{query}%", f"%{query}%", f"%{query}%"]
 
@@ -427,16 +477,22 @@ class AdvancedMemoryStorage:
 
                 for row in cursor:
                     messages_data = json.loads(row["messages"])
-                    results.append({
-                        "conversation_id": row["conversation_id"],
-                        "project_id": row["project_id"],
-                        "knowledge_area": row["knowledge_area"],
-                        "title": row["title"],
-                        "message_count": len(messages_data),
-                        "tags": json.loads(row["tags"]),
-                        "last_updated": row["last_updated"],
-                        "preview": messages_data[-1]["content"][:200] if messages_data else "",
-                    })
+                    results.append(
+                        {
+                            "conversation_id": row["conversation_id"],
+                            "project_id": row["project_id"],
+                            "knowledge_area": row["knowledge_area"],
+                            "title": row["title"],
+                            "message_count": len(messages_data),
+                            "tags": json.loads(row["tags"]),
+                            "last_updated": row["last_updated"],
+                            "preview": (
+                                messages_data[-1]["content"][:200]
+                                if messages_data
+                                else ""
+                            ),
+                        }
+                    )
 
         except Exception as e:
             logger.error(f"Failed to search conversations: {e}")
@@ -478,7 +534,9 @@ class AdvancedMemoryStorage:
 
         return response
 
-    async def search_sessions(self, query: str, limit: int = 10) -> List[Dict[str, Any]]:
+    async def search_sessions(
+        self, query: str, limit: int = 10
+    ) -> List[Dict[str, Any]]:
         """Legacy session search."""
         results = []
 
@@ -498,13 +556,15 @@ class AdvancedMemoryStorage:
                 )
 
                 for row in cursor:
-                    results.append({
-                        "request_id": row["request_id"],
-                        "timestamp_utc": row["timestamp_utc"],
-                        "summary": row["summary"],
-                        "tags": json.loads(row["tags"]) if row["tags"] else [],
-                        "actor": row["actor"],
-                    })
+                    results.append(
+                        {
+                            "request_id": row["request_id"],
+                            "timestamp_utc": row["timestamp_utc"],
+                            "summary": row["summary"],
+                            "tags": json.loads(row["tags"]) if row["tags"] else [],
+                            "actor": row["actor"],
+                        }
+                    )
 
         except Exception as e:
             logger.error(f"Failed to search sessions: {e}")
@@ -517,6 +577,7 @@ memory_storage = AdvancedMemoryStorage()
 
 
 # Conversation Management Endpoints
+
 
 @router.post("/conversations", response_model=ConversationResponse)
 async def create_conversation(entry: ConversationEntry) -> ConversationResponse:
@@ -553,8 +614,7 @@ async def add_message_to_conversation(
     """
     # First, get existing conversation
     context_request = ContextRetrievalRequest(
-        conversation_id=conversation_id,
-        max_messages=1000  # Get all messages
+        conversation_id=conversation_id, max_messages=1000  # Get all messages
     )
 
     existing_contexts = await memory_storage.get_conversation_context(context_request)
@@ -632,16 +692,18 @@ async def list_conversations(
             results = []
             for row in cursor:
                 messages_data = json.loads(row["messages"])
-                results.append(ConversationResponse(
-                    conversation_id=row["conversation_id"],
-                    project_id=row["project_id"],
-                    knowledge_area=row["knowledge_area"],
-                    title=row["title"],
-                    message_count=len(messages_data),
-                    last_updated=datetime.fromisoformat(row["last_updated"]),
-                    tags=json.loads(row["tags"]),
-                    is_active=bool(row["is_active"]),
-                ))
+                results.append(
+                    ConversationResponse(
+                        conversation_id=row["conversation_id"],
+                        project_id=row["project_id"],
+                        knowledge_area=row["knowledge_area"],
+                        title=row["title"],
+                        message_count=len(messages_data),
+                        last_updated=datetime.fromisoformat(row["last_updated"]),
+                        tags=json.loads(row["tags"]),
+                        is_active=bool(row["is_active"]),
+                    )
+                )
 
             return results
 
@@ -650,7 +712,9 @@ async def list_conversations(
         raise HTTPException(status_code=500, detail="Failed to list conversations")
 
 
-@router.get("/conversations/{conversation_id}/context", response_model=ContextRetrievalResponse)
+@router.get(
+    "/conversations/{conversation_id}/context", response_model=ContextRetrievalResponse
+)
 async def get_conversation_context(
     conversation_id: str,
     max_messages: int = Query(50, description="Maximum messages to retrieve"),
@@ -679,7 +743,9 @@ async def get_conversation_context(
 
 
 @router.post("/context/retrieve", response_model=List[ContextRetrievalResponse])
-async def retrieve_context(request: ContextRetrievalRequest) -> List[ContextRetrievalResponse]:
+async def retrieve_context(
+    request: ContextRetrievalRequest,
+) -> List[ContextRetrievalResponse]:
     """
     Retrieve conversation context with advanced filtering.
 
@@ -722,7 +788,9 @@ async def search_conversations(
     Returns:
         Search results
     """
-    results = await memory_storage.search_conversations(q, project_id, knowledge_area, limit)
+    results = await memory_storage.search_conversations(
+        q, project_id, knowledge_area, limit
+    )
 
     return {
         "query": q,
@@ -731,11 +799,12 @@ async def search_conversations(
         "filters": {
             "project_id": project_id,
             "knowledge_area": knowledge_area,
-        }
+        },
     }
 
 
 # Legacy Endpoints (for backward compatibility)
+
 
 @router.post("/session/log", response_model=SessionLogResponse)
 async def log_session(entry: SessionLogEntry) -> SessionLogResponse:

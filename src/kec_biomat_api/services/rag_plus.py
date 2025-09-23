@@ -21,18 +21,21 @@ def _lazy_imports():
     if _AIPLATFORM is None:
         try:
             from google.cloud import aiplatform as _gcaip  # type: ignore
+
             _AIPLATFORM = _gcaip
         except Exception:
             _AIPLATFORM = False
     if _VERTEXAI is None:
         try:
             from vertexai.preview.language_models import TextEmbeddingModel as _vem  # type: ignore
+
             _VERTEXAI = _vem
         except Exception:
             _VERTEXAI = False
     if _BIGQUERY is None:
         try:
             from google.cloud import bigquery as _gbq  # type: ignore
+
             _BIGQUERY = _gbq
         except Exception:
             _BIGQUERY = False
@@ -141,7 +144,9 @@ class DarwinRAGPlusService:
 
     async def get_service_status(self) -> Dict[str, Any]:
         components: Dict[str, Any] = {}
-        bq_ok = bool(self._bq_client() and self.config.dataset_id and self.config.table_id)
+        bq_ok = bool(
+            self._bq_client() and self.config.dataset_id and self.config.table_id
+        )
         components["bigquery"] = "ok" if bq_ok else "disabled"
         components["vertex_embeddings"] = "ok" if self._init_vertex() else "disabled"
         return {
@@ -184,7 +189,9 @@ class DarwinRAGPlusService:
         except Exception:
             return False
 
-    async def query_knowledge_base(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+    async def query_knowledge_base(
+        self, query: str, top_k: int = 5
+    ) -> List[Dict[str, Any]]:
         client = self._bq_client()
         if not client or not self.config.dataset_id or not self.config.table_id:
             # Local fallback: return empty results
@@ -199,12 +206,15 @@ class DarwinRAGPlusService:
             ORDER BY RAND()
             LIMIT @k
             """
-            job = client.query(sql, job_config=_BIGQUERY.QueryJobConfig(
-                query_parameters=[
-                    _BIGQUERY.ScalarQueryParameter("q", "STRING", f"%{query}%"),
-                    _BIGQUERY.ScalarQueryParameter("k", "INT64", top_k),
-                ]
-            ))
+            job = client.query(
+                sql,
+                job_config=_BIGQUERY.QueryJobConfig(
+                    query_parameters=[
+                        _BIGQUERY.ScalarQueryParameter("q", "STRING", f"%{query}%"),
+                        _BIGQUERY.ScalarQueryParameter("k", "INT64", top_k),
+                    ]
+                ),
+            )
             rows = list(job.result())
             return [
                 {

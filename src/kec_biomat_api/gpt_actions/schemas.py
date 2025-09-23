@@ -5,13 +5,14 @@ GPT Actions Schemas - Schemas OpenAPI para ChatGPT Actions
 Schemas otimizados e simplificados para integração perfeita com ChatGPT Actions.
 """
 
-from pydantic import BaseModel, Field
-from typing import Dict, List, Any, Optional
+from pydantic import BaseModel
+from typing import Dict, List, Any
 from enum import Enum
 
 
 class ActionType(str, Enum):
     """Tipos de ações disponíveis."""
+
     ANALYZE_KEC = "analyze_kec_metrics"
     RAG_QUERY = "rag_query"
     TREE_SEARCH = "tree_search"
@@ -23,6 +24,7 @@ class ActionType(str, Enum):
 
 class KECMetricsResponse(BaseModel):
     """Response para análise KEC."""
+
     success: bool
     kec_metrics: Dict[str, float]
     graph_info: Dict[str, Any]
@@ -32,6 +34,7 @@ class KECMetricsResponse(BaseModel):
 
 class RAGResponse(BaseModel):
     """Response para query RAG++."""
+
     success: bool
     query: str
     answer: str
@@ -43,6 +46,7 @@ class RAGResponse(BaseModel):
 
 class TreeSearchResponse(BaseModel):
     """Response para tree search."""
+
     success: bool
     initial_state: str
     best_action_sequence: List[str]
@@ -53,6 +57,7 @@ class TreeSearchResponse(BaseModel):
 
 class ProjectStatusResponse(BaseModel):
     """Response para status do projeto."""
+
     success: bool
     project_overview: Dict[str, str]
     current_status: Dict[str, Any]
@@ -64,34 +69,34 @@ class ProjectStatusResponse(BaseModel):
 
 class GPTActionSchemas:
     """Container para todos os schemas GPT Actions."""
-    
+
     # Request schemas
     KECAnalysisRequest = "KECAnalysisRequest"
-    RAGQueryRequest = "RAGQueryRequest" 
+    RAGQueryRequest = "RAGQueryRequest"
     TreeSearchRequest = "TreeSearchRequest"
     MemoryQueryRequest = "MemoryQueryRequest"
-    
+
     # Response schemas
     KECMetricsResponse = KECMetricsResponse
     RAGResponse = RAGResponse
     TreeSearchResponse = TreeSearchResponse
     ProjectStatusResponse = ProjectStatusResponse
-    
+
     @staticmethod
     def get_openapi_schema() -> Dict[str, Any]:
         """Retorna schema OpenAPI otimizado para GPT Actions."""
-        
+
         return {
             "openapi": "3.0.0",
             "info": {
                 "title": "KEC Biomaterials API for GPT Actions",
                 "description": "Advanced biomaterials analysis with RAG++, Tree Search, and Memory Systems",
-                "version": "2.0.0"
+                "version": "2.0.0",
             },
             "servers": [
                 {
                     "url": "https://kec-biomaterials-api-prod.cloudfunctions.net",
-                    "description": "Production Cloud Run"
+                    "description": "Production Cloud Run",
                 }
             ],
             "paths": {
@@ -109,16 +114,16 @@ class GPTActionSchemas:
                                         "properties": {
                                             "graph_data": {
                                                 "type": "object",
-                                                "description": "NetworkX graph in JSON format"
+                                                "description": "NetworkX graph in JSON format",
                                             },
                                             "config_overrides": {
                                                 "type": "object",
-                                                "description": "KEC configuration overrides"
-                                            }
-                                        }
+                                                "description": "KEC configuration overrides",
+                                            },
+                                        },
                                     }
                                 }
-                            }
+                            },
                         },
                         "responses": {
                             "200": {
@@ -130,13 +135,13 @@ class GPTActionSchemas:
                                             "properties": {
                                                 "success": {"type": "boolean"},
                                                 "kec_metrics": {"type": "object"},
-                                                "interpretation": {"type": "object"}
-                                            }
+                                                "interpretation": {"type": "object"},
+                                            },
                                         }
                                     }
-                                }
+                                },
                             }
-                        }
+                        },
                     }
                 },
                 "/gpt-actions/rag-query": {
@@ -154,23 +159,23 @@ class GPTActionSchemas:
                                         "properties": {
                                             "query": {
                                                 "type": "string",
-                                                "description": "Search query or question"
+                                                "description": "Search query or question",
                                             },
                                             "use_iterative": {
                                                 "type": "boolean",
                                                 "default": False,
-                                                "description": "Use iterative search refinement"
+                                                "description": "Use iterative search refinement",
                                             },
                                             "max_sources": {
                                                 "type": "integer",
                                                 "default": 5,
-                                                "description": "Maximum sources to return"
-                                            }
-                                        }
+                                                "description": "Maximum sources to return",
+                                            },
+                                        },
                                     }
                                 }
-                            }
-                        }
+                            },
+                        },
                     }
                 },
                 "/gpt-actions/project-status": {
@@ -182,22 +187,22 @@ class GPTActionSchemas:
                             "200": {
                                 "description": "Project status retrieved successfully"
                             }
-                        }
+                        },
                     }
                 },
                 "/gpt-actions/scientific-discovery": {
                     "post": {
                         "summary": "Trigger Scientific Discovery",
                         "description": "Execute immediate scientific discovery across multiple sources",
-                        "operationId": "triggerDiscovery"
+                        "operationId": "triggerDiscovery",
                     }
                 },
                 "/gpt-actions/system-health": {
                     "get": {
                         "summary": "System Health Check",
                         "description": "Health status of all backend modules and systems",
-                        "operationId": "getSystemHealth"
+                        "operationId": "getSystemHealth",
                     }
-                }
-            }
+                },
+            },
         }

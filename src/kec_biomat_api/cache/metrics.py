@@ -5,7 +5,6 @@ Módulo para coleta e análise de métricas de performance do cache.
 """
 
 import threading
-import time
 from collections import defaultdict, deque
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -257,7 +256,6 @@ class CacheMetrics:
 
             # Agrupar por intervalos
             intervals = {}
-            interval_duration = timedelta(minutes=interval_minutes)
 
             for m in recent_metrics:
                 # Calcular bucket do intervalo
@@ -325,9 +323,9 @@ class CacheMetrics:
                     )
 
                     comparison[backend] = {
-                        "hit_rate": hits / total_requests
-                        if total_requests > 0
-                        else 0.0,
+                        "hit_rate": (
+                            hits / total_requests if total_requests > 0 else 0.0
+                        ),
                         "avg_response_time": avg_duration,
                         "error_rate": error_rate,
                         "total_requests": len(backend_metrics),

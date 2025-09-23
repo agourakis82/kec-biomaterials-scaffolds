@@ -58,21 +58,33 @@ class Settings(BaseSettings):
     # Vertex/Google Cloud (RAG/Vector Search)
     PROJECT_ID: str = Field(default="", description="GCP Project ID")
     LOCATION: str = Field(default="us-central1", description="GCP location/region")
-    VECTOR_INDEX_ID: str = Field(default="", description="Vertex Vector Search index ID")
-    VECTOR_ENDPOINT_ID: str = Field(default="", description="Vertex Vector Search endpoint ID")
+    VECTOR_INDEX_ID: str = Field(
+        default="", description="Vertex Vector Search index ID"
+    )
+    VECTOR_ENDPOINT_ID: str = Field(
+        default="", description="Vertex Vector Search endpoint ID"
+    )
     RAG_CORPUS_ID: str = Field(default="", description="Vertex RAG Engine corpus ID")
     VERTEX_EMB_MODEL: str = Field(
         default="text-embedding-004", description="Vertex text embedding model id"
     )
 
     # Context cache (Vertex implicit caching awareness)
-    CONTEXT_CACHE_ENABLED: bool = Field(default=True, description="Enable context caching awareness")
+    CONTEXT_CACHE_ENABLED: bool = Field(
+        default=True, description="Enable context caching awareness"
+    )
 
     # OpenAPI/Actions integration
     BASE_URL: str = Field(default="", description="Public base URL (Cloud Run)")
-    OPENAI_VERIFICATION_TOKEN: str = Field(default="", description="ChatGPT Actions verification token")
-    RATE_LIMIT_REQUESTS: int = Field(default=60, description="Requests per minute for OpenAPI doc hints")
-    RATE_LIMIT_TOKENS: int = Field(default=50000, description="Tokens per request (doc hint only)")
+    OPENAI_VERIFICATION_TOKEN: str = Field(
+        default="", description="ChatGPT Actions verification token"
+    )
+    RATE_LIMIT_REQUESTS: int = Field(
+        default=60, description="Requests per minute for OpenAPI doc hints"
+    )
+    RATE_LIMIT_TOKENS: int = Field(
+        default=50000, description="Tokens per request (doc hint only)"
+    )
 
     # Chroma Configuration
     CHROMA_PATH: str = Field(
@@ -106,7 +118,9 @@ class Settings(BaseSettings):
         default="API for PCS-HELIO Model Context Protocol operations"
     )
     api_version: str = Field(default="1.0.0")
-    repo_url: str = Field(default="https://github.com/agourakis82/kec-biomaterials-scaffolds")
+    repo_url: str = Field(
+        default="https://github.com/agourakis82/kec-biomaterials-scaffolds"
+    )
     cors_enabled: bool = Field(default=False)
     cors_origins: list[str] = Field(default_factory=list)
     openai_model: str = Field(default="gpt-4", description="OpenAI model to use")

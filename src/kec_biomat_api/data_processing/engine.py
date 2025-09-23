@@ -9,18 +9,14 @@ Engine principal para processamento de dados com suporte a:
 """
 
 import asyncio
-import json
 import logging
-import pickle
-import time
 import uuid
 from abc import ABC, abstractmethod
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime
 from enum import Enum
-from pathlib import Path
-from typing import Any, AsyncIterator, Callable, Dict, Iterator, List, Optional
+from typing import Any, AsyncIterator, Dict, List, Optional
 
 from .config import (
     DataSinkConfig,
@@ -461,7 +457,7 @@ class PipelineExecutor:
             try:
                 size = len(str(data_batch).encode("utf-8"))
                 context.metrics.bytes_processed += size
-            except:
+            except Exception:
                 pass
 
         except Exception as e:
@@ -488,7 +484,6 @@ class PipelineExecutor:
         if self.h1_integration:
             try:
                 # Reporta métricas para H1
-                metrics_dict = metrics.to_dict()
                 # TODO: Implementar interface específica para H1
                 self.logger.debug(f"Reported metrics to H1: {metrics.pipeline_id}")
             except Exception as e:
@@ -544,12 +539,6 @@ async def execute_pipeline_async(config: PipelineConfig) -> ProcessingMetrics:
     """Executa pipeline de forma assíncrona."""
     executor = get_pipeline_executor()
     return await executor.execute_pipeline(config)
-
-
-def execute_pipeline_sync(config: PipelineConfig) -> ProcessingMetrics:
-    """Executa pipeline de forma síncrona."""
-    loop = asyncio.get_event_loop()
-    return loop.run_until_complete(execute_pipeline_async(config))
 
 
 def execute_pipeline_sync(config: PipelineConfig) -> ProcessingMetrics:

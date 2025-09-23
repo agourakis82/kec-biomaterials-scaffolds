@@ -17,7 +17,7 @@ from fastapi import HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware as FastAPICORSMiddleware
 from starlette.responses import JSONResponse
 
-from .config import GatewayConfig, RateLimitStrategy, get_gateway_config
+from .config import GatewayConfig, get_gateway_config
 
 logger = logging.getLogger(__name__)
 

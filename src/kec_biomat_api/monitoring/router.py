@@ -10,7 +10,6 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
 from . import (
-    AlertManager,
     DashboardManager,
     HealthChecker,
     StructuredLogger,
@@ -31,22 +30,25 @@ logger = StructuredLogger("monitoring_api")
 async def health_check():
     """
     Endpoint para verificação de saúde completa do sistema.
-    
+
     Returns:
         Dict: Status de saúde detalhado de todos os componentes
     """
     try:
         health_result = await health_checker.check_all_health()
-        
+
         # Log da verificação
-        logger.info("Health check realizado", extra={
-            "overall_status": health_result["overall_status"],
-            "services_count": len(health_result["services"])
-        })
-        
+        logger.info(
+            "Health check realizado",
+            extra={
+                "overall_status": health_result["overall_status"],
+                "services_count": len(health_result["services"]),
+            },
+        )
+
         return JSONResponse(
             content=health_result,
-            status_code=200 if health_result["overall_status"] == "healthy" else 503
+            status_code=200 if health_result["overall_status"] == "healthy" else 503,
         )
     except Exception as e:
         logger.error(f"Erro na verificação de saúde: {e}")
@@ -57,10 +59,10 @@ async def health_check():
 async def health_check_service(service: str):
     """
     Endpoint para verificação de saúde de um serviço específico.
-    
+
     Args:
         service: Nome do serviço (system, database, api)
-    
+
     Returns:
         Dict: Status de saúde do serviço específico
     """
@@ -72,13 +74,15 @@ async def health_check_service(service: str):
         elif service == "api":
             result = await health_checker.check_api_health()
         else:
-            raise HTTPException(status_code=404, detail=f"Serviço '{service}' não encontrado")
-        
-        logger.info(f"Health check do serviço {service}", extra={
-            "service": service,
-            "status": result["status"]
-        })
-        
+            raise HTTPException(
+                status_code=404, detail=f"Serviço '{service}' não encontrado"
+            )
+
+        logger.info(
+            f"Health check do serviço {service}",
+            extra={"service": service, "status": result["status"]},
+        )
+
         return JSONResponse(content=result)
     except HTTPException:
         raise
@@ -91,20 +95,25 @@ async def health_check_service(service: str):
 async def get_metrics():
     """
     Endpoint para obter todas as métricas coletadas.
-    
+
     Returns:
         Dict: Resumo completo das métricas
     """
     try:
         collector = get_metrics_collector()
         metrics_summary = collector.get_summary()
-        
-        logger.info("Métricas solicitadas", extra={
-            "total_requests": metrics_summary.get("request_stats", {}).get("total_requests", 0),
-            "counters_count": len(metrics_summary.get("counters", {})),
-            "gauges_count": len(metrics_summary.get("gauges", {}))
-        })
-        
+
+        logger.info(
+            "Métricas solicitadas",
+            extra={
+                "total_requests": metrics_summary.get("request_stats", {}).get(
+                    "total_requests", 0
+                ),
+                "counters_count": len(metrics_summary.get("counters", {})),
+                "gauges_count": len(metrics_summary.get("gauges", {})),
+            },
+        )
+
         return JSONResponse(content=metrics_summary)
     except Exception as e:
         logger.error(f"Erro ao obter métricas: {e}")
@@ -115,14 +124,14 @@ async def get_metrics():
 async def get_performance_stats():
     """
     Endpoint para obter estatísticas atuais de performance.
-    
+
     Returns:
         PerformanceStats: Estatísticas de CPU, memória, disco e requests
     """
     try:
         monitor = get_performance_monitor()
         stats = monitor.get_current_stats()
-        
+
         # Converter dataclass para dict
         stats_dict = {
             "cpu_percent": stats.cpu_percent,
@@ -133,15 +142,18 @@ async def get_performance_stats():
             "avg_response_time": stats.avg_response_time,
             "error_rate": stats.error_rate,
             "active_connections": stats.active_connections,
-            "timestamp": stats.timestamp.isoformat()
+            "timestamp": stats.timestamp.isoformat(),
         }
-        
-        logger.info("Estatísticas de performance solicitadas", extra={
-            "cpu_percent": stats.cpu_percent,
-            "memory_percent": stats.memory_percent,
-            "request_count": stats.request_count
-        })
-        
+
+        logger.info(
+            "Estatísticas de performance solicitadas",
+            extra={
+                "cpu_percent": stats.cpu_percent,
+                "memory_percent": stats.memory_percent,
+                "request_count": stats.request_count,
+            },
+        )
+
         return JSONResponse(content=stats_dict)
     except Exception as e:
         logger.error(f"Erro ao obter estatísticas de performance: {e}")
@@ -152,7 +164,7 @@ async def get_performance_stats():
 async def get_active_alerts():
     """
     Endpoint para obter lista de alertas ativos.
-    
+
     Returns:
         List: Lista de alertas ativos
     """
@@ -160,23 +172,23 @@ async def get_active_alerts():
         # Verificar alertas baseado nas métricas atuais
         monitor = get_performance_monitor()
         stats = monitor.get_current_stats()
-        
+
         # Simular verificação de alertas
         stats_dict = {
             "cpu_percent": stats.cpu_percent,
             "memory_percent": stats.memory_percent,
             "disk_usage_percent": stats.disk_usage_percent,
             "error_rate": stats.error_rate,
-            "avg_response_time": stats.avg_response_time
+            "avg_response_time": stats.avg_response_time,
         }
-        
+
         alerts = alert_manager.check_alerts(stats_dict)
-        
-        logger.info("Alertas verificados", extra={
-            "active_alerts_count": len(alerts),
-            "stats_checked": True
-        })
-        
+
+        logger.info(
+            "Alertas verificados",
+            extra={"active_alerts_count": len(alerts), "stats_checked": True},
+        )
+
         return JSONResponse(content={"active_alerts": alerts})
     except Exception as e:
         logger.error(f"Erro ao verificar alertas: {e}")
@@ -187,19 +199,22 @@ async def get_active_alerts():
 async def get_dashboard():
     """
     Endpoint para obter dados do dashboard de monitoramento.
-    
+
     Returns:
         Dict: Dados do dashboard com widgets e métricas
     """
     try:
         # Gerar dados do dashboard
         dashboard_data = dashboard_manager.generate_dashboard_data()
-        
-        logger.info("Dashboard gerado", extra={
-            "widgets_count": len(dashboard_data.get("widgets", [])),
-            "overview_included": "overview" in dashboard_data
-        })
-        
+
+        logger.info(
+            "Dashboard gerado",
+            extra={
+                "widgets_count": len(dashboard_data.get("widgets", [])),
+                "overview_included": "overview" in dashboard_data,
+            },
+        )
+
         return JSONResponse(content=dashboard_data)
     except Exception as e:
         logger.error(f"Erro ao gerar dashboard: {e}")
@@ -210,24 +225,29 @@ async def get_dashboard():
 async def start_monitoring():
     """
     Endpoint para iniciar o monitoramento contínuo do sistema.
-    
+
     Returns:
         Dict: Status de inicialização
     """
     try:
         monitor = get_performance_monitor()
         await monitor.start_monitoring()
-        
-        logger.info("Monitoramento iniciado", extra={
-            "monitoring_active": True,
-            "collection_interval": monitor.collection_interval
-        })
-        
-        return JSONResponse(content={
-            "status": "started",
-            "message": "Monitoramento iniciado com sucesso",
-            "collection_interval": monitor.collection_interval
-        })
+
+        logger.info(
+            "Monitoramento iniciado",
+            extra={
+                "monitoring_active": True,
+                "collection_interval": monitor.collection_interval,
+            },
+        )
+
+        return JSONResponse(
+            content={
+                "status": "started",
+                "message": "Monitoramento iniciado com sucesso",
+                "collection_interval": monitor.collection_interval,
+            }
+        )
     except Exception as e:
         logger.error(f"Erro ao iniciar monitoramento: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -237,22 +257,19 @@ async def start_monitoring():
 async def stop_monitoring():
     """
     Endpoint para parar o monitoramento contínuo do sistema.
-    
+
     Returns:
         Dict: Status de parada
     """
     try:
         monitor = get_performance_monitor()
         await monitor.stop_monitoring()
-        
-        logger.info("Monitoramento parado", extra={
-            "monitoring_active": False
-        })
-        
-        return JSONResponse(content={
-            "status": "stopped",
-            "message": "Monitoramento parado com sucesso"
-        })
+
+        logger.info("Monitoramento parado", extra={"monitoring_active": False})
+
+        return JSONResponse(
+            content={"status": "stopped", "message": "Monitoramento parado com sucesso"}
+        )
     except Exception as e:
         logger.error(f"Erro ao parar monitoramento: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -262,23 +279,25 @@ async def stop_monitoring():
 async def clear_metrics():
     """
     Endpoint para limpar todas as métricas coletadas.
-    
+
     Returns:
         Dict: Confirmação de limpeza
     """
     try:
         collector = get_metrics_collector()
         collector.clear_metrics()
-        
-        logger.info("Métricas limpas", extra={
-            "action": "clear_metrics",
-            "metrics_cleared": True
-        })
-        
-        return JSONResponse(content={
-            "status": "cleared",
-            "message": "Todas as métricas foram limpas com sucesso"
-        })
+
+        logger.info(
+            "Métricas limpas",
+            extra={"action": "clear_metrics", "metrics_cleared": True},
+        )
+
+        return JSONResponse(
+            content={
+                "status": "cleared",
+                "message": "Todas as métricas foram limpas com sucesso",
+            }
+        )
     except Exception as e:
         logger.error(f"Erro ao limpar métricas: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -292,25 +311,25 @@ async def metrics_middleware(request, call_next):
     """
     start_time = asyncio.get_event_loop().time()
     collector = get_metrics_collector()
-    
+
     # Iniciar tracking do request
     collector.start_request()
-    
+
     try:
         response = await call_next(request)
-        
+
         # Calcular duração
         duration = asyncio.get_event_loop().time() - start_time
-        
+
         # Registrar métricas
         collector.record_request(duration, response.status_code)
-        
+
         return response
-    except Exception as e:
+    except Exception:
         # Registrar erro
         duration = asyncio.get_event_loop().time() - start_time
         collector.record_request(duration, 500)
         raise
     finally:
         # Finalizar tracking do request
-        collector.end_request()        collector.end_request()
+        collector.end_request()

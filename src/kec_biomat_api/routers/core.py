@@ -243,9 +243,9 @@ async def detailed_status(
                 "free_gb": round(disk.free / (1024**3), 2),
                 "percent_used": round((disk.used / disk.total) * 100, 1),
             },
-            "load_average": list(psutil.getloadavg())
-            if hasattr(psutil, "getloadavg")
-            else None,
+            "load_average": (
+                list(psutil.getloadavg()) if hasattr(psutil, "getloadavg") else None
+            ),
         }
     except Exception as e:
         logger.warning("Failed to get system info", extra={"error": str(e)})
@@ -257,9 +257,11 @@ async def detailed_status(
         "environment": settings.ENV,
         "rate_limit_per_minute": settings.RATE_LIMIT_REQUESTS_PER_MINUTE,
         "rate_limit_burst": settings.RATE_LIMIT_BURST_CAPACITY,
-        "openai_model": settings.OPENAI_API_KEY[:8] + "..."
-        if settings.OPENAI_API_KEY
-        else "not_configured",
+        "openai_model": (
+            settings.OPENAI_API_KEY[:8] + "..."
+            if settings.OPENAI_API_KEY
+            else "not_configured"
+        ),
         "embedding_model": settings.EMBEDDING_MODEL,
         "data_directory": str(settings.data_path),
         "chroma_path": str(settings.chroma_path),
@@ -349,7 +351,11 @@ async def healthz_alias(request: Request):
     return await health_check(request)
 
 
-@router.get("/healthz/", summary="Healthz alias with trailing slash", response_model=HealthResponse)
+@router.get(
+    "/healthz/",
+    summary="Healthz alias with trailing slash",
+    response_model=HealthResponse,
+)
 async def healthz_alias_trailing(request: Request):
     """
     Alias endpoint with trailing slash for compatibility with path normalization.
@@ -359,7 +365,11 @@ async def healthz_alias_trailing(request: Request):
     return await health_check(request)
 
 
-@router.get("/.well-known/healthz", summary="Well-known healthz alias", response_model=HealthResponse)
+@router.get(
+    "/.well-known/healthz",
+    summary="Well-known healthz alias",
+    response_model=HealthResponse,
+)
 async def healthz_well_known(request: Request):
     """
     Well-known alias endpoint for external health checks and discovery.

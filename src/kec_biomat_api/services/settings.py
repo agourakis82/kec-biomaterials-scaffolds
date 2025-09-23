@@ -24,4 +24,3 @@ def get_settings() -> Any:
     if _settings is None:
         raise RuntimeError("Settings not initialized")
     return _settings
-

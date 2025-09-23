@@ -9,15 +9,14 @@ import json
 import logging
 import time
 from contextlib import asynccontextmanager
-from dataclasses import asdict, dataclass
-from datetime import datetime, timedelta
+from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple
 
 # Redis imports with fallback
 try:
     import redis.asyncio as redis
-    from redis.exceptions import RedisError
+    from redis.exceptions import RedisError  # noqa: F401
 
     REDIS_AVAILABLE = True
 except ImportError:
@@ -83,50 +82,50 @@ class MockPipeline:
         self.commands = []
 
     async def incr(self, key):
-        self.commands.append(('incr', key))
+        self.commands.append(("incr", key))
         return 1
 
     async def expire(self, key, seconds):
-        self.commands.append(('expire', key, seconds))
+        self.commands.append(("expire", key, seconds))
         return True
 
     async def zremrangebyscore(self, key, min_score, max_score):
-        self.commands.append(('zremrangebyscore', key, min_score, max_score))
+        self.commands.append(("zremrangebyscore", key, min_score, max_score))
         return 0
 
     async def zcard(self, key):
-        self.commands.append(('zcard', key))
+        self.commands.append(("zcard", key))
         return 0
 
     async def zadd(self, key, mapping):
-        self.commands.append(('zadd', key, mapping))
+        self.commands.append(("zadd", key, mapping))
         return 1
 
     async def hincrby(self, key, field, amount=1):
-        self.commands.append(('hincrby', key, field, amount))
+        self.commands.append(("hincrby", key, field, amount))
         return amount
 
     async def zincrby(self, key, amount, member):
-        self.commands.append(('zincrby', key, amount, member))
+        self.commands.append(("zincrby", key, amount, member))
         return amount
 
     async def execute(self):
         # Simulate execution by returning mock results
         results = []
         for cmd in self.commands:
-            if cmd[0] == 'incr':
+            if cmd[0] == "incr":
                 results.append(1)
-            elif cmd[0] == 'expire':
+            elif cmd[0] == "expire":
                 results.append(True)
-            elif cmd[0] == 'zremrangebyscore':
+            elif cmd[0] == "zremrangebyscore":
                 results.append(0)
-            elif cmd[0] == 'zcard':
+            elif cmd[0] == "zcard":
                 results.append(0)
-            elif cmd[0] == 'zadd':
+            elif cmd[0] == "zadd":
                 results.append(1)
-            elif cmd[0] == 'hincrby':
+            elif cmd[0] == "hincrby":
                 results.append(cmd[3] if len(cmd) > 3 else 1)
-            elif cmd[0] == 'zincrby':
+            elif cmd[0] == "zincrby":
                 results.append(cmd[2])
             else:
                 results.append(None)

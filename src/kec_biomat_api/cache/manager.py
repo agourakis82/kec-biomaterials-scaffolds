@@ -4,16 +4,13 @@ Sistema H2 - Gerenciador de Cache Multi-Camadas
 Módulo principal para gerenciamento centralizado de cache.
 """
 
-import asyncio
-import json
 import pickle
-import time
 import zlib
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 
 class CacheBackend(Enum):

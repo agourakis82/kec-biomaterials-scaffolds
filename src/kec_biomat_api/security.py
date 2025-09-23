@@ -110,7 +110,8 @@ class RateLimiter:
             # Create new bucket with per-minute rate (converted to per-second)
             refill_rate = self.settings.RATE_LIMIT_REQUESTS_PER_MINUTE / 60.0
             self.buckets[bucket_key] = TokenBucket(
-                capacity=self.settings.RATE_LIMIT_BURST_CAPACITY, refill_rate=refill_rate
+                capacity=self.settings.RATE_LIMIT_BURST_CAPACITY,
+                refill_rate=refill_rate,
             )
 
         bucket = self.buckets[bucket_key]

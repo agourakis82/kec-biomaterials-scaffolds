@@ -269,21 +269,21 @@ def print_relatorio_final():
     for nome, info in COMPONENTES_H4.items():
         print(f"  {info['status']} {nome}: {info['arquivo']}")
 
-    print(f"\n📈 MÉTRICAS:")
+    print("\n📈 MÉTRICAS:")
     for metrica, valor in METRICAS_CODIGO.items():
         print(f"  • {metrica}: {valor}")
 
-    print(f"\n🔗 INTEGRAÇÃO H1-H2-H3:")
+    print("\n🔗 INTEGRAÇÃO H1-H2-H3:")
     for sistema, info in INTEGRACAO_H1_H2_H3.items():
         print(f"  {info['status']} {sistema.upper()}")
 
-    print(f"\n✅ FUNCIONALIDADES PRINCIPAIS:")
-    print(f"  • ETL Pipelines: Completos com templates")
-    print(f"  • Processamento: 4 modos (batch/streaming/real-time/hybrid)")
-    print(f"  • Distribuição: 4 estratégias de distribuição")
-    print(f"  • Formatos: 10+ formatos suportados")
-    print(f"  • Processadores: 5 tipos especializados")
-    print(f"  • Templates: 6 templates pré-configurados")
+    print("\n✅ FUNCIONALIDADES PRINCIPAIS:")
+    print("  • ETL Pipelines: Completos com templates")
+    print("  • Processamento: 4 modos (batch/streaming/real-time/hybrid)")
+    print("  • Distribuição: 4 estratégias de distribuição")
+    print("  • Formatos: 10+ formatos suportados")
+    print("  • Processadores: 5 tipos especializados")
+    print("  • Templates: 6 templates pré-configurados")
 
     print("\n🎉 IMPLEMENTAÇÃO DO SISTEMA H4 CONCLUÍDA COM SUCESSO!")
     print("Sistema totalmente operacional e integrado com H1-H2-H3")

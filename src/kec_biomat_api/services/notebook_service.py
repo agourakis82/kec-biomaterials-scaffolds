@@ -12,4 +12,3 @@ class _NotebookService:
 
 
 notebook_service = _NotebookService()
-

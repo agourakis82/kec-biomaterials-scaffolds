@@ -56,7 +56,9 @@ class AlertRule(BaseModel):
     tags: Dict[str, str] = Field(default_factory=dict)
 
     # Campo não serializável para OpenAPI
-    condition: Optional[Callable[[Dict[str, Any]], bool]] = Field(default=None, exclude=True)
+    condition: Optional[Callable[[Dict[str, Any]], bool]] = Field(
+        default=None, exclude=True
+    )
 
     class Config:
         arbitrary_types_allowed = True

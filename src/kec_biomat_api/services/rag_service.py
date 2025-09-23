@@ -9,4 +9,3 @@ class _RagService:
 
 
 rag_service = _RagService()
-

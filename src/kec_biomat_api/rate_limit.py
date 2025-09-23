@@ -12,7 +12,6 @@ This module provides rate limiting with support for:
 
 import logging
 import time
-from collections import defaultdict
 from dataclasses import dataclass, field
 from functools import wraps
 from typing import Callable, Dict, Optional, Tuple
@@ -21,7 +20,7 @@ from fastapi import HTTPException, Request, status
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import Response
 
-from .auth import extract_api_key, get_current_api_key
+from .auth import extract_api_key
 from .config import settings
 
 # Configure module logger

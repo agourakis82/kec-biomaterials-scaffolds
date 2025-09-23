@@ -425,7 +425,7 @@ class ProjectContinuitySystem:
                 "latest_decision": recent_decisions[0].title if recent_decisions else None
             },
             "recent_activity": {
-                "files_modified_24h": len([f for f in recent_files if (datetime.now() - f.timestamp).hours <= 24]),
+                "files_modified_24h": len([f for f in recent_files if (datetime.now() - f.timestamp).total_seconds() / 3600 <= 24]),
                 "files_modified_72h": len(recent_files),
                 "critical_files_modified": len([f for f in recent_files if f.importance >= 4])
             },
@@ -493,7 +493,7 @@ class ProjectContinuitySystem:
         completion_rate = sum(t.completion_percentage for t in self._active_tasks.values()) / max(1, len(self._active_tasks) * 100)
         
         recent_files = len([f for f in self._file_cache.values()
-                          if (datetime.now() - f.timestamp).hours <= 24])
+                          if (datetime.now() - f.timestamp).total_seconds() / 3600 <= 24])
         
         # Normaliza e combina fatores
         task_momentum = min(recent_tasks / 5.0, 1.0)

@@ -564,15 +564,17 @@ curl -X {method} \\
             "name": endpoint.summary or f"{endpoint.method} {endpoint.path}",
             "request": {
                 "method": endpoint.method,
-                "header": [
-                    {
-                        "key": "Authorization",
-                        "value": "Bearer {{api_key}}",
-                        "type": "text",
-                    }
-                ]
-                if endpoint.auth_required
-                else [],
+                "header": (
+                    [
+                        {
+                            "key": "Authorization",
+                            "value": "Bearer {{api_key}}",
+                            "type": "text",
+                        }
+                    ]
+                    if endpoint.auth_required
+                    else []
+                ),
                 "url": {
                     "raw": "{{base_url}}" + endpoint.path,
                     "host": ["{{base_url}}"],

@@ -6,7 +6,6 @@ Implementação de cache em memória com LRU e TTL.
 
 import asyncio
 import threading
-import time
 from collections import OrderedDict
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
