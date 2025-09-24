@@ -25,7 +25,7 @@ services:
       - .env
     environment:
       - ENVIRONMENT=${ENVIRONMENT:-local}
-      - PORT=${BACKEND_PORT:-8080}
+      - PORT=8080
       - DB_REDIS_HOST=redis
       - DB_REDIS_PORT=${REDIS_PORT:-6379}
       - DB_REDIS_DB=${REDIS_DB:-0}
@@ -35,16 +35,17 @@ services:
       - MULTI_AI_DEFAULT_PROVIDER=${MULTI_AI_DEFAULT_PROVIDER:-openai}
       - MULTI_AI_GCP_PROJECT_ID=${PROJECT_ID:-pcs-helio}
       - CORS_ENABLED=${CORS_ENABLED:-true}
-      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000,https://darwin.agourakis.med.br}
-      - BASE_EXTERNAL_URL=${API_BASE_URL:-http://localhost:8080}
+      - CORS_ORIGINS=${CORS_ORIGINS:-["http://localhost:3000","https://darwin.agourakis.med.br","https://api.agourakis.med.br"]}
+      - BASE_EXTERNAL_URL=${API_BASE_URL:-http://localhost:8090}
       - CONFIG_FILE=/app/config/production.yaml
+      - JAX_PLATFORM=${JAX_PLATFORM:-cpu}
     depends_on:
       redis:
         condition: service_healthy
       vectordb:
         condition: service_started
     ports:
-      - "${BACKEND_PORT:-8080}:8080"
+      - "8090:8080"
     healthcheck:
       test:
         [
@@ -67,7 +68,7 @@ services:
       - .env
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=${API_BASE_URL:-http://localhost:8080}
+      - NEXT_PUBLIC_API_URL=${API_BASE_URL:-http://localhost:8090}
       - NEXT_PUBLIC_ENVIRONMENT=${NEXT_PUBLIC_ENVIRONMENT:-local}
       - NEXT_PUBLIC_APP_URL=${FRONTEND_BASE_URL:-http://localhost:3000}
     depends_on:
