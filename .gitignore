@@ -92,6 +92,8 @@ Thumbs.db
 .env.test.local
 .env.production.local
 .secrets/
+credentials/
+!credentials/README.md
 
 # Database files
 *.db
@@ -134,3 +136,6 @@ env/
 # Node.js additional ignores
 .npm
 .yarn-integrity
+
+# Terraform local cache
+**/.terraform/

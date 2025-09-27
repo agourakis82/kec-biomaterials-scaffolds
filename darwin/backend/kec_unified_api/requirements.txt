@@ -1,0 +1,192 @@
+# =============================================================================
+# DARWIN META-RESEARCH BRAIN - Requirements Funcionais (MVP)
+# Dependências validadas no PyPI - apenas o essencial que funciona
+# =============================================================================
+
+# ==================== CORE FRAMEWORK ====================
+fastapi>=0.115.0          
+uvicorn[standard]>=0.30.0   
+pydantic>=2.8.0           
+starlette>=0.37.0         
+pydantic-settings>=2.4.0
+
+# ==================== BASIC DEPENDENCIES ====================
+typing-extensions>=4.8.0  
+httpx>=0.25.0            
+aiofiles>=23.2.0         
+python-multipart>=0.0.6 
+python-dotenv>=1.0.0    
+pyyaml>=6.0.1           
+
+# ==================== SCIENTIFIC COMPUTING MINIMAL ====================
+numpy>=1.26.0
+pandas>=2.1.0
+scipy>=1.11.0
+matplotlib>=3.8.0
+networkx>=3.2.0           # Para KEC metrics básico
+
+# ==================== TREE SEARCH PUCT DEPENDENCIES ====================
+scikit-optimize>=0.9.0,<1.0.0  # Bayesian optimization
+deap>=1.3.3,<2.0.0             # Evolutionary algorithms
+pymoo>=0.6.0,<1.0.0            # Multi-objective optimization
+scikit-learn>=1.3.0            # Machine learning utilities
+numba>=0.58.0,<1.0.0           # JIT compilation para performance
+
+# ==================== OBSERVABILITY ====================
+structlog>=23.2.0         # Logging estruturado
+rich>=13.6.0              # Terminal output
+
+# ==================== AI PROVIDERS (BASIC) ====================
+openai>=1.43.0            
+anthropic>=0.31.0         # CORRIGIDO: era anthropic-sdk
+google-generativeai>=0.3.0  # Gemini API
+
+# ==================== WEB DEPENDENCIES ====================
+jinja2>=3.1.0            # Templates
+requests>=2.31.0         # HTTP requests
+beautifulsoup4>=4.12.0   # HTML parsing (para RSS feeds básico)
+
+# ==================== DATA SERIALIZATION ====================
+orjson>=3.9.0            # Fast JSON
+
+# ==================== DEVELOPMENT & TESTING ====================
+pytest>=7.4.0           
+pytest-asyncio>=0.21.0  
+faker>=19.6.0           
+
+# ==================== SCIENTIFIC DISCOVERY DEPENDENCIES ====================
+# RSS Feed Processing
+feedparser>=6.0.0,<7.0.0        # RSS feed parsing robusto
+python-dateutil>=2.8.0,<3.0.0   # Date parsing para feeds
+requests>=2.31.0                 # HTTP requests (já listado)
+beautifulsoup4>=4.12.0           # HTML parsing (já listado)
+
+# Scheduling e Background Tasks
+apscheduler>=3.10.0,<4.0.0      # Job scheduling para discovery contínuo
+asyncio-throttle>=1.0.0,<2.0.0  # Rate limiting para RSS feeds
+
+# Article/Content Processing
+newspaper3k>=0.2.8,<1.0.0       # Advanced article extraction
+textstat>=0.7.0,<1.0.0          # Text complexity analysis
+langdetect>=1.0.9,<2.0.0        # Language detection
+
+# Data Processing e Machine Learning
+scikit-learn>=1.3.0,<2.0.0     # ML algorithms para novelty detection
+scipy>=1.11.0                   # Scientific computing (já listado)
+networkx>=3.2.0                 # Graph analysis (já listado)
+
+# Cloud Integration (optional)
+google-cloud-secret-manager>=2.16.0,<3.0.0  # GCP Secret Manager
+google-cloud-bigquery>=3.11.0,<4.0.0        # BigQuery integration
+
+# Visualization e Analytics (optional)
+plotly>=5.15.0,<6.0.0           # Interactive plots para analytics
+dash>=2.12.0,<3.0.0             # Web dashboard para discovery insights
+
+# ==================== KNOWLEDGE GRAPH DEPENDENCIES ====================
+# Advanced Graph Processing
+igraph>=0.10.0,<1.0.0           # Fast graph algorithms e community detection
+# graph-tool>=2.45,<3.0.0       # Advanced graph analysis (DISABLED - requires manual compilation)
+
+# Enhanced Machine Learning
+scikit-learn>=1.3.0,<2.0.0      # ML algorithms (já listado acima)
+seaborn>=0.12.0,<1.0.0          # Statistical plotting e visualização
+matplotlib>=3.8.0               # Static plotting (já listado)
+
+# Clustering e Community Detection
+python-louvain>=0.16,<1.0.0     # Louvain community detection
+leidenalg>=0.10.0,<1.0.0        # Leiden algorithm para communities (optional)
+
+# Embedding e Dimensionality Reduction
+umap-learn>=0.5.0,<1.0.0        # UMAP para dimensionality reduction
+transformers>=4.30.0,<5.0.0     # Para embeddings semânticos (optional)
+
+# Text Processing e NLP
+nltk>=3.8.0,<4.0.0              # Natural Language Processing
+spacy>=3.6.0,<4.0.0             # Advanced NLP (optional)
+
+# Performance Optimization
+cython>=3.0.0,<4.0.0            # Performance optimization
+joblib>=1.3.0,<2.0.0            # Parallel processing
+
+# Web Visualization Components
+dash>=2.12.0,<3.0.0             # Web dashboard (já listado)
+plotly>=5.15.0,<6.0.0           # Interactive plotting (já listado)
+bokeh>=3.1.0,<4.0.0             # Alternative visualization library (optional)
+
+# Data Export e Serialization
+h5py>=3.9.0,<4.0.0              # HDF5 para large graph storage
+tables>=3.8.0,<4.0.0            # PyTables para structured data (optional)
+
+# ==================== REMOVED/DISABLED TEMPORARIAMENTE ====================
+# mcp>=1.0.0                    # Temporarily disabled - não confirmado no PyPI
+# pyke3>=1.1.1                  # NÃO EXISTE - removido
+# community>=1.0.0              # Apenas alpha/beta - removido
+# graph-tool>=2.45,<3.0.0       # Requires compilation - marked optional
+# leidenalg>=0.10.0,<1.0.0      # Optional advanced community detection
+# transformers>=4.30.0,<5.0.0   # Optional para embeddings avançados
+# spacy>=3.6.0,<4.0.0           # Optional advanced NLP
+# bokeh>=3.1.0,<4.0.0           # Optional alternative visualization
+# tables>=3.8.0,<4.0.0          # Optional structured data storage
+
+# ==================== AUTOGEN MULTI-AGENT (REVOLUCIONÁRIO) ====================
+# pyautogen>=0.2.0,<1.0.0         # AutoGen Multi-Agent Research Team
+# openai>=1.43.0                   # OpenAI API para AutoGen agents (já listado)
+# anthropic>=0.31.0                # Claude API para AutoGen agents (já listado)
+
+# ==================== JAX ULTRA-PERFORMANCE (1000x SPEED) ====================
+# jax>=0.4.20,<1.0.0         # JAX sem CUDA para CPU
+# jaxlib[cpu]>=0.4.20,<1.0.0            # JAX library core para CPU
+# optax>=0.1.7,<1.0.0              # Optax by DeepMind - Advanced optimizers
+# flax>=0.7.0,<1.0.0               # Flax neural networks (para future ML integration)
+
+# ==================== PERFORMANCE MONITORING ====================
+nvidia-ml-py>=12.0.0,<13.0.0     # GPU monitoring e utilization tracking
+psutil>=5.9.0,<6.0.0             # CPU/Memory monitoring
+py3nvml>=0.2.7,<1.0.0            # Alternative NVIDIA monitoring
+
+# ==================== ENHANCED SCIENTIFIC COMPUTING ====================
+jaxopt>=0.8.0,<1.0.0             # JAX optimization library
+chex>=0.1.7,<1.0.0               # JAX testing utilities
+jraph>=0.0.6dev,<1.0.0           # JAX graph neural networks (para future GNN)
+
+# ==================== QUANTUM COMPUTING SUPPORT ====================
+qiskit>=0.45.0,<1.0.0            # Quantum computing framework (optional)
+cirq>=1.2.0,<2.0.0               # Google Cirq quantum framework (optional)
+
+# ==================== ADVANCED VISUALIZATION ====================
+plotly>=5.15.0,<6.0.0            # Interactive plotting (já listado)
+dash>=2.12.0,<3.0.0              # Web dashboard (já listado)
+bokeh>=3.1.0,<4.0.0              # Alternative visualization (habilitado)
+holoviews>=1.17.0,<2.0.0         # High-level data visualization
+
+# ==================== BIG DATA & STORAGE ====================
+h5py>=3.9.0,<4.0.0               # HDF5 para large datasets (já listado)
+tables>=3.8.0,<4.0.0             # PyTables structured data (habilitado)
+zarr>=2.16.0,<3.0.0              # Chunked, compressed arrays
+dask>=2023.9.0,<2024.0.0         # Parallel computing para big data (optional)
+
+# ==================== MACHINE LEARNING ENHANCEMENTS ====================
+scikit-learn>=1.3.0,<2.0.0      # ML algorithms (já listado)
+xgboost>=1.7.0,<2.0.0            # Gradient boosting (optional)
+lightgbm>=4.0.0,<5.0.0           # Microsoft LightGBM (optional)
+catboost>=1.2.0,<2.0.0           # Yandex CatBoost (optional)
+
+# ==================== DEVELOPMENT & TESTING ENHANCEMENTS ====================
+pytest>=7.4.0                    # Testing framework (já listado)
+pytest-asyncio>=0.21.0           # Async testing (já listado)
+pytest-benchmark>=4.0.0,<5.0.0   # Performance testing
+pytest-cov>=4.1.0,<5.0.0         # Coverage testing
+pytest-mock>=3.11.0,<4.0.0       # Mocking utilities
+
+# ==================== OPTIONAL ADVANCED FEATURES ====================
+# cupy>=12.0.0,<13.0.0           # CUDA arrays (requires CUDA)
+# jaxtyping>=0.2.20,<1.0.0       # JAX type annotations
+# equinox>=0.10.0,<1.0.0         # Neural networks em JAX
+# diffrax>=0.4.0,<1.0.0          # Differential equations em JAXjax[cpu]==0.4.20
+jaxlib==0.4.20
+pyautogen==0.2.27
+-e 
+# ==================== SECURITY & AUTHENTICATION ====================
+passlib[bcrypt]>=1.7.4,<2.0.0
+python-jose[cryptography]>=3.3.0,<4.0.0

@@ -1,0 +1,113 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend/kec_unified_api
+      dockerfile: Dockerfile
+      network: host
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-local}
+      - PORT=${BACKEND_PORT:-8080}
+      - JAX_PLATFORM=${JAX_PLATFORM:-cpu}
+      - ENABLE_RAG_PLUS=${ENABLE_RAG_PLUS:-true}
+      - ENABLE_MULTI_AI=${ENABLE_MULTI_AI:-true}
+      - ENABLE_KEC_METRICS=${ENABLE_KEC_METRICS:-true}
+      - ENABLE_TREE_SEARCH=${ENABLE_TREE_SEARCH:-true}
+      - ENABLE_SCIENTIFIC_DISCOVERY=${ENABLE_SCIENTIFIC_DISCOVERY:-true}
+      - ENABLE_SCORE_CONTRACTS=${ENABLE_SCORE_CONTRACTS:-true}
+      - ENABLE_KNOWLEDGE_GRAPH=${ENABLE_KNOWLEDGE_GRAPH:-true}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - DB_REDIS_HOST=${DB_REDIS_HOST:-redis}
+      - DB_REDIS_PORT=${DB_REDIS_PORT:-6379}
+      - DB_REDIS_DB=${DB_REDIS_DB:-0}
+      - GOOGLE_CLOUD_PROJECT=${PROJECT_ID:-pcs-helio}
+      - PROJECT_ID=${PROJECT_ID:-pcs-helio}
+      - CORS_ENABLED=${CORS_ENABLED:-true}
+      - CORS_ORIGINS=["https://darwin.agourakis.med.br","https://api.agourakis.med.br","https://darwin-local.agourakis.med.br","https://api-local.agourakis.med.br","http://localhost:3000","http://127.0.0.1:3000"]
+      - CORS_METHODS=["*"]
+      - CORS_HEADERS=["*"]
+      - BACKEND_DOMAIN=${BACKEND_DOMAIN:-api.agourakis.med.br}
+      - FRONTEND_DOMAIN=${FRONTEND_DOMAIN:-darwin.agourakis.med.br}
+      - BASE_EXTERNAL_URL=${API_BASE_URL:-https://api.agourakis.med.br}
+      - CONFIG_FILE=${CONFIG_FILE:-/app/config/production.yaml}
+    volumes:
+      - ./config/config/environments/production.yaml:/app/config/production.yaml:ro
+    depends_on:
+      - redis
+    ports:
+      - "${HOST_BACKEND_PORT:-8080}:8080"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend/ui
+      dockerfile: Dockerfile.production
+      network: host
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=${API_BASE_URL:-https://api.agourakis.med.br}
+      - NEXT_PUBLIC_ENVIRONMENT=${NEXT_PUBLIC_ENVIRONMENT:-local}
+      - NEXT_PUBLIC_APP_URL=${FRONTEND_BASE_URL:-https://darwin.agourakis.med.br}
+    depends_on:
+      - backend
+    ports:
+      - "${HOST_FRONTEND_PORT:-3000}:3000"
+    restart: unless-stopped
+
+  backend-gpu:
+    profiles:
+      - gpu
+    build:
+      context: ./backend/kec_unified_api
+      dockerfile: Dockerfile.gpu
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-local}
+      - PORT=${BACKEND_PORT:-8080}
+      - JAX_PLATFORM=${JAX_PLATFORM:-cuda}
+      - ENABLE_RAG_PLUS=${ENABLE_RAG_PLUS:-true}
+      - ENABLE_MULTI_AI=${ENABLE_MULTI_AI:-true}
+      - ENABLE_KEC_METRICS=${ENABLE_KEC_METRICS:-true}
+      - ENABLE_TREE_SEARCH=${ENABLE_TREE_SEARCH:-true}
+      - ENABLE_SCIENTIFIC_DISCOVERY=${ENABLE_SCIENTIFIC_DISCOVERY:-true}
+      - ENABLE_SCORE_CONTRACTS=${ENABLE_SCORE_CONTRACTS:-true}
+      - ENABLE_KNOWLEDGE_GRAPH=${ENABLE_KNOWLEDGE_GRAPH:-true}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - DB_REDIS_HOST=${DB_REDIS_HOST:-redis}
+      - DB_REDIS_PORT=${DB_REDIS_PORT:-6379}
+      - DB_REDIS_DB=${DB_REDIS_DB:-0}
+      - GOOGLE_CLOUD_PROJECT=${PROJECT_ID:-pcs-helio}
+      - PROJECT_ID=${PROJECT_ID:-pcs-helio}
+      - CORS_ENABLED=${CORS_ENABLED:-true}
+      - CORS_ORIGINS=["https://darwin.agourakis.med.br","https://api.agourakis.med.br","https://darwin-local.agourakis.med.br","https://api-local.agourakis.med.br","http://localhost:3000","http://127.0.0.1:3000"]
+      - CORS_METHODS=["*"]
+      - CORS_HEADERS=["*"]
+      - BACKEND_DOMAIN=${BACKEND_DOMAIN:-api.agourakis.med.br}
+      - FRONTEND_DOMAIN=${FRONTEND_DOMAIN:-darwin.agourakis.med.br}
+      - BASE_EXTERNAL_URL=${API_BASE_URL:-https://api.agourakis.med.br}
+      - CONFIG_FILE=${CONFIG_FILE:-/app/config/production.yaml}
+    volumes:
+      - ./config/config/environments/production.yaml:/app/config/production.yaml:ro
+    depends_on:
+      - redis
+    ports:
+      - "${HOST_BACKEND_PORT:-8080}:8080"
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge

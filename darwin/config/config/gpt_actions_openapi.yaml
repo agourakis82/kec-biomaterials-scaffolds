@@ -1,7 +1,10 @@
+---
 openapi: 3.0.0
 info:
   title: "KEC Biomaterials Analysis API for GPT Actions"
-  description: "Advanced biomaterials analysis with RAG++, Tree Search, Memory Systems, and Scientific Discovery"
+  description: |
+    Advanced biomaterials analysis with RAG++, Tree Search, Memory Systems,
+    and Scientific Discovery
   version: "2.0.0"
   contact:
     name: "KEC Biomaterials Team"
@@ -16,7 +19,9 @@ paths:
     post:
       operationId: analyzeKECMetrics
       summary: "Analyze Biomaterial KEC Metrics"
-      description: "Calculate H (entropy), κ (curvature), σ/ϕ (small-world) metrics for porous scaffold structures"
+      description: |
+        Calculate H (entropy), κ (curvature), σ/ϕ (small-world) metrics for porous
+        scaffold structures
       requestBody:
         required: true
         content:
@@ -26,13 +31,15 @@ paths:
               properties:
                 graph_data:
                   type: object
-                  description: "NetworkX graph in JSON format with nodes and edges"
+                  description: |
+                    NetworkX graph in JSON format with nodes and edges
                   example:
                     nodes: [ { "id": 0 }, { "id": 1 }, { "id": 2 } ]
                     edges: [ { "source": 0, "target": 1 }, { "source": 1, "target": 2 } ]
                 config_overrides:
                   type: object
-                  description: "KEC configuration parameters"
+                  description: |
+                    KEC configuration parameters
                   properties:
                     k_eigs:
                       type: integer
@@ -41,7 +48,8 @@ paths:
                     sigma_Q:
                       type: boolean
                       default: false
-                      description: "Calculate quantum coherence σ_Q"
+                      description: |
+                        Calculate quantum coherence σ_Q
                     include_triangles:
                       type: boolean
                       default: true
@@ -79,7 +87,8 @@ paths:
     post:
       operationId: ragQuery
       summary: "RAG++ Knowledge Search"
-      description: "Search scientific knowledge using advanced RAG++ with iterative refinement"
+      description: |
+        Search scientific knowledge using advanced RAG++ with iterative refinement
       requestBody:
         required: true
         content:
@@ -91,7 +100,8 @@ paths:
                 query:
                   type: string
                   description: "Research question or search query"
-                  example: "latest advances in biomaterial scaffolds porosity"
+                  example: |
+                    latest advances in biomaterial scaffolds porosity
                 use_iterative:
                   type: boolean
                   default: false
@@ -100,7 +110,8 @@ paths:
                   type: integer
                   default: 5
                   maximum: 20
-                  description: "Maximum number of sources to return"
+                  description: |
+                    Maximum number of sources to return
       responses:
         '200':
           description: "Knowledge search completed"
@@ -113,7 +124,8 @@ paths:
                     type: boolean
                   answer:
                     type: string
-                    description: "Generated answer based on retrieved knowledge"
+                    description: |
+                      Generated answer based on retrieved knowledge
                   sources:
                     type: array
                     items:
@@ -132,7 +144,8 @@ paths:
     get:
       operationId: getProjectStatus
       summary: "Get Complete Project Status"
-      description: "Current project status, progress, next steps, and system health"
+      description: |
+        Current project status, progress, next steps, and system health
       responses:
         '200':
           description: "Project status retrieved"
@@ -168,7 +181,8 @@ paths:
     post:
       operationId: triggerDiscovery
       summary: "Trigger Scientific Discovery"
-      description: "Execute immediate scientific discovery across multiple research sources"
+      description: |
+        Execute immediate scientific discovery across multiple research sources
       requestBody:
         required: false
         content:
@@ -205,11 +219,179 @@ paths:
                         url:
                           type: string
 
+  /gpt-actions/tree-search:
+    post:
+      operationId: treeSearch
+      summary: "PUCT Tree Search"
+      description: |
+        Execute PUCT algorithm for decision tree exploration and optimization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ "initial_state" ]
+              properties:
+                initial_state:
+                  type: string
+                  description: "Initial state for tree search"
+                  example: |
+                    optimize_scaffold_design
+                budget:
+                  type: integer
+                  default: 200
+                  description: "Budget of nodes to explore"
+                max_depth:
+                  type: integer
+                  default: 5
+                  description: "Maximum search depth"
+      responses:
+        '200':
+          description: "Tree search completed"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  initial_state:
+                    type: string
+                  best_action_sequence:
+                    type: array
+                    items:
+                      type: string
+                  action_probabilities:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  search_statistics:
+                    type: object
+                    properties:
+                      nodes_explored:
+                        type: integer
+                      max_depth_reached:
+                        type: integer
+                      total_simulations:
+                        type: integer
+                  root_value:
+                    type: number
+                  nodes_explored:
+                    type: integer
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /gpt-actions/memory-query:
+    post:
+      operationId: memoryQuery
+      summary: "Memory System Query"
+      description: |
+        Query integrated memory system for conversations, project context, or
+        scientific discoveries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ "query" ]
+              properties:
+                query:
+                  type: string
+                  description: "Query to search in memory"
+                  example: |
+                    recent scaffold optimizations
+                memory_type:
+                  type: string
+                  enum: [ "conversation", "project", "discovery" ]
+                  default: "conversation"
+                  description: "Type of memory to query"
+                time_window_days:
+                  type: integer
+                  default: 30
+                  description: "Time window in days for search"
+      responses:
+        '200':
+          description: "Memory query completed"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  query:
+                    type: string
+                  memory_type:
+                    type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  total_found:
+                    type: integer
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /gpt-actions/analytics:
+    post:
+      operationId: runAnalytics
+      summary: "Advanced Analytics"
+      description: |
+        Run advanced analytics using pcs_helio integration with KEC metrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                kec_metrics:
+                  type: object
+                  description: "KEC metrics for analysis"
+                  properties:
+                    H_spectral:
+                      type: number
+                    sigma:
+                      type: number
+                    k_forman_mean:
+                      type: number
+                metadata:
+                  type: object
+                  description: "Additional metadata for analysis"
+      responses:
+        '200':
+          description: "Analytics completed"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  analysis:
+                    type: object
+                    additionalProperties: true
+                  integration_status:
+                    type: string
+                  insights:
+                    type: array
+                    items:
+                      type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+
   /gpt-actions/system-health:
     get:
       operationId: getSystemHealth
       summary: "System Health Check"
-      description: "Health status of all backend modules and memory systems"
+      description: |
+        Health status of all backend modules and memory systems
       responses:
         '200':
           description: "System health retrieved"
@@ -237,7 +419,8 @@ components:
       properties:
         success:
           type: boolean
-          example: false
+          example: |
+            false
         error:
           type: string
           description: "Error message"

@@ -1,0 +1,462 @@
+# =============================================================================
+# DARWIN Production Environment Configuration
+# Configuração otimizada para ambiente de produção
+# =============================================================================
+
+metadata:
+  name: "production"
+  description: "DARWIN Production Environment - High Performance & Reliability"
+  version: "1.0.0"
+  last_updated: "2025-09-22"
+
+# =============================================================================
+# Core Configuration
+# =============================================================================
+
+project:
+  id: "PROJECT_ID_PLACEHOLDER" # Will be replaced during deployment
+  name: "darwin"
+  environment: "production"
+  region: "us-central1"
+  zone: "us-central1-a"
+
+domains:
+  api: "api.agourakis.med.br"
+  frontend: "darwin.agourakis.med.br"
+  cdn: "cdn.agourakis.med.br"
+
+# =============================================================================
+# Infrastructure Configuration
+# =============================================================================
+
+infrastructure:
+  # Networking
+  networking:
+    vpc_name: "darwin-production-vpc"
+    subnet_cidr: "10.0.0.0/24"
+    enable_private_google_access: true
+    enable_flow_logs: true
+    flow_logs_sampling: 0.5
+
+    # Secondary IP ranges
+    services_secondary_cidr: "192.168.0.0/20"
+    pods_secondary_cidr: "192.168.16.0/20"
+
+    # VPC Connector
+    vpc_connector_cidr: "10.8.0.0/28"
+    vpc_connector_min_throughput: 200
+    vpc_connector_max_throughput: 1000
+
+    # SSL Configuration
+    ssl_policy: "MODERN"
+    enable_https_redirect: true
+
+  # Database Configuration (Production-Ready)
+  database:
+    tier: "db-n1-standard-2" # 2 vCPUs, 7.5GB RAM
+    disk_size: 100 # GB
+    disk_max_size: 500 # GB
+    disk_type: "PD_SSD"
+    availability_type: "REGIONAL" # High availability
+    deletion_protection: true
+
+    # Backup Configuration
+    backup:
+      enabled: true
+      start_time: "03:00"
+      retention_days: 30
+      point_in_time_recovery: true
+      transaction_log_retention_days: 7
+
+    # Performance Tuning
+    flags:
+      max_connections: "200"
+      shared_buffers: "512MB"
+      effective_cache_size: "2GB"
+      maintenance_work_mem: "128MB"
+      checkpoint_completion_target: "0.9"
+      wal_buffers: "32MB"
+      default_statistics_target: "100"
+      random_page_cost: "1.1"
+      effective_io_concurrency: "200"
+      shared_preload_libraries: "vector,pg_stat_statements,pg_buffercache"
+
+    # Security
+    require_ssl: true
+    authorized_networks: [] # Private only
+
+  # Redis Configuration
+  redis:
+    memory_size_gb: 2
+    version: "REDIS_6_X"
+    auth_enabled: true
+    transit_encryption_mode: "SERVER_CLIENT"
+    connect_mode: "PRIVATE_SERVICE_ACCESS"
+
+    # Configuration
+    configs:
+      maxmemory-policy: "allkeys-lru"
+      notify-keyspace-events: "Ex"
+      timeout: "300"
+      tcp-keepalive: "60"
+
+# =============================================================================
+# Application Configuration
+# =============================================================================
+
+backend:
+  # Cloud Run Configuration
+  cloud_run:
+    min_instances: 2 # Always warm
+    max_instances: 20 # High scale capability
+    cpu: "2000m" # 2 vCPUs
+    memory: "4Gi" # 4GB RAM
+    timeout: 300 # 5 minutes
+    concurrency: 100
+    execution_environment: "gen2"
+    cpu_boost: true
+
+    # Network
+    vpc_egress: "private-ranges-only"
+    ingress: "all"
+
+  # Application Settings
+  application:
+    log_level: "INFO"
+    max_workers: 4
+    worker_timeout: 30
+    connection_pool_size: 20
+    redis_connection_pool_size: 10
+
+    # Feature Flags
+    features:
+      vector_search: true
+      full_text_search: true
+      caching: true
+      async_processing: true
+      file_uploads: true
+      gpu_support: false # Enable if needed
+
+    # Performance
+    performance:
+      enable_jax_gpu: false
+      jax_platform_name: "cpu"
+      request_timeout: 300
+      batch_size: 32
+      cache_ttl: 3600
+
+frontend:
+  # Cloud Run Configuration
+  cloud_run:
+    min_instances: 1
+    max_instances: 10
+    cpu: "1000m" # 1 vCPU
+    memory: "2Gi" # 2GB RAM
+    timeout: 60
+    concurrency: 80
+    execution_environment: "gen2"
+    cpu_boost: true
+
+  # Next.js Configuration
+  nextjs:
+    node_env: "production"
+    build_command: "npm run build"
+    start_command: "npm start"
+    node_version: "18"
+
+    # Performance
+    optimize: true
+    minify: true
+    compress: true
+
+    # Features
+    features:
+      pwa: true
+      offline_support: true
+      real_time: true
+      analytics: false # Set to true if needed
+      service_worker: true
+
+    # CDN Configuration
+    cdn:
+      enabled: true
+      default_ttl: 3600 # 1 hour
+      max_ttl: 86400 # 24 hours
+      static_assets_ttl: 31536000 # 1 year
+      html_ttl: 0 # No cache for HTML
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+
+storage:
+  location: "US"
+  storage_class: "STANDARD"
+
+  buckets:
+    uploads:
+      versioning: true
+      lifecycle_days: 90
+      cors_enabled: true
+      public_read: false
+
+    documents:
+      versioning: true
+      lifecycle_days: 365
+      cors_enabled: false
+      public_read: false
+
+    models:
+      versioning: true
+      lifecycle_days: -1 # Never delete
+      cors_enabled: false
+      public_read: false
+
+    backups:
+      versioning: true
+      lifecycle_days: -1 # Never delete
+      cors_enabled: false
+      public_read: false
+
+    cdn_assets:
+      versioning: false
+      lifecycle_days: 30
+      cors_enabled: true
+      public_read: true
+
+    static_assets:
+      versioning: false
+      lifecycle_days: 30
+      cors_enabled: true
+      public_read: true
+
+# =============================================================================
+# Monitoring Configuration
+# =============================================================================
+
+monitoring:
+  # Alert Thresholds
+  thresholds:
+    error_rate_percent: 5
+    latency_ms: 5000
+    cpu_percent: 80
+    memory_percent: 85
+    database_connections: 160 # 80% of max_connections
+    redis_memory_percent: 85
+
+  # SLO Targets
+  slo:
+    api_availability: 0.995 # 99.5%
+    api_latency_ms: 2000 # 2 seconds
+    rolling_period_days: 30
+
+  # Uptime Checks
+  uptime_checks:
+    timeout: "10s"
+    period: "300s" # 5 minutes
+    regions:
+    - "USA_OREGON"
+    - "USA_VIRGINIA"
+    - "EUROPE_IRELAND"
+    - "ASIA_SINGAPORE"
+
+  # Notification Channels
+  notifications:
+    email_addresses: [] # To be configured
+    slack_webhook: "" # To be configured
+    pagerduty_key: "" # To be configured
+
+  # Dashboard Configuration
+  dashboard:
+    auto_refresh: "1m"
+    time_range: "1h"
+
+  # Log Configuration
+  logging:
+    retention_days: 30
+    log_level: "INFO"
+    enable_debug: false
+
+  # Budget Configuration
+  budget:
+    amount_usd: 500
+    thresholds: [ 0.5, 0.8, 1.0, 1.2 ] # 50%, 80%, 100%, 120%
+
+# =============================================================================
+# Security Configuration
+# =============================================================================
+
+security:
+  # SSL/TLS
+  ssl:
+    min_tls_version: "1.2"
+    cipher_suites: "MODERN"
+    hsts_enabled: true
+    hsts_max_age: 31536000 # 1 year
+
+  # Firewall
+  firewall:
+    allowed_cidrs:
+    - "0.0.0.0/0" # Adjust for production
+    ssh_allowed_cidrs:
+    - "35.235.240.0/20" # Google Cloud Shell
+
+  # IAM
+  iam:
+    service_accounts:
+      backend:
+        roles:
+        - "roles/cloudsql.client"
+        - "roles/redis.editor"
+        - "roles/storage.objectAdmin"
+        - "roles/secretmanager.secretAccessor"
+        - "roles/logging.logWriter"
+        - "roles/monitoring.metricWriter"
+
+      frontend:
+        roles:
+        - "roles/storage.objectViewer"
+        - "roles/logging.logWriter"
+        - "roles/monitoring.metricWriter"
+
+  # Secrets Management
+  secrets:
+    rotation_policy: "90d"
+    encryption: "google_managed" # or customer_managed for enhanced security
+
+# =============================================================================
+# Performance Configuration
+# =============================================================================
+
+performance:
+  # Auto-scaling
+  auto_scaling:
+    enabled: true
+    target_cpu_utilization: 70
+    target_memory_utilization: 80
+    scale_up_delay: "60s"
+    scale_down_delay: "300s"
+
+  # Connection Pooling
+  connection_pooling:
+    database:
+      enabled: true
+      min_connections: 5
+      max_connections: 20
+      max_idle_time: "300s"
+
+    redis:
+      enabled: true
+      min_connections: 2
+      max_connections: 10
+      max_idle_time: "300s"
+
+  # Caching Strategy
+  caching:
+    enabled: true
+    default_ttl: 3600
+    max_memory_usage: "80%"
+    eviction_policy: "allkeys-lru"
+
+# =============================================================================
+# Compliance and Governance
+# =============================================================================
+
+compliance:
+  # Data Protection
+  data_protection:
+    encryption_at_rest: true
+    encryption_in_transit: true
+    data_retention_days: 365
+    pii_handling: "strict"
+
+  # Audit
+  audit:
+    enable_audit_logs: true
+    log_admin_read: true
+    log_data_read: true
+    log_data_write: true
+
+  # Backup and Recovery
+  backup:
+    automated_backups: true
+    cross_region_backup: true
+    disaster_recovery: true
+    rto_hours: 4 # Recovery Time Objective
+    rpo_hours: 1 # Recovery Point Objective
+
+# =============================================================================
+# Cost Optimization
+# =============================================================================
+
+cost_optimization:
+  # Resource Management
+  resource_management:
+    auto_shutdown_idle: true
+    idle_timeout_minutes: 30
+    preemptible_instances: false # Not for production
+
+  # Storage Optimization
+  storage_optimization:
+    intelligent_tiering: true
+    lifecycle_management: true
+    compression: true
+    deduplication: true
+
+  # Budget Controls
+  budget_controls:
+    monthly_limit_usd: 500
+    alert_thresholds: [ 50, 80, 100, 120 ] # Percentages
+    auto_shutdown_at_limit: false
+    cost_allocation_tags: true
+
+# =============================================================================
+# Maintenance Windows
+# =============================================================================
+
+maintenance:
+  # Database
+  database_maintenance:
+    day: "sunday"
+    hour: 4
+    duration_hours: 4
+    update_track: "stable"
+
+  # Redis
+  redis_maintenance:
+    day: "sunday"
+    hour: 3
+    duration_hours: 2
+
+  # Application Updates
+  application_updates:
+    preferred_time: "02:00-04:00 UTC"
+    preferred_day: "sunday"
+    rollback_window_hours: 2
+
+# =============================================================================
+# Integration Configuration
+# =============================================================================
+
+integrations:
+  # Third-party Services
+  external_services:
+    enable_analytics: false
+    enable_error_tracking: true
+    enable_apm: true
+
+  # API Integrations
+  apis:
+    rate_limiting:
+      requests_per_minute: 1000
+      burst_limit: 100
+
+    authentication:
+      jwt_expiry: "24h"
+      refresh_token_expiry: "7d"
+
+  # Webhook Configuration
+  webhooks:
+    timeout: "30s"
+    retry_attempts: 3
+    retry_delay: "5s"

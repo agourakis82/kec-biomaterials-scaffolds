@@ -1,0 +1,57 @@
+# =============================================================================
+# DARWIN Backend Production - Build Only (Cloud Build)
+# Executado do diretório src/kec_unified_api
+# =============================================================================
+
+timeout: 2400s # 40 minutos para build completo
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 200
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+# Build da imagem do backend usando Dockerfile.production
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-backend-production'
+  args:
+  - 'build'
+  - '--file=./Dockerfile.production'
+  - '--tag=gcr.io/pcs-helio/darwin-backend:production-$SHORT_SHA'
+  - '--tag=gcr.io/pcs-helio/darwin-backend:latest'
+  - '--build-arg=ENVIRONMENT=production'
+  - '--build-arg=BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'
+  - '--build-arg=VCS_REF=$SHORT_SHA'
+  - '.'
+
+# Push da tag com SHA
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-backend-sha'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-backend:production-$SHORT_SHA'
+  waitFor: [ 'build-backend-production' ]
+
+# Push da tag latest
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-backend-latest'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-backend:latest'
+  waitFor: [ 'build-backend-production' ]
+
+# Verify image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'verify-backend-image'
+  args:
+  - 'run'
+  - '--rm'
+  - '--entrypoint=python'
+  - 'gcr.io/pcs-helio/darwin-backend:latest'
+  - '-c'
+  - 'import sys; print(f"Python {sys.version}"); import fastapi; print(f"FastAPI ready")'
+  waitFor: [ 'push-backend-latest' ]
+
+images:
+- 'gcr.io/pcs-helio/darwin-backend:production-$SHORT_SHA'
+- 'gcr.io/pcs-helio/darwin-backend:latest'

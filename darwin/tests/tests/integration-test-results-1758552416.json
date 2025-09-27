@@ -1,0 +1,123 @@
+{
+  "timestamp": "2025-09-22T14:46:44.472110",
+  "config": {
+    "project_id": "pcs-helio",
+    "environment": "staging",
+    "api_url": "https://darwin-platform-k33uefpruq-uc.a.run.app",
+    "frontend_url": "https://darwin-frontend-web-k33uefpruq-uc.a.run.app",
+    "region": "us-central1"
+  },
+  "tests": {
+    "api_integration": {
+      "success": false,
+      "results": [
+        {
+          "test": "API Health",
+          "status": "FAIL",
+          "status_code": 403,
+          "expected": 200
+        },
+        {
+          "test": "API Health Detailed",
+          "status": "FAIL",
+          "status_code": 403,
+          "expected": 200
+        },
+        {
+          "test": "Metrics",
+          "status": "FAIL",
+          "status_code": 403,
+          "expected": 200
+        },
+        {
+          "test": "API Documentation",
+          "status": "FAIL",
+          "status_code": 403,
+          "expected": 200
+        },
+        {
+          "test": "OpenAPI Spec",
+          "status": "FAIL",
+          "status_code": 403,
+          "expected": 200
+        },
+        {
+          "test": "Core Status",
+          "status": "FAIL",
+          "status_code": 403,
+          "expected": 200
+        }
+      ]
+    },
+    "frontend_integration": {
+      "success": false,
+      "results": [
+        {
+          "test": "Frontend Homepage",
+          "status": "PASS",
+          "status_code": 200,
+          "response_time_ms": 585.1769999999999
+        },
+        {
+          "test": "Frontend Health",
+          "status": "FAIL",
+          "status_code": 500,
+          "expected": 200
+        }
+      ]
+    },
+    "performance": {
+      "success": false,
+      "results": {}
+    },
+    "security": {
+      "success": false,
+      "results": [
+        {
+          "test": "HSTS Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "Content Type Options Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "Frame Options Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "XSS Protection Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "HSTS Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "Content Type Options Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "Frame Options Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "XSS Protection Header",
+          "status": "FAIL"
+        },
+        {
+          "test": "SQL Injection Test: '",
+          "status": "PASS"
+        },
+        {
+          "test": "SQL Injection Test: 1' OR '1'='1",
+          "status": "PASS"
+        },
+        {
+          "test": "SQL Injection Test: '; DROP TABLE users; --",
+          "status": "PASS"
+        }
+      ]
+    }
+  }
+}

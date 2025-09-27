@@ -1,0 +1,53 @@
+# =============================================================================
+# DARWIN Frontend Production - Build Simples
+# =============================================================================
+
+timeout: 1800s
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 100
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+# Build da imagem do frontend
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-frontend'
+  args:
+  - 'build'
+  - '--file=./Dockerfile.production'
+  - '--tag=gcr.io/pcs-helio/darwin-frontend:latest'
+  - '--tag=gcr.io/pcs-helio/darwin-frontend:production'
+  - '--build-arg=NODE_ENV=production'
+  - '--build-arg=NEXT_TELEMETRY_DISABLED=1'
+  - '.'
+
+# Push das imagens
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-frontend'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-frontend:latest'
+  waitFor: [ 'build-frontend' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-frontend-prod'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-frontend:production'
+  waitFor: [ 'build-frontend' ]
+
+# Verify image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'verify-frontend'
+  args:
+  - 'run'
+  - '--rm'
+  - '--entrypoint=node'
+  - 'gcr.io/pcs-helio/darwin-frontend:latest'
+  - '--version'
+  waitFor: [ 'push-frontend' ]
+
+images:
+- 'gcr.io/pcs-helio/darwin-frontend:latest'
+- 'gcr.io/pcs-helio/darwin-frontend:production'

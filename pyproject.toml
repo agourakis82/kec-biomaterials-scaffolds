@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kec_unified_api"
+version = "0.1.0"
+authors = [
+  { name="KEC Team", email="dev@agourakis.med.br" },
+]
+description = "DARWIN KEC Unified API"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+packages = ["kec_unified_api"]
+
+[project.urls]
+"Homepage" = "https://github.com/agourakis82/kec-biomaterials-scaffolds"
+"Bug Tracker" = "https://github.com/agourakis82/kec-biomaterials-scaffolds/issues"

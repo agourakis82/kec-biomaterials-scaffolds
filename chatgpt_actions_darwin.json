@@ -1,0 +1,92 @@
+{
+  "name": "DARWIN Meta-Research Brain",
+  "description": "Conector para o DARWIN - Plataforma de pesquisa em biomateriais com IA multidisciplinar. Use para consultas em scaffolds, KEC metrics, análise Q1, e mais.",
+  "version": "1.0.0",
+  "actions": [
+    {
+      "name": "query_darwin",
+      "description": "Consulta geral no DARWIN para pesquisa em biomateriais",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Pergunta ou termo de pesquisa"
+          },
+          "domain": {
+            "type": "string",
+            "enum": ["biomaterials", "quantum", "pharmacology", "mathematics", "philosophy"],
+            "description": "Domínio científico (opcional)"
+          }
+        },
+        "required": ["query"]
+      },
+      "endpoint": {
+        "url": "http://localhost:8090/api/multi-ai/chat",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "message": "{{query}}",
+          "domain": "{{domain}}"
+        }
+      }
+    },
+    {
+      "name": "analyze_scaffold",
+      "description": "Análise de scaffold biomaterial com KEC metrics",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "scaffold_data": {
+            "type": "string",
+            "description": "Dados do scaffold (porosidade, material, etc.)"
+          }
+        },
+        "required": ["scaffold_data"]
+      },
+      "endpoint": {
+        "url": "http://localhost:8090/api/kec-metrics/analyze",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "scaffold_data": "{{scaffold_data}}"
+        }
+      }
+    },
+    {
+      "name": "q1_scholar_search",
+      "description": "Busca acadêmica DOI/ArXiv com análise Q1",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "search_type": {
+            "type": "string",
+            "enum": ["doi", "arxiv", "terms"],
+            "description": "Tipo de busca"
+          },
+          "query": {
+            "type": "string",
+            "description": "DOI, arXiv ID ou termos"
+          }
+        },
+        "required": ["search_type", "query"]
+      },
+      "endpoint": {
+        "url": "http://localhost:8090/q1-scholar/search",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "type": "{{search_type}}",
+          "query": "{{query}}"
+        }
+      }
+    }
+  ],
+  "instructions": "Você é um assistente de pesquisa em biomateriais usando o DARWIN. Use as actions para consultar a plataforma local quando necessário. Para perguntas gerais sobre biomateriais, use seu conhecimento. Para análises específicas, chame as actions apropriadas."
+}

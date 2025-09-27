@@ -1,0 +1,7 @@
+# Ignora tudo
+*
+
+# Não ignore o essencial
+!/src
+!/config
+!/Dockerfile

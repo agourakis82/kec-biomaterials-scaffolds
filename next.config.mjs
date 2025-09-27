@@ -1,17 +1,111 @@
-import path from "path";
-import fs from "fs";
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: "dist",
-  productionBrowserSourceMaps: process.env.NODE_ENV === "production",
-  reactStrictMode: false,
-  typescript: {
-    ignoreBuildErrors: true,
+  output: 'standalone',
+  reactStrictMode: true,
+  experimental: {
+    typedRoutes: false,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
+  
+  // DARWIN Backend Proxy Configuration
+  async rewrites() {
+    return [
+      // DARWIN API routes redirect to port 8090
+      {
+        source: '/api/darwin/:path*',
+        destination: 'http://localhost:8090/api/v1/:path*'
+      },
+      
+      // AutoGen Research Team endpoints
+      {
+        source: '/api/research-team/:path*',
+        destination: 'http://localhost:8090/research-team/:path*'
+      },
+      
+      // JAX Ultra-Performance endpoints
+      {
+        source: '/api/ultra-performance/:path*',
+        destination: 'http://localhost:8090/ultra-performance/:path*'
+      },
+      
+      // Health check redirect
+      {
+        source: '/api/health',
+        destination: 'http://localhost:8090/api/v1/health'
+      },
+      
+      // RAG endpoints redirect
+      {
+        source: '/api/rag/:path*',
+        destination: 'http://localhost:8090/api/v1/rag-plus/:path*'
+      },
+      
+      // Multi-AI Hub redirect
+      {
+        source: '/api/multi-ai/:path*',
+        destination: 'http://localhost:8090/api/v1/multi-ai/:path*'
+      },
+      
+      // KEC Metrics redirect
+      {
+        source: '/api/kec-metrics/:path*',
+        destination: 'http://localhost:8090/api/v1/kec-metrics/:path*'
+      },
+      
+      // Tree Search redirect
+      {
+        source: '/api/tree-search/:path*',
+        destination: 'http://localhost:8090/api/v1/tree-search/:path*'
+      },
+      
+      // Knowledge Graph redirect
+      {
+        source: '/api/knowledge-graph/:path*',
+        destination: 'http://localhost:8090/api/v1/knowledge-graph/:path*'
+      },
+      
+      // Discovery redirect
+      {
+        source: '/api/discovery/:path*',
+        destination: 'http://localhost:8090/api/v1/discovery/:path*'
+      },
+      
+      // Contracts redirect
+      {
+        source: '/api/contracts/:path*',
+        destination: 'http://localhost:8090/api/v1/contracts/:path*'
+      },
+      
+      // PUCT redirect (legacy compatibility)
+      {
+        source: '/api/puct',
+        destination: 'http://localhost:8090/api/v1/tree-search/puct'
+      }
+    ]
   },
-  env: {},
+
+  // Headers for CORS and API calls
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET,POST,PUT,DELETE,OPTIONS' },
+          { key: 'Access-Control-Allow-Headers', value: 'X-Requested-With,content-type,Authorization,X-API-KEY' },
+        ],
+      },
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, max-age=0',
+          },
+        ],
+      },
+    ]
+  },
+
   images: {
     remotePatterns: [
       {
@@ -24,16 +118,13 @@ const nextConfig = {
       },
     ],
   },
+
   webpack: (config, options) => {
-    config.devtool =
-      process.env.NODE_ENV === "production" ? "source-map" : false;
+    config.devtool = process.env.NODE_ENV === "production" ? "source-map" : false;
     config.optimization = {
       ...config.optimization,
       minimize: false,
     };
-    config.plugins = config.plugins || [];
-    config.module = config.module || { rules: [] };
-    config.module.rules = config.module.rules || [];
 
     const fileLoaderRule = config.module.rules.find(
       (rule) =>
@@ -50,13 +141,7 @@ const nextConfig = {
         test: /\.svg$/i,
         resourceQuery: /url/,
         type: "asset/resource",
-      },
-      //      {
-      //        test: /\.svg$/i,
-      //        issuer: /\.[jt]sx?$/,
-      //        resourceQuery: { not: [/url/] },
-      //        use: ["@svgr/webpack"],
-      //      }
+      }
     );
 
     return config;

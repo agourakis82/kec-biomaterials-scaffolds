@@ -1,0 +1,103 @@
+# =============================================================================
+# DARWIN Backend Deployment Pipeline
+# Cloud Build configuration for deploying JAX-powered API backend
+# =============================================================================
+
+timeout: 1800s
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 100
+  substitution_option: 'ALLOW_LOOSE'
+  dynamic_substitutions: true
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _PROJECT_ID: '${PROJECT_ID}'
+  _REGION: 'us-central1'
+  _SERVICE_NAME: 'darwin-${_ENVIRONMENT}-backend'
+  _IMAGE_NAME: 'gcr.io/${_PROJECT_ID}/darwin-backend'
+  _ENVIRONMENT: 'production'
+  _DOCKERFILE_PATH: './src/kec_unified_api/Dockerfile.production'
+  _SOURCE_PATH: './src/kec_unified_api'
+  _REQUIREMENTS_FILE: './src/kec_unified_api/requirements.txt'
+
+steps:
+# Environment Setup and Validation
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'validate-environment'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔍 Validating deployment environment..."
+    echo "Project ID: ${_PROJECT_ID}"
+    echo "Region: ${_REGION}"
+    echo "Service Name: ${_SERVICE_NAME}"
+    echo "Environment: ${_ENVIRONMENT}"
+    echo "Image Name: ${_IMAGE_NAME}"
+
+    if [ -z "${_PROJECT_ID}" ] || [ -z "${_REGION}" ] || [ -z "${_SERVICE_NAME}" ]; then
+      echo "❌ Missing required environment variables"
+      exit 1
+    fi
+
+    echo "✅ Environment validation completed"
+
+# Build Docker Image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-image'
+  args:
+  - 'build'
+  - '--file=${_DOCKERFILE_PATH}'
+  - '--tag=${_IMAGE_NAME}:${BUILD_ID}'
+  - '--tag=${_IMAGE_NAME}:latest'
+  - '--build-arg=ENVIRONMENT=${_ENVIRONMENT}'
+  - '--build-arg=BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'
+  - '--build-arg=VCS_REF=${BUILD_ID}'
+  - '--cache-from=${_IMAGE_NAME}:latest'
+  - '${_SOURCE_PATH}'
+  waitFor: [ 'validate-environment' ]
+
+# Push Image to Registry
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-image'
+  args:
+  - 'push'
+  - '${_IMAGE_NAME}:${BUILD_ID}'
+  waitFor: [ 'build-image' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-latest'
+  args:
+  - 'push'
+  - '${_IMAGE_NAME}:latest'
+  waitFor: [ 'build-image' ]
+
+# Deploy to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'deploy-service'
+  args:
+  - 'run'
+  - 'deploy'
+  - '${_SERVICE_NAME}'
+  - '--image=${_IMAGE_NAME}:${BUILD_ID}'
+  - '--platform=managed'
+  - '--region=${_REGION}'
+  - '--allow-unauthenticated'
+  - '--min-instances=1'
+  - '--max-instances=10'
+  - '--memory=4Gi'
+  - '--cpu=2'
+  - '--timeout=300'
+  - '--concurrency=100'
+  - '--set-env-vars=ENVIRONMENT=${_ENVIRONMENT},PROJECT_ID=${_PROJECT_ID},REGION=${_REGION}'
+  - '--vpc-connector=darwin-${_ENVIRONMENT}-conn'
+  - '--vpc-egress=private-ranges-only'
+  - '--service-account=darwin-${_ENVIRONMENT}-backend-sa@${_PROJECT_ID}.iam.gserviceaccount.com'
+  - '--execution-environment=gen2'
+  - '--cpu-boost'
+  waitFor: [ 'push-latest' ]
+
+images:
+- '${_IMAGE_NAME}:latest'

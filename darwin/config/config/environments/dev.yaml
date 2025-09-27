@@ -1,0 +1,590 @@
+# =============================================================================
+# DARWIN Development Environment Configuration
+# Configuração para ambiente de desenvolvimento
+# =============================================================================
+
+metadata:
+  name: "dev"
+  description: "DARWIN Development Environment - Local Development & Testing"
+  version: "1.0.0"
+  last_updated: "2025-09-22"
+
+# =============================================================================
+# Core Configuration
+# =============================================================================
+
+project:
+  id: "PROJECT_ID_PLACEHOLDER" # Will be replaced during deployment
+  name: "darwin"
+  environment: "dev"
+  region: "us-central1"
+  zone: "us-central1-a"
+
+domains:
+  api: "api-dev.agourakis.med.br"
+  frontend: "darwin-dev.agourakis.med.br"
+  cdn: "cdn-dev.agourakis.med.br"
+
+# =============================================================================
+# Infrastructure Configuration
+# =============================================================================
+
+infrastructure:
+  # Networking
+  networking:
+    vpc_name: "darwin-dev-vpc"
+    subnet_cidr: "10.2.0.0/24"
+    enable_private_google_access: true
+    enable_flow_logs: false # Disable for cost savings
+    flow_logs_sampling: 0.1
+
+    # Secondary IP ranges
+    services_secondary_cidr: "192.168.64.0/20"
+    pods_secondary_cidr: "192.168.80.0/20"
+
+    # VPC Connector
+    vpc_connector_cidr: "10.10.0.0/28"
+    vpc_connector_min_throughput: 200
+    vpc_connector_max_throughput: 300 # Minimal throughput
+
+    # SSL Configuration
+    ssl_policy: "COMPATIBLE" # More permissive for testing
+    enable_https_redirect: false # Allow HTTP for development
+
+  # Database Configuration (Minimal)
+  database:
+    tier: "db-f1-micro" # Smallest instance
+    disk_size: 10 # GB - minimum
+    disk_max_size: 50 # GB
+    disk_type: "PD_STANDARD" # Standard for cost savings
+    availability_type: "ZONAL"
+    deletion_protection: false
+
+    # Backup Configuration (Minimal)
+    backup:
+      enabled: false # Disable backups for dev
+      start_time: "05:00"
+      retention_days: 1
+      point_in_time_recovery: false
+      transaction_log_retention_days: 1
+
+    # Performance Tuning (Minimal)
+    flags:
+      max_connections: "20"
+      shared_buffers: "64MB"
+      effective_cache_size: "256MB"
+      maintenance_work_mem: "32MB"
+      checkpoint_completion_target: "0.7"
+      wal_buffers: "8MB"
+      default_statistics_target: "50"
+      random_page_cost: "1.5"
+      effective_io_concurrency: "50"
+      shared_preload_libraries: "vector"
+
+    # Security (Relaxed for development)
+    require_ssl: false
+    authorized_networks:
+    - "0.0.0.0/0" # Open for development
+
+  # Redis Configuration (Minimal)
+  redis:
+    memory_size_gb: 1 # Minimum size
+    version: "REDIS_6_X"
+    auth_enabled: false # Disable auth for easier development
+    transit_encryption_mode: "DISABLED"
+    connect_mode: "PRIVATE_SERVICE_ACCESS"
+
+    # Configuration
+    configs:
+      maxmemory-policy: "allkeys-lru"
+      timeout: "0" # No timeout for development
+      tcp-keepalive: "300"
+
+# =============================================================================
+# Application Configuration
+# =============================================================================
+
+backend:
+  # Cloud Run Configuration
+  cloud_run:
+    min_instances: 0 # Scale to zero aggressively
+    max_instances: 2 # Minimal scaling
+    cpu: "500m" # 0.5 vCPU
+    memory: "1Gi" # 1GB RAM
+    timeout: 600 # Longer timeout for debugging
+    concurrency: 10 # Low concurrency
+    execution_environment: "gen2"
+    cpu_boost: false
+
+    # Network
+    vpc_egress: "all" # Allow all egress for development
+    ingress: "all"
+
+  # Application Settings
+  application:
+    log_level: "DEBUG"
+    max_workers: 1 # Single worker for simpler debugging
+    worker_timeout: 60
+    connection_pool_size: 5
+    redis_connection_pool_size: 2
+
+    # Feature Flags (All enabled for testing)
+    features:
+      vector_search: true
+      full_text_search: true
+      caching: false # Disable caching for fresh data
+      async_processing: false # Disable for simpler debugging
+      file_uploads: true
+      gpu_support: false
+
+    # Performance (Development optimized)
+    performance:
+      enable_jax_gpu: false
+      jax_platform_name: "cpu"
+      request_timeout: 600 # Long timeout for debugging
+      batch_size: 8 # Small batch size
+      cache_ttl: 300 # Short cache TTL
+
+frontend:
+  # Cloud Run Configuration
+  cloud_run:
+    min_instances: 0 # Scale to zero
+    max_instances: 2
+    cpu: "500m" # 0.5 vCPU
+    memory: "1Gi" # 1GB RAM
+    timeout: 300
+    concurrency: 20
+    execution_environment: "gen2"
+    cpu_boost: false
+
+  # Next.js Configuration
+  nextjs:
+    node_env: "development"
+    build_command: "npm run build"
+    start_command: "npm run dev" # Development server
+    node_version: "18"
+
+    # Performance (Development optimized)
+    optimize: false # Disable optimization for faster builds
+    minify: false # Disable minification
+    compress: false
+
+    # Features (Development friendly)
+    features:
+      pwa: false # Disable PWA for simpler development
+      offline_support: false
+      real_time: true
+      analytics: false
+      service_worker: false
+
+    # CDN Configuration (Minimal)
+    cdn:
+      enabled: false # Disable CDN for development
+      default_ttl: 0
+      max_ttl: 0
+      static_assets_ttl: 0
+      html_ttl: 0
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+
+storage:
+  location: "US"
+  storage_class: "STANDARD"
+
+  buckets:
+    uploads:
+      versioning: false
+      lifecycle_days: 7 # Short retention
+      cors_enabled: true
+      public_read: true # Public for easier testing
+
+    documents:
+      versioning: false
+      lifecycle_days: 7
+      cors_enabled: true
+      public_read: true
+
+    models:
+      versioning: false
+      lifecycle_days: 7
+      cors_enabled: false
+      public_read: false
+
+    backups:
+      versioning: false
+      lifecycle_days: 7
+      cors_enabled: false
+      public_read: false
+
+    cdn_assets:
+      versioning: false
+      lifecycle_days: 1 # Daily cleanup
+      cors_enabled: true
+      public_read: true
+
+    static_assets:
+      versioning: false
+      lifecycle_days: 1
+      cors_enabled: true
+      public_read: true
+
+# =============================================================================
+# Monitoring Configuration
+# =============================================================================
+
+monitoring:
+  # Alert Thresholds (Very relaxed)
+  thresholds:
+    error_rate_percent: 20 # High tolerance for development
+    latency_ms: 30000 # 30 seconds
+    cpu_percent: 95
+    memory_percent: 95
+    database_connections: 15 # 75% of max_connections
+    redis_memory_percent: 95
+
+  # SLO Targets (Minimal)
+  slo:
+    api_availability: 0.95 # 95%
+    api_latency_ms: 10000 # 10 seconds
+    rolling_period_days: 1
+
+  # Uptime Checks (Minimal)
+  uptime_checks:
+    timeout: "30s"
+    period: "1800s" # 30 minutes
+    regions:
+    - "USA_OREGON"
+
+  # Notification Channels (Minimal)
+  notifications:
+    email_addresses: [ "dev@agourakis.med.br" ]
+    slack_webhook: ""
+    pagerduty_key: ""
+
+  # Dashboard Configuration
+  dashboard:
+    auto_refresh: "10m"
+    time_range: "6h"
+
+  # Log Configuration
+  logging:
+    retention_days: 3 # Minimal retention
+    log_level: "DEBUG"
+    enable_debug: true
+
+  # Budget Configuration
+  budget:
+    amount_usd: 100 # Low budget
+    thresholds: [ 0.5, 0.7, 0.9, 1.0 ]
+
+# =============================================================================
+# Security Configuration (Relaxed for Development)
+# =============================================================================
+
+security:
+  # SSL/TLS
+  ssl:
+    min_tls_version: "1.0" # More permissive
+    cipher_suites: "COMPATIBLE"
+    hsts_enabled: false # Disable HSTS for development
+    hsts_max_age: 0
+
+  # Firewall (Open for development)
+  firewall:
+    allowed_cidrs:
+    - "0.0.0.0/0" # Completely open
+    ssh_allowed_cidrs:
+    - "0.0.0.0/0"
+
+  # IAM (Minimal permissions)
+  iam:
+    service_accounts:
+      backend:
+        roles:
+        - "roles/cloudsql.client"
+        - "roles/redis.editor"
+        - "roles/storage.objectAdmin"
+        - "roles/logging.logWriter"
+
+      frontend:
+        roles:
+        - "roles/storage.objectViewer"
+        - "roles/logging.logWriter"
+
+  # Secrets Management
+  secrets:
+    rotation_policy: "7d" # Frequent rotation for testing
+    encryption: "google_managed"
+
+# =============================================================================
+# Performance Configuration
+# =============================================================================
+
+performance:
+  # Auto-scaling (Minimal)
+  auto_scaling:
+    enabled: false # Disable auto-scaling for consistent testing
+    target_cpu_utilization: 90
+    target_memory_utilization: 90
+    scale_up_delay: "300s"
+    scale_down_delay: "60s" # Quick scale down
+
+  # Connection Pooling (Minimal)
+  connection_pooling:
+    database:
+      enabled: true
+      min_connections: 1
+      max_connections: 5
+      max_idle_time: "60s"
+
+    redis:
+      enabled: true
+      min_connections: 1
+      max_connections: 2
+      max_idle_time: "60s"
+
+  # Caching Strategy (Disabled for fresh data)
+  caching:
+    enabled: false
+    default_ttl: 0
+    max_memory_usage: "50%"
+    eviction_policy: "allkeys-lru"
+
+# =============================================================================
+# Development Features
+# =============================================================================
+
+development:
+  # Debugging (Full debugging enabled)
+  debugging:
+    enable_debug_mode: true
+    enable_profiling: true
+    enable_tracing: true
+    verbose_logging: true
+    enable_sql_logging: true
+    enable_request_logging: true
+
+  # Development Tools
+  tools:
+    enable_swagger_ui: true
+    enable_graphql_playground: true
+    enable_debug_toolbar: true
+    enable_hot_reload: false # Not applicable for Cloud Run
+
+  # API Documentation
+  api_docs:
+    enable_swagger_ui: true
+    enable_redoc: true
+    include_examples: true
+    show_internal_apis: true
+
+# =============================================================================
+# Testing Configuration
+# =============================================================================
+
+testing:
+  # Test Data
+  test_data:
+    auto_generate: true
+    cleanup_after_tests: false # Keep test data for analysis
+    isolation_level: "read_uncommitted" # Fastest for development
+    sample_data_size: "small"
+
+  # Load Testing (Minimal)
+  load_testing:
+    max_concurrent_users: 10
+    test_duration_minutes: 2
+    ramp_up_time_seconds: 30
+
+  # Integration Testing
+  integration_testing:
+    timeout_seconds: 600 # Long timeout for debugging
+    retry_attempts: 1 # No retries for clearer error messages
+    parallel_execution: false # Sequential for easier debugging
+
+# =============================================================================
+# Local Development Support
+# =============================================================================
+
+local_development:
+  # Port Configuration
+  ports:
+    backend: 8080
+    frontend: 3000
+    database: 5432
+    redis: 6379
+
+  # Docker Configuration
+  docker:
+    network_name: "darwin-dev-network"
+    volumes:
+    - "./src:/app/src"
+    - "./data:/app/data"
+
+  # Environment Variables
+  env_vars:
+    DEBUG: "true"
+    LOG_LEVEL: "DEBUG"
+    ENABLE_CORS: "true"
+    ALLOW_ORIGINS: "*"
+
+# =============================================================================
+# Cost Optimization (Aggressive for Development)
+# =============================================================================
+
+cost_optimization:
+  # Resource Management
+  resource_management:
+    auto_shutdown_idle: true
+    idle_timeout_minutes: 5 # Very aggressive
+    preemptible_instances: true
+    spot_instances: true
+
+  # Storage Optimization
+  storage_optimization:
+    intelligent_tiering: false # Disable for simplicity
+    lifecycle_management: true
+    compression: false
+    deduplication: false
+
+  # Budget Controls
+  budget_controls:
+    monthly_limit_usd: 100
+    alert_thresholds: [ 25, 50, 75, 90 ]
+    auto_shutdown_at_limit: true
+    cost_allocation_tags: true
+
+# =============================================================================
+# Maintenance Windows
+# =============================================================================
+
+maintenance:
+  # Database (Frequent for testing)
+  database_maintenance:
+    day: "friday"
+    hour: 8
+    duration_hours: 1
+    update_track: "preview" # Use preview for latest features
+
+  # Redis
+  redis_maintenance:
+    day: "friday"
+    hour: 7
+    duration_hours: 1
+
+  # Application Updates (Frequent)
+  application_updates:
+    preferred_time: "08:00-10:00 UTC"
+    preferred_day: "any" # Any day for development
+    rollback_window_hours: 0.5
+
+# =============================================================================
+# Integration Configuration
+# =============================================================================
+
+integrations:
+  # Third-party Services (Disabled)
+  external_services:
+    enable_analytics: false
+    enable_error_tracking: false
+    enable_apm: false
+
+  # API Integrations (Relaxed)
+  apis:
+    rate_limiting:
+      requests_per_minute: 100
+      burst_limit: 20
+
+    authentication:
+      jwt_expiry: "1h" # Short expiry for testing
+      refresh_token_expiry: "1d"
+
+  # Webhook Configuration
+  webhooks:
+    timeout: "5s"
+    retry_attempts: 1
+    retry_delay: "1s"
+
+# =============================================================================
+# Feature Flags (All enabled for testing)
+# =============================================================================
+
+feature_flags:
+  # Core Features
+  core:
+    vector_search: true
+    full_text_search: true
+    knowledge_graph: true
+    multi_ai_chat: true
+
+  # Advanced Features
+  advanced:
+    gpu_acceleration: false
+    distributed_computing: false
+    federated_learning: false
+    quantum_simulation: false
+
+  # UI Features
+  ui:
+    dark_mode: true
+    real_time_updates: true
+    offline_mode: false
+    progressive_web_app: false
+
+  # Developer Features
+  developer:
+    api_documentation: true
+    debug_panels: true
+    performance_metrics: true
+    error_boundaries: true
+    hot_reload_simulation: true
+
+# =============================================================================
+# Development Workflow
+# =============================================================================
+
+workflow:
+  # Git Configuration
+  git:
+    main_branch: "main"
+    development_branch: "develop"
+    feature_prefix: "feature/"
+    hotfix_prefix: "hotfix/"
+
+  # CI/CD (Simplified)
+  cicd:
+    run_tests: true
+    run_security_scan: false # Skip for faster builds
+    auto_deploy: true
+    require_approval: false
+
+  # Code Quality
+  code_quality:
+    run_linting: true
+    run_type_checking: true
+    require_tests: false # Don't require tests for all changes
+    coverage_threshold: 0 # No coverage requirement
+
+# =============================================================================
+# Local Services Configuration
+# =============================================================================
+
+local_services:
+  # Database (Local PostgreSQL alternative)
+  database:
+    use_local: false # Use Cloud SQL even in dev
+    local_port: 5432
+    docker_image: "postgres:15-alpine"
+
+  # Redis (Local Redis alternative)
+  redis:
+    use_local: false # Use Memorystore even in dev
+    local_port: 6379
+    docker_image: "redis:6-alpine"
+
+  # File Storage (Local alternative)
+  storage:
+    use_local: false # Use Cloud Storage even in dev
+    local_path: "./dev-storage"

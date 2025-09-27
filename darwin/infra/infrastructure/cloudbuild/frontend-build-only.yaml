@@ -1,0 +1,58 @@
+# =============================================================================
+# DARWIN Frontend Production - Build Only (Cloud Build)
+# Compila e envia a imagem do frontend Next.js real para o Container Registry (GCR)
+# Usa Dockerfile.production para máxima performance e recursos completos
+# =============================================================================
+
+timeout: 2400s # 40 minutos para build completo
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 200 # Mais espaço para node_modules
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+# Build da imagem do frontend usando Dockerfile.production
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-frontend-production'
+  args:
+  - 'build'
+  - '--file=./Dockerfile.production'
+  - '--tag=gcr.io/pcs-helio/darwin-frontend:production-$SHORT_SHA'
+  - '--tag=gcr.io/pcs-helio/darwin-frontend:latest'
+  - '--build-arg=ENVIRONMENT=production'
+  - '--build-arg=BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'
+  - '--build-arg=VCS_REF=$SHORT_SHA'
+  - '.'
+  dir: 'ui'
+
+# Push da tag com SHA
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-frontend-sha'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-frontend:production-$SHORT_SHA'
+  waitFor: [ 'build-frontend-production' ]
+
+# Push da tag latest
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-frontend-latest'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-frontend:latest'
+  waitFor: [ 'build-frontend-production' ]
+
+# Verify image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'verify-frontend-image'
+  args:
+  - 'run'
+  - '--rm'
+  - '--entrypoint=node'
+  - 'gcr.io/pcs-helio/darwin-frontend:latest'
+  - '--version'
+  waitFor: [ 'push-frontend-latest' ]
+
+images:
+- 'gcr.io/pcs-helio/darwin-frontend:production-$SHORT_SHA'
+- 'gcr.io/pcs-helio/darwin-frontend:latest'

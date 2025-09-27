@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Criar um servidor simples que responde na porta 8080
+RUN echo 'from http.server import HTTPServer, BaseHTTPRequestHandler\nimport os\n\nclass SimpleHandler(BaseHTTPRequestHandler):\n    def do_GET(self):\n        if self.path == "/health":\n            self.send_response(200)\n            self.send_header("Content-type", "text/plain")\n            self.end_headers()\n            self.wfile.write(b"OK")\n        else:\n            self.send_response(200)\n            self.send_header("Content-type", "text/html")\n            self.end_headers()\n            self.wfile.write(b"<h1>DARWIN Backend Running</h1><p>Service is healthy</p>")\n\nif __name__ == "__main__":\n    port = int(os.environ.get("PORT", 8080))\n    server = HTTPServer(("", port), SimpleHandler)\n    print(f"Server running on port {port}")\n    server.serve_forever()' > server.py
+
+EXPOSE 8080
+
+CMD ["python", "server.py"]

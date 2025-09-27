@@ -4,9 +4,7 @@ services:
     image: redis:7-alpine
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - redis_data:/data
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
+      - /mnt/darwin_data/redis:/data
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -39,13 +37,23 @@ services:
       - BASE_EXTERNAL_URL=${API_BASE_URL:-http://localhost:8090}
       - CONFIG_FILE=/app/config/production.yaml
       - JAX_PLATFORM=${JAX_PLATFORM:-cpu}
+      - ENABLE_MCP_SERVER=${ENABLE_MCP_SERVER:-true}
+      - ENABLE_OLLAMA_MODELS=${ENABLE_OLLAMA_MODELS:-true}
+      - ENABLE_TREE_SEARCH=${ENABLE_TREE_SEARCH:-true}
+      - ENABLE_PUCT=${ENABLE_PUCT:-true}
+      - ENABLE_DISCOVERY=${ENABLE_DISCOVERY:-true}
+      - ENABLE_MCP_CLIENT=${ENABLE_MCP_CLIENT:-true}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-}
+      - BIGQUERY_LOCATION=${BIGQUERY_LOCATION:-us-central1}
     depends_on:
       redis:
         condition: service_healthy
       vectordb:
         condition: service_started
+      ollama:
+        condition: service_started
     ports:
-      - "8090:8080"
+      - "${HOST_BACKEND_PORT:-8090}:8080"
     healthcheck:
       test:
         [
@@ -58,6 +66,10 @@ services:
     restart: unless-stopped
     networks:
       - app_net
+    volumes:
+      - /mnt/darwin_data/mcp:/app/data/mcp
+      - /mnt/darwin_data/models:/app/models
+      - ./credentials:/app/credentials
 
   web:
     build:
@@ -71,11 +83,18 @@ services:
       - NEXT_PUBLIC_API_URL=${API_BASE_URL:-http://localhost:8090}
       - NEXT_PUBLIC_ENVIRONMENT=${NEXT_PUBLIC_ENVIRONMENT:-local}
       - NEXT_PUBLIC_APP_URL=${FRONTEND_BASE_URL:-http://localhost:3000}
+      - ENABLE_MULTI_AI_INTEGRATION=${ENABLE_MULTI_AI_INTEGRATION:-true}
+      - ENABLE_CHATGPT_SYNC=${ENABLE_CHATGPT_SYNC:-true}
+      - ENABLE_MCP=${ENABLE_MCP:-true}
+      - ENABLE_RAG_PLUS=${ENABLE_RAG_PLUS:-true}
+      - ENABLE_DISCOVERY=${ENABLE_DISCOVERY:-true}
+      - ENABLE_TREE_SEARCH=${ENABLE_TREE_SEARCH:-true}
+      - ENABLE_PUCT_OPTIMIZER=${ENABLE_PUCT_OPTIMIZER:-true}
     depends_on:
       api:
-        condition: service_started
+        condition: service_healthy
     ports:
-      - "${FRONTEND_PORT:-3000}:3000"
+      - "${HOST_FRONTEND_PORT:-3000}:3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 20s
@@ -92,6 +111,7 @@ services:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
       - ./darwin/notebooks:/home/jovyan/work
+      - /mnt/darwin_data/notebooks:/home/jovyan/data
     ports:
       - "${JUPYTER_PORT:-8888}:8888"
     healthcheck:
@@ -111,7 +131,7 @@ services:
       - IS_PERSISTENT=TRUE
       - PERSIST_DIRECTORY=/chroma/data
     volumes:
-      - chroma_data:/chroma/data
+      - /mnt/darwin_data/chroma:/chroma/data
     ports:
       - "${CHROMA_PORT:-8000}:8000"
     restart: unless-stopped
@@ -121,7 +141,7 @@ services:
   ollama:
     image: ollama/ollama:latest
     volumes:
-      - ollama_data:/root/.ollama
+      - /mnt/darwin_data/ollama:/root/.ollama
     ports:
       - "${OLLAMA_PORT:-11434}:11434"
     healthcheck:
@@ -130,13 +150,7 @@ services:
       timeout: 5s
       retries: 15
     restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: ["gpu"]
     environment:
-      - NVIDIA_VISIBLE_DEVICES=all
       - OLLAMA_KEEP_ALIVE=${OLLAMA_KEEP_ALIVE:-5m}
     networks:
       - app_net
@@ -145,7 +159,7 @@ services:
     image: cloudflare/cloudflared:latest
     profiles:
       - tunnel
-    command: tunnel run darwin
+    command: tunnel --config /etc/cloudflared/config.yml run
     depends_on:
       api:
         condition: service_started
@@ -160,8 +174,3 @@ services:
 networks:
   app_net:
     driver: bridge
-
-volumes:
-  redis_data:
-  chroma_data:
-  ollama_data:

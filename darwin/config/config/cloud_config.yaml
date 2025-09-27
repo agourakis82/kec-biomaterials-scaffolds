@@ -2,7 +2,7 @@
 # Configuração otimizada para Vertex AI, BigQuery e Cloud Run
 
 project:
-  id: "kec-biomaterials-prod"
+  id: "pcs-helio"
   region: "us-central1"
   zone: "us-central1-a"
 
@@ -21,7 +21,7 @@ vertex_ai:
 
 bigquery:
   enabled: true
-  dataset_id: "kec_knowledge_base"
+  dataset_id: "pcs_helio_kb"
   location: "US"
   tables:
     documents: "scientific_documents"
@@ -51,7 +51,7 @@ cloud_run:
     PYTHONPATH: "/app/src:/app/external/pcs-meta-repo"
     KEC_CONFIG_PATH: "/app/src/kec_biomat/configs"
     DARWIN_MEMORY_PATH: "/app/src/darwin_core/memory"
-    GOOGLE_CLOUD_PROJECT: "kec-biomaterials-prod"
+    GOOGLE_CLOUD_PROJECT: "pcs-helio"
 
 cloud_storage:
   buckets:

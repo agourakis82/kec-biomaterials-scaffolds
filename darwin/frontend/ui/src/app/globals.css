@@ -1,0 +1,559 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DARWIN REVOLUTIONARY FRONTEND - Dr. Demetrios Chiuratto Agourakis */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@100..900&family=Playfair+Display:wght@400..900&family=JetBrains+Mono:wght@100..800&display=swap');
+
+@layer base {
+  :root {
+    /* QUANTUM RESEARCH PALETTE - Inspired by Consciousness & Biomaterials */
+    --quantum-primary: 240 100% 70%;        /* Quantum Blue - Neural Networks */
+    --neural-accent: 280 100% 65%;          /* Neural Purple - AI Consciousness */
+    --biotech-success: 120 80% 45%;         /* Biotech Green - Life Sciences */
+    --research-gold: 35 100% 55%;           /* Discovery Gold - Eureka Moments */
+    --consciousness-glow: 300 100% 80%;     /* Consciousness Pink - Awareness */
+    --quantum-field: 240 100% 50%;          /* Quantum Field - Deep Physics */
+    
+    /* BIOMIMETIC SURFACES - Living Interface Elements */
+    --cell-membrane: 240 50% 95% / 0.1;     /* Cell membrane transparency */
+    --neural-synapse: 280 80% 60% / 0.2;    /* Neural synapse connections */
+    --quantum-foam: 240 100% 50% / 0.05;    /* Quantum foam background */
+    --consciousness-field: 300 100% 80% / 0.1; /* Consciousness field */
+    
+    /* AGOURAKIS MED RESEARCH BRAND COLORS */
+    --agourakis-primary: 210 100% 56%;      /* Medical Blue - Trust & Science */
+    --agourakis-secondary: 160 100% 40%;    /* Medical Green - Health & Growth */
+    --agourakis-accent: 45 100% 60%;        /* Innovation Gold - Discovery */
+    --agourakis-deep: 220 100% 20%;         /* Deep Blue - Expertise */
+    
+    /* SCIENTIFIC DATA VISUALIZATION */
+    --data-primary: 212 100% 48%;           /* Data Blue - Information */
+    --algorithm-purple: 271 76% 53%;        /* Algorithm Purple - Computation */
+    --memory-teal: 177 70% 41%;             /* Memory Teal - Storage */
+    --performance-orange: 25 100% 50%;      /* Performance Orange - Speed */
+    --error-red: 348 83% 47%;               /* Error Red - Alerts */
+    --success-emerald: 142 76% 36%;         /* Success Emerald - Completion */
+    
+    /* LIGHT THEME - Scientific Manuscript */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 210 100% 56%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 56%;
+    --radius: 1rem;
+    
+    /* GLASS MORPHISM VARIABLES */
+    --glass-bg: 255 255 255 / 0.1;
+    --glass-border: 255 255 255 / 0.2;
+    --glass-shadow: 0 0 0 / 0.1;
+    
+    /* QUANTUM ANIMATIONS */
+    --quantum-duration: 0.8s;
+    --neural-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --consciousness-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    /* DARK THEME - Quantum Laboratory */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 240 100% 70%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 240 100% 70%;
+    
+    /* DARK GLASS MORPHISM */
+    --glass-bg: 0 0 0 / 0.2;
+    --glass-border: 255 255 255 / 0.1;
+    --glass-shadow: 0 0 0 / 0.3;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: radial-gradient(ellipse at top, hsl(var(--quantum-field) / 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted) / 0.3));
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* QUANTUM SCROLLBAR */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, hsl(var(--quantum-primary)), hsl(var(--neural-accent)));
+    border-radius: 10px;
+    box-shadow: 0 0 10px hsl(var(--quantum-primary) / 0.3);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(var(--neural-accent)), hsl(var(--consciousness-glow)));
+    box-shadow: 0 0 15px hsl(var(--neural-accent) / 0.5);
+  }
+}
+
+/* REVOLUTIONARY TYPOGRAPHY SYSTEM */
+.font-quantum {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.font-neural {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-consciousness {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-data {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+@layer components {
+  /* QUANTUM GLASS MORPHISM SYSTEM */
+  .quantum-glass {
+    background: linear-gradient(135deg, 
+      hsl(var(--glass-bg)), 
+      hsl(var(--glass-bg) / 0.8));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    border-radius: 24px;
+    box-shadow: 
+      0 8px 32px hsl(var(--glass-shadow)),
+      inset 0 1px 0 hsl(var(--glass-border));
+  }
+
+  .neural-glass {
+    background: linear-gradient(135deg,
+      hsl(var(--neural-synapse)),
+      hsl(var(--cell-membrane)));
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid hsl(var(--neural-accent) / 0.2);
+    border-radius: 20px;
+    box-shadow: 
+      0 12px 48px hsl(var(--neural-accent) / 0.2),
+      inset 0 1px 0 hsl(var(--neural-accent) / 0.1);
+  }
+
+  .consciousness-glass {
+    background: linear-gradient(135deg,
+      hsl(var(--consciousness-field)),
+      hsl(var(--quantum-foam)));
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 1px solid hsl(var(--consciousness-glow) / 0.3);
+    border-radius: 28px;
+    box-shadow: 
+      0 16px 64px hsl(var(--consciousness-glow) / 0.3),
+      inset 0 2px 0 hsl(var(--consciousness-glow) / 0.2);
+  }
+
+  /* AGOURAKIS SIGNATURE COMPONENTS */
+  .agourakis-header {
+    background: linear-gradient(135deg,
+      hsl(var(--agourakis-primary) / 0.1),
+      hsl(var(--agourakis-secondary) / 0.1));
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-bottom: 1px solid hsl(var(--agourakis-primary) / 0.2);
+    box-shadow: 0 4px 24px hsl(var(--agourakis-primary) / 0.1);
+  }
+
+  .agourakis-signature {
+    background: linear-gradient(135deg,
+      hsl(var(--agourakis-primary)),
+      hsl(var(--agourakis-accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* QUANTUM BUTTONS */
+  .quantum-button {
+    background: linear-gradient(135deg,
+      hsl(var(--quantum-primary)),
+      hsl(var(--neural-accent)));
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    box-shadow: 
+      0 4px 16px hsl(var(--quantum-primary) / 0.4),
+      0 2px 8px hsl(var(--neural-accent) / 0.3);
+    transition: all var(--quantum-duration) var(--neural-timing);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quantum-button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 12px 32px hsl(var(--quantum-primary) / 0.5),
+      0 6px 16px hsl(var(--neural-accent) / 0.4);
+  }
+
+  .quantum-button:active {
+    transform: translateY(-2px) scale(0.98);
+  }
+
+  .quantum-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      hsl(var(--consciousness-glow) / 0.3) 50%,
+      transparent 100%);
+    transition: left 0.6s ease;
+  }
+
+  .quantum-button:hover::before {
+    left: 100%;
+  }
+
+  /* NEURAL CARDS */
+  .neural-card {
+    @apply quantum-glass;
+    padding: 32px;
+    transition: all var(--quantum-duration) var(--consciousness-timing);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .neural-card:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: 
+      0 20px 60px hsl(var(--quantum-primary) / 0.2),
+      0 8px 24px hsl(var(--neural-accent) / 0.1);
+  }
+
+  .neural-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      hsl(var(--quantum-primary)),
+      hsl(var(--neural-accent)),
+      hsl(var(--consciousness-glow)));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .neural-card:hover::before {
+    opacity: 1;
+  }
+
+  /* CONSCIOUSNESS METRICS */
+  .consciousness-metric {
+    @apply consciousness-glass;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .consciousness-metric::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+      hsl(var(--consciousness-glow) / 0.1) 0%,
+      transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s var(--consciousness-timing);
+  }
+
+  .consciousness-metric:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* QUANTUM PROGRESS BARS */
+  .quantum-progress {
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 12px;
+    height: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .quantum-progress-bar {
+    background: linear-gradient(90deg,
+      hsl(var(--quantum-primary)),
+      hsl(var(--neural-accent)),
+      hsl(var(--consciousness-glow)));
+    height: 100%;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.8s var(--neural-timing);
+  }
+
+  .quantum-progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%);
+    animation: quantum-shimmer 2s infinite;
+  }
+
+  /* AGENT STATUS INDICATORS */
+  .agent-online {
+    background: linear-gradient(135deg, hsl(var(--biotech-success)), #10B981);
+    color: white;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 16px hsl(var(--biotech-success) / 0.3);
+    animation: agent-pulse 2s ease-in-out infinite;
+  }
+
+  .agent-processing {
+    background: linear-gradient(135deg, hsl(var(--quantum-primary)), #3B82F6);
+    color: white;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 16px hsl(var(--quantum-primary) / 0.3);
+    animation: agent-processing 1.5s ease-in-out infinite;
+  }
+
+  .agent-idle {
+    background: linear-gradient(135deg, hsl(var(--muted)), hsl(var(--muted-foreground)));
+    color: hsl(var(--muted-foreground));
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* RESEARCH TITLES */
+  .research-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg,
+      hsl(var(--quantum-primary)),
+      hsl(var(--neural-accent)),
+      hsl(var(--consciousness-glow)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .subtitle-elegant {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* FLOATING NAVIGATION */
+  .floating-nav {
+    @apply quantum-glass;
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    padding: 12px 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .nav-item {
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s var(--neural-timing);
+    cursor: pointer;
+  }
+
+  .nav-item:hover {
+    background: hsl(var(--quantum-primary) / 0.1);
+    color: hsl(var(--quantum-primary));
+  }
+
+  .nav-item.active {
+    background: linear-gradient(135deg,
+      hsl(var(--quantum-primary)),
+      hsl(var(--neural-accent)));
+    color: white;
+  }
+
+  /* QUANTUM ANIMATIONS */
+  @keyframes quantum-shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  @keyframes agent-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  @keyframes agent-processing {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes neural-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes consciousness-expand {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+
+  @keyframes quantum-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    .quantum-glass, .neural-glass, .consciousness-glass {
+      border-radius: 16px;
+      padding: 16px;
+    }
+    
+    .quantum-button {
+      padding: 12px 24px;
+      font-size: 14px;
+    }
+    
+    .floating-nav {
+      top: 16px;
+      padding: 8px 16px;
+    }
+  }
+
+  /* ACCESSIBILITY */
+  .quantum-focus:focus-visible {
+    outline: 2px solid hsl(var(--quantum-primary));
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  /* SELECTION STYLING */
+  ::selection {
+    background: hsl(var(--quantum-primary) / 0.2);
+    color: hsl(var(--quantum-primary));
+  }
+
+  /* PRINT STYLES */
+  @media print {
+    .quantum-glass, .neural-glass, .consciousness-glass {
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: none;
+    }
+  }
+}
+
+/* AUTHOR SIGNATURE - Dr. Demetrios Chiuratto Agourakis */
+.demetrios-signature {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-style: italic;
+  background: linear-gradient(135deg,
+    hsl(var(--agourakis-primary)),
+    hsl(var(--agourakis-accent)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.02em;
+}
+
+.agourakis-brand {
+  background: linear-gradient(135deg,
+    hsl(var(--agourakis-primary)),
+    hsl(var(--agourakis-secondary)),
+    hsl(var(--agourakis-accent)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}

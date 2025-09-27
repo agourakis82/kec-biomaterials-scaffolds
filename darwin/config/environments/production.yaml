@@ -1,0 +1,223 @@
+# 🌐 DARWIN Hybrid AI Configuration - Production Environment
+# Sistema Revolucionário de IA Híbrida com Toggles para Web Bursts
+
+# 🔧 Core Configuration
+app:
+  name: "darwin-revolutionary-ai"
+  version: "2.0.0"
+  environment: "production"
+  debug: false
+
+# ⚡ Performance Settings
+performance:
+  max_concurrent_requests: 100
+  request_timeout_seconds: 30
+  cache_ttl_minutes: 60
+  rate_limit_requests_per_minute: 1000
+
+# 🤖 Multi-AI Provider Configuration
+ai_providers:
+  # Local AI Providers (Primary)
+  local:
+    enabled: true
+    priority: 1
+    providers:
+    - name: "ollama"
+      base_url: "http://ollama:11434"
+      models: [ "llama3", "mistral", "codellama" ]
+      timeout_seconds: 60
+      fallback_enabled: true
+
+    - name: "autogen"
+      enabled: true
+      max_agents: 10
+      collaboration_timeout_seconds: 120
+      fallback_to_web: true
+
+  # Web AI Providers (Burst Mode - ~5% of traffic)
+  web:
+    enabled: true
+    priority: 2
+    burst_percentage: 5 # Only 5% of requests use web providers
+    providers:
+    - name: "openai"
+      api_key: "${OPENAI_API_KEY}"
+      models: [ "gpt-4-turbo", "gpt-4", "gpt-3.5-turbo" ]
+      max_tokens: 4096
+      timeout_seconds: 30
+      cost_per_1k_tokens: 0.03
+
+    - name: "vertex_ai"
+      project_id: "${GCP_PROJECT_ID}"
+      location: "us-central1"
+      models: [ "gemini-pro", "text-bison", "chat-bison" ]
+      timeout_seconds: 30
+      fallback_enabled: true
+
+    - name: "anthropic"
+      api_key: "${ANTHROPIC_API_KEY}"
+      models: [ "claude-3-opus", "claude-3-sonnet", "claude-3-haiku" ]
+      max_tokens: 4096
+      timeout_seconds: 30
+
+# 🎯 AI Routing & Fallback Strategy
+ai_routing:
+  strategy: "hybrid_weighted"
+  default_provider: "local"
+  fallback_strategy: "cascade"
+  fallback_order: [ "local", "openai", "vertex_ai", "anthropic" ]
+
+  # Quality thresholds for fallback
+  min_confidence_threshold: 0.7
+  max_response_time_ms: 5000
+  retry_attempts: 2
+  retry_delay_ms: 1000
+
+# ⚛️ JAX Acceleration Configuration
+jax:
+  enabled: true
+  gpu_acceleration: true
+  auto_detect_gpu: true
+  fallback_to_cpu: true
+
+  performance:
+    batch_size: 32
+    jit_compilation: true
+    memory_limit_mb: 4096
+    precision: "mixed" # mixed, float32, float16
+
+  monitoring:
+    enable_metrics: true
+    metrics_port: 9090
+    health_check_interval_seconds: 30
+
+# 🤝 AutoGen Multi-Agent Configuration
+autogen:
+  enabled: true
+  max_concurrent_sessions: 5
+  session_timeout_minutes: 30
+
+  agents:
+  - name: "dr_biomaterials"
+    specialization: "biomaterials"
+    model_provider: "local"
+    fallback_provider: "openai"
+    temperature: 0.7
+
+  - name: "dr_mathematics"
+    specialization: "mathematics"
+    model_provider: "local"
+    fallback_provider: "openai"
+    temperature: 0.6
+
+  - name: "dr_philosophy"
+    specialization: "philosophy"
+    model_provider: "local"
+    fallback_provider: "anthropic"
+    temperature: 0.8
+
+# 💰 Cost Control & Budgeting
+cost_management:
+  monthly_budget_usd: 100
+  alert_threshold_percent: 80
+  cost_tracking_enabled: true
+
+  provider_quotas:
+    openai:
+      monthly_limit_usd: 50
+      requests_per_day: 1000
+
+    vertex_ai:
+      monthly_limit_usd: 30
+      requests_per_day: 500
+
+    anthropic:
+      monthly_limit_usd: 20
+      requests_per_day: 300
+
+# 📊 Monitoring & Analytics
+monitoring:
+  enabled: true
+  prometheus_port: 9090
+  health_check_endpoint: "/healthz"
+  metrics_endpoint: "/metrics"
+
+  alerts:
+  - type: "high_cost"
+    threshold_usd: 80
+    channels: [ "email", "slack" ]
+
+  - type: "performance_degradation"
+    threshold_ms: 1000
+    channels: [ "slack", "pagerduty" ]
+
+# 🔒 Security & Compliance
+security:
+  encryption_enabled: true
+  data_retention_days: 30
+  audit_logging: true
+
+  compliance:
+    gdpr: true
+    hipaa: false
+    soc2: true
+
+# 🌐 Cloudflare Tunnel Configuration
+cloudflare:
+  tunnel_enabled: true
+  tunnel_name: "darwin"
+  metrics_enabled: true
+
+  endpoints:
+  - name: "api"
+    hostname: "api-local.agourakis.med.br"
+    service: "http://api:8080"
+
+  - name: "web"
+    hostname: "darwin-local.agourakis.med.br"
+    service: "http://web:3000"
+
+  - name: "agents"
+    hostname: "agents-local.agourakis.med.br"
+    service: "http://api:8080"
+
+  - name: "jax-health"
+    hostname: "jax-health.agourakis.med.br"
+    service: "http://api:8080/research-team/health/jax"
+
+  - name: "autogen-health"
+    hostname: "autogen-health.agourakis.med.br"
+    service: "http://api:8080/research-team/health/autogen"
+
+# 🚀 Feature Flags
+feature_flags:
+  # AI Features
+  enable_jax_acceleration: true
+  enable_autogen_collaboration: true
+  enable_web_ai_bursts: true
+  enable_local_ai_fallback: true
+
+  # Performance Features
+  enable_gpu_acceleration: true
+  enable_batch_processing: true
+  enable_caching: true
+
+  # Monitoring Features
+  enable_cost_tracking: true
+  enable_performance_metrics: true
+  enable_health_checks: true
+
+# 📈 Performance Targets
+performance_targets:
+  response_time_ms: 500
+  throughput_requests_per_second: 100
+  success_rate_percent: 99.9
+  availability_percent: 99.95
+
+# 🔄 Circuit Breaker Configuration
+circuit_breaker:
+  enabled: true
+  failure_threshold: 5
+  success_threshold: 2
+  timeout_seconds: 30
+  reset_timeout_seconds: 60

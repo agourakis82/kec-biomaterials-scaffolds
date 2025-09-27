@@ -1,0 +1,51 @@
+# DARWIN BACKEND COMPLETO - Cloud Build
+timeout: 2400s
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 200
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+# Build da versão COMPLETA do backend Darwin
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-darwin-complete'
+  args:
+  - 'build'
+  - '--file=Dockerfile.darwin-complete'
+  - '--tag=gcr.io/pcs-helio/darwin-backend:complete'
+  - '--tag=gcr.io/pcs-helio/darwin-backend:latest'
+  - '--build-arg=DARWIN_ENV=production'
+  - '.'
+
+# Push da versão completa
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-darwin-complete'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-backend:complete'
+  waitFor: [ 'build-darwin-complete' ]
+
+# Push latest
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-darwin-latest'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-backend:latest'
+  waitFor: [ 'build-darwin-complete' ]
+
+# Verify image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'verify-darwin-complete'
+  args:
+  - 'run'
+  - '--rm'
+  - '--entrypoint=python'
+  - 'gcr.io/pcs-helio/darwin-backend:complete'
+  - '-c'
+  - 'import main; print("DARWIN COMPLETE backend OK")'
+  waitFor: [ 'push-darwin-complete' ]
+
+images:
+- 'gcr.io/pcs-helio/darwin-backend:complete'
+- 'gcr.io/pcs-helio/darwin-backend:latest'

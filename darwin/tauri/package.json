@@ -1,0 +1,28 @@
+{
+  "name": "darwin-desktop",
+  "version": "1.0.0",
+  "description": "DARWIN Desktop Application - Meta-Research Brain",
+  "main": "node_modules/@tauri-apps/api/dist/index.js",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "export": "next export",
+    "start": "next start",
+    "tauri": "tauri",
+    "tauri:build": "tauri build",
+    "tauri:dev": "tauri dev"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.0",
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
+  }
+}

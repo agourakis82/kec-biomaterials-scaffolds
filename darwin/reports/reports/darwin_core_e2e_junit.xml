@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="9" time="4.018" timestamp="2025-09-20T23:42:56.662935-03:00" hostname="DemetriosPCS"><testcase classname="tests.e2e_darwin_core.test_rag_plus_e2e" name="test_ragplus_initialize_and_embedding_fallback" time="3.258" /><testcase classname="tests.e2e_darwin_core.test_rag_plus_e2e" name="test_ragplus_add_and_query_without_bigquery" time="0.002" /><testcase classname="tests.e2e_darwin_core.test_rag_plus_e2e" name="test_ragplus_answer_question_structure" time="0.001" /><testcase classname="tests.e2e_darwin_core.test_rag_plus_e2e" name="test_ragplus_status_basic" time="0.001" /><testcase classname="tests.test_darwin_core_e2e" name="test_core_ragplus_embedding_perf_and_dims" time="0.001" /><testcase classname="tests.test_darwin_core_e2e" name="test_core_iterative_search_integration_with_rag_engine" time="0.001" /><testcase classname="tests.test_darwin_core_e2e" name="test_core_puct_basic_search_and_stats" time="0.004" /><testcase classname="tests.test_darwin_core_e2e" name="test_core_memory_integrated_system_context" time="0.225" /><testcase classname="tests.test_darwin_core_e2e" name="test_api_smoke_healthz_and_rag_plus_endpoints" time="0.070"><failure message="AssertionError: assert 'healthy' == 'ok'&#10;  &#10;  - ok&#10;  + healthy">def test_api_smoke_healthz_and_rag_plus_endpoints():
+        app = create_app()
+        client = TestClient(app)
+    
+        # Health
+        r = client.get("/healthz")
+        assert r.status_code == 200
+        j = r.json()
+&gt;       assert j.get("status") == "ok"
+E       AssertionError: assert 'healthy' == 'ok'
+E         
+E         - ok
+E         + healthy
+
+tests/test_darwin_core_e2e.py:97: AssertionError</failure></testcase></testsuite></testsuites>

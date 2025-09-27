@@ -1,0 +1,28 @@
+# DARWIN Hybrid AI toggles (local-first + web bursts)
+# Loaded by CONFIG_FILE=/app/config/production.yaml in the API container
+
+hybrid_ai:
+  local_first: true
+  allow_web_bursts: true
+  default_provider: openai
+  timeouts:
+    request_timeout: 30 # seconds
+  retries:
+    max_attempts: 2
+  routing:
+    # Relative weights for provider routing when web bursts are allowed
+    weights:
+      openai: 60
+      vertex_ai: 30
+      anthropic: 10
+      local_ollama: 100 # used preferentially when local_first=true
+
+# Optional feature flags (merged into settings.features_enabled)
+features:
+  multi_ai_hub: true
+  knowledge_graph: true
+  cross_domain_discovery: true
+  mcp_server: true
+  real_time_processing: true
+  advanced_analytics: true
+  experimental_features: false

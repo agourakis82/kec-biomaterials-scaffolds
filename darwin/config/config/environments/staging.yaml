@@ -1,0 +1,506 @@
+# =============================================================================
+# DARWIN Staging Environment Configuration
+# Configuração para ambiente de homologação
+# =============================================================================
+
+metadata:
+  name: "staging"
+  description: "DARWIN Staging Environment - Testing & Validation"
+  version: "1.0.0"
+  last_updated: "2025-09-22"
+
+# =============================================================================
+# Core Configuration
+# =============================================================================
+
+project:
+  id: "PROJECT_ID_PLACEHOLDER" # Will be replaced during deployment
+  name: "darwin"
+  environment: "staging"
+  region: "us-central1"
+  zone: "us-central1-a"
+
+domains:
+  api: "api-staging.agourakis.med.br"
+  frontend: "darwin-staging.agourakis.med.br"
+  cdn: "cdn-staging.agourakis.med.br"
+
+# =============================================================================
+# Infrastructure Configuration
+# =============================================================================
+
+infrastructure:
+  # Networking
+  networking:
+    vpc_name: "darwin-staging-vpc"
+    subnet_cidr: "10.1.0.0/24"
+    enable_private_google_access: true
+    enable_flow_logs: true
+    flow_logs_sampling: 0.3 # Lower sampling for cost optimization
+
+    # Secondary IP ranges
+    services_secondary_cidr: "192.168.32.0/20"
+    pods_secondary_cidr: "192.168.48.0/20"
+
+    # VPC Connector
+    vpc_connector_cidr: "10.9.0.0/28"
+    vpc_connector_min_throughput: 200
+    vpc_connector_max_throughput: 600 # Lower than production
+
+    # SSL Configuration
+    ssl_policy: "MODERN"
+    enable_https_redirect: true
+
+  # Database Configuration (Cost-Optimized)
+  database:
+    tier: "db-f1-micro" # Small instance for staging
+    disk_size: 20 # GB
+    disk_max_size: 100 # GB
+    disk_type: "PD_SSD"
+    availability_type: "ZONAL" # Single zone for cost savings
+    deletion_protection: false # Allow deletion in staging
+
+    # Backup Configuration
+    backup:
+      enabled: true
+      start_time: "04:00"
+      retention_days: 7 # Shorter retention
+      point_in_time_recovery: true
+      transaction_log_retention_days: 3
+
+    # Performance Tuning (Scaled down)
+    flags:
+      max_connections: "50"
+      shared_buffers: "128MB"
+      effective_cache_size: "512MB"
+      maintenance_work_mem: "64MB"
+      checkpoint_completion_target: "0.9"
+      wal_buffers: "16MB"
+      default_statistics_target: "100"
+      random_page_cost: "1.1"
+      effective_io_concurrency: "100"
+      shared_preload_libraries: "vector,pg_stat_statements"
+
+    # Security
+    require_ssl: true
+    authorized_networks: [] # Private only
+
+  # Redis Configuration
+  redis:
+    memory_size_gb: 1 # Minimum size
+    version: "REDIS_6_X"
+    auth_enabled: true
+    transit_encryption_mode: "SERVER_CLIENT"
+    connect_mode: "PRIVATE_SERVICE_ACCESS"
+
+    # Configuration
+    configs:
+      maxmemory-policy: "allkeys-lru"
+      notify-keyspace-events: "Ex"
+      timeout: "300"
+      tcp-keepalive: "60"
+
+# =============================================================================
+# Application Configuration
+# =============================================================================
+
+backend:
+  # Cloud Run Configuration
+  cloud_run:
+    min_instances: 0 # Scale to zero when not used
+    max_instances: 5 # Lower scale limit
+    cpu: "1000m" # 1 vCPU
+    memory: "2Gi" # 2GB RAM
+    timeout: 300
+    concurrency: 50 # Lower concurrency
+    execution_environment: "gen2"
+    cpu_boost: false # Disable for cost savings
+
+    # Network
+    vpc_egress: "private-ranges-only"
+    ingress: "all"
+
+  # Application Settings
+  application:
+    log_level: "DEBUG" # More verbose for testing
+    max_workers: 2
+    worker_timeout: 30
+    connection_pool_size: 10
+    redis_connection_pool_size: 5
+
+    # Feature Flags
+    features:
+      vector_search: true
+      full_text_search: true
+      caching: true
+      async_processing: true
+      file_uploads: true
+      gpu_support: false
+
+    # Performance
+    performance:
+      enable_jax_gpu: false
+      jax_platform_name: "cpu"
+      request_timeout: 180 # Shorter timeout
+      batch_size: 16 # Smaller batch size
+      cache_ttl: 1800 # Shorter cache TTL
+
+frontend:
+  # Cloud Run Configuration
+  cloud_run:
+    min_instances: 0 # Scale to zero
+    max_instances: 3 # Lower scale limit
+    cpu: "500m" # 0.5 vCPU
+    memory: "1Gi" # 1GB RAM
+    timeout: 60
+    concurrency: 40
+    execution_environment: "gen2"
+    cpu_boost: false
+
+  # Next.js Configuration
+  nextjs:
+    node_env: "production"
+    build_command: "npm run build"
+    start_command: "npm start"
+    node_version: "18"
+
+    # Performance (Less optimization for faster builds)
+    optimize: true
+    minify: true
+    compress: false # Disable compression for faster builds
+
+    # Features
+    features:
+      pwa: true
+      offline_support: false # Disable for simpler testing
+      real_time: true
+      analytics: false
+      service_worker: false # Disable for simpler debugging
+
+    # CDN Configuration
+    cdn:
+      enabled: true
+      default_ttl: 1800 # 30 minutes
+      max_ttl: 3600 # 1 hour
+      static_assets_ttl: 86400 # 24 hours
+      html_ttl: 0
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+
+storage:
+  location: "US"
+  storage_class: "STANDARD"
+
+  buckets:
+    uploads:
+      versioning: false # Disable versioning for cost savings
+      lifecycle_days: 30
+      cors_enabled: true
+      public_read: false
+
+    documents:
+      versioning: false
+      lifecycle_days: 60
+      cors_enabled: false
+      public_read: false
+
+    models:
+      versioning: false
+      lifecycle_days: 90
+      cors_enabled: false
+      public_read: false
+
+    backups:
+      versioning: false
+      lifecycle_days: 30
+      cors_enabled: false
+      public_read: false
+
+    cdn_assets:
+      versioning: false
+      lifecycle_days: 7 # Short retention
+      cors_enabled: true
+      public_read: true
+
+    static_assets:
+      versioning: false
+      lifecycle_days: 7
+      cors_enabled: true
+      public_read: true
+
+# =============================================================================
+# Monitoring Configuration
+# =============================================================================
+
+monitoring:
+  # Alert Thresholds (More relaxed)
+  thresholds:
+    error_rate_percent: 10 # Higher tolerance
+    latency_ms: 10000 # 10 seconds
+    cpu_percent: 85
+    memory_percent: 90
+    database_connections: 40 # 80% of max_connections
+    redis_memory_percent: 90
+
+  # SLO Targets (Less strict)
+  slo:
+    api_availability: 0.99 # 99%
+    api_latency_ms: 5000 # 5 seconds
+    rolling_period_days: 7 # Shorter period
+
+  # Uptime Checks
+  uptime_checks:
+    timeout: "15s" # Longer timeout
+    period: "600s" # 10 minutes
+    regions:
+    - "USA_OREGON"
+    - "USA_VIRGINIA"
+
+  # Notification Channels
+  notifications:
+    email_addresses: []
+    slack_webhook: ""
+    pagerduty_key: ""
+
+  # Dashboard Configuration
+  dashboard:
+    auto_refresh: "5m"
+    time_range: "1h"
+
+  # Log Configuration
+  logging:
+    retention_days: 7 # Shorter retention
+    log_level: "DEBUG"
+    enable_debug: true
+
+  # Budget Configuration
+  budget:
+    amount_usd: 200 # Lower budget
+    thresholds: [ 0.6, 0.8, 1.0, 1.2 ]
+
+# =============================================================================
+# Security Configuration
+# =============================================================================
+
+security:
+  # SSL/TLS
+  ssl:
+    min_tls_version: "1.2"
+    cipher_suites: "MODERN"
+    hsts_enabled: true
+    hsts_max_age: 86400 # 24 hours
+
+  # Firewall (More permissive for testing)
+  firewall:
+    allowed_cidrs:
+    - "0.0.0.0/0" # Open for testing
+    ssh_allowed_cidrs:
+    - "0.0.0.0/0" # More permissive for debugging
+
+  # IAM (Same as production)
+  iam:
+    service_accounts:
+      backend:
+        roles:
+        - "roles/cloudsql.client"
+        - "roles/redis.editor"
+        - "roles/storage.objectAdmin"
+        - "roles/secretmanager.secretAccessor"
+        - "roles/logging.logWriter"
+        - "roles/monitoring.metricWriter"
+
+      frontend:
+        roles:
+        - "roles/storage.objectViewer"
+        - "roles/logging.logWriter"
+        - "roles/monitoring.metricWriter"
+
+  # Secrets Management
+  secrets:
+    rotation_policy: "30d" # More frequent rotation for testing
+    encryption: "google_managed"
+
+# =============================================================================
+# Performance Configuration
+# =============================================================================
+
+performance:
+  # Auto-scaling
+  auto_scaling:
+    enabled: true
+    target_cpu_utilization: 80 # Higher threshold
+    target_memory_utilization: 85
+    scale_up_delay: "120s" # Slower scaling
+    scale_down_delay: "180s"
+
+  # Connection Pooling
+  connection_pooling:
+    database:
+      enabled: true
+      min_connections: 2
+      max_connections: 10
+      max_idle_time: "180s"
+
+    redis:
+      enabled: true
+      min_connections: 1
+      max_connections: 5
+      max_idle_time: "180s"
+
+  # Caching Strategy
+  caching:
+    enabled: true
+    default_ttl: 1800 # 30 minutes
+    max_memory_usage: "70%"
+    eviction_policy: "allkeys-lru"
+
+# =============================================================================
+# Testing Configuration
+# =============================================================================
+
+testing:
+  # Test Data
+  test_data:
+    auto_generate: true
+    cleanup_after_tests: true
+    isolation_level: "read_committed"
+
+  # Load Testing
+  load_testing:
+    max_concurrent_users: 50
+    test_duration_minutes: 10
+    ramp_up_time_seconds: 60
+
+  # Integration Testing
+  integration_testing:
+    timeout_seconds: 300
+    retry_attempts: 3
+    parallel_execution: true
+
+# =============================================================================
+# Development Features
+# =============================================================================
+
+development:
+  # Debugging
+  debugging:
+    enable_debug_mode: true
+    enable_profiling: true
+    enable_tracing: true
+    verbose_logging: true
+
+  # Hot Reload
+  hot_reload:
+    enabled: false # Not applicable for Cloud Run
+    watch_directories: []
+
+  # API Documentation
+  api_docs:
+    enable_swagger_ui: true
+    enable_redoc: true
+    include_examples: true
+
+# =============================================================================
+# Compliance and Governance
+# =============================================================================
+
+compliance:
+  # Data Protection (Relaxed for testing)
+  data_protection:
+    encryption_at_rest: true
+    encryption_in_transit: true
+    data_retention_days: 90 # Shorter retention
+    pii_handling: "standard"
+
+  # Audit
+  audit:
+    enable_audit_logs: true
+    log_admin_read: false # Disable for cost savings
+    log_data_read: false
+    log_data_write: true
+
+  # Backup and Recovery
+  backup:
+    automated_backups: true
+    cross_region_backup: false # Single region for cost savings
+    disaster_recovery: false
+    rto_hours: 24 # Less strict RTO
+    rpo_hours: 12 # Less strict RPO
+
+# =============================================================================
+# Cost Optimization
+# =============================================================================
+
+cost_optimization:
+  # Resource Management
+  resource_management:
+    auto_shutdown_idle: true
+    idle_timeout_minutes: 15 # Aggressive shutdown
+    preemptible_instances: true # Use preemptible for cost savings
+
+  # Storage Optimization
+  storage_optimization:
+    intelligent_tiering: true
+    lifecycle_management: true
+    compression: true
+    deduplication: false # Disable for simpler management
+
+  # Budget Controls
+  budget_controls:
+    monthly_limit_usd: 200
+    alert_thresholds: [ 50, 75, 90, 100 ]
+    auto_shutdown_at_limit: true # Aggressive cost control
+    cost_allocation_tags: true
+
+# =============================================================================
+# Maintenance Windows
+# =============================================================================
+
+maintenance:
+  # Database
+  database_maintenance:
+    day: "saturday" # Different from production
+    hour: 6
+    duration_hours: 2
+    update_track: "canary" # Use canary for earlier updates
+
+  # Redis
+  redis_maintenance:
+    day: "saturday"
+    hour: 5
+    duration_hours: 1
+
+  # Application Updates
+  application_updates:
+    preferred_time: "06:00-08:00 UTC"
+    preferred_day: "saturday"
+    rollback_window_hours: 1
+
+# =============================================================================
+# Integration Configuration
+# =============================================================================
+
+integrations:
+  # Third-party Services (Limited for staging)
+  external_services:
+    enable_analytics: false
+    enable_error_tracking: true
+    enable_apm: false # Disable for cost savings
+
+  # API Integrations
+  apis:
+    rate_limiting:
+      requests_per_minute: 500 # Lower limit
+      burst_limit: 50
+
+    authentication:
+      jwt_expiry: "12h" # Shorter expiry for testing
+      refresh_token_expiry: "3d"
+
+  # Webhook Configuration
+  webhooks:
+    timeout: "15s"
+    retry_attempts: 2
+    retry_delay: "3s"

@@ -1,0 +1,96 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    volumes:
+      - ollama_data:/root/.ollama
+    command: serve
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./backend/kec_unified_api
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8080"
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=local
+      - PORT=8080
+      - JAX_PLATFORM=cpu
+      - REDIS_URL=redis://redis:6379/0
+      - OLLAMA_URL=http://ollama:11434
+      - CORS_ENABLED=true
+      - CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,https://darwin-local.agourakis.med.br,https://api-local.agourakis.med.br
+      - BASE_EXTERNAL_URL=http://localhost:8090
+    depends_on:
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./frontend/ui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=https://api-local.agourakis.med.br
+    depends_on:
+      - api
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:3000/api/health || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  ollama_data:

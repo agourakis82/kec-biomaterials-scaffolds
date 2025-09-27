@@ -1,0 +1,264 @@
+# VERTEX AI CONFIGURATION - DARWIN Production Setup
+# Configuration for Google Cloud Platform Vertex AI integration
+
+# ==================== GCP PROJECT CONFIGURATION ====================
+project:
+  id: "darwin-biomaterials-scaffolds"
+  number: "123456789012" # To be replaced with actual project number
+  location: "us-central1"
+  region: "us-central1"
+
+# ==================== SERVICE ACCOUNT CONFIGURATION ====================
+service_accounts:
+  # Main Vertex AI service account for production
+  vertex_ai_main:
+    name: "vertex-ai-darwin-main"
+    email: "vertex-ai-darwin-main@darwin-biomaterials-scaffolds.iam.gserviceaccount.com"
+    key_path: "/secrets/vertex-ai-main-key.json"
+    roles:
+    - "roles/aiplatform.user"
+    - "roles/aiplatform.admin"
+    - "roles/ml.admin"
+    - "roles/storage.admin"
+    - "roles/bigquery.dataEditor"
+    - "roles/secretmanager.secretAccessor"
+
+  # Service account for custom model training
+  model_training:
+    name: "darwin-model-training"
+    email: "darwin-model-training@darwin-biomaterials-scaffolds.iam.gserviceaccount.com"
+    key_path: "/secrets/model-training-key.json"
+    roles:
+    - "roles/aiplatform.customCodeServiceAgent"
+    - "roles/storage.objectAdmin"
+    - "roles/ml.developer"
+
+  # Service account for data pipeline
+  data_pipeline:
+    name: "darwin-data-pipeline"
+    email: "darwin-data-pipeline@darwin-biomaterials-scaffolds.iam.gserviceaccount.com"
+    key_path: "/secrets/data-pipeline-key.json"
+    roles:
+    - "roles/bigquery.dataEditor"
+    - "roles/bigquery.jobUser"
+    - "roles/storage.objectAdmin"
+
+# ==================== VERTEX AI MODELS CONFIGURATION ====================
+models:
+  # Base Models
+  base_models:
+    gemini_1_5_pro:
+      model_name: "gemini-1.5-pro"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/publishers/google/models/gemini-1.5-pro"
+      available: true
+      capabilities: [ "text_generation", "reasoning", "coding" ]
+
+    gemini_1_5_flash:
+      model_name: "gemini-1.5-flash"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/publishers/google/models/gemini-1.5-flash"
+      available: true
+      capabilities: [ "text_generation", "fast_inference" ]
+
+    text_bison:
+      model_name: "text-bison@002"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/publishers/google/models/text-bison@002"
+      available: true
+      capabilities: [ "text_generation", "completion" ]
+
+  # Medical Models (Restricted Access)
+  medical_models:
+    med_gemini_1_5_pro:
+      model_name: "med-gemini-1.5-pro"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/publishers/google/models/med-gemini-1.5-pro"
+      available: false # Requires special access approval
+      access_required: true
+      capabilities: [ "medical_qa", "clinical_reasoning", "diagnosis_support" ]
+
+    med_gemini_multimodal:
+      model_name: "med-gemini-multimodal"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/publishers/google/models/med-gemini-multimodal"
+      available: false
+      access_required: true
+      capabilities: [ "medical_imaging", "multimodal_analysis" ]
+
+  # Custom DARWIN Models
+  custom_models:
+    darwin_biomaterials_expert:
+      model_name: "darwin-biomaterials-expert"
+      base_model: "gemini-1.5-pro"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/endpoints/darwin-biomaterials-expert-endpoint"
+      deployment_status: "not_deployed"
+      training_data_gcs: "gs://darwin-training-data/biomaterials/"
+      specialization: "scaffold_analysis"
+      capabilities: [ "kec_metrics", "biocompatibility", "tissue_engineering" ]
+
+    darwin_medical_gemini:
+      model_name: "darwin-medical-gemini"
+      base_model: "med-gemini-1.5-pro"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/endpoints/darwin-medical-gemini-endpoint"
+      deployment_status: "not_deployed"
+      training_data_gcs: "gs://darwin-training-data/medical/"
+      specialization: "clinical_diagnosis"
+      capabilities: [ "differential_diagnosis", "treatment_planning", "precision_medicine" ]
+
+    darwin_pharmaco_ai:
+      model_name: "darwin-pharmaco-ai"
+      base_model: "gemini-1.5-pro"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/endpoints/darwin-pharmaco-ai-endpoint"
+      deployment_status: "not_deployed"
+      training_data_gcs: "gs://darwin-training-data/pharmacology/"
+      specialization: "precision_pharmacology"
+      capabilities: [ "pharmacogenomics", "drug_interactions", "personalized_dosing" ]
+
+    darwin_quantum_ai:
+      model_name: "darwin-quantum-ai"
+      base_model: "gemini-1.5-pro"
+      endpoint: "projects/darwin-biomaterials-scaffolds/locations/us-central1/endpoints/darwin-quantum-ai-endpoint"
+      deployment_status: "not_deployed"
+      training_data_gcs: "gs://darwin-training-data/quantum/"
+      specialization: "quantum_mechanics"
+      capabilities: [ "quantum_biology", "quantum_materials", "quantum_pharmacology" ]
+
+# ==================== TRAINING CONFIGURATION ====================
+training:
+  # Training job configuration
+  default_settings:
+    machine_type: "n1-standard-4"
+    accelerator_type: "NVIDIA_TESLA_V100"
+    accelerator_count: 1
+    disk_type: "pd-ssd"
+    disk_size_gb: 100
+
+  # Training data requirements
+  data_requirements:
+    min_examples: 1000
+    max_examples: 100000
+    validation_split: 0.2
+    test_split: 0.1
+
+  # Model parameters
+  hyperparameters:
+    learning_rate: 1e-5
+    batch_size: 32
+    epochs: 10
+    temperature: 0.7
+    max_tokens: 2048
+
+# ==================== STORAGE CONFIGURATION ====================
+storage:
+  # Google Cloud Storage buckets
+  buckets:
+    training_data: "gs://darwin-training-data"
+    model_artifacts: "gs://darwin-model-artifacts"
+    experiment_logs: "gs://darwin-experiment-logs"
+    backup_data: "gs://darwin-backup-data"
+
+  # Data organization
+  data_structure:
+    biomaterials:
+      path: "gs://darwin-training-data/biomaterials/"
+      formats: [ "jsonl", "csv", "parquet" ]
+
+    medical:
+      path: "gs://darwin-training-data/medical/"
+      formats: [ "jsonl", "csv" ]
+
+    pharmacology:
+      path: "gs://darwin-training-data/pharmacology/"
+      formats: [ "jsonl", "csv" ]
+
+    quantum:
+      path: "gs://darwin-training-data/quantum/"
+      formats: [ "jsonl", "csv" ]
+
+# ==================== API CONFIGURATION ====================
+apis:
+  required_apis:
+  - "aiplatform.googleapis.com"
+  - "ml.googleapis.com"
+  - "storage.googleapis.com"
+  - "bigquery.googleapis.com"
+  - "secretmanager.googleapis.com"
+  - "cloudbuild.googleapis.com"
+  - "run.googleapis.com"
+
+  quotas:
+    vertex_ai_prediction_requests: 10000
+    vertex_ai_training_hours: 1000
+    storage_requests: 100000
+    bigquery_slots: 100
+
+# ==================== ENVIRONMENT VARIABLES ====================
+environment_variables:
+  # Production environment
+  production:
+    GOOGLE_APPLICATION_CREDENTIALS: "/secrets/vertex-ai-main-key.json"
+    GCP_PROJECT_ID: "darwin-biomaterials-scaffolds"
+    GCP_LOCATION: "us-central1"
+    VERTEX_AI_ENDPOINT_BASE: "https://us-central1-aiplatform.googleapis.com"
+
+  # Development environment  
+  development:
+    GOOGLE_APPLICATION_CREDENTIALS: "/secrets/dev-key.json"
+    GCP_PROJECT_ID: "darwin-biomaterials-scaffolds-dev"
+    GCP_LOCATION: "us-central1"
+    VERTEX_AI_ENDPOINT_BASE: "https://us-central1-aiplatform.googleapis.com"
+
+# ==================== MONITORING CONFIGURATION ====================
+monitoring:
+  # Cloud Monitoring metrics
+  metrics:
+  - "aiplatform.googleapis.com/prediction/prediction_count"
+  - "aiplatform.googleapis.com/prediction/error_count"
+  - "aiplatform.googleapis.com/prediction/latencies"
+  - "aiplatform.googleapis.com/training/training_time"
+
+  # Alerting thresholds
+  alerts:
+    error_rate_threshold: 0.05 # 5%
+    latency_threshold_ms: 5000 # 5 seconds
+    quota_usage_threshold: 0.8 # 80%
+
+  # Logging
+  logging:
+    level: "INFO"
+    structured: true
+    export_to_bigquery: true
+
+# ==================== SECURITY CONFIGURATION ====================
+security:
+  # Network security
+  network:
+    vpc_connector: "darwin-vpc-connector"
+    private_google_access: true
+
+  # IAM policies
+  iam_policies:
+    principle_of_least_privilege: true
+    regular_key_rotation: true
+    audit_logging: true
+
+  # Data encryption
+  encryption:
+    at_rest: "GOOGLE_DEFAULT_ENCRYPTION"
+    in_transit: "TLS_1_2"
+    customer_managed_keys: false
+
+# ==================== COST OPTIMIZATION ====================
+cost_optimization:
+  # Auto-scaling settings
+  auto_scaling:
+    min_replicas: 1
+    max_replicas: 10
+    target_cpu_utilization: 70
+
+  # Cost monitoring
+  budget:
+    monthly_limit_usd: 1000
+    alert_thresholds: [ 0.5, 0.8, 0.9 ]
+
+  # Resource optimization
+  optimization:
+    preemptible_instances: true
+    spot_instances: true
+    automatic_shutdown: true

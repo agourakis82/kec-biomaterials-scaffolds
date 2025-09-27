@@ -1,0 +1,22 @@
+{
+  "appId": "com.darwin.mobile",
+  "appName": "DARWIN Mobile",
+  "webDir": "out",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "http://localhost:3000",
+    "cleartext": true
+  },
+  "ios": {
+    "scheme": "DARWIN"
+  },
+  "android": {
+    "scheme": "darwin"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000,
+      "backgroundColor": "#0ea5e9"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+# =============================================================================
+# DARWIN Backend Production - Build Simples
+# =============================================================================
+
+timeout: 2400s
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 200
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+# Build da imagem do backend
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-backend'
+  args:
+  - 'build'
+  - '--file=./Dockerfile.production'
+  - '--tag=gcr.io/pcs-helio/darwin-backend:latest'
+  - '--tag=gcr.io/pcs-helio/darwin-backend:production'
+  - '--build-arg=ENVIRONMENT=production'
+  - '.'
+
+# Push das imagens
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-backend'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-backend:latest'
+  waitFor: [ 'build-backend' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-backend-prod'
+  args:
+  - 'push'
+  - 'gcr.io/pcs-helio/darwin-backend:production'
+  waitFor: [ 'build-backend' ]
+
+# Verify image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'verify-backend'
+  args:
+  - 'run'
+  - '--rm'
+  - '--entrypoint=python'
+  - 'gcr.io/pcs-helio/darwin-backend:latest'
+  - '-c'
+  - 'import sys; print(f"Python {sys.version}")'
+  waitFor: [ 'push-backend' ]
+
+images:
+- 'gcr.io/pcs-helio/darwin-backend:latest'
+- 'gcr.io/pcs-helio/darwin-backend:production'

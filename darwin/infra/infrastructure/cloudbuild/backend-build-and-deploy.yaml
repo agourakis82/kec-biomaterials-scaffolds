@@ -1,0 +1,53 @@
+# Simple Cloud Build configuration for building and deploying the backend
+
+timeout: 1800s
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+
+substitutions:
+  _REGION: 'us-central1'
+  _SERVICE_NAME: 'darwin-production-backend'
+  _IMAGE_NAME: 'gcr.io/pcs-helio/darwin-backend'
+
+steps:
+# 1. Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Build'
+  args:
+    - 'build'
+    - '-t'
+    - '${_IMAGE_NAME}:${SHORT_SHA}'
+    - '-f'
+    - 'Dockerfile.production'
+    - '.'
+  dir: 'src/kec_unified_api/app'
+
+# 2. Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Push'
+  args: ['push', '${_IMAGE_NAME}:${SHORT_SHA}']
+
+# 3. Deploy container image to Cloud Run
+- name: 'gcr.io/google-appengine/exec-wrapper'
+  id: 'Deploy'
+  args:
+    - '-i'
+    - '${_IMAGE_NAME}:${SHORT_SHA}'
+    - '-s'
+    - '${_SERVICE_NAME}'
+    - '--'
+    - 'gcloud'
+    - 'run'
+    - 'deploy'
+    - '${_SERVICE_NAME}'
+    - '--image'
+    - '${_IMAGE_NAME}:${SHORT_SHA}'
+    - '--region'
+    - '${_REGION}'
+    - '--platform'
+    - 'managed'
+    - '--allow-unauthenticated'
+
+images:
+- '${_IMAGE_NAME}:${SHORT_SHA}'

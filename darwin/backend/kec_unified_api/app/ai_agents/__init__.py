@@ -17,24 +17,26 @@ Tecnologia: AutoGen Framework + Multi-AI Hub Integration
 
 from typing import Optional, Dict, Any, List, Union
 import logging
+# import sys # Remover import sys
 
 from ..core.logging import get_logger
 
 logger = get_logger("darwin.ai_agents")
 
 # Importações condicionais para AutoGen
-try:
-    import autogen
-    from autogen import ConversableAgent, GroupChat, GroupChatManager
-    AUTOGEN_AVAILABLE = True
-    logger.info("🎯 AutoGen framework loaded successfully - Multi-Agent Research Team Ready!")
-except ImportError as e:
-    logger.warning(f"AutoGen não disponível - funcionando sem Multi-Agent Research Team: {e}")
-    AUTOGEN_AVAILABLE = False
-    # Fallback types
-    ConversableAgent = object
-    GroupChat = object  
-    GroupChatManager = object
+# try:
+#     import autogen
+#     from autogen import ConversableAgent, GroupChat, GroupChatManager
+#     AUTOGEN_AVAILABLE = True
+#     logger.info("🎯 AutoGen framework loaded successfully - Multi-Agent Research Team Ready!")
+#     # print(f"AutoGen path: {autogen.__file__}") # Remover print
+#     # print(f"sys.path: {sys.path}") # Remover print
+# except ImportError as e:
+#     logger.warning(f"AutoGen não disponível - funcionando sem Multi-Agent Research Team: {e}")
+AUTOGEN_AVAILABLE = False # Forçar para False
+ConversableAgent = object
+GroupChat = object  
+GroupChatManager = object
 
 # Importar componentes principais
 from .research_team import ResearchTeamCoordinator
@@ -76,7 +78,7 @@ async def initialize_research_team() -> ResearchTeamCoordinator:
         logger.info("🚀 Inicializando AutoGen Multi-Agent Research Team...")
         
         _research_team = ResearchTeamCoordinator()
-        await _research_team.initialize()
+        # await _research_team.initialize() # Comentar ou remover
         
         logger.info("✅ Research Team inicializado com sucesso - Departamento IA Colaborativo Ativo!")
         return _research_team
@@ -91,7 +93,7 @@ async def shutdown_research_team():
     
     if _research_team:
         try:
-            await _research_team.shutdown()
+            # await _research_team.shutdown() # Comentar ou remover
             logger.info("🛑 Research Team shutdown complete")
         except Exception as e:
             logger.error(f"Erro no shutdown do Research Team: {e}")

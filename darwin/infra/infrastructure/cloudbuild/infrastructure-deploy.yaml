@@ -1,0 +1,565 @@
+# =============================================================================
+# DARWIN Infrastructure Deployment Pipeline
+# Cloud Build configuration for deploying Terraform infrastructure
+# =============================================================================
+
+timeout: 2400s # 40 minutes
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 100
+  substitution_option: 'ALLOW_LOOSE'
+  dynamic_substitutions: true
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _PROJECT_ID: '${PROJECT_ID}'
+  _REGION: 'us-central1'
+  _ENVIRONMENT: 'production'
+  _TERRAFORM_VERSION: '1.6.0'
+  _TERRAFORM_DIR: './infrastructure/terraform'
+  _STATE_BUCKET: 'darwin-terraform-state-bucket'
+  _BILLING_ACCOUNT_ID: '${BILLING_ACCOUNT_ID}'
+  _API_DOMAIN: 'api.agourakis.med.br'
+  _FRONTEND_DOMAIN: 'darwin.agourakis.med.br'
+
+steps:
+# Environment Setup and Validation
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'validate-environment'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔍 Validating infrastructure deployment environment..."
+    echo "Project ID: ${_PROJECT_ID}"
+    echo "Region: ${_REGION}"
+    echo "Environment: ${_ENVIRONMENT}"
+    echo "Terraform Version: ${_TERRAFORM_VERSION}"
+    echo "Terraform Directory: ${_TERRAFORM_DIR}"
+    echo "State Bucket: ${_STATE_BUCKET}"
+    echo "API Domain: ${_API_DOMAIN}"
+    echo "Frontend Domain: ${_FRONTEND_DOMAIN}"
+
+    if [ -z "${_PROJECT_ID}" ] || [ -z "${_BILLING_ACCOUNT_ID}" ]; then
+      echo "❌ Missing required environment variables"
+      exit 1
+    fi
+
+    echo "✅ Environment validation completed"
+
+# Install Terraform
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'install-terraform'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "📦 Installing Terraform ${_TERRAFORM_VERSION}..."
+
+    cd /tmp
+    curl -fsSL https://releases.hashicorp.com/terraform/${_TERRAFORM_VERSION}/terraform_${_TERRAFORM_VERSION}_linux_amd64.zip -o terraform.zip
+    unzip terraform.zip
+    chmod +x terraform
+    mv terraform /usr/local/bin/
+
+    terraform version
+
+    echo "✅ Terraform installation completed"
+  waitFor: [ 'validate-environment' ]
+
+# Terraform Format and Validation
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'terraform-validate'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔍 Validating Terraform configuration..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    echo "🎨 Checking Terraform formatting..."
+    $TERRAFORM fmt -check -recursive || echo "⚠️ Terraform files need formatting"
+
+    echo "🔍 Initializing Terraform..."
+    $TERRAFORM init -backend=false
+
+    echo "🔍 Validating Terraform configuration..."
+    $TERRAFORM validate
+
+    echo "✅ Terraform validation completed"
+  waitFor: [ 'install-terraform' ]
+
+# Security Scanning for Infrastructure
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'security-scan'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔒 Running infrastructure security scanning..."
+
+    cd ${_TERRAFORM_DIR}
+
+    # Install tfsec for Terraform security scanning
+    curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+
+    echo "🔍 Running tfsec security scan..."
+    tfsec . --format json --out tfsec-report.json || echo "⚠️ Security issues found"
+
+    # Install checkov for additional security scanning
+    pip3 install checkov
+
+    echo "🔍 Running Checkov security scan..."
+    checkov -d . --framework terraform --output json --output-file checkov-report.json || echo "⚠️ Checkov found issues"
+
+    echo "✅ Security scanning completed"
+  waitFor: [ 'terraform-validate' ]
+
+# Create Terraform State Bucket (if not exists)
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'create-state-bucket'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🗄️ Ensuring Terraform state bucket exists..."
+
+    # Check if bucket exists
+    if gsutil ls -b gs://${_STATE_BUCKET} > /dev/null 2>&1; then
+      echo "ℹ️ State bucket already exists: ${_STATE_BUCKET}"
+    else
+      echo "📦 Creating state bucket: ${_STATE_BUCKET}"
+      gsutil mb -p ${_PROJECT_ID} -c STANDARD -l ${_REGION} gs://${_STATE_BUCKET}
+      
+      # Enable versioning
+      gsutil versioning set on gs://${_STATE_BUCKET}
+      
+      # Set lifecycle policy
+      cat > lifecycle.json <<EOF
+    {
+      "rule": [
+        {
+          "action": {"type": "Delete"},
+          "condition": {"age": 90, "isLive": false}
+        }
+      ]
+    }
+    EOF
+      gsutil lifecycle set lifecycle.json gs://${_STATE_BUCKET}
+      rm lifecycle.json
+    fi
+
+    echo "✅ State bucket configuration completed"
+  waitFor: [ 'security-scan' ]
+
+# Terraform Plan
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'terraform-plan'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "📋 Running Terraform plan..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Initialize Terraform with backend
+    echo "🔄 Initializing Terraform with remote backend..."
+    $TERRAFORM init \
+      -backend-config="bucket=${_STATE_BUCKET}" \
+      -backend-config="prefix=terraform/state"
+
+    # Create terraform.tfvars
+    echo "📝 Creating terraform.tfvars..."
+    cat > terraform.tfvars <<EOF
+    project_id = "${_PROJECT_ID}"
+    region = "${_REGION}"
+    environment = "${_ENVIRONMENT}"
+    api_domain = "${_API_DOMAIN}"
+    frontend_domain = "${_FRONTEND_DOMAIN}"
+    billing_account_id = "${_BILLING_ACCOUNT_ID}"
+
+    # Notification settings
+    notification_channels = []
+    email_addresses = ["admin@agourakis.med.br"]
+
+    # Resource sizing for production
+    database_tier = "db-n1-standard-2"
+    database_disk_size = 100
+    redis_memory_size = 2
+
+    # Backend scaling
+    backend_min_instances = 1
+    backend_max_instances = 10
+    backend_cpu_limit = "2000m"
+    backend_memory_limit = "4Gi"
+
+    # Frontend scaling
+    frontend_min_instances = 1
+    frontend_max_instances = 5
+    frontend_cpu_limit = "1000m" 
+    frontend_memory_limit = "2Gi"
+
+    # Budget
+    budget_amount = 500
+    EOF
+
+    # Run terraform plan
+    echo "🔍 Running Terraform plan..."
+    $TERRAFORM plan -var-file=terraform.tfvars -out=tfplan
+
+    # Show plan summary
+    echo "📊 Plan Summary:"
+    $TERRAFORM show -no-color tfplan | grep -E "Plan:|Changes to Outputs:" || echo "No changes detected"
+
+    echo "✅ Terraform plan completed"
+  waitFor: [ 'create-state-bucket' ]
+
+# Manual Approval Gate (Optional - for production safety)
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'approval-gate'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🚦 Approval gate for infrastructure changes..."
+
+    # In production, you might want to pause here for manual approval
+    # This can be implemented using Cloud Build manual triggers or external systems
+
+    if [ "${_ENVIRONMENT}" = "production" ]; then
+      echo "🔒 Production deployment detected"
+      echo "ℹ️ In a full production setup, this would pause for manual approval"
+      echo "ℹ️ For this demo, proceeding automatically after validation"
+      
+      # Add any additional safety checks here
+      TERRAFORM="/usr/local/bin/terraform"
+      cd ${_TERRAFORM_DIR}
+      
+      # Validate that critical resources won't be destroyed
+      $TERRAFORM show -no-color tfplan | grep -E "will be destroyed" && {
+        echo "⚠️ WARNING: Resources will be destroyed"
+        echo "📋 Resources to be destroyed:"
+        $TERRAFORM show -no-color tfplan | grep -A5 -B5 "will be destroyed"
+      } || echo "✅ No critical resources will be destroyed"
+    fi
+
+    echo "✅ Approval gate passed"
+  waitFor: [ 'terraform-plan' ]
+
+# Terraform Apply
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'terraform-apply'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🚀 Applying Terraform configuration..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Apply the plan
+    echo "📦 Applying infrastructure changes..."
+    $TERRAFORM apply -auto-approve tfplan
+
+    # Show outputs
+    echo "📋 Infrastructure Outputs:"
+    $TERRAFORM output -json > terraform-outputs.json
+    $TERRAFORM output
+
+    echo "✅ Terraform apply completed"
+  waitFor: [ 'approval-gate' ]
+
+# Verify Infrastructure
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'verify-infrastructure'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔍 Verifying deployed infrastructure..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Get terraform outputs
+    VPC_NAME=$($TERRAFORM output -raw vpc_name 2>/dev/null || echo "darwin-${_ENVIRONMENT}-vpc")
+    API_URL=$($TERRAFORM output -raw api_url 2>/dev/null || echo "https://${_API_DOMAIN}")
+    FRONTEND_URL=$($TERRAFORM output -raw frontend_url 2>/dev/null || echo "https://${_FRONTEND_DOMAIN}")
+
+    echo "🌐 Verifying network infrastructure..."
+    gcloud compute networks describe $VPC_NAME --format="value(name)" && echo "✅ VPC network exists"
+
+    echo "🔍 Verifying Cloud Run services..."
+    gcloud run services list --platform=managed --region=${_REGION} --filter="metadata.name~darwin-${_ENVIRONMENT}" --format="table(metadata.name,status.url,status.conditions.status)" || echo "⚠️ Services not ready yet"
+
+    echo "🔍 Verifying database..."
+    gcloud sql instances list --filter="name~darwin-${_ENVIRONMENT}" --format="table(name,databaseVersion,state)" || echo "⚠️ Database not ready yet"
+
+    echo "🔍 Verifying Redis..."
+    gcloud redis instances list --region=${_REGION} --filter="name~darwin-${_ENVIRONMENT}" --format="table(name,host,state)" || echo "⚠️ Redis not ready yet"
+
+    echo "🔍 Verifying storage buckets..."
+    gsutil ls -p ${_PROJECT_ID} | grep "darwin-${_ENVIRONMENT}" || echo "⚠️ Storage buckets not ready yet"
+
+    echo "✅ Infrastructure verification completed"
+  waitFor: [ 'terraform-apply' ]
+
+# DNS and Domain Configuration
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'configure-dns'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🌐 Configuring DNS and domain mapping..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Get load balancer IP
+    LB_IP=$($TERRAFORM output -raw load_balancer_ip 2>/dev/null || echo "")
+
+    if [ -n "$LB_IP" ]; then
+      echo "🔗 Load Balancer IP: $LB_IP"
+      
+      echo "📋 DNS Configuration Required:"
+      echo "• ${_API_DOMAIN} -> $LB_IP (A record)"
+      echo "• ${_FRONTEND_DOMAIN} -> $LB_IP (A record)"
+      
+      # Check if domains resolve correctly
+      echo "🔍 Checking domain resolution..."
+      nslookup ${_API_DOMAIN} || echo "⚠️ API domain not resolving yet"
+      nslookup ${_FRONTEND_DOMAIN} || echo "⚠️ Frontend domain not resolving yet"
+    else
+      echo "⚠️ Load balancer IP not available yet"
+    fi
+
+    echo "✅ DNS configuration completed"
+  waitFor: [ 'verify-infrastructure' ]
+
+# SSL Certificate Verification
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'verify-ssl'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔒 Verifying SSL certificates..."
+
+    echo "🔍 Checking managed SSL certificates..."
+    gcloud compute ssl-certificates list --filter="name~darwin-${_ENVIRONMENT}" --format="table(name,managed.domains,managed.status)" || echo "⚠️ SSL certificates not ready yet"
+
+    echo "⏳ SSL certificates may take 10-60 minutes to provision"
+    echo "ℹ️ Certificate status will be updated automatically"
+
+    # Test SSL connectivity (if domains resolve)
+    echo "🔍 Testing SSL connectivity..."
+    timeout 10 openssl s_client -connect ${_API_DOMAIN}:443 -servername ${_API_DOMAIN} </dev/null 2>/dev/null | grep -q "Verify return code: 0" && echo "✅ API SSL certificate valid" || echo "⚠️ API SSL not ready yet"
+    timeout 10 openssl s_client -connect ${_FRONTEND_DOMAIN}:443 -servername ${_FRONTEND_DOMAIN} </dev/null 2>/dev/null | grep -q "Verify return code: 0" && echo "✅ Frontend SSL certificate valid" || echo "⚠️ Frontend SSL not ready yet"
+
+    echo "✅ SSL verification completed"
+  waitFor: [ 'configure-dns' ]
+
+# Monitoring and Alerting Setup
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'setup-monitoring'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "📊 Setting up monitoring and alerting..."
+
+    echo "🔍 Verifying monitoring resources..."
+    gcloud logging metrics list --filter="name~darwin-${_ENVIRONMENT}" --format="table(name)" || echo "⚠️ Log metrics not ready yet"
+
+    gcloud alpha monitoring policies list --filter="displayName~darwin OR displayName~DARWIN" --format="table(displayName,enabled)" || echo "⚠️ Alert policies not ready yet"
+
+    gcloud alpha monitoring dashboards list --filter="displayName~darwin OR displayName~DARWIN" --format="table(displayName)" || echo "⚠️ Dashboards not ready yet"
+
+    echo "💰 Verifying budget alerts..."
+    gcloud billing budgets list --billing-account=${_BILLING_ACCOUNT_ID} --filter="displayName~darwin OR displayName~DARWIN" --format="table(displayName,amount)" || echo "⚠️ Budget not configured yet"
+
+    echo "✅ Monitoring setup verified"
+  waitFor: [ 'verify-ssl' ]
+
+# Integration Tests
+- name: 'gcr.io/cloud-builders/curl'
+  id: 'integration-tests'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🧪 Running infrastructure integration tests..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Get service URLs from terraform outputs
+    API_URL=$($TERRAFORM output -raw api_url 2>/dev/null || echo "https://${_API_DOMAIN}")
+    FRONTEND_URL=$($TERRAFORM output -raw frontend_url 2>/dev/null || echo "https://${_FRONTEND_DOMAIN}")
+
+    echo "🔗 Testing URLs:"
+    echo "• API: $API_URL"
+    echo "• Frontend: $FRONTEND_URL"
+
+    # Test API endpoint (may not be ready if services aren't deployed yet)
+    echo "🔍 Testing API connectivity..."
+    if curl -f -s -m 10 "$API_URL/health" > /dev/null 2>&1; then
+      echo "✅ API health endpoint accessible"
+    else
+      echo "⚠️ API not accessible yet (services may not be deployed)"
+    fi
+
+    # Test frontend endpoint
+    echo "🔍 Testing frontend connectivity..."
+    if curl -f -s -m 10 "$FRONTEND_URL" > /dev/null 2>&1; then
+      echo "✅ Frontend endpoint accessible"
+    else
+      echo "⚠️ Frontend not accessible yet (services may not be deployed)"
+    fi
+
+    echo "ℹ️ Note: Service endpoints will be accessible after application deployment"
+    echo "✅ Infrastructure integration tests completed"
+  waitFor: [ 'setup-monitoring' ]
+
+# Generate Deployment Report
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'generate-report'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "📋 Generating infrastructure deployment report..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Create deployment report
+    cat > infrastructure-deployment-report.md <<EOF
+    # DARWIN Infrastructure Deployment Report
+
+    **Deployment Date:** $(date)
+    **Environment:** ${_ENVIRONMENT}
+    **Project ID:** ${_PROJECT_ID}
+    **Region:** ${_REGION}
+
+    ## Infrastructure Components
+
+    ### Networking
+    - VPC Network: darwin-${_ENVIRONMENT}-vpc
+    - Load Balancer IP: $($TERRAFORM output -raw load_balancer_ip 2>/dev/null || echo "Pending")
+    - SSL Certificate: Managed certificate for ${_API_DOMAIN}, ${_FRONTEND_DOMAIN}
+
+    ### Domains
+    - API Domain: ${_API_DOMAIN}
+    - Frontend Domain: ${_FRONTEND_DOMAIN}
+
+    ### Backend Infrastructure
+    - Cloud SQL PostgreSQL with vector extensions
+    - Redis Memorystore for caching
+    - Cloud Storage buckets for data and assets
+    - Cloud Run service (ready for backend deployment)
+
+    ### Frontend Infrastructure  
+    - Cloud Run service (ready for frontend deployment)
+    - Cloud CDN for global performance
+    - Static asset optimization
+
+    ### Monitoring & Alerting
+    - Custom dashboards
+    - Alert policies for uptime, performance, and resources
+    - Budget alerts (500 USD/month)
+    - Log-based metrics
+
+    ## Next Steps
+
+    1. Deploy backend application using: \`gcloud builds submit --config=infrastructure/cloudbuild/backend-deploy.yaml\`
+    2. Deploy frontend application using: \`gcloud builds submit --config=infrastructure/cloudbuild/frontend-deploy.yaml\`
+    3. Configure DNS records:
+       - ${_API_DOMAIN} -> $($TERRAFORM output -raw load_balancer_ip 2>/dev/null || echo "PENDING")
+       - ${_FRONTEND_DOMAIN} -> $($TERRAFORM output -raw load_balancer_ip 2>/dev/null || echo "PENDING")
+    4. Wait for SSL certificates to provision (10-60 minutes)
+    5. Verify all services are healthy
+
+    ## Terraform Outputs
+
+    \`\`\`json
+    $($TERRAFORM output -json 2>/dev/null || echo "{}")
+    \`\`\`
+    EOF
+
+    echo "📄 Infrastructure deployment report generated"
+    cat infrastructure-deployment-report.md
+
+    echo "✅ Report generation completed"
+  waitFor: [ 'integration-tests' ]
+
+# Cleanup and Notification
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'cleanup-notify'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🧹 Cleanup and notification..."
+
+    TERRAFORM="/usr/local/bin/terraform"
+    cd ${_TERRAFORM_DIR}
+
+    # Archive important files
+    echo "📦 Archiving deployment artifacts..."
+    tar -czf deployment-artifacts.tar.gz \
+      terraform-outputs.json \
+      infrastructure-deployment-report.md \
+      tfsec-report.json \
+      checkov-report.json \
+      tfplan 2>/dev/null || echo "Some artifacts not available"
+
+    # Get key outputs for summary
+    LB_IP=$($TERRAFORM output -raw load_balancer_ip 2>/dev/null || echo "Pending")
+    VPC_NAME=$($TERRAFORM output -raw vpc_name 2>/dev/null || echo "darwin-${_ENVIRONMENT}-vpc")
+
+    echo "🎉 Infrastructure Deployment Successful!"
+    echo ""
+    echo "📋 Infrastructure Summary:"
+    echo "• Project: ${_PROJECT_ID}"
+    echo "• Environment: ${_ENVIRONMENT}"
+    echo "• Region: ${_REGION}"
+    echo "• VPC: $VPC_NAME"
+    echo "• Load Balancer IP: $LB_IP"
+    echo "• API Domain: ${_API_DOMAIN}"
+    echo "• Frontend Domain: ${_FRONTEND_DOMAIN}"
+    echo "• State Bucket: ${_STATE_BUCKET}"
+    echo "• Timestamp: $(date)"
+    echo ""
+    echo "🔗 Important Resources:"
+    echo "• Terraform State: gs://${_STATE_BUCKET}/terraform/state/default.tfstate"
+    echo "• Monitoring Dashboard: https://console.cloud.google.com/monitoring/dashboards"
+    echo "• Cloud Run Services: https://console.cloud.google.com/run"
+    echo "• Cloud SQL: https://console.cloud.google.com/sql/instances"
+    echo "• VPC Network: https://console.cloud.google.com/networking/networks"
+    echo ""
+    echo "📋 Next Steps:"
+    echo "1. Deploy backend: gcloud builds submit --config=infrastructure/cloudbuild/backend-deploy.yaml"
+    echo "2. Deploy frontend: gcloud builds submit --config=infrastructure/cloudbuild/frontend-deploy.yaml"
+    echo "3. Configure DNS records pointing to: $LB_IP"
+    echo "4. Wait for SSL certificate provisioning"
+    echo ""
+    echo "✅ Infrastructure deployment pipeline completed!"
+  waitFor: [ 'generate-report' ]
+
+artifacts:
+  objects:
+    location: 'gs://${_PROJECT_ID}-build-artifacts/infrastructure/${SHORT_SHA}'
+    paths:
+    - './infrastructure/terraform/terraform-outputs.json'
+    - './infrastructure/terraform/infrastructure-deployment-report.md'
+    - './infrastructure/terraform/tfsec-report.json'
+    - './infrastructure/terraform/checkov-report.json'
+    - './infrastructure/terraform/deployment-artifacts.tar.gz'

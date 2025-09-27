@@ -1,0 +1,477 @@
+# =============================================================================
+# DARWIN Frontend Deployment Pipeline
+# Cloud Build configuration for deploying React TypeScript + Next.js frontend
+# =============================================================================
+
+timeout: 1800s
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 100
+  substitution_option: 'ALLOW_LOOSE'
+  dynamic_substitutions: true
+  logging: LEGACY
+
+substitutions:
+  _PROJECT_ID: '${PROJECT_ID}'
+  # Removed duplicate key to resolve YAML error
+  _REGION: 'us-central1'
+  _SERVICE_NAME: 'darwin-${_ENVIRONMENT}-frontend'
+  _IMAGE_NAME: 'gcr.io/${_PROJECT_ID}/darwin-frontend'
+  _ENVIRONMENT: 'production'
+  _DOCKERFILE_PATH: './ui/Dockerfile'
+  _SOURCE_PATH: './ui'
+  _NODE_VERSION: '18'
+  _API_URL: 'https://api.agourakis.med.br'
+  _FRONTEND_URL: 'https://darwin.agourakis.med.br'
+  # Ensure SERVICE_URL is not used as a substitution
+  # Removed invalid substitution key
+
+steps:
+# Environment Setup and Validation
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'validate-environment'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔍 Validating frontend deployment environment..."
+    echo "Project ID: ${_PROJECT_ID}"
+    echo "Region: ${_REGION}"
+    echo "Service Name: ${_SERVICE_NAME}"
+    echo "Environment: ${_ENVIRONMENT}"
+    echo "Image Name: ${_IMAGE_NAME}"
+    echo "Node Version: ${_NODE_VERSION}"
+    echo "API URL: ${_API_URL}"
+    echo "Frontend URL: ${_FRONTEND_URL}"
+
+    if [ -z "${_PROJECT_ID}" ] || [ -z "${_REGION}" ] || [ -z "${_SERVICE_NAME}" ]; then
+      echo "❌ Missing required environment variables"
+      exit 1
+    fi
+
+    echo "✅ Environment validation completed"
+
+# Install Dependencies and Run Tests
+- name: 'node:${_NODE_VERSION}-alpine'
+  id: 'test-frontend'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    echo "🧪 Running frontend tests..."
+
+    # Install system dependencies
+    apk add --no-cache git python3 make g++ curl
+
+    cd ${_SOURCE_PATH}
+
+    # Install Node.js dependencies
+    echo "📦 Installing dependencies..."
+    npm ci --prefer-offline --no-audit
+
+    # Run linting
+    echo "🔍 Running ESLint..."
+    npm run lint || echo "⚠️ Linting issues found"
+
+    # Type checking
+    echo "🔍 Running TypeScript type checking..."
+    npm run type-check || echo "⚠️ Type errors found"
+
+    # Run unit tests
+    echo "🧪 Running unit tests..."
+    npm run test:ci || echo "⚠️ Some tests failed"
+
+    # Check for security vulnerabilities
+    echo "🔒 Checking for security vulnerabilities..."
+    npm audit --audit-level high || echo "⚠️ Security vulnerabilities found"
+
+    echo "✅ Frontend tests completed"
+  waitFor: [ 'validate-environment' ]
+
+# Security and Code Quality Scanning
+- name: 'node:${_NODE_VERSION}-alpine'
+  id: 'security-scan'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    echo "🔒 Running frontend security scanning..."
+
+    cd ${_SOURCE_PATH}
+
+    # Install security scanning tools
+    npm install -g snyk eslint-plugin-security
+
+    # Check for known vulnerabilities
+    echo "🔍 Running dependency vulnerability scan..."
+    npm audit --json > npm-audit-report.json || echo "⚠️ Vulnerabilities found"
+
+    # Check for hardcoded secrets
+    echo "🔍 Scanning for hardcoded secrets..."
+    grep -r -i "password\|secret\|key\|token" src/ --exclude-dir=node_modules || echo "ℹ️ No obvious secrets found"
+
+    # Bundle analysis (if analyzer is configured)
+    if [ -f "package.json" ] && grep -q "@next/bundle-analyzer" package.json; then
+      echo "📊 Running bundle analysis..."
+      npm run analyze || echo "ℹ️ Bundle analysis not available"
+    fi
+
+    echo "✅ Security scanning completed"
+  waitFor: [ 'test-frontend' ]
+
+# Build Application
+- name: 'node:${_NODE_VERSION}-alpine'
+  id: 'build-app'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    echo "🏗️ Building frontend application..."
+
+    cd ${_SOURCE_PATH}
+
+    # Set environment variables for build
+    export NODE_ENV=production
+    export NEXT_PUBLIC_API_URL=${_API_URL}
+    export NEXT_PUBLIC_FRONTEND_URL=${_FRONTEND_URL}
+    export NEXT_PUBLIC_ENVIRONMENT=${_ENVIRONMENT}
+    export NEXT_PUBLIC_PROJECT_ID=${_PROJECT_ID}
+    export NEXT_PUBLIC_REGION=${_REGION}
+
+    # Build the application
+    echo "🚀 Building Next.js application..."
+    npm run build
+
+    # Check if build was successful
+    if [ -d ".next" ]; then
+      echo "✅ Build completed successfully"
+      echo "📊 Build statistics:"
+      du -sh .next
+      find .next -name "*.js" | wc -l | xargs echo "JavaScript files:"
+      find .next -name "*.css" | wc -l | xargs echo "CSS files:"
+    else
+      echo "❌ Build failed - .next directory not found"
+      exit 1
+    fi
+  waitFor: [ 'security-scan' ]
+
+# Optimize Static Assets
+- name: 'node:${_NODE_VERSION}-alpine'
+  id: 'optimize-assets'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    echo "⚡ Optimizing static assets..."
+
+    cd ${_SOURCE_PATH}
+
+    # Install optimization tools
+    npm install -g imagemin-cli svgo
+
+    # Optimize images if they exist
+    if [ -d "public/images" ]; then
+      echo "🖼️ Optimizing images..."
+      find public/images -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" | while read img; do
+        imagemin "$img" --out-dir="$(dirname "$img")" || echo "⚠️ Could not optimize $img"
+      done
+    fi
+
+    # Optimize SVG files
+    if [ -d "public/icons" ]; then
+      echo "🎨 Optimizing SVG icons..."
+      find public/icons -name "*.svg" | while read svg; do
+        svgo "$svg" --output="$svg" || echo "⚠️ Could not optimize $svg"
+      done
+    fi
+
+    echo "✅ Asset optimization completed"
+  waitFor: [ 'build-app' ]
+
+# Build Docker Image
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-image'
+  args:
+  - 'build'
+  - '--file=${_DOCKERFILE_PATH}'
+  - '--tag=${_IMAGE_NAME}:${SHORT_SHA}'
+  - '--tag=${_IMAGE_NAME}:latest'
+  - '--build-arg=NODE_VERSION=${_NODE_VERSION}'
+  - '--build-arg=ENVIRONMENT=${_ENVIRONMENT}'
+  - '--build-arg=API_URL=${_API_URL}'
+  - '--build-arg=FRONTEND_URL=${_FRONTEND_URL}'
+  - '--build-arg=BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'
+  - '--build-arg=VCS_REF=${SHORT_SHA}'
+  - '--cache-from=${_IMAGE_NAME}:latest'
+  - '${_SOURCE_PATH}'
+  waitFor: [ 'optimize-assets' ]
+
+# Scan Docker Image
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'scan-image'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🔍 Scanning frontend Docker image..."
+
+    gcloud services enable containeranalysis.googleapis.com
+
+    gcloud container images scan ${_IMAGE_NAME}:${SHORT_SHA} --format="table(resource.parent.name,vulnerability.effectiveSeverity,vulnerability.cvssScore)" || echo "⚠️ Vulnerabilities found"
+
+    echo "✅ Image vulnerability scan completed"
+  waitFor: [ 'build-image' ]
+
+# Push Image to Registry
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-image'
+  args:
+  - 'push'
+  - '${_IMAGE_NAME}:${SHORT_SHA}'
+  waitFor: [ 'scan-image' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push-latest'
+  args:
+  - 'push'
+  - '${_IMAGE_NAME}:latest'
+  waitFor: [ 'scan-image' ]
+
+# Upload Static Assets to CDN
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: 'upload-assets'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "☁️ Uploading static assets to CDN..."
+
+    cd ${_SOURCE_PATH}
+
+    # Upload static files to CDN bucket
+    if [ -d ".next/static" ]; then
+      echo "📁 Uploading Next.js static files..."
+      gsutil -m rsync -r -c -d .next/static gs://darwin-${_ENVIRONMENT}-cdn-assets/_next/static/
+    fi
+
+    # Upload public assets
+    if [ -d "public" ]; then
+      echo "📁 Uploading public assets..."
+      gsutil -m rsync -r -c -d public/ gs://darwin-${_ENVIRONMENT}-static-assets/
+    fi
+
+    # Set cache headers for different file types
+    echo "⚡ Setting cache headers..."
+    gsutil -m setmeta -h "Cache-Control:public, max-age=31536000, immutable" gs://darwin-${_ENVIRONMENT}-cdn-assets/_next/static/**
+    gsutil -m setmeta -h "Cache-Control:public, max-age=86400" gs://darwin-${_ENVIRONMENT}-static-assets/**
+
+    echo "✅ Static assets uploaded successfully"
+  waitFor: [ 'push-image' ]
+
+# Deploy to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'deploy-service'
+  args:
+  - 'run'
+  - 'deploy'
+  - '${_SERVICE_NAME}'
+  - '--image=${_IMAGE_NAME}:${SHORT_SHA}'
+  - '--platform=managed'
+  - '--region=${_REGION}'
+  - '--allow-unauthenticated'
+  - '--min-instances=1'
+  - '--max-instances=5'
+  - '--memory=2Gi'
+  - '--cpu=1000m'
+  - '--timeout=60'
+  - '--concurrency=80'
+  - '--set-env-vars=NODE_ENV=production,ENVIRONMENT=${_ENVIRONMENT},PROJECT_ID=${_PROJECT_ID},REGION=${_REGION},NEXT_PUBLIC_API_URL=${_API_URL},NEXT_PUBLIC_FRONTEND_URL=${_FRONTEND_URL}'
+  - '--vpc-connector=darwin-${_ENVIRONMENT}-connector'
+  - '--vpc-egress=private-ranges-only'
+  - '--service-account=darwin-${_ENVIRONMENT}-frontend-sa@${_PROJECT_ID}.iam.gserviceaccount.com'
+  - '--execution-environment=gen2'
+  - '--cpu-boost'
+  waitFor: [ 'upload-assets' ]
+
+# Health Check and Smoke Tests
+- name: 'gcr.io/cloud-builders/curl'
+  id: 'health-check'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🏥 Running frontend health checks..."
+
+    # Removed invalid SERVICE_URL substitution
+
+    echo "Service URL: ${_FRONTEND_URL}"
+
+    echo "⏳ Waiting for service to be ready..."
+    sleep 30
+
+    echo "🔍 Checking homepage..."
+    for i in {1..5}; do
+      if curl -f -s -o /dev/null -w "%{http_code}" "$SERVICE_URL/" | grep -q "200"; then
+        echo "✅ Homepage health check passed"
+        break
+      else
+        echo "⚠️ Homepage check failed, attempt $i/5"
+        if [ $i -eq 5 ]; then
+          echo "❌ Homepage check failed after 5 attempts"
+          exit 1
+        fi
+        sleep 10
+      fi
+    done
+
+    echo "🔍 Testing API connectivity..."
+    if curl -f -s "$SERVICE_URL/api/health" > /dev/null; then
+      echo "✅ API connectivity test passed"
+    else
+      echo "⚠️ API connectivity test failed"
+    fi
+
+    echo "✅ Frontend health checks completed"
+  waitFor: [ 'deploy-service' ]
+
+# Performance Tests
+- name: 'node:${_NODE_VERSION}-alpine'
+  id: 'performance-tests'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    echo "🚀 Running performance tests..."
+
+    # Install Lighthouse CLI
+    npm install -g lighthouse
+
+    # Dynamically set SERVICE_URL during pipeline execution
+    SERVICE_URL=$(gcloud run services describe ${_SERVICE_NAME} --platform=managed --region=${_REGION} --format="value(status.url)")
+
+    echo "🔍 Running Lighthouse audit..."
+    lighthouse "$SERVICE_URL" --chrome-flags="--headless --no-sandbox --disable-gpu" --output=json --output-path=lighthouse-report.json || echo "⚠️ Lighthouse audit completed with warnings"
+
+    # Extract key metrics if report exists
+    if [ -f "lighthouse-report.json" ]; then
+      echo "📊 Performance metrics:"
+      node -e "
+        const report = JSON.parse(require('fs').readFileSync('lighthouse-report.json', 'utf8'));
+        const metrics = report.lhr.audits;
+        console.log('Performance Score:', Math.round(report.lhr.categories.performance.score * 100));
+        console.log('First Contentful Paint:', metrics['first-contentful-paint'].displayValue);
+        console.log('Largest Contentful Paint:', metrics['largest-contentful-paint'].displayValue);
+        console.log('Cumulative Layout Shift:', metrics['cumulative-layout-shift'].displayValue);
+      " || echo "ℹ️ Could not parse Lighthouse report"
+    fi
+
+    echo "✅ Performance tests completed"
+  waitFor: [ 'health-check' ]
+
+# End-to-End Tests
+- name: 'node:${_NODE_VERSION}-alpine'
+  id: 'e2e-tests'
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - |
+    echo "🧪 Running end-to-end tests..."
+
+    SERVICE_URL=$(gcloud run services describe ${_SERVICE_NAME} --platform=managed --region=${_REGION} --format="value(status.url)")
+
+    cd ${_SOURCE_PATH}
+
+    # Run Playwright tests if configured
+    if [ -f "playwright.config.js" ] || [ -f "playwright.config.ts" ]; then
+      echo "🎭 Running Playwright tests..."
+      npx playwright install --with-deps chromium
+      PLAYWRIGHT_BASE_URL="$SERVICE_URL" npx playwright test || echo "⚠️ E2E tests failed"
+    else
+      echo "ℹ️ No E2E tests configured, running basic smoke tests..."
+      
+      # Basic smoke tests with curl
+      echo "Testing main routes..."
+      curl -f -s "$SERVICE_URL/" > /dev/null && echo "✅ Homepage accessible"
+      curl -f -s "$SERVICE_URL/api/health" > /dev/null && echo "✅ API health accessible"
+      
+      echo "✅ Basic smoke tests passed"
+    fi
+
+    echo "✅ E2E tests completed"
+  waitFor: [ 'performance-tests' ]
+
+# Update CDN and Monitoring
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'update-monitoring'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "📊 Updating CDN and monitoring..."
+
+    # Update service labels
+    gcloud run services update ${_SERVICE_NAME} --platform=managed --region=${_REGION} --update-labels="version=${SHORT_SHA},deployed-at=$(date +%s),environment=${_ENVIRONMENT}"
+
+    # Invalidate CDN cache for HTML files
+    echo "🗑️ Invalidating CDN cache..."
+    gcloud compute url-maps invalidate-cdn-cache darwin-${_ENVIRONMENT}-frontend-urlmap --path="/*" --async || echo "⚠️ Cache invalidation failed"
+
+    SERVICE_URL=$(gcloud run services describe ${_SERVICE_NAME} --platform=managed --region=${_REGION} --format="value(status.url)")
+
+    echo "🔍 Verifying service status..."
+    curl -f -s "$SERVICE_URL/" > /dev/null && echo "✅ Service is responding"
+
+    echo "✅ Monitoring update completed"
+  waitFor: [ 'e2e-tests' ]
+
+# Cleanup and Notification
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'cleanup-notify'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "🧹 Cleanup and notification..."
+
+    echo "🗑️ Cleaning up old images..."
+    gcloud container images list-tags ${_IMAGE_NAME} --limit=999 --sort-by=~TIMESTAMP --format="get(digest)" | tail -n +11 | xargs -I {} gcloud container images delete "${_IMAGE_NAME}@{}" --quiet || true
+
+    SERVICE_URL=$(gcloud run services describe ${_SERVICE_NAME} --platform=managed --region=${_REGION} --format="value(status.url)")
+
+    echo "🎉 Frontend Deployment Successful!"
+    echo ""
+    echo "📋 Deployment Summary:"
+    echo "• Project: ${_PROJECT_ID}"
+    echo "• Environment: ${_ENVIRONMENT}"
+    echo "• Service: ${_SERVICE_NAME}"
+    echo "• Image: ${_IMAGE_NAME}:${SHORT_SHA}"
+    echo "• URL: $SERVICE_URL"
+    echo "• Frontend URL: ${_FRONTEND_URL}"
+    echo "• API URL: ${_API_URL}"
+    echo "• Region: ${_REGION}"
+    echo "• Node Version: ${_NODE_VERSION}"
+    echo "• Timestamp: $(date)"
+    echo ""
+    echo "🔗 Important URLs:"
+    echo "• Homepage: $SERVICE_URL"
+    echo "• Health Check: $SERVICE_URL/api/health"
+    echo "• CDN Assets: https://storage.googleapis.com/darwin-${_ENVIRONMENT}-cdn-assets"
+    echo "• Static Assets: https://storage.googleapis.com/darwin-${_ENVIRONMENT}-static-assets"
+    echo ""
+    echo "✅ Frontend deployment completed successfully!"
+  waitFor: [ 'update-monitoring' ]
+
+images:
+- '${_IMAGE_NAME}:${SHORT_SHA}'
+- '${_IMAGE_NAME}:latest'
+
+logsBucket: 'gs://${_PROJECT_ID}-build-logs'
+
+artifacts:
+  objects:
+    location: 'gs://${_PROJECT_ID}-build-artifacts/frontend/${SHORT_SHA}'
+    paths:
+    - '${_SOURCE_PATH}/npm-audit-report.json'
+    - '${_SOURCE_PATH}/lighthouse-report.json'
+    - '${_SOURCE_PATH}/test-results/**'

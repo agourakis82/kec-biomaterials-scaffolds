@@ -1,0 +1,71 @@
+# DARWIN Frontend Production Dockerfile - darwin.agourakis.med.br
+# Next.js optimized for production deployment
+
+FROM node:18-bullseye-slim AS base
+
+# Build stage
+FROM base AS builder
+WORKDIR /app
+
+# System deps needed for Next.js/sharp
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends python3 make g++ ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install Node deps
+COPY package*.json ./
+# Harden npm and improve reliability; fallback to npm install if ci fails
+RUN npm config set fund false && npm config set audit false && npm config set progress=false
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+
+# App sources
+COPY . .
+
+# Production env
+ENV NODE_ENV=production
+ENV NEXT_PUBLIC_API_URL=https://api.agourakis.med.br
+ENV NEXT_PUBLIC_APP_URL=https://darwin.agourakis.med.br
+ENV NEXT_PUBLIC_ENVIRONMENT=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Build (fallback to local binary if script fails)
+RUN --mount=type=cache,target=/app/.next/cache \
+    npm run build || ./node_modules/.bin/next build
+
+# Runtime stage
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Non-root user
+RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
+
+# Install curl for healthcheck
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends curl ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+
+# Static assets
+COPY --from=builder /app/public ./public
+
+# Prerender cache permissions
+RUN mkdir .next && chown nextjs:nodejs .next
+
+# Copy standalone output
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD curl -fsS http://localhost:3000/api/health || exit 1
+
+CMD ["node", "server.js"]

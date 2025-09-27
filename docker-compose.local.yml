@@ -1,0 +1,154 @@
+# docker-compose.local.yml
+
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - /mnt/darwin_data/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  api:
+    build:
+      context: ./darwin/backend/kec_unified_api
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=local
+      - PORT=8080
+      - DB_REDIS_HOST=redis
+      - DB_REDIS_PORT=6379
+      - DB_VECTOR_BACKEND=chroma
+      - DB_CHROMA_HOST=vectordb
+      - DB_CHROMA_PORT=8000
+      - MULTI_AI_DEFAULT_PROVIDER=ollama
+      - CORS_ENABLED=true
+      - CORS_ORIGINS=["http://localhost:3000","https://darwin.seudominio.com","https://api.seudominio.com"]
+      - JAX_PLATFORM=${JAX_PLATFORM:-cpu}
+      - ENABLE_MCP_SERVER=true
+      - ENABLE_OLLAMA_MODELS=true
+      - MCP_MEMORY_DIR=/app/data/mcp
+      - ENABLE_TREE_SEARCH=true
+      - ENABLE_PUCT=true
+      - DISCOVERY_ENABLED=true
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-}
+      - BIGQUERY_LOCATION=${BIGQUERY_LOCATION:-us-central1}
+    depends_on:
+      - redis
+      - vectordb
+      - ollama
+    volumes:
+      - /mnt/darwin_data/mcp:/app/data/mcp
+      - /mnt/darwin_data/models:/app/models
+      - ./credentials:/app/credentials
+    ports:
+      - "${HOST_BACKEND_PORT:-8090}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:8080/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - app_net
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+
+  web:
+    build:
+      context: ./darwin/frontend/ui
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:${HOST_BACKEND_PORT:-8090}
+      - NEXT_PUBLIC_ENVIRONMENT=local
+      - ENABLE_MULTI_AI_INTEGRATION=true
+      - ENABLE_CHATGPT_SYNC=true
+      - ENABLE_MCP=true
+      - ENABLE_RAG_PLUS=true
+      - ENABLE_DISCOVERY=true
+      - ENABLE_TREE_SEARCH=true
+      - ENABLE_PUCT_OPTIMIZER=true
+    depends_on:
+      - api
+    ports:
+      - "${HOST_FRONTEND_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  vectordb:
+    image: chromadb/chroma:latest
+    environment:
+      - CHROMA_SERVER_HOST=0.0.0.0
+      - CHROMA_SERVER_HTTP_PORT=8000
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/data
+    volumes:
+      - /mnt/darwin_data/chroma:/chroma/data
+    ports:
+      - "${CHROMA_PORT:-8000}:8000"
+    restart: unless-stopped
+    networks:
+      - app_net
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - /mnt/darwin_data/ollama:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:11434/api/tags"]
+      interval: 20s
+      timeout: 5s
+      retries: 15
+    restart: unless-stopped
+    environment:
+      - OLLAMA_KEEP_ALIVE=60m
+    networks:
+      - app_net
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+
+  jupyter:
+    image: jupyter/minimal-notebook:python-3.11
+    command: start-notebook.sh --NotebookApp.token=''
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./darwin/notebooks:/home/jovyan/work
+      - /mnt/darwin_data/notebooks:/home/jovyan/data
+    ports:
+      - "${JUPYTER_PORT:-8888}:8888"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8888/api"]
+      interval: 30s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge

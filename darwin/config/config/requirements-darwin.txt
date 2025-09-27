@@ -43,3 +43,12 @@ python-multipart==0.0.6
 
 # Structured logging
 python-json-logger==2.0.4
+networkx==3.2.1
+
+networkx==3.2.1
+-e # High-performance computing for biomaterials analysis
+jax[cpu]==0.4.20
+jaxlib==0.4.20
+
+# Multi-agent AI framework
+pyautogen==0.2.27
